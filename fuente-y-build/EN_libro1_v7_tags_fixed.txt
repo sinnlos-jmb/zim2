@@ -73,6 +73,8 @@ Volviendo a nuestro tema, puesto que todo conocimiento y toda elección (γνῶ
 Pero quizá es inútil exponer en detalle todas las opiniones, y basta con examinar las predominantes o que parecen tener alguna razón.
 Tengamos presente que los razonamientos (λόγοι) que parten de los principios (ἀπὸ τῶν ἀρχῶν) difieren de los que conducen a los principios (ἐπὶ τὰς ἀρχάς). En efecto, también Platón se preguntaba y buscaba con razón si se ha de proceder partiendo de los principios o hacia los principios; como en el estadio, de los que presiden los juegos hacia la meta o al revés. Sin duda, se ha de empezar por las cosas más fáciles de conocer (ἀπὸ τῶν γνωρίμων); pero éstas lo son en dos sentidos: unas, para nosotros (ἡμῖν); las otras, en absoluto (ἁπλῶς). Debemos, pues, acaso empezar por las más fáciles de conocer para nosotros.
 Por eso, quien haya de escuchar (ἀκουσόμενον) con provecho acerca de las cosas nobles (καλῶν) y justas (δικαίων) y, en suma, sobre los asuntos políticos (τῶν πολιτικῶν), debe haber sido noblemente conducido (ἦχθαι καλῶς) en sus hábitos (ἔθεσιν). Pues el principio (ἀρχὴ) es el qué (τὸ ὅτι), y si está suficientemente claro, no habrá ninguna necesidad del porqué (τοῦ διότι). Un hombre tal, o tiene ya o adquirirá fácilmente los principios (ἀρχὰς). Pero el que no dispone de ninguna de estas cosas, escuche las palabras de Hesíodo:
+
+
 Es el mejor de todos (πανάριστος) el que por sí solo comprende todas las cosas; 
 es noble asimismo el que obedece al que aconseja bien; 
 pero el que ni comprende por sí mismo ni lo que escucha a otro 
@@ -98,6 +100,8 @@ Pero parece ser más superficial (ἐπιπολαιότερον) que lo que busc
 φαίνεται δ᾽ ἐπιπολαιότερον εἶναι τοῦ ζητουμένου· δοκεῖ γὰρ ἐν [25] τοῖς τιμῶσι μᾶλλον εἶναι ἢ ἐν τῷ τιμωμένῳ, τἀγαθὸν δὲ οἰκεῖόν τι καὶ δυσαφαίρετον εἶναι μαντευόμεθα. ἔτι δ᾽ ἐοίκασι τὴν τιμὴν διώκειν ἵνα πιστεύσωσιν ἑαυτοὺς ἀγαθοὺς εἶναι· ζητοῦσι γοῦν ὑπὸ τῶν φρονίμων τιμᾶσθαι, καὶ παρ᾽ οἷς γινώσκονται, καὶ ἐπ᾽ ἀρετῇ· δῆλον οὖν ὅτι κατά γε [30] τούτους ἡ ἀρετὴ κρείττων.
 
 
+
+
 { "parrafo_nro": 11 }
 Acaso se podría suponer (ὑπολάβοι) que ésta (ἀρετὴ) sea el fin de la vida política (πολιτικοῦ βίου); pero resulta también insuficiente (ἀτελεστέρα), pues parece posible que: el que posee la virtud esté dormido o inactivo (ἀπρακτεῖν) durante toda su vida (διὰ βίου), y además de esto padezca grandes males y los mayores infortunios (ἀτυχεῖν); y nadie juzgará feliz al que viviera así (οὕτω ζῶντα), a no ser para defender esa tesis. Y basta sobre esto, pues ya hemos hablado suficientemente de ello en nuestros escritos enciclopédicos.
 
@@ -121,6 +125,8 @@ El tercer modo de vida es el contemplativo, que examinaremos más adelante. En c
 Quizá sea mejor considerar (ἐπισκέψασθαι) el aspecto general (καθόλου) de la cuestión y preguntarnos (διαπορῆσαι) cuál es su sentido, aunque esta investigación nos resulte difícil por ser amigos nuestros los que han introducido las ideas (τὰ εἴδη). Parece, con todo, que es mejor y que debemos, para salvar la verdad, sacrificar incluso lo que nos es propio (τὰ οἰκεῖα … ἀναιρεῖν); sobre todo, siendo filósofos, pues siéndonos ambas cosas queridas, es debido preferir la verdad (ἀλήθειαν).
 
 Τὸ δὲ καθόλου βέλτιον ἴσως ἐπισκέψασθαι καὶ διαπορῆσαι πῶς λέγεται, καίπερ προσάντους τῆς τοιαύτης ζητήσεως γινομένης διὰ τὸ φίλους ἄνδρας εἰσαγαγεῖν τὰ εἴδη. δόξειε δ᾽ ἂν ἴσως βέλτιον εἶναι καὶ δεῖν ἐπὶ σωτηρίᾳ γε τῆς [15] ἀληθείας καὶ τὰ οἰκεῖα ἀναιρεῖν, ἄλλως τε καὶ φιλοσόφους ὄντας· ἀμφοῖν γὰρ ὄντοιν φίλοιν ὅσιον προτιμᾶν τὴν ἀλήθειαν.
+
+
 
 
 { "parrafo_nro": 14 }
@@ -149,6 +155,7 @@ Los pitagóricos tratan, al parecer, esta cuestión con más verosimilitud al co
 πιθανώτερον δ᾽ ἐοίκασιν οἱ Πυθαγόρειοι λέγειν περὶ αὐτοῦ, τιθέντες ἐν τῇ τῶν ἀγαθῶν συστοιχίᾳ τὸ ἕν· οἷς δὴ καὶ Σπεύσιππος ἐπακολουθῆσαι δοκεῖ. Ἀλλὰ περὶ μὲν τούτων ἄλλος ἔστω λόγος·
 
 
+
 { "parrafo_nro": 18 }
 A propósito de lo dicho se suscita (ὑποφαίνεται) una duda, porque no se han referido estas palabras a todos los bienes, sino que se dicen según una sola especie (καθ᾽ ἓν εἶδος): los que se buscan y aman por sí mismos, mientras que los bienes que los producen o los defienden de algún modo o impiden sus contrarios se dicen por referencia a éstos (διὰ ταῦτα) y de otra manera.
 Es evidente, pues, que los bienes (ἀγαθά) pueden decirse de dos modos: unos por sí mismos  (καθ᾽ αὑτά), y los otros por éstos (διὰ ταῦτα). Separando, pues, de los bienes útiles (ὠφελíμων) los que son bienes por sí mismos, consideremos si éstos se dicen según una sola idea (κατὰ μίαν ἰδέαν). Pero ¿qué bienes se han de considerar por sí? ¿Todos aquellos que buscamos incluso aislados, como el pensar (φρονεῖν) y el ver y algunos placeres (ἡδοναί) y honores (τιμαί)? Todos éstos, en efecto, aunque los busquemos en vista de otra cosa, podrían considerarse, sin embargo, como bienes (ἀγαθῶν) por sí mismos; ¿o no se ha de considerar como bien en sí nada más que la idea (τῆς ἰδέας)? En este caso, la especie (εἶδος) sería inútil (μάταιον). Si, por otra parte, aquéllos son bienes por sí mismos, forzosamente resplandecerá en todos ellos la misma noción del bien, como la de la blancura en la nieve y en el albayalde. Pero las nociones de honor, prudencia (φρονεῖν) y placer son otras y diferentes precisamente en tanto que bienes; por consiguiente, no es el bien (ἀγαθὸν) algo común (κοινόν τι) según una sola idea.
@@ -171,6 +178,7 @@ Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuesti
 Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole.
 
 ὁμοίως δὲ καὶ περὶ τῆς ἰδέας· εἰ γὰρ καὶ ἔστιν ἕν τι τὸ κοινῇ κατηγορούμενον ἀγαθὸν ἢ χωριστὸν αὐτό τι καθ᾽ αὑτό, δῆλον ὡς οὐκ ἂν εἴη πρακτὸν οὐδὲ κτητὸν ἀνθρώπῳ· νῦν δὲ τοιοῦτόν τι [35] ζητεῖται.
+
 
 
 { "parrafo_nro": 21 }
@@ -196,6 +204,7 @@ Nuestro razonamiento, después de muchos rodeos, vuelve al mismo punto; pero int
 
 [15] Πάλιν δ᾽ ἐπανέλθωμεν ἐπὶ τὸ ζητούμενον ἀγαθόν, τί ποτ᾽ ἂν εἴη. φαίνεται μὲν γὰρ ἄλλο ἐν ἄλλῃ πράξει καὶ τέχνῃ· ἄλλο γὰρ ἐν ἰατρικῇ καὶ στρατηγικῇ καὶ ταῖς λοιπαῖς ὁμοίως. τί οὖν ἑκάστης τἀγαθόν; ἢ οὗ χάριν τὰ λοιπὰ πράττεται; τοῦτο δ᾽ ἐν ἰατρικῇ μὲν ὑγίεια, ἐν στρατηγικῇ [20] δὲ νίκη, ἐν οἰκοδομικῇ δ᾽ οἰκία, ἐν ἄλλῳ δ᾽ ἄλλο, ἐν ἁπάσῃ δὲ πράξει καὶ προαιρέσει τὸ τέλος· τούτου γὰρ ἕνεκα τὰ λοιπὰ πράττουσι πάντες. ὥστ᾽ εἴ τι τῶν πρακτῶν ἁπάντων ἐστὶ τέλος, τοῦτ᾽ ἂν εἴη τὸ πρακτὸν ἀγαθόν, εἰ δὲ πλείω, ταῦτα.
 Μεταβαίνων δὴ ὁ λόγος εἰς ταὐτὸν ἀφῖκται· τοῦτο [25] δ᾽ ἔτι μᾶλλον διασαφῆσαι πειρατέον. ἐπεὶ δὲ πλείω φαίνεται τὰ τέλη, τούτων δ᾽ αἱρούμεθά τινα δι᾽ ἕτερον, οἷον πλοῦτον αὐλοὺς καὶ ὅλως τὰ ὄργανα, δῆλον ὡς οὐκ ἔστι πάντα τέλεια· τὸ δ᾽ ἄριστον τέλειόν τι φαίνεται. ὥστ᾽ εἰ μέν ἐστιν ἕν τι μόνον τέλειον, τοῦτ᾽ ἂν εἴη τὸ ζητούμενον, [30] εἰ δὲ πλείω, τὸ τελειότατον τούτων.
+
 
 
 { "parrafo_nro": 23, "tags": [{"rol": "define", "eje": "teleios", "peso": 0.8}, {"rol": "afirma", "eje1": "teleios", "eje2": "eudaimonia", "tipo": "es_propiedad_de", "peso": 0.8}] }
@@ -250,9 +259,51 @@ Parece, en efecto, que el principio (ἀρχή) es más de la mitad del todo (He
 δοκεῖ γὰρ πλεῖον ἢ ἥμισυ τοῦ παντὸς εἶναι ἡ ἀρχή, καὶ πολλὰ συμφανῆ γίνεσθαι δι᾽ αὐτῆς τῶν ζητουμένων.
 
 
+
 8 
 ──────────────────────────────────────────────────────────
 { "parrafo_nro": 29 }
 Se ha de considerar, por tanto, el principio (περὶ αὐτῆς: ἀρχή) no sólo desde nuestra conclusión y nuestras premisas, sino también de lo que se dice sobre él (λεγομένων περὶ αὐτῆς), pues con lo que es verdad concuerdan todos los datos (συνᾴδει τὰ ὑπάρχοντα), pero con lo falso pronto discrepan (διαφωνεῖ).
 
-Σκεπτέον δὲ περὶ αὐτῆς οὐ μόνον ἐκ τοῦ συμπεράσματος [10] καὶ ἐξ ὧν ὁ λόγος, ἀλλὰ καὶ ἐκ τῶν λεγομένων περὶ αὐτῆς· τῷ μὲν γὰρ ἀληθεῖ πάντα συνᾴδει τὰ 
+Σκεπτέον δὲ περὶ αὐτῆς οὐ μόνον ἐκ τοῦ συμπεράσματος [10] καὶ ἐξ ὧν ὁ λόγος, ἀλλὰ καὶ ἐκ τῶν λεγομένων περὶ αὐτῆς· τῷ μὲν γὰρ ἀληθεῖ πάντα συνᾴδει τὰ ὑπάρχοντα, τῷ δὲ ψευδεῖ ταχὺ διαφωνεῖ τἀληθές.
+
+
+{ "parrafo_nro": 30, "tags": [{"rol": "faq", "eje": "agathon", "pregunta": "cuáles son las tres clases de bienes?", "peso": 0.9}, {"rol": "faq", "eje": "eudaimonia", "pregunta": "cuáles son los requisitos de la felicidad?", "peso": 0.9}] }
+Divididos, pues, los bienes en tres clases, los llamados exteriores (ἐκτὸς), los del alma (ψυχὴν) y los del cuerpo (σῶμα), decimos que los del alma son los primarios y más propiamente bienes (κυριώτατα καὶ μάλιστα ἀγαθά), y las acciones (πράξεις) y actividades (ἐνεργείας) anímicas las referimos al alma. Esta opinión (δόξαν) es antigua, y están de acuerdo con ella los que filosofan, de suerte que probablemente tenemos razón al adoptarla. Es también exacta (ὀρθῶς) en cuanto se dice que el fin (τέλος) consiste en ciertas acciones y actividades, y esto ocurre con los bienes del alma y no con los exteriores. Concuerda (συνᾴδει) también con nuestro razonamiento (λόγῳ) el que el hombre feliz (εὐδαίμονα) vive bien (εὖ ζῆν) y obra bien (εὖ πράττειν), pues se dice que viene a ser una buena vida y buena conducta (εὐζωία καὶ εὐπραξία).
+Es claro, además, que lo que hemos dicho incluye todos los requisitos de la felicidad. En efecto, a unos les parece que es la virtud (ἀρετὴ), a otros la prudencia (φρόνησις), a otros cierta sabiduría (σοφία), a otros estas mismas cosas o alguna de ellas, acompañadas de placer o no desprovistas de placer (ἡδονῆς); otros incluyen además en ella la prosperidad exterior (ἐκτὸς εὐετηρίαν). De estas opiniones, unas son sostenidas por muchos y antiguos; otras, por unos pocos hombres ilustres (ὀλίγοι καὶ ἔνδοξοι ἄνδρες), y es razonable suponer que ni unos ni otros se han equivocado (διαμαρτάνειν) en todo por completo, sino que en algún punto o en la mayor parte de ellos han pensado rectamente (κατορθοῦν).
+
+νενεμημένων δὴ τῶν ἀγαθῶν τριχῇ, καὶ τῶν μὲν ἐκτὸς λεγομένων τῶν δὲ περὶ ψυχὴν καὶ σῶμα, τὰ περὶ ψυχὴν κυριώτατα λέγομεν καὶ [15] μάλιστα ἀγαθά, τὰς δὲ πράξεις καὶ τὰς ἐνεργείας τὰς ψυχικὰς περὶ ψυχὴν τίθεμεν. ὥστε καλῶς ἂν λέγοιτο κατά γε ταύτην τὴν δόξαν παλαιὰν οὖσαν καὶ ὁμολογουμένην ὑπὸ τῶν φιλοσοφούντων. ὀρθῶς δὲ καὶ ὅτι πράξεις τινὲς λέγονται καὶ ἐνέργειαι τὸ τέλος· οὕτω γὰρ τῶν περὶ ψυχὴν ἀγαθῶν [20] γίνεται καὶ οὐ τῶν ἐκτός. συνᾴδει δὲ τῷ λόγῳ καὶ τὸ εὖ ζῆν καὶ τὸ εὖ πράττειν τὸν εὐδαίμονα· σχεδὸν γὰρ εὐζωία τις εἴρηται καὶ εὐπραξία.
+φαίνεται δὲ καὶ τὰ ἐπιζητούμενα τὰ περὶ τὴν εὐδαιμονίαν ἅπανθ᾽ ὑπάρχειν τῷ λεχθέντι. τοῖς μὲν γὰρ ἀρετὴ τοῖς δὲ φρόνησις ἄλλοις δὲ σοφία τις εἶναι δοκεῖ, [25] τοῖς δὲ ταῦτα ἢ τούτων τι μεθ᾽ ἡδονῆς ἢ οὐκ ἄνευ ἡδονῆς· ἕτεροι δὲ καὶ τὴν ἐκτὸς εὐετηρίαν συμπαραλαμβάνουσιν. τούτων δὲ τὰ μὲν πολλοὶ καὶ παλαιοὶ λέγουσιν, τὰ δὲ ὀλίγοι καὶ ἔνδοξοι ἄνδρες· οὐδετέρους δὲ τούτων εὔλογον διαμαρτάνειν τοῖς ὅλοις, ἀλλ᾽ ἕν γέ τι ἢ καὶ τὰ πλεῖστα κατορθοῦν.
+
+{ "parrafo_nro": 31 }
+Nuestro razonamiento está de acuerdo (συνῳδός) con los que dicen que la felicidad consiste en la virtud (ἀρετὴν) o en una cierta virtud, pues de esta es propia la actividad (ἐνέργεια) conforme a ella misma (κατ᾽ αὐτὴν: ἀρετὴ). Pero probablemente hay no poca diferencia entre poner (ὑπολαμβάνειν) el máximo bien (τὸ ἄριστον) en una posesión o un uso (κτήσει ἢ χρήσει), en una disposición habitual (ἕξει) o una actividad (ἐνεργείᾳ). Porque la disposición que se posee (ἕξιν ... ὑπάρχουσαν) puede no producir ningún bien (μηδὲν ἀγαθὸν), como en el que duerme o está de cualquier otro modo inactivo (ἐξηργηκότι), mientras que con la actividad (ἐνέργειαν) esto no es posible, ya que ésta actuará necesariamente (ἀνάγκης) y actuará bien (εὖ πράξει).
+Del mismo modo que en los juegos olímpicos no son los más hermosos ni los más fuertes (οἱ κάλλιστοι καὶ ἰσχυρότατοι) los que alcanzan la corona (στεφανοῦνται), sino los que compiten —pues entre éstos algunos vencen (νικῶσιν)—, así también las cosas nobles y buenas que hay en la vida (βίῳ) sólo las alcanzan los que actúan certeramente (οἱ πράττοντες ὀρθῶς); y la vida (βίος) de éstos es agradable por sí misma (καθ᾽ αὑτὸν ἡδύς).
+
+[30] Τοῖς μὲν οὖν λέγουσι τὴν ἀρετὴν ἢ ἀρετήν τινα συνῳδός ἐστιν ὁ λόγος· ταύτης γάρ ἐστιν ἡ κατ᾽ αὐτὴν ἐνέργεια. διαφέρει δὲ ἴσως οὐ μικρὸν ἐν κτήσει ἢ χρήσει τὸ ἄριστον ὑπολαμβάνειν, καὶ ἐν ἕξει ἢ ἐνεργείᾳ. τὴν μὲν γὰρ ἕξιν ἐνδέχεται μηδὲν ἀγαθὸν ἀποτελεῖν ὑπάρχουσαν, 1099a [1] οἷον τῷ καθεύδοντι ἢ καὶ ἄλλως πως ἐξηργηκότι, τὴν δ᾽ ἐνέργειαν οὐχ οἷόν τε· πράξει γὰρ ἐξ ἀνάγκης, καὶ εὖ πράξει.
+ὥσπερ δ᾽ Ὀλυμπίασιν οὐχ οἱ κάλλιστοι καὶ ἰσχυρότατοι στεφανοῦνται ἀλλ᾽ [5] οἱ ἀγωνιζόμενοι (τούτων γάρ τινες νικῶσιν), οὕτω καὶ τῶν ἐν τῷ βίῳ καλῶν κἀγαθῶν οἱ πράττοντες ὀρθῶς ἐπήβολοι γίνονται. Ἔστι δὲ καὶ ὁ βίος αὐτῶν καθ᾽ αὑτὸν ἡδύς.
+
+
+
+
+{ "parrafo_nro": 32 }
+Porque el deleitarse es algo anímico (ψυχικῶν), y para cada uno placentero es de lo que se dice aficionado, como el caballo para el aficionado a caballos, el espectáculo para el aficionado a espectáculos, y del mismo modo también las cosas justas (τὰ δίκαια) para el que ama la justicia (φιλοδικαίῳ), y en general las cosas conformes a la virtud (τὰ κατ᾽ ἀρετὴν) para el que ama la virtud (φιλαρέτῳ).
+Los placeres (ἡδέα) de la mayoría de los hombres están en pugna porque no lo son por naturaleza (μὴ φύσει εἶναι), mientras que para los inclinados a las cosas nobles (φιλοκάλοις) son agradables (ἡδεῖαι) las cosas que son por naturaleza agradables (ἡδέα). Tales son las acciones de acuerdo con la virtud (κατ᾽ ἀρετὴν πράξεις), de suerte que son agradables (ἡδεῖαι) para ellos y por sí mismas. La vida (βίος) de éstos, por consiguiente, no necesita en modo alguno del placer (ἡδονῆς) como de una especie de añadidura, sino que tiene el placer (ἔχειἐν ἡδονὴν) en sí misma. Es más, ni siquiera es bueno (ἀγαθὸς) el que no se complace en las nobles acciones (καλαῖς πράξεσιν), y nadie llamaría justo al que no se complace en la práctica de la justicia (δικαιοπραγεῖν), ni libre al que no se goza en las acciones liberales (ἐλευθερίοις πράξεσιν) y del mismo modo en todo lo demás. Si esto es así, las acciones (πράξεις) de acuerdo con la virtud (κατ᾽ ἀρετὴν) serán por sí mismas agradables (καθ᾽ αὑτὰς ἡδεῖαι).
+Pero, además, son también buenas (ἀγαθαί) y nobles (καλαί), y cada una de ellas en sumo grado, si es que juzga rectamente (καλῶς κρίνει) acerca de ellas el hombre virtuoso (σπουδαῖος); y juzga como ya hemos dicho. Por tanto, lo mejor (ἄριστον), lo más noble (κάλλιστον) y lo más agradable (ἥδιστον) es la felicidad y estas cosas no están separadas (διώρισται) como dice el epigrama de Delos:
+Lo más noble es lo más justo; lo mejor, la buena salud (ὑγιαίνειν); 
+lo más agradable por naturaleza, alcanzar lo que se ama (οὗ τις ἐρᾷ … τυχεῖν).
+Pues todo ello se da (ὑπάρχει) en las mejores actividades (ἀρίσταις ἐνεργείαις); y éstas, o una de ellas, la mejor (ἀρίστην), decimos que es la felicidad (εὐδαιμονίαν).
+
+τὸ μὲν γὰρ ἥδεσθαι τῶν ψυχικῶν, ἑκάστῳ δ᾽ ἐστὶν ἡδὺ πρὸς ὃ λέγεται φιλοτοιοῦτος, οἷον ἵππος μὲν τῷ φιλίππῳ, θέαμα [10] δὲ τῷ φιλοθεώρῳ· τὸν αὐτὸν δὲ τρόπον καὶ τὰ δίκαια τῷ φιλοδικαίῳ καὶ ὅλως τὰ κατ᾽ ἀρετὴν τῷ φιλαρέτῳ.
+τοῖς μὲν οὖν πολλοῖς τὰ ἡδέα μάχεται διὰ τὸ μὴ φύσει τοιαῦτ᾽ εἶναι, τοῖς δὲ φιλοκάλοις ἐστὶν ἡδέα τὰ φύσει ἡδέα· τοιαῦται δ᾽ αἱ κατ᾽ ἀρετὴν πράξεις, ὥστε καὶ τούτοις εἰσὶν ἡδεῖαι καὶ [15] καθ᾽ αὑτάς. οὐδὲν δὴ προσδεῖται τῆς ἡδονῆς ὁ βίος αὐτῶν ὥσπερ περιάπτου τινός, ἀλλ᾽ ἔχει τὴν ἡδονὴν ἐν ἑαυτῷ. πρὸς τοῖς εἰρημένοις γὰρ οὐδ᾽ ἐστὶν ἀγαθὸς ὁ μὴ χαίρων ταῖς καλαῖς πράξεσιν· οὔτε γὰρ δίκαιον οὐθεὶς ἂν εἴποι τὸν μὴ χαίροντα τῷ δικαιοπραγεῖν, οὔτ᾽ ἐλευθέριον τὸν μὴ χαίροντα [20] ταῖς ἐλευθερίοις πράξεσιν· ὁμοίως δὲ καὶ ἐπὶ τῶν ἄλλων. εἰ δ᾽ οὕτω, καθ᾽ αὑτὰς ἂν εἶεν αἱ κατ᾽ ἀρετὴν πράξεις ἡδεῖαι. 
+ἀλλὰ μὴν καὶ ἀγαθαί γε καὶ καλαί, καὶ μάλιστα τούτων ἕκαστον, εἴπερ καλῶς κρίνει περὶ αὐτῶν ὁ σπουδαῖος· κρίνει δ᾽ ὡς εἴπομεν. ἄριστον ἄρα καὶ κάλλιστον καὶ ἥδιστον ἡ [25] εὐδαιμονία, καὶ οὐ διώρισται ταῦτα κατὰ τὸ Δηλιακὸν ἐπίγραμμα·
+κάλλιστον τὸ δικαιότατον, λῷστον δ᾽ ὑγιαίνειν·
+ἥδιστον δὲ πέφυχ᾽ οὗ τις ἐρᾷ τὸ τυχεῖν.
+Ἅπαντα γὰρ ὑπάρχει ταῦτα ταῖς ἀρίσταις ἐνεργείαις· ταύτας [30] δέ, ἢ μίαν τούτων τὴν ἀρίστην, φαμὲν εἶναι τὴν εὐδαιμονίαν.
+
+
+{ "parrafo_nro": 33, "tags": [{"rol": "faq", "eje": "eudaimonia", "pregunta": "cuáles son los requisitos de la felicidad?", "peso": 0.8}] }
+Es claro, no obstante, que necesita además de los bienes exteriores (ἐκτὸς ἀγαθῶν), como dijimos; pues es imposible o no es fácil hacer lo noble (καλὰ πράττειν) cuando se está desprovisto de recursos. Muchas cosas, en efecto, se hacen, como por medio de instrumentos, mediante los amigos y la riqueza y el poder político (πολιτικῆς δυνάμεως); y la falta de algunas cosas empaña la ventura (μακάριον), y así el ilustre linaje, buenos hijos y belleza: no podría ser feliz del todo aquel cuyo aspecto fuera completamente repulsivo, o mal nacido, o solo y sin hijos, y quizá menos aún aquel cuyos hijos o amigos fueren absolutamente depravados, o, siendo buenos, hubiesen muerto.
+Por consiguiente, como dijimos, la felicidad (εὐδαιμονίᾳ) parece necesitar también de esta clase de prosperidad, y por eso algunos identifican la buena suerte (εὐτυχίαν) con la felicidad; pero otros la virtud (ἀρετήν).
+
+Φαίνεται δ᾽ ὅμως καὶ τῶν ἐκτὸς ἀγαθῶν προσδεομένη, καθάπερ εἴπομεν· ἀδύνατον γὰρ ἢ οὐ ῥᾴδιον τὰ καλὰ πράττειν ἀχορήγητον ὄντα. πολλὰ μὲν γὰρ πράττεται,  1099b [1] καθάπερ δι᾽ ὀργάνων, διὰ φίλων καὶ πλούτου καὶ πολιτικῆς δυνάμεως· ἐνίων δὲ τητώμενοι ῥυπαίνουσι τὸ μακάριον, οἷον εὐγενείας εὐτεκνίας κάλλους· οὐ πάνυ γὰρ εὐδαιμονικὸς ὁ τὴν ἰδέαν παναίσχης ἢ δυσγενὴς ἢ μονώτης καὶ ἄτεκνος, [5] ἔτι δ᾽ ἴσως ἧττον, εἴ τῳ πάγκακοι παῖδες εἶεν ἢ φίλοι, ἢ ἀγαθοὶ ὄντες τεθνᾶσιν.
+καθάπερ οὖν εἴπομεν, ἔοικε προσδεῖσθαι καὶ τῆς τοιαύτης εὐημερίας· ὅθεν
