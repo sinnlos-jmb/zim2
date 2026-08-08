@@ -39,8 +39,8 @@ body {
   grid-template-rows: var(--head) var(--tb) 1fr var(--foot);
   overflow: hidden;
 }
-body.embed { grid-template-rows: var(--tb) 1fr var(--foot); }
-body.embed #hd { display: none; }
+body.embed { grid-template-rows: var(--tb) 1fr; }
+body.embed #hd, body.embed #gft { display: none; }
 
 #hd {
   display: flex; align-items: center; gap: 14px;
@@ -202,6 +202,7 @@ body.embed #hd { display: none; }
 #panel.open { transform: translateY(0); }
 #panel.full { max-height: calc(100dvh - var(--head) - var(--foot) - 40px); }
 body.embed #panel { top: 0; }
+body.embed #panel.full { max-height: calc(100dvh - 40px); }
 .p-handle {
   flex: none; border: none; border-top: 1px solid var(--border);
   background: var(--soft); color: var(--muted); font: inherit; font-size: 12px;
@@ -319,6 +320,8 @@ body.embed #panel { top: 0; }
   }
   #panel.open { transform: translateY(0); }
   #panel.full { height: calc(92% - var(--foot)); max-height: calc(92% - var(--foot)); }
+  body.embed #panel { bottom: 0; }
+  body.embed #panel.full { height: 92%; max-height: 92%; }
 }
 </style>
 </head>
@@ -1150,8 +1153,11 @@ function renderStatus() {
   let hidden = 0;
   for (const n of visibleNodes()) if (hasKids(n) && !ST.open.has(n.id)) hidden += countSub(n);
   const depth = Math.max(...visibleNodes().map((n) => n._depth)) - NODES.get(ST.rootId)._depth;
-  document.getElementById('status').textContent =
-    `${vis} nodos visibles · ${hidden} plegados · profundidad ${depth} · ${NODES.size} nodos en total`;
+  const text = `${vis} nodos visibles · ${hidden} plegados · profundidad ${depth} · ${NODES.size} nodos en total`;
+  document.getElementById('status').textContent = text;
+  if (window.parent !== window) {
+    try { window.parent.postMessage({ type: 'grafo-status', text: text }, '*'); } catch (e) {}
+  }
 }
 function countSub(n) {
   let c = 0;
