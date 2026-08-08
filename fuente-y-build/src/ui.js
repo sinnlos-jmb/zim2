@@ -665,9 +665,18 @@ function renderResults() {
       card.append(sb);
     }
 
+    /* GLOSAS del pasaje: los terminos griegos que el traductor dejo entre
+     * guiones en el texto. Antes se pintaban como chips (span.gtag), que
+     * competian visualmente con el puntaje y los sentidos sin aportarle gran
+     * cosa al estudiante. Ahora son una sola linea de texto corrido: un
+     * rotulo que dice que es la lista y los terminos separados por comas, en
+     * el orden en que aparecen en el pasaje. Se listan todos: en texto plano
+     * no ocupan lugar, y recortarlos a ocho escondia glosas sin avisar.
+     */
     if (p.glosses.length) {
       const g = el('div', 'gloss');
-      p.glosses.slice(0, 8).forEach((x) => g.append(el('span', 'gtag', x)));
+      g.append(el('span', 'glabel', 'Glosas:'));
+      g.append(el('span', 'glist', ' ' + p.glosses.join(', ') + '.'));
       card.append(g);
     }
 
