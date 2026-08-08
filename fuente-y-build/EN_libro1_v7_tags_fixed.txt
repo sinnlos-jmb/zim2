@@ -4,4 +4,96 @@ ARISTOTELES · EN
 1 
 ──────────────────────────────────────────────────────────
 { "parrafo_nro": 1, "tags": [{"rol": "define", "eje": "agathon", "peso": 0.9}] }
-See full text pasted below for real content.
+Toda arte y toda investigación (τέχνη καὶ μέθοδος), y del mismo modo toda acción y elección (πρᾶξίς καὶ προαίρεσις), parecen tender a algún bien (ἀγαθοῦ); por esto se ha dicho con razón que el bien (ἀγαθόν) es aquello a que todas las cosas tienden (ἐφίεσθαι). Pero parece que hay alguna diferencia entre los fines (τελῶν), pues unos son actividades (ἐνέργειαι), y los otros, aparte de éstas, ciertas obras (ἔργα); en los casos en que hay algunos fines aparte de las acciones, son naturalmente preferibles las obras a las actividades (ἐνεργειῶν).
+
+1094a Πᾶσα τέχνη καὶ πᾶσα μέθοδος, ὁμοίως δὲ πρᾶξίς τε καὶ προαίρεσις, ἀγαθοῦ τινὸς ἐφίεσθαι δοκεῖ· διὸ καλῶς ἀπεφήναντο τἀγαθόν, οὗ πάντ᾽ ἐφίεται. διαφορὰ δέ τις φαίνεται τῶν τελῶν· τὰ μὲν γάρ εἰσιν ἐνέργειαι, τὰ δὲ παρ᾽ αὐτὰς [5] ἔργα τινά. ὧν δ᾽ εἰσὶ τέλη τινὰ παρὰ τὰς πράξεις, ἐν τούτοις βελτίω πέφυκε τῶν ἐνεργειῶν τὰ ἔργα.
+
+{ "parrafo_nro": 2 }
+Pero como hay muchas acciones, artes y ciencias (πράξεων καὶ τεχνῶν καὶ ἐπιστημῶν), resultan también muchos los fines (τέλη): en efecto, el de la medicina es la salud; el de la construcción naval, el barco; el de la estrategia, la victoria; el de la economía, la riqueza. Y en todas aquellas que dependen de una sola facultad (δύναμιν) (como el arte de fabricar frenos y todas las demás concernientes a los arreos de los caballos se subordinan al arte hípico, y a su vez éste y toda actividad guerrera se subordinan a la estrategia, y de la misma manera otras artes a otras diferentes) los fines de las principales (ἀρχιτεκτονικῶν τέλη) son preferibles a los de las subordinadas, ya que éstos se persiguen en vista de aquéllos. Y es indiferente que los fines de las acciones (τὰ τέλη τῶν πράξεων) sean las actividades mismas (τὰς ἐνεργείας αὐτὰς) o alguna otra cosa fuera de ellas, como en las ciencias mencionadas (λεχθεισῶν ἐπιστημῶν).
+
+πολλῶν δὲ πράξεων οὐσῶν καὶ τεχνῶν καὶ ἐπιστημῶν πολλὰ γίνεται καὶ τὰ τέλη· ἰατρικῆς μὲν γὰρ ὑγίεια, ναυπηγικῆς δὲ πλοῖον, στρατηγικῆς δὲ νίκη, οἰκονομικῆς δὲ πλοῦτος. ὅσαι [10] δ᾽ εἰσὶ τῶν τοιούτων ὑπὸ μίαν τινὰ δύναμιν, καθάπερ ὑπὸ τὴν ἱππικὴν χαλινοποιικὴ καὶ ὅσαι ἄλλαι τῶν ἱππικῶν ὀργάνων εἰσίν, αὕτη δὲ καὶ πᾶσα πολεμικὴ πρᾶξις ὑπὸ τὴν στρατηγικήν, κατὰ τὸν αὐτὸν δὴ τρόπον ἄλλαι ὑφ᾽ ἑτέρας: ἐν ἁπάσαις δὲ τὰ τῶν ἀρχιτεκτονικῶν τέλη πάντων [15] ἐστὶν αἱρετώτερα τῶν ὑπ᾽ αὐτά: τούτων γὰρ χάριν κἀκεῖνα διώκεται. διαφέρει δ᾽ οὐδὲν τὰς ἐνεργείας αὐτὰς εἶναι τὰ τέλη τῶν πράξεων ἢ παρὰ ταύτας ἄλλο τι, καθάπερ ἐπὶ τῶν λεχθεισῶν ἐπιστημῶν.
+
+
+
+
+2
+──────────────────────────────────────────────────────────
+{ "parrafo_nro": 3 }
+Si existe, pues, algún fin (τέλος) de nuestros actos (πρακτῶν) que queramos (βουλόμεθα) por él mismo (δι᾽ αὑτὸ) y los demás por él, y no elegimos (αἱρούμεθα) todo por otra cosa — pues así se seguiría hasta el infinito, de suerte que el deseo (ὄρεξιν) sería vacío y vano, es evidente que ese fin será lo bueno (ἀγαθὸν) y lo mejor (ἄριστον). Y así, ¿no tendrá su conocimiento gran influencia sobre nuestra vida (βίον), y, como arqueros que tienen un blanco, no alcanzaremos mejor el nuestro? Si es así, hemos de intentar comprender de un modo general (περιλαβεῖν) cuál es y a cuál de las ciencias o facultades (ἐπιστημῶν ἢ δυνάμεων) pertenece.
+
+Εἰ δή τι τέλος ἐστὶ τῶν πρακτῶν ὃ δι᾽ αὑτὸ βουλόμεθα, τἆλλα δὲ διὰ τοῦτο, καὶ μὴ [20] πάντα δι᾽ ἕτερον αἱρούμεθα (πρόεισι γὰρ οὕτω γ᾽ εἰς ἄπειρον, ὥστ᾽ εἶναι κενὴν καὶ ματαίαν τὴν ὄρεξιν), δῆλον ὡς τοῦτ᾽ ἂν εἴη τἀγαθὸν καὶ τὸ ἄριστον.   ἆρ᾽ οὖν καὶ πρὸς τὸν βίον ἡ γνῶσις αὐτοῦ μεγάλην ἔχει ῥοπήν, καὶ καθάπερ τοξόται σκοπὸν ἔχοντες μᾶλλον ἂν τυγχάνοιμεν τοῦ δέοντος; εἰ δ᾽ [25] οὕτω, πειρατέον τύπῳ γε περιλαβεῖν αὐτὸ τί ποτ᾽ ἐστὶ καὶ τίνος τῶν ἐπιστημῶν ἢ δυνάμεων.
+
+
+{ "parrafo_nro": 4 }
+Parecería que ha de ser el de la más principal (κυριωτάτης) y eminentemente directiva (μάλιστα ἀρχιτεκτονικῆς). Tal es manifiestamente la política (πολιτικὴ). En efecto, ella es la que establece qué ciencias son necesarias en las ciudades y cuáles ha de aprender cada uno, y hasta qué punto. Vemos además que las facultades más estimadas le están subordinadas, como la estrategia, la economía, la retórica. Y puesto que la política se sirve de las demás ciencias prácticas y legisla además qué se debe hacer y de qué hay que apartarse, el fin de ella comprenderá los de las demás ciencias, de modo que constituirá el bien del hombre (τἀνθρώπινον ἀγαθόν); pues aunque el bien del individuo y el de la ciudad sean el mismo, es evidente que será mucho más grande y más perfecto (μεῖζόν καὶ τελειότερον) alcanzar y preservar el de la ciudad; porque, ciertamente, ya es apetecible procurarlo para uno solo, pero es más noble y divino (κάλλιον καὶ θειότερον) para un pueblo y para ciudades (πόλεσιν).
+
+δόξειε δ᾽ ἂν τῆς κυριωτάτης καὶ μάλιστα ἀρχιτεκτονικῆς. τοιαύτη δ᾽ ἡ πολιτικὴ φαίνεται· τίνας γὰρ εἶναι χρεὼν τῶν ἐπιστημῶν ἐν ταῖς πόλεσι, 1094b [1] καὶ ποίας ἑκάστους μανθάνειν καὶ μέχρι τίνος, αὕτη διατάσσει· ὁρῶμεν δὲ καὶ τὰς ἐντιμοτάτας τῶν δυνάμεων ὑπὸ ταύτην οὔσας, οἷον στρατηγικὴν οἰκονομικὴν ῥητορικήν· χρωμένης δὲ ταύτης ταῖς λοιπαῖς [πρακτικαῖς] τῶν ἐπιστημῶν, [5] ἔτι δὲ νομοθετούσης τί δεῖ πράττειν καὶ τίνων ἀπέχεσθαι, τὸ ταύτης τέλος περιέχοι ἂν τὰ τῶν ἄλλων, ὥστε τοῦτ᾽ ἂν εἴη τἀνθρώπινον ἀγαθόν. εἰ γὰρ καὶ ταὐτόν ἐστιν ἑνὶ καὶ πόλει, μεῖζόν γε καὶ τελειότερον τὸ τῆς πόλεως φαίνεται καὶ λαβεῖν καὶ σῴζειν· ἀγαπητὸν μὲν γὰρ καὶ ἑνὶ [10] μόνῳ, κάλλιον δὲ καὶ θειότερον ἔθνει καὶ πόλεσιν.
+
+
+{ "parrafo_nro": 5 }
+Este es, pues, el objeto al que apunta (ἐφίεται) nuestra investigación (μέθοδος), que es una cierta disciplina política (πολιτική).
+
+ἡ μὲν οὖν μέθοδος τούτων ἐφίεται, πολιτική τις οὖσα
+
+
+
+
+
+
+3
+──────────────────────────────────────────────────────────
+{ "parrafo_nro": 6 }
+Nos contentaremos con dilucidar (διασαφηθείη) esto en la medida en que lo permite su materia (ὑποκειμένην ὕλην); porque no se ha de buscar el rigor (ἀκριβὲς) por igual en todos los razonamientos (ἅπασι τοῖς λόγοις), como tampoco en todos los trabajos manuales; lo noble y lo justo (καλὰ καὶ δίκαια) que la política (πολιτικὴ) considera presentan tantas diferencias y desviaciones (διαφορὰν καὶ πλάνην), que parecen ser solo por convención (νόμῳ μόνον) y no por naturaleza (φύσει). Una incertidumbre (πλάνην) semejante tienen también los bienes (ἀγαθὰ), por haber sobrevenido males a muchos a consecuencia de ellos; pues algunos han perecido a causa de su riqueza, y otros por su valor (ἀνδρείαν).
+
+Por consiguiente, hablando de cosas de esta índole y con tales puntos de partida, hemos de darnos por contentos con mostrar la verdad (ἀληθὲς ἐνδείκνυσθαι) de un modo tosco y esquemático; hablando solo de lo que ocurre por lo general y partiendo de tales datos, basta con llegar a conclusiones semejantes. Del mismo modo se ha de aceptar cuanto aquí digamos: porque es propio del hombre instruido (πεπαιδευμένου) buscar la exactitud en cada género de conocimientos en la medida en que la admite la naturaleza del asunto (πράγματος φύσις); evidentemente, tan absurdo sería aprobar a un matemático que empleara la persuasión como reclamar demostraciones (ἀποδείξεις) a un retórico.
+
+Λέγοιτο δ᾽ ἂν ἱκανῶς, εἰ κατὰ τὴν ὑποκειμένην ὕλην διασαφηθείη· τὸ γὰρ ἀκριβὲς οὐχ ὁμοίως ἐν ἅπασι τοῖς λόγοις ἐπιζητητέον, ὥσπερ οὐδ᾽ ἐν τοῖς δημιουργουμένοις. τὰ δὲ καλὰ καὶ τὰ δίκαια, [15] περὶ ὧν ἡ πολιτικὴ σκοπεῖται, πολλὴν ἔχει διαφορὰν καὶ πλάνην, ὥστε δοκεῖν νόμῳ μόνον εἶναι, φύσει δὲ μή. τοιαύτην δέ τινα πλάνην ἔχει καὶ τἀγαθὰ διὰ τὸ πολλοῖς συμβαίνειν βλάβας ἀπ᾽ αὐτῶν· ἤδη γάρ τινες ἀπώλοντο διὰ πλοῦτον, ἕτεροι δὲ δι᾽ ἀνδρείαν.
+ἀγαπητὸν οὖν περὶ τοιούτων [20] καὶ ἐκ τοιούτων λέγοντας παχυλῶς καὶ τύπῳ τἀληθὲς ἐνδείκνυσθαι, καὶ περὶ τῶν ὡς ἐπὶ τὸ πολὺ καὶ ἐκ τοιούτων λέγοντας τοιαῦτα καὶ συμπεραίνεσθαι. τὸν αὐτὸν δὴ τρόπον καὶ ἀποδέχεσθαι χρεὼν ἕκαστα τῶν λεγομένων· πεπαιδευμένου γάρ ἐστιν ἐπὶ τοσοῦτον τἀκριβὲς ἐπιζητεῖν καθ᾽ ἕκαστον [25] γένος, ἐφ᾽ ὅσον ἡ τοῦ πράγματος φύσις ἐπιδέχεται· παραπλήσιον γὰρ φαίνεται μαθηματικοῦ τε πιθανολογοῦντος ἀποδέχεσθαι καὶ ῥητορικὸν ἀποδείξεις ἀπαιτεῖν.
+
+
+{ "parrafo_nro": 7 }
+Por otra parte, cada uno juzga (κρίνει) acertadamente aquello que conoce, y de eso es buen juez (ἀγαθὸς κριτής); de cada cosa particular el instruído en ella, y de una manera absoluta el instruído en todo (πᾶν πεπαιδευμένος). Por esta razón, el joven (νέος) no es discípulo apropiado para la política (πολιτικῆς), ya que no tiene experiencia de las acciones de la vida (βίον πράξεων), y la política se apoya en ellas y sobre ellas versa; además, por dejarse llevar de sus sentimientos (πάθεσιν), aprenderá en vano y sin provecho, puesto que el fin de la política no es el conocimiento, sino la acción (οὐ γνῶσις ἀλλὰ πρᾶξις); y es indiferente que sea joven en edad o de carácter (ἦθος), pues el defecto no está en el tiempo, sino en vivir y procurar todas las cosas de acuerdo con la pasión (κατὰ πάθος ζῆν). Para tales personas, el conocimiento (γνῶσις) resulta inútil, como para los intemperantes (ἀκρατέσιν); en cambio, para los que encauzan sus deseos y acciones (ὀρέξεις καὶ πράττουσι) según la razón (κατὰ λόγον), el saber (εἰδέναι) acerca de estas cosas será muy provechoso. Y baste esto como introducción sobre el discípulo, el modo de recibir (ἀποδεκτέον) nuestras enseñanzas y lo que nos proponemos.
+
+Ἕκαστος δὲ κρίνει καλῶς ἃ γινώσκει, καὶ τούτων ἐστὶν ἀγαθὸς κριτής. 1095a [1] καθ᾽ ἕκαστον μὲν ἄρα ὁ πεπαιδευμένος, ἁπλῶς δ᾽ ὁ περὶ πᾶν πεπαιδευμένος. διὸ τῆς πολιτικῆς οὐκ ἔστιν οἰκεῖος ἀκροατὴς ὁ νέος· ἄπειρος γὰρ τῶν κατὰ τὸν βίον πράξεων, οἱ λόγοι δ᾽ ἐκ τούτων καὶ περὶ τούτων· ἔτι δὲ τοῖς πάθεσιν ἀκολουθητικὸς ὢν [5] ματαίως ἀκούσεται καὶ ἀνωφελῶς, ἐπειδὴ τὸ τέλος ἐστὶν οὐ γνῶσις ἀλλὰ πρᾶξις. διαφέρει δ᾽ οὐδὲν νέος τὴν ἡλικίαν ἢ τὸ ἦθος νεαρός· οὐ γὰρ παρὰ τὸν χρόνον ἡ ἔλλειψις, ἀλλὰ διὰ τὸ κατὰ πάθος ζῆν καὶ διώκειν ἕκαστα. τοῖς γὰρ τοιούτοις ἀνόνητος ἡ γνῶσις γίνεται, καθάπερ τοῖς ἀκρατέσιν· [10] τοῖς δὲ κατὰ λόγον τὰς ὀρέξεις ποιουμένοις καὶ πράττουσι πολυωφελὲς ἂν εἴη τὸ περὶ τούτων εἰδέναι.
+
+
+
+
+
+
+4 
+──────────────────────────────────────────────────────────
+{ "parrafo_nro": 8, "tags": [{"rol": "afirma", "eje1": "eudaimonia", "modif_eje1": null, "eje2": "ariston", "modif_eje2": null, "eje3": null, "tipo": "es", "peso": 0.6}] }
+Volviendo a nuestro tema, puesto que todo conocimiento y toda elección (γνῶσις καὶ προαίρεσις) tienden a algún bien (ἀγαθοῦ ὀρέγεται), digamos cuál es aquel a que la política aspira (πολιτικὴν ἐφίεσθαι) y cuál es el supremo (ἀκρότατον) entre todos los bienes que pueden realizarse (πρακτῶν ἀγαθῶν). Casi todo el mundo está de acuerdo en cuanto a su nombre, pues tanto la multitud (οἱ πολλοὶ) como los refinados (χαρίεντες) dicen que es la felicidad (εὐδαιμονίαν), y admiten que vivir bien (εὖ ζῆν) y obrar bien (εὖ πράττειν) es lo mismo que ser feliz (εὐδαιμονεῖν). Pero acerca de qué es la felicidad (εὐδαιμονίας), dudan y no lo explican del mismo modo el vulgo (οἱ πολλοὶ) y los sabios (σοφοῖς). Pues unos creen que es alguna de las cosas visibles y manifiestas, como el placer (ἡδονὴν) o la riqueza (πλοῦτον) o los honores (τιμήν); otros, otra cosa; a menudo, incluso una misma persona opina cosas distintas: si está enfermo, la salud (ὑγίειαν); si es pobre, la riqueza; los que tienen conciencia de su ignorancia admiran (θαυμάζουσιν) a los que dicen algo grande y que está por encima de su alcance. Pero algunos creen (ᾤοντο) que, aparte de toda esta multitud de bienes (ἀγαθὰ), hay algún otro (τὴν ἄριστον) que es bueno por sí mismo (καθ᾽ αὑτὸ) y que es la causa (αἴτιόν) de que todos aquéllos sean bienes (ἀγαθά).
+
+Λέγωμεν δ᾽ ἀναλαβόντες, ἐπειδὴ πᾶσα γνῶσις καὶ προαίρεσις [15] ἀγαθοῦ τινὸς ὀρέγεται, τί ἐστὶν οὗ λέγομεν τὴν πολιτικὴν ἐφίεσθαι καὶ τί τὸ πάντων ἀκρότατον τῶν πρακτῶν ἀγαθῶν. ὀνόματι μὲν οὖν σχεδὸν ὑπὸ τῶν πλείστων ὁμολογεῖται· τὴν γὰρ εὐδαιμονίαν καὶ οἱ πολλοὶ καὶ οἱ χαρίεντες λέγουσιν, τὸ δ᾽ εὖ ζῆν καὶ τὸ εὖ πράττειν ταὐτὸν ὑπολαμβάνουσι [20] τῷ εὐδαιμονεῖν· περὶ δὲ τῆς εὐδαιμονίας, τί ἐστιν, ἀμφισβητοῦσι καὶ οὐχ ὁμοίως οἱ πολλοὶ τοῖς σοφοῖς ἀποδιδόασιν. οἳ μὲν γὰρ τῶν ἐναργῶν τι καὶ φανερῶν, οἷον ἡδονὴν ἢ πλοῦτον ἢ τιμήν, ἄλλοι δ᾽ ἄλλο--πολλάκις δὲ καὶ ὁ αὐτὸς ἕτερον· νοσήσας μὲν γὰρ ὑγίειαν, πενόμενος δὲ [25] πλοῦτον· συνειδότες δ᾽ ἑαυτοῖς ἄγνοιαν τοὺς μέγα τι καὶ ὑπὲρ αὐτοὺς λέγοντας θαυμάζουσιν. ἔνιοι δ᾽ ᾤοντο (cf. οἴομαι) παρὰ τὰ πολλὰ ταῦτα ἀγαθὰ ἄλλο τι καθ᾽ αὑτὸ εἶναι, ὃ καὶ τούτοις πᾶσιν αἴτιόν ἐστι τοῦ εἶναι ἀγαθά.
+
+
+{ "parrafo_nro": 9 }
+Pero quizá es inútil exponer en detalle todas las opiniones, y basta con examinar las predominantes o que parecen tener alguna razón.
+Tengamos presente que los razonamientos (λόγοι) que parten de los principios (ἀπὸ τῶν ἀρχῶν) difieren de los que conducen a los principios (ἐπὶ τὰς ἀρχάς). En efecto, también Platón se preguntaba y buscaba con razón si se ha de proceder partiendo de los principios o hacia los principios; como en el estadio, de los que presiden los juegos hacia la meta o al revés. Sin duda, se ha de empezar por las cosas más fáciles de conocer (ἀπὸ τῶν γνωρίμων); pero éstas lo son en dos sentidos: unas, para nosotros (ἡμῖν); las otras, en absoluto (ἁπλῶς). Debemos, pues, acaso empezar por las más fáciles de conocer para nosotros.
+Por eso, quien haya de escuchar (ἀκουσόμενον) con provecho acerca de las cosas nobles (καλῶν) y justas (δικαίων) y, en suma, sobre los asuntos políticos (τῶν πολιτικῶν), debe haber sido noblemente conducido (ἦχθαι καλῶς) en sus hábitos (ἔθεσιν). Pues el principio (ἀρχὴ) es el qué (τὸ ὅτι), y si está suficientemente claro, no habrá ninguna necesidad del porqué (τοῦ διότι). Un hombre tal, o tiene ya o adquirirá fácilmente los principios (ἀρχὰς). Pero el que no dispone de ninguna de estas cosas, escuche las palabras de Hesíodo:
+
+
+Es el mejor de todos (πανάριστος) el que por sí solo comprende todas las cosas; 
+es noble asimismo el que obedece al que aconseja bien; 
+pero el que ni comprende por sí mismo ni lo que escucha a otro 
+retiene en su mente, es un hombre inútil.
+
+Μὴ λανθανέτω δ᾽ ἡμᾶς ὅτι διαφέρουσιν οἱ ἀπὸ τῶν ἀρχῶν λόγοι καὶ οἱ ἐπὶ τὰς ἀρχάς. εὖ γὰρ καὶ ὁ Πλάτων ἠπόρει τοῦτο καὶ ἐζήτει, πότερον ἀπὸ τῶν ἀρχῶν ἢ ἐπὶ τὰς ἀρχάς ἐστιν ἡ ὁδός, 1095b [1] ὥσπερ ἐν τῷ σταδίῳ ἀπὸ τῶν ἀθλοθετῶν ἐπὶ τὸ πέρας ἢ ἀνάπαλιν. ἀρκτέον μὲν γὰρ ἀπὸ τῶν γνωρίμων, ταῦτα δὲ διττῶς· τὰ μὲν γὰρ ἡμῖν τὰ δ᾽ ἁπλῶς. ἴσως οὖν ἡμῖν γε ἀρκτέον ἀπὸ τῶν ἡμῖν γνωρίμων.
+διὸ δεῖ τοῖς ἔθεσιν ἦχθαι καλῶς τὸν [5] περὶ καλῶν καὶ δικαίων καὶ ὅλως τῶν πολιτικῶν ἀκουσόμενον ἱκανῶς. ἀρχὴ γὰρ τὸ ὅτι, καὶ εἰ τοῦτο φαίνοιτο ἀρκούντως, οὐδὲν προσδεήσει τοῦ διότι· ὁ δὲ τοιοῦτος ἔχει ἢ λάβοι ἂν ἀρχὰς ῥᾳδίως. ᾧ δὲ μηδέτερον ὑπάρχει τούτων, ἀκουσάτω τῶν Ἡσιόδου· [10] οὗτος μὲν πανάριστος ὃς αὐτὸς πάντα νοήσῃ,
+ἐσθλὸς δ᾽ αὖ κἀκεῖνος ὃς εὖ εἰπόντι πίθηται.
+ὃς δέ κε μήτ᾽ αὐτὸς νοέῃ μήτ᾽ ἄλλου ἀκούων
+ἐν θυμῷ βάλληται, ὃ δ᾽ αὖτ᾽ ἀχρήιος ἀνήρ.
+
+
+
+
+
+5
+─────────────────────────────────────────────────────
+{ "parrafo_nro": 10 }
+Pero continuemos desde el punto en que nos desviamos. En efecto, a juzgar por las formas de vida que llevan (ἐκ τῶν βίων), no parece infundado afirmar que la mayoría (οἱ πολλοὶ), por demás vulgar, identifica el bien (ἀγαθὸν) y la felicidad (εὐδαιμονίαν) con el placer (ἡδονήν), y por eso ama la vida (βίον) dedicada al disfrute (ἀπολαυστικόν). Pues son tres los principales modos de vida: el que acabamos de mencionar, la política (πολιτικὸς) y en tercer lugar la contemplativa (θεωρητικός). Los hombres vulgares se muestran completamente serviles al preferir (προαιρούμενοι) una vida de bestias (βίον προαιρούμενοι), pero tienen derecho a hablar porque muchos de los que están en puestos elevados se asemejan en sus pasiones a Sardanápalo. En cambio, los hombres cultivados y activos (χαρίεντες καὶ πρακτικοὶ) buscan el honor (τιμήν), pues tal viene a ser el fin (τέλος) de la vida política (πολιτικοῦ βίου).
+Pero parece ser más superficial (ἐπιπολαιότερον) que lo que buscamos, pues parece que está más en los que conceden los honores (τιμῶσι) que en el honrado (τιμωμένῳ), y presuponemos (μαντευόμεθα) que el bien (ἀγαθὸν) es algo propio (οἰκεῖόν) y difícil de arrebatar (οἰκεῖόν καὶ δυσαφαίρετον). Dan la impresión, además, de perseguir el honor (τιμὴν) para persuadirse a sí mismos de que son buenos, pues buscan ser honrados (τιμᾶσθαι) por los hombres prudentes (φρονίμων) y entre quienes los conocen, y fundados en la virtud (ἀρετῇ); es evidente, por tanto, que según ellos mismos la virtud (ἀρετὴ) es superior.
+
+Ἡμεῖς δὲ λέγωμεν ὅθεν παρεξέβημεν. τὸ γὰρ ἀγαθὸν [15] καὶ τὴν εὐδαιμονίαν οὐκ ἀλόγως ἐοίκασιν ἐκ τῶν βίων ὑπολαμβάνειν οἱ μὲν πολλοὶ καὶ φορτικώτατοι τὴν ἡδονήν· διὸ καὶ τὸν βίον ἀγαπῶσι τὸν ἀπολαυστικόν. τρεῖς γάρ εἰσι μάλιστα οἱ προύχοντες, ὅ τε νῦν εἰρημένος καὶ ὁ πολιτικὸς καὶ τρίτος ὁ θεωρητικός. οἱ μὲν οὖν πολλοὶ παντελῶς [20] ἀνδραποδώδεις φαίνονται βοσκημάτων βίον προαι
