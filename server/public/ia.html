@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/shell.css">
+</head>
+<body data-section="ia" class="sec-ia">
+
+<header id="topbar"></header>
+
+<aside id="sb">
+  <div class="sbin">
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-modos" aria-expanded="true" aria-controls="sb-modos">
+        <span class="car">▸</span>Modos previstos
+      </button>
+      <div class="sbbody sblist" id="sb-modos">
+        <button class="sbq" type="button" aria-disabled="true">Paráfrasis de un pasaje</button>
+        <button class="sbq" type="button" aria-disabled="true">Comparar dos pasajes</button>
+        <button class="sbq" type="button" aria-disabled="true">Rastrear un término griego</button>
+        <button class="sbq" type="button" aria-disabled="true">Reconstruir un argumento</button>
+        <button class="sbq" type="button" aria-disabled="true">Objeciones a una lectura</button>
+      </div>
+    </section>
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-regla" aria-expanded="true" aria-controls="sb-regla">
+        <span class="car">▸</span>Regla de la casa
+      </button>
+      <div class="sbbody" id="sb-regla">
+        <p class="sbtip" style="margin:0">Ninguna respuesta sin pasaje citado con su número Bekker. Si el modelo no encuentra apoyo en el corpus, lo dice en vez de completar.</p>
+      </div>
+    </section>
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <div class="mnin">
+    <nav id="crumbs" aria-label="Ruta"></nav>
+    <div class="soon">
+      <p class="kicker">Sección en preparación</p>
+      <h1>Lectura asistida</h1>
+      <p class="lead">La idea no es que la IA reemplace la lectura sino que sostenga el trabajo fino: parafrasear una línea difícil, poner dos pasajes lado a lado, seguir un término griego por todo el libro. Siempre anclada al corpus, nunca por encima de él.</p>
+      <div class="plan">
+        <div class="it"><span class="num">1</span><div><b>Anclaje obligatorio</b><p>Toda respuesta arranca desde pasajes recuperados por el vectorizador que ya funciona en Búsquedas. El motor semántico elige el material; el modelo solo lo explica.</p></div></div>
+        <div class="it"><span class="num">2</span><div><b>Citas verificables</b><p>Cada afirmación lleva su id de pasaje y su Bekker, con link al texto completo del capítulo y al griego paralelo.</p></div></div>
+        <div class="it"><span class="num">3</span><div><b>Del diálogo al paseo</b><p>Una conversación útil debería poder guardarse como paseo: los nodos que se tocaron quedan como recorrido navegable en la sección Paseos.</p></div></div>
+        <div class="it"><span class="num">4</span><div><b>Decisión pendiente</b><p>Falta definir si el modelo corre local en el navegador o contra una API. Hoy toda la app funciona sin servidor, y eso vale la pena conservarlo mientras se pueda.</p></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status">Sección en preparación</span>
+  <span id="stats"></span>
+</footer>
+
+<script src="js/shell.js"></script>
+<script src="js/panels.js"></script>
+<script>SHELL.crumbs([{ label: 'Inicio', icon: '⌂', onClick: function () { location.href = 'index.html'; } }, { label: 'IA' }, { label: 'Lectura asistida' }]);</script>
+</body>
+</html>

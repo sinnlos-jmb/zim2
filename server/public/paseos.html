@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paseos · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/shell.css">
+</head>
+<body data-section="paseos" class="sec-paseos">
+
+<header id="topbar"></header>
+
+<!-- ===================================================== SIDEBAR DE LA SECCION
+     El catalogo de paseos. Cada uno es un grafo con su propia raiz; el que
+     esta listo abre grafo.html embebido, los demas quedan anunciados para
+     que se vea hacia donde va la seccion. Las FAQ y las definiciones estan
+     listadas como paseos futuros, como planteaste.
+     ========================================================================= -->
+<aside id="sb">
+  <div class="sbin">
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-walks" aria-expanded="true" aria-controls="sb-walks">
+        <span class="car">▸</span>Paseos<span class="n">1 de 5</span>
+      </button>
+      <div class="sbbody" id="sb-walks">
+        <p class="sbtip" style="margin:0 0 10px">Un paseo es un recorrido con forma de grafo: un concepto se abre en preguntas, cada pregunta en afirmaciones, y las afirmaciones en argumentos con sus premisas.</p>
+
+        <button class="walk on" type="button" data-walk="grafo.html?embed=1" data-label="Felicidad">
+          <b>Felicidad <span class="gr">εὐδαιμονία</span></b>
+          <span>31 nodos · qué es, cómo se adquiere, de qué se distingue, qué problemas plantea</span>
+        </button>
+
+        <button class="walk" type="button" aria-disabled="true">
+          <b>Virtud <span class="gr">ἀρετή</span></b>
+          <span>En preparación · esperando el etiquetado de premisas y conclusiones</span>
+        </button>
+
+        <button class="walk" type="button" aria-disabled="true">
+          <b>El bien <span class="gr">ἀγαθόν</span></b>
+          <span>En preparación · incluye la polémica con la Idea platónica</span>
+        </button>
+
+        <button class="walk" type="button" aria-disabled="true">
+          <b>Preguntas frecuentes</b>
+          <span>En preparación · las FAQ etiquetadas, reorganizadas como recorrido</span>
+        </button>
+
+        <button class="walk" type="button" aria-disabled="true">
+          <b>Definiciones</b>
+          <span>En preparación · los conceptos definidos, enlazados entre sí</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-help" aria-expanded="false" aria-controls="sb-help">
+        <span class="car">▸</span>Cómo se camina
+      </button>
+      <div class="sbbody" id="sb-help" hidden>
+        <p class="sbtip" style="margin:0">Un click despliega el nodo. Doble click lo pone en el centro y esconde el resto. La ficha lateral trae la definición, los pasajes reales del corpus con su número Bekker y el salto a Búsquedas por ese eje. Con <code>/</code> buscás un nodo por nombre, en griego o en castellano.</p>
+      </div>
+    </section>
+
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <!-- el grafo se sirve embebido: mantiene su propio motor y su estado, y la
+       barra de secciones sigue visible arriba -->
+  <iframe id="walkframe" title="Paseo: Felicidad" src="grafo.html?embed=1"></iframe>
+</main>
+
+<footer id="ft">
+  <span id="status">Paseo activo: Felicidad · εὐδαιμονία</span>
+  <span id="stats">peripatético: se piensa caminando</span>
+</footer>
+
+<script src="js/shell.js"></script>
+<script src="js/panels.js"></script>
+<script>
+(function () {
+  var frame = document.getElementById('walkframe');
+  var status = document.getElementById('status');
+  document.querySelectorAll('.walk').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.getAttribute('aria-disabled') === 'true') return;
+      document.querySelectorAll('.walk.on').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      frame.src = b.dataset.walk;
+      frame.title = 'Paseo: ' + b.dataset.label;
+      status.textContent = 'Paseo activo: ' + b.dataset.label;
+      if (window.matchMedia('(max-width:820px)').matches) document.body.classList.remove('sb-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>

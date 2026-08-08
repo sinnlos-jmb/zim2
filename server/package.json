@@ -1,0 +1,14 @@
+{
+  "name": "en1-vectorizador",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vectorizacion y busqueda semantica sobre el libro I de la Etica Nicomaquea",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

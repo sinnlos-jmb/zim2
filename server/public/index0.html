@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectorizador · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header id="hd">
+  <button id="sbtoggle" type="button" aria-label="Mostrar u ocultar categorías" aria-expanded="true">☰</button>
+  <div class="brand">
+    <h1>Vectorizador semántico</h1>
+    <span class="sub">Aristóteles &middot; Ética Nicomaquea, libro I</span>
+  </div>
+<div class="faq">
+  <button id="faqbtn" class="dropbtn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="faqmenu">
+    <span class="faqlab">Preguntas</span><span class="car">▼</span>
+  </button>
+  <div id="faqmenu" class="dropmenu" role="menu" hidden></div>
+</div>
+<div class="faq defwrap">
+  <button id="defbtn" class="dropbtn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="defmenu">
+    <span class="faqlab">Definiciones</span><span class="car">▼</span>
+  </button>
+  <div id="defmenu" class="dropmenu drop-right" role="menu" hidden></div>
+</div>
+  <div class="searchbar">
+    <input type="text" id="q" placeholder="Escribí una pregunta: ¿qué es la felicidad?" aria-label="Consulta">
+    <button id="go">Buscar</button>
+  </div>
+</header>
+
+<aside id="sb">
+  <div class="sbin">
+    <div class="sbhead">
+      <h2>Categorías</h2>
+      <span id="axcount"></span>
+      <button id="clearax" type="button" hidden>limpiar</button>
+    </div>
+    <p class="sbhint">Las 26 dimensiones del espacio, agrupadas en siete familias temáticas. Seleccioná una o varias para consultar desde los ejes, sin escribir texto. Los grupos organizan la vista: el vector sigue siendo plano.</p>
+    <div id="axes"></div>
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <div class="mnin">
+    <section id="qvec"></section>
+    <div id="results"></div>
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status"></span>
+  <span id="stats"></span>
+  <button id="rebuild">Reconstruir índice</button>
+</footer>
+
+<script type="module" src="js/ui.js"></script>
+</body>
+</html>

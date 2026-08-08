@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comunidad · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/shell.css">
+</head>
+<body data-section="comunidad" class="sec-comunidad">
+
+<header id="topbar"></header>
+
+<aside id="sb">
+  <div class="sbin">
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-espacios" aria-expanded="true" aria-controls="sb-espacios">
+        <span class="car">▸</span>Espacios previstos
+      </button>
+      <div class="sbbody sblist" id="sb-espacios">
+        <button class="sbq" type="button" aria-disabled="true">Notas al pasaje</button>
+        <button class="sbq" type="button" aria-disabled="true">Objeciones e interpretaciones</button>
+        <button class="sbq" type="button" aria-disabled="true">Paseos de otros lectores</button>
+        <button class="sbq" type="button" aria-disabled="true">Taller de traducción</button>
+        <button class="sbq" type="button" aria-disabled="true">Bibliografía comentada</button>
+      </div>
+    </section>
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-quien" aria-expanded="true" aria-controls="sb-quien">
+        <span class="car">▸</span>Para quién
+      </button>
+      <div class="sbbody" id="sb-quien">
+        <p class="sbtip" style="margin:0">Estudiantes que leen el libro I por primera vez y lectores que ya discuten la <i>Ética</i> en serio. La misma página, dos profundidades.</p>
+      </div>
+    </section>
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <div class="mnin">
+    <nav id="crumbs" aria-label="Ruta"></nav>
+    <div class="soon">
+      <p class="kicker">Sección en preparación</p>
+      <h1>Comunidad</h1>
+      <p class="lead">Un texto se lee mejor en compañía: es lo que sostiene el propio Aristóteles cuando dice que la vida buena no es la de un solitario. Esta sección es el lugar donde la lectura deja de ser individual.</p>
+      <div class="plan">
+        <div class="it"><span class="num">1</span><div><b>Anotar sobre el pasaje</b><p>La unidad de la conversación es el pasaje, no el hilo suelto: cada nota queda pegada a su id y a su Bekker, y aparece cuando ese pasaje sale en una búsqueda.</p></div></div>
+        <div class="it"><span class="num">2</span><div><b>Interpretaciones en competencia</b><p>Dos lecturas incompatibles de un mismo pasaje deberían poder convivir mostradas una al lado de la otra, con sus apoyos textuales, en vez de resolverse por votación.</p></div></div>
+        <div class="it"><span class="num">3</span><div><b>Paseos compartidos</b><p>Un recorrido armado por un lector se publica como grafo navegable. Es la forma más honesta de mostrar una interpretación: se ve por dónde pasa y qué deja afuera.</p></div></div>
+        <div class="it"><span class="num">4</span><div><b>Taller de traducción</b><p>Las decisiones discutibles del castellano quedan abiertas: por qué <i>felicidad</i> y no <i>florecimiento</i>, por qué <i>carácter</i> y no <i>hábito</i>. Cada elección con su hilo.</p></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status">Sección en preparación</span>
+  <span id="stats"></span>
+</footer>
+
+<script src="js/shell.js"></script>
+<script src="js/panels.js"></script>
+<script>SHELL.crumbs([{ label: 'Inicio', icon: '⌂', onClick: function () { location.href = 'index.html'; } }, { label: 'Comunidad' }, { label: 'Espacios previstos' }]);</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ética Nicomaquea I · edición vectorizada</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/shell.css">
+</head>
+<body data-section="home" class="no-sb sec-home">
+
+<header id="topbar"></header>
+
+<main id="mn">
+  <div class="wide">
+
+    <section class="hero">
+      <p class="kicker">Proyecto en desarrollo</p>
+      <h1>Una edición del libro I que se deja preguntar</h1>
+      <p class="lead">Traducción propia de la <b>Ética Nicomaquea</b> de Aristóteles, anotada párrafo por párrafo con el vocabulario griego original y montada sobre un motor semántico que entiende el texto en términos de sus propios conceptos: <span class="grk">τέλος</span>, <span class="grk">ἔργον</span>, <span class="grk">ἕξις</span>, <span class="grk">εὐδαιμονία</span>.</p>
+      <p class="lead2">No es un buscador de palabras. Cada pasaje es un vector en un espacio de 26 dimensiones construidas a mano desde el léxico aristotélico, y cada respuesta muestra por qué ganó: qué ejes activó tu pregunta y cuánto aportó cada uno.</p>
+    </section>
+
+    <section class="figures">
+      <div class="fig"><b>72</b><span>pasajes indexados</span></div>
+      <div class="fig"><b>13</b><span>capítulos del libro I</span></div>
+      <div class="fig"><b>26</b><span>ejes semánticos</span></div>
+      <div class="fig"><b>7</b><span>familias temáticas</span></div>
+      <div class="fig"><b>452</b><span>lemas del glosario</span></div>
+      <div class="fig"><b>51</b><span>párrafos etiquetados</span></div>
+    </section>
+
+    <h2 class="sech">Secciones</h2>
+    <div class="cards" id="cards"></div>
+
+    <div class="note">
+      <h3>Cómo está hecho</h3>
+      <p>El texto fuente es un único archivo de traducción con anotaciones intercaladas. De ahí sale todo: los pasajes, las glosas griegas, el griego paralelo y las etiquetas que alimentan Preguntas y Definiciones. Cambiar el texto y reconstruir el corpus es un solo comando; no hay contenido escrito a mano en la interfaz.</p>
+      <p>El índice se construye en tu navegador la primera vez y queda cacheado. Todo corre del lado del cliente: no hay servidor que consultar ni modelo remoto que responda.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status">Aristóteles · Ética Nicomaquea, libro I · traducción y anotación propias</span>
+  <span id="stats">edición de trabajo</span>
+</footer>
+
+<script src="js/shell.js"></script>
+<script>
+/* Las tarjetas se derivan de SHELL.sections: agregar una seccion en shell.js
+   la hace aparecer aca sola, con su mismo icono. */
+(function () {
+  var TEXT = {
+    busquedas: {
+      desc: 'Preguntale al texto. Tres puertas: las preguntas ya etiquetadas por el traductor, las definiciones de los conceptos centrales y la consulta libre, más los 26 ejes para explorar sin escribir nada.',
+      go: 'Entrar a buscar', estado: 'live', label: 'disponible'
+    },
+    ia: {
+      desc: 'Lectura asistida: pedir una paráfrasis, comparar dos pasajes, rastrear un término griego a lo largo del libro. La idea es que la IA trabaje siempre citando el pasaje, nunca en su lugar.',
+      go: 'Ver qué viene', estado: 'wip', label: 'en preparación'
+    },
+    paseos: {
+      desc: 'El texto como grafo. Un concepto se abre en preguntas, las preguntas en afirmaciones y las afirmaciones en argumentos con sus premisas. Caminar el libro en vez de consultarlo, a la manera del Peripato.',
+      go: 'Empezar un paseo', estado: 'live', label: 'primer paseo listo'
+    },
+    comunidad: {
+      desc: 'Leer entre varios: anotaciones sobre el pasaje, objeciones a una interpretación, paseos armados por otros lectores y discusión sobre las decisiones de traducción.',
+      go: 'Ver qué viene', estado: 'wip', label: 'en preparación'
+    }
+  };
+  var box = document.getElementById('cards');
+  SHELL.sections.forEach(function (s) {
+    var t = TEXT[s.id];
+    if (!t) return; // inicio no se linkea a si mismo
+    var a = document.createElement('a');
+    a.className = 'card-sec';
+    a.href = s.href;
+    var tit = document.createElement('div');
+    tit.className = 'ctit';
+    tit.append(SHELL.icon(s.id));
+    var b = document.createElement('b');
+    b.textContent = s.label;
+    tit.append(b);
+    var pill = document.createElement('span');
+    pill.className = 'tagpill ' + t.estado;
+    pill.textContent = t.label;
+    tit.append(pill);
+    a.append(tit);
+    var p = document.createElement('p');
+    p.textContent = t.desc;
+    a.append(p);
+    var go = document.createElement('span');
+    go.className = 'go';
+    go.textContent = t.go + ' →';
+    a.append(go);
+    box.append(a);
+  });
+})();
+</script>
+</body>
+</html>

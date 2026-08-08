@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Búsquedas · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/shell.css">
+</head>
+<body data-section="busquedas" class="sec-busquedas">
+
+<!-- La barra de secciones la arma js/shell.js: ninguna pagina repite el markup -->
+<header id="topbar"></header>
+
+<!-- ===================================================== SIDEBAR DE LA SECCION
+     Las tres puertas de entrada al texto, de la mas guiada a la mas libre,
+     y recien abajo las categorias (los ejes del vector agrupados en familias).
+     ========================================================================= -->
+<aside id="sb">
+  <div class="sbin">
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-libre" aria-expanded="true" aria-controls="sb-libre">
+        <span class="car">▸</span>Búsqueda libre
+      </button>
+      <div class="sbbody" id="sb-libre">
+        <div class="sbsearch">
+          <input type="text" id="q" placeholder="¿qué es la felicidad?" aria-label="Consulta libre">
+          <button id="go" type="button">Buscar</button>
+        </div>
+        <p class="sbtip">Tu pregunta se proyecta sobre los ejes y se compara con cada pasaje. Abajo de los resultados vas a ver qué términos activaron qué eje.</p>
+      </div>
+    </section>
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="faqmenu" aria-expanded="true" aria-controls="faqmenu">
+        <span class="car">▸</span>Preguntas<span class="n" id="nfaq"></span>
+      </button>
+      <!-- lo llena renderFaq() en ui.js, a partir de los tags rol:"faq" del .txt -->
+      <div class="sbbody sblist" id="faqmenu"></div>
+    </section>
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="defmenu" aria-expanded="true" aria-controls="defmenu">
+        <span class="car">▸</span>Definiciones<span class="n" id="ndef"></span>
+      </button>
+      <!-- lo llena renderDefs() en ui.js, a partir de los tags rol:"define" -->
+      <div class="sbbody sblist" id="defmenu"></div>
+    </section>
+
+    <section class="sbsec">
+      <button class="sbtitle" type="button" data-target="sb-cat" aria-expanded="true" aria-controls="sb-cat">
+        <span class="car">▸</span>Categorías<span class="n" id="axcount"></span>
+      </button>
+      <div class="sbbody" id="sb-cat">
+        <p class="sbhint"></p>
+        <div id="axes"></div>
+        <button id="clearax" type="button" hidden>limpiar selección</button>
+      </div>
+    </section>
+
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <div class="mnin">
+    <!-- migas: las arma SHELL.crumbs() desde ui.js en cada consulta -->
+    <nav id="crumbs" aria-label="Ruta de la consulta"></nav>
+    <section id="qvec"></section>
+    <div id="results"></div>
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status"></span>
+  <span id="stats"></span>
+  <button id="rebuild">Reconstruir índice</button>
+</footer>
+
+<script src="js/shell.js"></script>
+<script src="js/panels.js"></script>
+<script type="module" src="js/ui.js"></script>
+</body>
+</html>

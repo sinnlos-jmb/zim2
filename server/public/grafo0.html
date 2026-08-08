@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafo conceptual · Ética Nicomaquea I</title>
+<style>
+:root {
+  --text: #2C2C2B;
+  --muted: #7D7A75;
+  --faint: #A5A29D;
+  --canvas: #FFFFFF;
+  --soft: #F9F8F7;
+  --surface: #F0EFED;
+  --border: #E6E5E3;
+  --line: #DAD8D5;
+  --blue: #2783DE;
+  --blue-soft: #E5F2FC;
+  --blue-dark: #1B5E9E;
+  --green: #46A171;
+  --green-soft: #EDF7F1;
+  --green-dark: #2C6B4F;
+  --orange: #D5803B;
+  --orange-soft: #FBF1E8;
+  --orange-dark: #8F5A28;
+  --grey-line: #B8B5B0;
+  --head: 56px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--canvas);
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: var(--head) 1fr;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------- ENCABEZADO -- */
+#hd {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--canvas);
+  z-index: 20;
+}
+.brand { display: flex; align-items: baseline; gap: 9px; flex: none; }
+.brand h1 { font-size: 15px; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+.brand .sub { color: var(--muted); font-size: 12.5px; }
+
+#search-wrap { position: relative; margin-left: auto; }
+#search {
+  width: 220px; padding: 6px 10px;
+  font: inherit; font-size: 13px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--soft); color: var(--text);
+  outline: none; transition: border-color .15s, background .15s;
+}
+#search:focus { border-color: var(--blue); background: var(--canvas); }
+#search::placeholder { color: var(--faint); }
+#results {
+  position: absolute; top: calc(100% + 5px); right: 0;
+  width: 300px; max-height: 320px; overflow-y: auto;
+  background: var(--canvas); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.09);
+  display: none; z-index: 40; padding: 5px;
+}
+#results.open { display: block; }
+.res {
+  padding: 7px 9px; border-radius: 7px; cursor: pointer;
+  display: flex; align-items: baseline; gap: 8px; font-size: 13px;
+}
+.res:hover, .res.cur { background: var(--soft); }
+.res .rk { font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--faint); flex: none; }
+.res .rl { flex: 1; }
+.res .rg { color: var(--muted); font-size: 12.5px; }
+.res-empty { padding: 10px; color: var(--muted); font-size: 13px; }
+
+.hd-btn {
+  flex: none; height: 30px; padding: 0 11px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--canvas); color: var(--muted);
+  font: inherit; font-size: 12.5px; cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.hd-btn:hover { background: var(--soft); color: var(--text); }
+.back { flex: none; font-size: 12.5px; color: var(--blue); text-decoration: none; }
+.back:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------------------ LIENZO -- */
+#stage { position: relative; overflow: hidden; }
+#cy {
+  width: 100%; height: 100%; display: block;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 26px 26px;
+  cursor: grab; touch-action: none;
+}
+#cy.panning { cursor: grabbing; }
+
+/* nodos */
+.n-shape { transition: stroke .15s, stroke-width .15s, fill .15s; }
+.node { cursor: pointer; }
+.node .n-label { font-size: 12px; font-weight: 500; fill: var(--text); pointer-events: none; }
+.node .n-greek { font-size: 11.5px; fill: var(--muted); pointer-events: none; }
+.node.dim { opacity: .28; }
+.node.hit .n-label { fill: var(--blue-dark); font-weight: 700; }
+
+.k-concepto  .n-shape { fill: var(--blue-soft);   stroke: var(--blue);      stroke-width: 2.5; }
+.k-concepto  .n-label { font-size: 14px; font-weight: 700; fill: var(--blue-dark); }
+.k-pregunta  .n-shape { fill: var(--blue-soft);   stroke: var(--blue);      stroke-width: 1.8; }
+.k-pregunta  .n-label { font-weight: 600; fill: var(--blue-dark); }
+.k-tesis     .n-shape { fill: var(--canvas);      stroke: var(--grey-line); stroke-width: 1.6; }
+.k-grupo     .n-shape { fill: var(--surface);     stroke: var(--grey-line); stroke-width: 1.6; }
+.k-grupo     .n-label { font-size: 11px; font-weight: 700; fill: var(--muted); letter-spacing: .04em; }
+.k-componente .n-shape { fill: var(--green-soft); stroke: var(--green);     stroke-width: 1.8; }
+.k-componente .n-label { fill: var(--green-dark); font-weight: 600; }
+.k-rival     .n-shape { fill: var(--soft);        stroke: var(--orange);    stroke-width: 1.6; stroke-dasharray: 4 3; }
+.k-rival     .n-label { fill: var(--orange-dark); }
+.k-aporia    .n-shape { fill: var(--orange-soft); stroke: var(--orange);    stroke-width: 1.6; }
+.k-aporia    .n-label { fill: var(--orange-dark); font-weight: 600; }
+.k-argumento .n-shape { fill: var(--canvas);      stroke: var(--blue);      stroke-width: 1.6; stroke-dasharray: 5 3; }
+.k-argumento .n-label { fill: var(--blue-dark); font-weight: 600; }
+.k-premisa   .n-shape { fill: var(--canvas);      stroke: var(--muted);     stroke-width: 1.4; stroke-dasharray: 3 2.5; }
+.k-conclusion .n-shape { fill: var(--green-soft); stroke: var(--green);     stroke-width: 2.2; }
+.k-conclusion .n-label { fill: var(--green-dark); font-weight: 700; }
+
+.node:hover .n-shape { stroke: var(--blue); stroke-width: 3; }
+.node.sel .n-shape { stroke: var(--blue); stroke-width: 3.5; }
+
+/* badge de hijos colapsados */
+.n-badge circle { fill: var(--canvas); stroke: var(--grey-line); stroke-width: 1.2; }
+.n-badge text { font-size: 9.5px; font-weight: 700; fill: var(--muted); text-anchor: middle; }
+
+/* aristas */
+.e-sub      { stroke: var(--line);   stroke-width: 1.6; fill: none; }
+.e-infiere  { stroke: var(--green);  stroke-width: 1.8; fill: none; stroke-dasharray: 6 4; }
+.e-opone    { stroke: var(--orange); stroke-width: 1.6; fill: none; stroke-dasharray: 2 4; }
+.e-requiere { stroke: var(--green);  stroke-width: 1.5; fill: none; stroke-dasharray: 8 4; opacity: .75; }
+.e-ver      { stroke: var(--grey-line); stroke-width: 1.4; fill: none; stroke-dasharray: 1 5; }
+.e-label { font-size: 10px; fill: var(--muted); text-anchor: middle; pointer-events: none; }
+.edge.dim { opacity: .18; }
+
+/* --------------------------------------------------------------- MIGAS -- */
+#crumbs {
+  position: absolute; top: 12px; left: 14px; z-index: 8;
+  display: flex; align-items: center; gap: 5px; flex-wrap: wrap;
+  max-width: calc(100% - 380px); font-size: 12.5px;
+}
+.crumb {
+  background: var(--canvas); border: 1px solid var(--border); border-radius: 7px;
+  padding: 4px 9px; cursor: pointer; color: var(--muted);
+  transition: background .15s, color .15s;
+}
+.crumb:hover { background: var(--soft); color: var(--text); }
+.crumb.last { color: var(--text); font-weight: 600; }
+.crumb-sep { color: var(--faint); }
+#focus-tag {
+  background: var(--blue-soft); border: 1px solid var(--blue); color: var(--blue-dark);
+  border-radius: 7px; padding: 4px 9px; font-size: 12.5px; cursor: pointer; display: none;
+}
+#focus-tag.on { display: block; }
+
+/* ------------------------------------------------------------ CONTROLES -- */
+#controls {
+  position: absolute; bottom: 18px; right: 18px; z-index: 8;
+  display: flex; flex-direction: column; gap: 5px;
+}
+#controls button {
+  width: 34px; height: 34px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--canvas); color: var(--muted);
+  font-size: 15px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
+}
+#controls button:hover { background: var(--soft); color: var(--text); }
+
+#legend {
+  position: absolute; bottom: 18px; left: 18px; z-index: 8;
+  background: var(--canvas); border: 1px solid var(--border); border-radius: 10px;
+  padding: 11px 13px; font-size: 11.5px; color: var(--muted);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
+  max-width: 340px;
+}
+.lg { display: flex; align-items: center; gap: 7px; }
+.lg i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; }
+.lg i.sq { border-radius: 3px; }
+#legend .lg-note { grid-column: 1 / -1; color: var(--faint); font-size: 11px; padding-top: 3px; border-top: 1px solid var(--border); margin-top: 2px; }
+
+#status {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  font-size: 12px; color: var(--faint); z-index: 7; white-space: nowrap;
+  background: rgba(255,255,255,.85); padding: 4px 12px; border-radius: 999px;
+}
+#hint {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, 120px);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+  padding: 7px 18px; font-size: 12.5px; color: var(--muted);
+  pointer-events: none; transition: opacity .35s; white-space: nowrap; z-index: 6;
+}
+#hint.hidden { opacity: 0; }
+
+/* ---------------------------------------------------------------- PANEL -- */
+#panel {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 372px;
+  background: var(--canvas); border-left: 1px solid var(--border);
+  transform: translateX(100%); transition: transform .22s ease;
+  z-index: 30; display: flex; flex-direction: column;
+  box-shadow: -4px 0 18px rgba(0,0,0,.07);
+}
+#panel.open { transform: translateX(0); }
+.p-hd { display: flex; align-items: flex-start; gap: 10px; padding: 16px 16px 0; }
+.p-hd-main { flex: 1; min-width: 0; }
+.p-kind {
+  display: inline-block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em;
+  font-weight: 700; padding: 2px 7px; border-radius: 5px; margin-bottom: 6px;
+  background: var(--surface); color: var(--muted);
+}
+.p-hd h2 { margin: 0; font-size: 17px; line-height: 1.3; }
+.p-greek { font-size: 14.5px; color: var(--muted); margin: 3px 0 0; }
+#p-close {
+  width: 28px; height: 28px; flex: none; border: none; border-radius: 6px;
+  background: transparent; color: var(--muted); font-size: 17px; cursor: pointer;
+}
+#p-close:hover { background: var(--surface); color: var(--text); }
+.p-meta { padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--faint); }
+.p-body { padding: 14px 16px 20px; font-size: 14px; line-height: 1.55; overflow-y: auto; flex: 1; }
+.p-sec { margin: 0 0 18px; }
+.p-sec:last-child { margin-bottom: 0; }
+.p-sec h3 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint);
+  margin: 0 0 8px; font-weight: 700;
+}
+.p-def { margin: 0; }
+.placeholder { color: var(--muted); font-style: italic; margin: 0; }
+.cita {
+  border-left: 2px solid var(--border); padding: 2px 0 2px 11px; margin-bottom: 11px;
+  font-size: 13.5px; line-height: 1.5;
+}
+.cita:last-child { margin-bottom: 0; }
+.cita .ref {
+  display: inline-flex; gap: 6px; align-items: baseline;
+  font-size: 11px; font-weight: 700; color: var(--blue-dark);
+  background: var(--blue-soft); border-radius: 4px; padding: 1px 6px; margin-bottom: 4px;
+}
+.cita .ref .bk { font-weight: 500; color: var(--blue); }
+.cita p { margin: 0; color: var(--text); }
+.biblio { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text); }
+.biblio li { margin-bottom: 6px; }
+.rels { display: flex; flex-direction: column; gap: 6px; }
+.rel {
+  display: flex; align-items: baseline; gap: 7px; font-size: 13px;
+  padding: 5px 8px; border: 1px solid var(--border); border-radius: 7px;
+  cursor: pointer; background: var(--canvas);
+}
+.rel:hover { background: var(--soft); }
+.rel .rel-k { font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--faint); flex: none; }
+.p-actions { display: flex; flex-direction: column; gap: 7px; padding-top: 4px; }
+.p-btn {
+  display: block; width: 100%; text-align: center;
+  padding: 8px 12px; border-radius: 8px; font: inherit; font-size: 13px;
+  border: 1px solid var(--border); background: var(--canvas); color: var(--text);
+  cursor: pointer; text-decoration: none; transition: background .15s;
+}
+.p-btn:hover { background: var(--soft); }
+.p-btn.primary { background: var(--blue-soft); border-color: var(--blue); color: var(--blue-dark); font-weight: 600; }
+.p-btn.primary:hover { background: #D8EBFA; }
+.todo {
+  background: var(--orange-soft); border: 1px solid #F0DCC4; border-radius: 8px;
+  padding: 9px 11px; font-size: 12.5px; color: var(--orange-dark); margin: 0;
+}
+
+/* ------------------------------------------------------------ ATAJOS -- */
+#help {
+  position: absolute; inset: 0; z-index: 50; display: none;
+  background: rgba(44,44,43,.32); align-items: center; justify-content: center;
+}
+#help.open { display: flex; }
+.help-card {
+  background: var(--canvas); border-radius: 12px; padding: 22px 26px;
+  max-width: 460px; box-shadow: 0 12px 40px rgba(0,0,0,.18);
+}
+.help-card h3 { margin: 0 0 14px; font-size: 16px; }
+.help-card table { border-collapse: collapse; font-size: 13px; width: 100%; }
+.help-card td { padding: 4px 0; vertical-align: top; }
+.help-card td:first-child { width: 130px; }
+.help-card kbd {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1px 6px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text);
+}
+.help-card .close { margin-top: 16px; }
+
+@media (max-width: 900px) {
+  .brand .sub { display: none; }
+  #legend { display: none; }
+  #crumbs { max-width: calc(100% - 28px); }
+  #search { width: 150px; }
+  #panel { width: 100%; top: auto; height: 62%; border-left: none; border-top: 1px solid var(--border); transform: translateY(100%); }
+  #panel.open { transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<header id="hd">
+  <div class="brand">
+    <h1>Grafo conceptual</h1>
+    <span class="sub">Aristóteles · Ética Nicomaquea, libro I</span>
+  </div>
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Buscar nodo…  ( / )" autocomplete="off" spellcheck="false">
+    <div id="results"></div>
+  </div>
+  <button class="hd-btn" id="btn-collapse">Colapsar</button>
+  <button class="hd-btn" id="btn-expand">Expandir todo</button>
+  <button class="hd-btn" id="btn-help">?</button>
+  <a href="index.html" class="back">← App principal</a>
+</header>
+
+<div id="stage">
+  <svg id="cy">
+    <defs>
+      <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 9 5 L 0 9 z" fill="#46A171"></path>
+      </marker>
+      <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 9 5 L 0 9 z" fill="#D5803B"></path>
+      </marker>
+    </defs>
+    <g id="vp">
+      <g id="g-edges"></g>
+      <g id="g-nodes"></g>
+    </g>
+  </svg>
+
+  <div id="crumbs"></div>
+  <div id="hint">Hacé click en <strong>εὐδαιμονία</strong> para desplegar · doble click para enfocar</div>
+  <div id="status"></div>
+
+  <div id="controls">
+    <button id="zoom-in" title="Acercar">+</button>
+    <button id="zoom-out" title="Alejar">−</button>
+    <button id="zoom-fit" title="Ajustar a la vista (F)">⊙</button>
+  </div>
+
+  <div id="legend">
+    <div class="lg"><i style="background:#E5F2FC;border-color:#2783DE"></i> Concepto</div>
+    <div class="lg"><i class="sq" style="background:#E5F2FC;border-color:#2783DE"></i> Pregunta</div>
+    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#B8B5B0"></i> Afirmación</div>
+    <div class="lg"><i style="background:#EDF7F1;border-color:#46A171"></i> Componente</div>
+    <div class="lg"><i class="sq" style="background:#FBF1E8;border-color:#D5803B"></i> Aporía</div>
+    <div class="lg"><i style="background:#F9F8F7;border-color:#D5803B"></i> Bien rival</div>
+    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#7D7A75"></i> Premisa</div>
+    <div class="lg"><i class="sq" style="background:#EDF7F1;border-color:#46A171"></i> Conclusión</div>
+    <div class="lg-note">Línea llena: jerarquía · verde punteada: inferencia · naranja: oposición</div>
+  </div>
+
+  <aside id="panel">
+    <div class="p-hd">
+      <div class="p-hd-main">
+        <span class="p-kind" id="p-kind"></span>
+        <h2 id="p-title"></h2>
+        <p class="p-greek" id="p-greek"></p>
+      </div>
+      <button id="p-close" title="Cerrar (Esc)">✕</button>
+    </div>
+    <div class="p-meta" id="p-meta"></div>
+    <div class="p-body" id="p-body"></div>
+  </aside>
+
+  <div id="help">
+    <div class="help-card">
+      <h3>Cómo navegar</h3>
+      <table>
+        <tr><td><kbd>click</kbd></td><td>Desplegar / contraer un nodo y abrir su ficha</td></tr>
+        <tr><td><kbd>doble click</kbd></td><td>Enfocar: ese nodo pasa a ser el centro del grafo</td></tr>
+        <tr><td><kbd>arrastrar nodo</kbd></td><td>Reubicarlo (la posición se recuerda)</td></tr>
+        <tr><td><kbd>arrastrar fondo</kbd></td><td>Mover el lienzo</td></tr>
+        <tr><td><kbd>rueda</kbd></td><td>Zoom</td></tr>
+        <tr><td><kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></td><td>Moverse entre padre, hijos y hermanos</td></tr>
+        <tr><td><kbd>Enter</kbd></td><td>Desplegar / contraer el nodo seleccionado</td></tr>
+        <tr><td><kbd>/</kbd></td><td>Buscar un nodo por nombre o término griego</td></tr>
+        <tr><td><kbd>F</kbd></td><td>Ajustar el grafo a la vista</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Cerrar ficha o búsqueda</td></tr>
+      </table>
+      <button class="p-btn close" id="help-close">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. DATOS DEL GRAFO
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Este bloque es lo unico que hay que editar para hacer crecer el grafo: el
+   motor de abajo es generico y no sabe nada de Aristoteles.
+
+   Cada nodo admite:
+     id         obligatorio y unico
+     label      texto visible
+     greek      termino griego (opcional, se muestra debajo del label)
+     kind       define forma y color. Valores:
+                  concepto | pregunta | tesis | grupo | componente
+                  rival | aporia | argumento | premisa | conclusion
+     eje        id del eje del vectorizador, si corresponde. Habilita el boton
+                "Consultar en el vectorizador" en la ficha lateral.
+     definicion parrafo explicativo (lo que hoy seria la definicion estatica)
+     citas      [{ ref, bekker, texto }] pasajes del corpus. ref es el id del
+                pasaje (EN.I.7.d), asi despues se puede linkear al texto real.
+     biblio     ["..."] bibliografia secundaria
+     rel        [{ to, kind, label }] enlaces que NO son de jerarquia.
+                kind: infiere | opone | requiere | ver
+                Se dibujan solo cuando los dos nodos estan visibles.
+     children   subnodos. Un nodo con children se despliega al hacerle click.
+
+   NOTA SOBRE ARGUMENTOS: el kind 'argumento' con hijos 'premisa' y
+   'conclusion' ya esta soportado (ver 'arg-ergon' mas abajo). Cuando termines
+   de taguear premisas y conclusiones en el texto, esos subgrafos se pueden
+   generar automaticamente con la misma forma que este ejemplo escrito a mano.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const GRAFO = {
+  id: 'eudaimonia', label: 'Felicidad', greek: 'εὐδαιμονία', kind: 'concepto', eje: 'eudaimonia',
+  definicion: 'El concepto que organiza todo el libro I. Aristóteles no lo introduce como una definición cerrada sino como el nombre en el que todos coinciden y sobre cuyo contenido se discute: hay acuerdo verbal y desacuerdo real.',
+  citas: [
+    { ref: 'EN.I.4.a', bekker: '1095a13', texto: 'Volviendo a nuestro tema, puesto que todo conocimiento y toda elección tienden a algún bien, digamos cuál es aquel a que la política aspira…' },
+  ],
+  biblio: [
+    'J. L. Ackrill, «Aristotle on Eudaimonia», Proceedings of the British Academy, 1974.',
+    'R. Kraut, «Two Conceptions of Happiness», The Philosophical Review, 1979.',
+  ],
+  children: [
+    /* ───────────────────────────────────────────────── ¿QUÉ ES? ─────────── */
+    {
+      id: 'q-que-es', label: '¿Qué es?', kind: 'pregunta',
+      definicion: 'La vía de acceso conceptual: qué condiciones tiene que cumplir algo para ser el bien supremo, y qué contenido concreto termina teniendo.',
+      children: [
+        {
+          id: 't-fin-ultimo', label: 'Es el fin último', kind: 'tesis', eje: 'telos',
+          definicion: 'Se elige siempre por sí misma y nunca por otra cosa. Es el criterio formal: lo más perfecto es lo que nunca se busca en vista de otra cosa.',
+          citas: [
+            { ref: 'EN.I.7.c', bekker: '1097a31', texto: 'Llamamos más perfecto a lo que se busca por sí mismo que a lo que lo es por otra cosa…' },
+            { ref: 'EN.I.7.d', bekker: '1097a34', texto: 'Y tal parece ser la felicidad, más que ninguna otra cosa; pues la elegimos siempre por ella misma y nunca por otra cosa…' },
+          ],
+          rel: [{ to: 'r-time', kind: 'opone', label: 'excluye' }],
+        },
+        {
+          id: 't-autarquia', label: 'Es autosuficiente', greek: 'αὐτάρκεια', kind: 'tesis', eje: 'autarkeia',
+          definicion: 'Segundo criterio formal: por sí sola hace digna de elección la vida y no necesita nada más. La autarquía no es la del individuo aislado sino la del hombre en su comunidad.',
+          citas: [
+            { ref: 'EN.I.7.e', bekker: '1097b7', texto: 'Parece que también ocurre lo mismo con la autarquía, pues el bien perfecto parece ser autosuficiente.' },
+            { ref: 'EN.I.7.f', bekker: '1097b14', texto: 'Estimemos autosuficiente lo que por sí solo hace digna de elección la vida y no necesita nada; y pensamos que tal es la felicidad.' },
+          ],
+        },
+        {
+          id: 't-definicion', label: 'Actividad del alma según la virtud', kind: 'tesis', eje: 'energeia',
+          definicion: 'El contenido positivo, obtenido por el argumento de la función propia (ἔργον): si el ergon del hombre es la actividad del alma según la razón, su bien es esa actividad realizada conforme a la virtud.',
+          citas: [
+            { ref: 'EN.I.7.g', bekker: '1097b22', texto: 'Pero tal vez parece cierto y reconocido que la felicidad es lo mejor, y, sin embargo, sería deseable mostrar con mayor claridad qué es.' },
+            { ref: 'EN.I.13.a', bekker: '1102a5', texto: 'Puesto que la felicidad es una actividad del alma según la virtud perfecta, hay que tratar de la virtud…' },
+          ],
+          biblio: ['S. Broadie, Ethics with Aristotle, Oxford University Press, 1991.'],
+          children: [
+            {
+              id: 'arg-ergon', label: 'Argumento del ἔργον', kind: 'argumento',
+              definicion: 'Ejemplo de cómo se vería un argumento tagueado: premisas explícitas y conclusión, con la relación de inferencia dibujada como arista.',
+              children: [
+                {
+                  id: 'p-ergon-1', label: 'P1 · Lo que tiene función propia tiene su bien en ella', kind: 'premisa',
+                  citas: [{ ref: 'EN.I.7.h', bekker: '1097b29', texto: '¿Habrá algunas obras y actividades propias del carpintero y del zapatero, pero ninguna del hombre, sino que será éste naturalmente inactivo?' }],
+                  rel: [{ to: 'c-ergon', kind: 'infiere', label: 'por tanto' }],
+                },
+                {
+                  id: 'p-ergon-2', label: 'P2 · El ἔργον humano es actividad del alma según la razón', kind: 'premisa', eje: 'ergon',
+                  citas: [{ ref: 'EN.I.7.i', bekker: '1098a7', texto: 'Y si la función propia del hombre es una actividad del alma según la razón o no desprovista de razón…' }],
+                  rel: [{ to: 'c-ergon', kind: 'infiere', label: 'por tanto' }],
+                },
+                {
+                  id: 'c-ergon', label: 'C · El bien humano es actividad del alma según la virtud', kind: 'conclusion', eje: 'arete',
+                  definicion: 'La conclusión que Aristóteles mismo presenta como un bosquejo a completar, no como una definición final.',
+                  citas: [{ ref: 'EN.I.7.j', bekker: '1098a21', texto: 'Quede, pues, descrito de esta manera el bien, ya que acaso se debe hacer su bosquejo general antes de describirlo detalladamente.' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 't-no-facultad', label: 'No es facultad ni disposición', kind: 'tesis', eje: 'hexis',
+          definicion: 'Distinción decisiva: la felicidad es ejercicio, no capacidad ociosa. Quien tiene la virtud pero duerme o no actúa no es feliz.',
+          citas: [
+            { ref: 'EN.I.8.d', bekker: '1098b30', texto: 'Nuestro razonamiento está de acuerdo con los que dicen que la felicidad consiste en la virtud o en una cierta virtud…' },
+            { ref: 'EN.I.12.a', bekker: '1101b10', texto: 'Explicado esto, consideremos si la felicidad es una cosa elogiable o, más aún, digna de ser ensalzada; pues es claro que no es una mera facultad.' },
+          ],
+          rel: [{ to: 'r-arete-sin-acto', kind: 'opone', label: 'refuta' }],
+        },
+      ],
+    },
+
+    /* ─────────────────────────────────────── ¿CÓMO SE ADQUIERE? ─────────── */
+    {
+      id: 'q-como', label: '¿Cómo se adquiere?', kind: 'pregunta',
+      definicion: 'El proceso, no el resultado. Aristóteles descarta que sea don del azar y la sitúa en el terreno del aprendizaje, el hábito y la actividad sostenida en el tiempo.',
+      children: [
+        {
+          id: 't-aprendizaje', label: 'Por aprendizaje y hábito', kind: 'tesis', eje: 'arete',
+          definicion: 'Es accesible a muchos: la pueden alcanzar todos los que no están incapacitados para la virtud, mediante estudio y ejercicio.',
+          citas: [
+            { ref: 'EN.I.9.a', bekker: '1099b9', texto: 'Por esto se discute también si la felicidad es algo que se aprende, se adquiere por hábito o se logra por algún otro ejercicio…' },
+            { ref: 'EN.I.9.b', bekker: '1099b18', texto: 'Es además común a muchos, ya que lo pueden alcanzar mediante cierto aprendizaje y estudio todos los que no están incapacitados para la virtud.' },
+          ],
+        },
+        {
+          id: 't-vida-entera', label: 'Requiere una vida completa', greek: 'βίος τέλειος', kind: 'tesis', eje: 'bios',
+          definicion: 'No basta un momento ni un período: la unidad de medida es la vida entera. De aquí nace la aporía de Solón.',
+          citas: [
+            { ref: 'EN.I.10.i', bekker: '1101a14', texto: '¿Qué nos impide, pues, llamar feliz al que actúa conforme a la virtud perfecta y está suficientemente provisto de bienes exteriores, no en un tiempo cualquiera, sino la vida entera?' },
+          ],
+          rel: [{ to: 'a-solon', kind: 'ver', label: 'abre la aporía' }],
+        },
+        {
+          id: 'g-componentes', label: 'Componentes necesarios', kind: 'grupo',
+          definicion: 'Lo que tiene que estar presente para que haya felicidad. Los primeros son internos y dependen de nosotros; los últimos no, y por eso la felicidad queda expuesta a la fortuna.',
+          children: [
+            {
+              id: 'c-psyche', label: 'Alma', greek: 'ψυχή', kind: 'componente', eje: 'psyche',
+              definicion: 'El sujeto de la actividad. Su división en parte racional e irracional es lo que permite después dividir las virtudes.',
+              citas: [
+                { ref: 'EN.I.13.c', bekker: '1102a14', texto: 'Acerca de la virtud es evidente que hemos de investigar la humana, ya que también buscábamos el bien humano y la felicidad humana.' },
+                { ref: 'EN.I.13.f', bekker: '1102b13', texto: 'Pero parece que hay además otro elemento natural, irracional, en el alma, que participa, sin embargo, de la razón en cierto modo.' },
+              ],
+            },
+            {
+              id: 'c-ethos-e', label: 'Costumbre', greek: 'ἔθος', kind: 'componente',
+              definicion: 'La repetición de actos. Con épsilon: el hábito como práctica reiterada, que es el mecanismo por el cual se forma el carácter.',
+              citas: [{ ref: 'EN.I.9.a', bekker: '1099b9', texto: '…si la felicidad es algo que se aprende, se adquiere por hábito o se logra por algún otro ejercicio…' }],
+              rel: [{ to: 'c-hexis', kind: 'requiere', label: 'produce' }],
+            },
+            {
+              id: 'c-hexis', label: 'Disposición', greek: 'ἕξις', kind: 'componente', eje: 'hexis',
+              definicion: 'El estado estable que resulta de la costumbre. Es condición de la virtud, pero por sí sola no basta: hace falta el paso al acto.',
+              rel: [{ to: 'c-arete', kind: 'requiere', label: 'condición de' }],
+            },
+            {
+              id: 'c-ethos-h', label: 'Carácter', greek: 'ἦθος', kind: 'componente',
+              definicion: 'Con eta: el carácter ya formado, sujeto de las virtudes éticas, que Aristóteles distingue de las dianoéticas.',
+              citas: [{ ref: 'EN.I.13.h', bekker: '1103a4', texto: 'También la virtud se divide de acuerdo con esta diferencia: pues decimos que unas son dianoéticas y otras éticas…' }],
+            },
+            {
+              id: 'c-arete', label: 'Virtud', greek: 'ἀρετή', kind: 'componente', eje: 'arete',
+              definicion: 'La excelencia según la cual la actividad del alma es buena. La felicidad no es la virtud, sino la actividad conforme a ella.',
+              citas: [{ ref: 'EN.I.13.a', bekker: '1102a5', texto: 'Puesto que la felicidad es una actividad del alma según la virtud perfecta, hay que tratar de la virtud…' }],
+              rel: [{ to: 'c-energeia', kind: 'requiere', label: 'se actualiza en' }],
+            },
+            {
+              id: 'c-energeia', label: 'Actividad', greek: 'ἐνέργεια', kind: 'componente', eje: 'energeia',
+              definicion: 'El ejercicio efectivo. Es lo que convierte la disposición virtuosa en felicidad, y lo que explica su estabilidad frente a los cambios de fortuna.',
+            },
+            {
+              id: 'c-externos', label: 'Bienes exteriores', kind: 'componente', eje: 'agathon',
+              definicion: 'Recursos, amigos, poder político. No constituyen la felicidad pero son instrumentos sin los cuales es difícil o imposible obrar noblemente.',
+              citas: [
+                { ref: 'EN.I.8.i', bekker: '1099a31', texto: 'Es claro, no obstante, que necesita además de los bienes exteriores, como dijimos; pues es imposible o no es fácil hacer lo noble cuando se está desprovisto de recursos.' },
+                { ref: 'EN.I.8.b', bekker: '1098b13', texto: 'Divididos, pues, los bienes en tres clases, los llamados exteriores, los del alma y los del cuerpo, decimos que los del alma son los primarios…' },
+              ],
+              rel: [{ to: 'r-ploutos', kind: 'opone', label: 'no se reduce a' }],
+            },
+            {
+              id: 'c-tyche', label: 'Buena fortuna', greek: 'εὐτυχία', kind: 'componente', eje: 'tyche',
+              definicion: 'El margen que no controlamos. Los pequeños favores del azar no inclinan la vida, pero los grandes infortunios sí pueden desalojar al feliz de su felicidad.',
+              citas: [
+                { ref: 'EN.I.10.f', bekker: '1100b22', texto: 'Puesto que muchas cosas suceden por azar y difieren en magnitud y pequeñez, es evidente que los pequeños favores de fortuna —e igualmente sus opuestos—…' },
+                { ref: 'EN.I.10.h', bekker: '1101a7', texto: 'Y si esto es así, jamás será desgraciado el hombre feliz, aunque tampoco se le podrá llamar bienaventurado si cae en los infortunios de Príamo.' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    /* ─────────────────────────────────── ¿DE QUÉ SE DISTINGUE? ─────────── */
+    {
+      id: 'q-distingue', label: '¿De qué se distingue?', kind: 'pregunta',
+      definicion: 'Los candidatos rivales al título de bien supremo, cada uno asociado a una forma de vida. Se descartan por no cumplir los criterios de fin último y autosuficiencia.',
+      children: [
+        {
+          id: 'r-hedone', label: 'Placer', greek: 'ἡδονή', kind: 'rival', eje: 'hedone',
+          definicion: 'La vida de goce. Aristóteles no la niega: el placer acompaña a la actividad virtuosa, pero no puede ser el fin.',
+          citas: [{ ref: 'EN.I.5.a', bekker: '1095b14', texto: 'Pero continuemos desde el punto en que nos desviamos. En efecto, a juzgar por las formas de vida que llevan…' }],
+        },
+        {
+          id: 'r-time', label: 'Honor', greek: 'τιμή', kind: 'rival', eje: 'time',
+          definicion: 'La vida política. Falla por heteronomía: depende de quien lo concede, no del honrado.',
+          citas: [{ ref: 'EN.I.5.b', bekker: '1095b24', texto: 'Pero parece ser más superficial que lo que buscamos, pues parece que está más en los que conceden los honores que en el honrado…' }],
+        },
+        {
+          id: 'r-ploutos', label: 'Riqueza', greek: 'πλοῦτος', kind: 'rival', eje: 'ploutos',
+          definicion: 'Se descarta rápido: es medio para otra cosa, nunca fin. La vida crematística es, en cierto modo, forzada.',
+          citas: [{ ref: 'EN.I.5.d', bekker: '1096a4', texto: 'El tercer modo de vida es el contemplativo, que examinaremos más adelante. En cuanto a la vida dedicada a ganar dinero, es, en cierto modo, forzada…' }],
+        },
+        {
+          id: 'r-arete-sin-acto', label: 'Virtud sin actividad', kind: 'rival', eje: 'arete',
+          definicion: 'El caso límite: quien tiene la virtud pero no la ejerce. Muestra que la felicidad está del lado de la ἐνέργεια, no de la ἕξις.',
+          citas: [{ ref: 'EN.I.5.c', bekker: '1095b31', texto: 'Acaso se podría suponer que ésta sea el fin de la vida política; pero resulta también insuficiente…' }],
+        },
+      ],
+    },
+
+    /* ────────────────────────────────── ¿QUÉ PROBLEMAS PLANTEA? ─────────── */
+    {
+      id: 'q-aporias', label: '¿Qué problemas plantea?', kind: 'pregunta',
+      definicion: 'Las dificultades que Aristóteles deja abiertas o resuelve con matices. Son el mejor punto de entrada para discutir el texto, más que las tesis ya cerradas.',
+      children: [
+        {
+          id: 'a-solon', label: '¿Solo al ver el fin?', kind: 'aporia',
+          definicion: 'Si la felicidad se mide por la vida entera, ¿hay que esperar la muerte para llamar feliz a alguien? Y si se lo llama feliz después de muerto, ¿de qué sujeto se predica?',
+          citas: [
+            { ref: 'EN.I.10.a', bekker: '1100a10', texto: 'Entonces, ¿no hemos de considerar feliz a ningún hombre mientras viva, y será menester, como dice Solón, «ver el fin»?' },
+          ],
+        },
+        {
+          id: 'a-descendientes', label: '¿La afectan los descendientes?', kind: 'aporia',
+          definicion: 'Si la suerte de los descendientes alcanza al muerto, su felicidad sería revisable indefinidamente. Aristóteles concede que algo llega, pero tenue.',
+          citas: [
+            { ref: 'EN.I.11.a', bekker: '1101a22', texto: 'En cuanto a las vicisitudes de los descendientes y de todos los amigos, el que nada en absoluto afecte a los muertos parece demasiado impío…' },
+            { ref: 'EN.I.11.c', bekker: '1101b1', texto: 'Parece, pues, según esto, que si algo llega hasta ellos, sea bien o lo contrario, es tenue y poca cosa…' },
+          ],
+        },
+        {
+          id: 'a-elogiable', label: '¿Es elogiable o algo más?', kind: 'aporia', eje: 'theion',
+          definicion: 'Lo elogiable se elogia por referencia a otra cosa. Si la felicidad es principio y fin, no se la elogia: se la ensalza. La discusión la acerca a lo divino.',
+          citas: [
+            { ref: 'EN.I.12.b', bekker: '1101b13', texto: 'Parece, en efecto, que todo lo elogiable se elogia por ser de cierta índole y por tener cierta referencia a algo…' },
+            { ref: 'EN.I.12.c', bekker: '1101b28', texto: 'Y parece que Eudoxo reivindicó con razón la supremacía del placer…' },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+/* Etiquetas legibles de cada kind y de cada tipo de relacion */
+const KIND_LABEL = {
+  concepto: 'Concepto', pregunta: 'Pregunta', tesis: 'Afirmación', grupo: 'Familia',
+  componente: 'Componente', rival: 'Bien rival', aporia: 'Aporía',
+  argumento: 'Argumento', premisa: 'Premisa', conclusion: 'Conclusión',
+};
+const REL_LABEL = { infiere: 'infiere', opone: 'se opone a', requiere: 'requiere', ver: 'ver también' };
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. INDICE DEL ARBOL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const NODES = new Map();
+(function index(node, parent, depth) {
+  node._parent = parent;
+  node._depth = depth;
+  NODES.set(node.id, node);
+  (node.children || []).forEach((c) => index(c, node, depth + 1));
+})(GRAFO, null, 0);
+
+const kids = (n) => n.children || [];
+const hasKids = (n) => kids(n).length > 0;
+
+function pathTo(id) {
+  const out = [];
+  let n = NODES.get(id);
+  while (n) { out.unshift(n); n = n._parent; }
+  return out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. ESTADO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const ST = {
+  rootId: GRAFO.id,          // nodo que hace de centro (modo enfoque)
+  open: new Set(),           // nodos desplegados
+  sel: null,                 // nodo seleccionado (ficha abierta)
+  pos: new Map(),            // id -> {x,y} posicion actual (animada)
+  tgt: new Map(),            // id -> {x,y} posicion objetivo
+  pinned: new Set(),         // el usuario los movio a mano: no se recalculan
+  view: { x: 0, y: 0, k: 1 },
+  hits: new Set(),           // resultados de busqueda resaltados
+};
+
+/* medidas por kind: r = radio de circulo, w/h = caja del roundrect */
+const SHAPE = {
+  concepto:   { shape: 'circle', r: 34 },
+  pregunta:   { shape: 'rect', w: 62, h: 34 },
+  tesis:      { shape: 'rect', w: 54, h: 28 },
+  grupo:      { shape: 'rect', w: 58, h: 30 },
+  componente: { shape: 'circle', r: 21 },
+  rival:      { shape: 'circle', r: 20 },
+  aporia:     { shape: 'rect', w: 50, h: 28 },
+  argumento:  { shape: 'rect', w: 52, h: 28 },
+  premisa:    { shape: 'rect', w: 46, h: 24 },
+  conclusion: { shape: 'rect', w: 52, h: 28 },
+};
+const shapeOf = (n) => SHAPE[n.kind] || SHAPE.tesis;
+function radiusOf(n) {
+  const s = shapeOf(n);
+  return s.shape === 'circle' ? s.r : Math.max(s.w, s.h) / 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. NODOS VISIBLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function visibleNodes() {
+  const out = [];
+  (function walk(n) {
+    out.push(n);
+    if (ST.open.has(n.id)) kids(n).forEach(walk);
+  })(NODES.get(ST.rootId));
+  return out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. LAYOUT RADIAL POR SECTORES
+   ───────────────────────────────────────────────────────────────────────────
+   Mejora central respecto de un circulo completo por nivel: a partir del
+   segundo nivel los hijos se abren en un ABANICO orientado hacia afuera
+   (en la direccion padre -> nodo), de modo que nunca se superponen con el
+   abuelo ni con las ramas hermanas.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function layout() {
+  ST.tgt.clear();
+  const root = NODES.get(ST.rootId);
+  ST.tgt.set(root.id, { x: 0, y: 0 });
+  place(root, -Math.PI / 2, Math.PI * 2);
+  relax();
+}
+
+function place(node, dir, spread) {
+  if (!ST.open.has(node.id)) return;
+  const cs = kids(node);
+  if (!cs.length) return;
+
+  const isRoot = node.id === ST.rootId;
+  const p = ST.tgt.get(node.id);
+
+  // radio: crece con la cantidad de hijos y con el tamaño de los nodos
+  const base = isRoot ? 230 : 190;
+  const r = Math.max(base, cs.length * 46);
+
+  // abanico: completo en la raiz, acotado y orientado hacia afuera despues
+  const arc = isRoot
+    ? Math.PI * 2
+    : Math.min(Math.PI * 1.15, Math.max(Math.PI * 0.55, cs.length * 0.44));
+
+  cs.forEach((kid, i) => {
+    let ang;
+    if (isRoot) {
+      ang = -Math.PI / 2 + (i / cs.length) * Math.PI * 2;
+    } else {
+      const t = cs.length === 1 ? 0 : i / (cs.length - 1) - 0.5;
+      ang = dir + t * arc;
+    }
+    const fixed = ST.pinned.has(kid.id) && ST.pos.has(kid.id);
+    ST.tgt.set(kid.id, fixed
+      ? { ...ST.pos.get(kid.id) }
+      : { x: p.x + r * Math.cos(ang), y: p.y + r * Math.sin(ang) });
+    place(kid, ang, arc);
+  });
+}
+
+/* separacion: empuja nodos demasiado cerca, respetando raiz y nodos fijados */
+function relax() {
+  const vis = visibleNodes();
+  const ids = vis.map((n) => n.id);
+  for (let it = 0; it < 90; it++) {
+    let moved = false;
+    for (let a = 0; a < ids.length; a++) {
+      for (let b = a + 1; b < ids.length; b++) {
+        const A = ST.tgt.get(ids[a]); const B = ST.tgt.get(ids[b]);
+        if (!A || !B) continue;
+        const na = NODES.get(ids[a]); const nb = NODES.get(ids[b]);
+        // margen: radio + espacio para la etiqueta de abajo
+        const min = radiusOf(na) + radiusOf(nb) + 46;
+        let dx = B.x - A.x, dy = B.y - A.y;
+        let d = Math.hypot(dx, dy);
+        if (d > min || d === 0) continue;
+        const push = (min - d) / 2;
+        dx /= d; dy /= d;
+        const aFixed = ids[a] === ST.rootId || ST.pinned.has(ids[a]);
+        const bFixed = ids[b] === ST.rootId || ST.pinned.has(ids[b]);
+        if (!aFixed) { A.x -= dx * push; A.y -= dy * push; }
+        if (!bFixed) { B.x += dx * push; B.y += dy * push; }
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   6. RENDER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const SVG = document.getElementById('cy');
+const VP = document.getElementById('vp');
+const GE = document.getElementById('g-edges');
+const GN = document.getElementById('g-nodes');
+const svgEl = (t) => document.createElementNS('http://www.w3.org/2000/svg', t);
+
+let nodeEls = new Map();   // id -> <g>
+let edgeEls = [];          // { el, path, labelEl, from, to, kind }
+
+function wrapLabel(text, max) {
+  const words = String(text).split(/\s+/);
+  const lines = [];
+  let cur = '';
+  for (const w of words) {
+    if (!cur) { cur = w; continue; }
+    if ((cur + ' ' + w).length <= max) cur += ' ' + w;
+    else { lines.push(cur); cur = w; }
+  }
+  if (cur) lines.push(cur);
+  return lines.slice(0, 3);
+}
+
+function buildDom() {
+  const vis = visibleNodes();
+  const visIds = new Set(vis.map((n) => n.id));
+
+  // ---- aristas: jerarquia + relaciones cruzadas entre nodos visibles ----
+  GE.textContent = '';
+  edgeEls = [];
+  const addEdge = (from, to, kind, label) => {
+    const path = svgEl('path');
+    path.setAttribute('class', 'e-' + kind);
+    if (kind === 'infiere') path.setAttribute('marker-end', 'url(#arrow-green)');
+    if (kind === 'opone') path.setAttribute('marker-end', 'url(#arrow-orange)');
+    const g = svgEl('g');
+    g.setAttribute('class', 'edge');
+    g.appendChild(path);
+    let labelEl = null;
+    if (label) {
+      labelEl = svgEl('text');
+      labelEl.setAttribute('class', 'e-label');
+      labelEl.textContent = label;
+      g.appendChild(labelEl);
+    }
+    GE.appendChild(g);
+    edgeEls.push({ el: g, path, labelEl, from, to, kind });
+  };
+
+  for (const n of vis) {
+    if (ST.open.has(n.id)) {
+      for (const k of kids(n)) if (visIds.has(k.id)) addEdge(n.id, k.id, 'sub', null);
+    }
+    for (const r of n.rel || []) {
+      if (visIds.has(r.to)) addEdge(n.id, r.to, r.kind || 'ver', r.label || null);
+    }
+  }
+
+  // ---- nodos ----
+  GN.textContent = '';
+  nodeEls = new Map();
+  for (const n of vis) {
+    const s = shapeOf(n);
+    const g = svgEl('g');
+    g.setAttribute('class', 'node k-' + n.kind);
+    g.dataset.id = n.id;
+
+    let shape;
+    if (s.shape === 'circle') {
+      shape = svgEl('circle');
+      shape.setAttribute('r', s.r);
+    } else {
+      shape = svgEl('rect');
+      shape.setAttribute('x', -s.w / 2); shape.setAttribute('y', -s.h / 2);
+      shape.setAttribute('width', s.w); shape.setAttribute('height', s.h);
+      shape.setAttribute('rx', 8);
+    }
+    shape.setAttribute('class', 'n-shape');
+    g.appendChild(shape);
+
+    // etiqueta debajo del nodo
+    const yTop = (s.shape === 'circle' ? s.r : s.h / 2) + 15;
+    const label = svgEl('text');
+    label.setAttribute('class', 'n-label');
+    label.setAttribute('text-anchor', 'middle');
+    label.setAttribute('y', yTop);
+    wrapLabel(n.label, n.kind === 'premisa' || n.kind === 'conclusion' || n.kind === 'tesis' ? 24 : 18)
+      .forEach((line, i) => {
+        const ts = svgEl('tspan');
+        ts.setAttribute('x', 0);
+        if (i) ts.setAttribute('dy', '1.2em');
+        ts.textContent = line;
+        label.appendChild(ts);
+      });
+    g.appendChild(label);
+
+    if (n.greek) {
+      const gk = svgEl('text');
+      gk.setAttribute('class', 'n-greek');
+      gk.setAttribute('text-anchor', 'middle');
+      gk.setAttribute('y', yTop + 14 * wrapLabel(n.label, 18).length);
+      gk.textContent = n.greek;
+      g.appendChild(gk);
+    }
+
+    // badge con la cantidad de hijos ocultos
+    if (hasKids(n) && !ST.open.has(n.id)) {
+      const bx = (s.shape === 'circle' ? s.r : s.w / 2) - 2;
+      const by = -(s.shape === 'circle' ? s.r : s.h / 2) + 2;
+      const bg = svgEl('g');
+      bg.setAttribute('class', 'n-badge');
+      bg.setAttribute('transform', `translate(${bx},${by})`);
+      const c = svgEl('circle'); c.setAttribute('r', 9);
+      const t = svgEl('text'); t.setAttribute('y', 3.4);
+      t.textContent = kids(n).length;
+      bg.appendChild(c); bg.appendChild(t);
+      g.appendChild(bg);
+    }
+
+    GN.appendChild(g);
+    nodeEls.set(n.id, g);
+
+    if (!ST.pos.has(n.id)) {
+      // aparece desde la posicion del padre: da la sensacion de despliegue
+      const par = n._parent && ST.pos.get(n._parent.id);
+      ST.pos.set(n.id, par ? { ...par } : { ...(ST.tgt.get(n.id) || { x: 0, y: 0 }) });
+    }
+  }
+
+  applyMarks();
+  paint();
+  renderCrumbs();
+  renderStatus();
+}
+
+/* resaltado de busqueda y seleccion */
+function applyMarks() {
+  for (const [id, el] of nodeEls) {
+    el.classList.toggle('sel', ST.sel === id);
+    el.classList.toggle('hit', ST.hits.has(id));
+    el.classList.toggle('dim', ST.hits.size > 0 && !ST.hits.has(id));
+  }
+  for (const e of edgeEls) {
+    e.el.classList.toggle('dim', ST.hits.size > 0 && !(ST.hits.has(e.from) && ST.hits.has(e.to)));
+  }
+}
+
+/* dibuja posiciones actuales (se llama en cada frame de animacion) */
+function paint() {
+  for (const [id, el] of nodeEls) {
+    const p = ST.pos.get(id);
+    if (p) el.setAttribute('transform', `translate(${p.x.toFixed(2)},${p.y.toFixed(2)})`);
+  }
+  for (const e of edgeEls) {
+    const a = ST.pos.get(e.from); const b = ST.pos.get(e.to);
+    if (!a || !b) continue;
+    const ra = radiusOf(NODES.get(e.from)) + 3;
+    const rb = radiusOf(NODES.get(e.to)) + (e.kind === 'sub' ? 3 : 9);
+    let dx = b.x - a.x, dy = b.y - a.y;
+    const d = Math.hypot(dx, dy) || 1;
+    dx /= d; dy /= d;
+    const x1 = a.x + dx * ra, y1 = a.y + dy * ra;
+    const x2 = b.x - dx * rb, y2 = b.y - dy * rb;
+    // curvatura suave; las relaciones cruzadas se arquean mas para distinguirse
+    const bow = e.kind === 'sub' ? 0.06 : 0.18;
+    const mx = (x1 + x2) / 2 - dy * d * bow;
+    const my = (y1 + y2) / 2 + dx * d * bow;
+    e.path.setAttribute('d', `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`);
+    if (e.labelEl) {
+      e.labelEl.setAttribute('x', ((x1 + x2) / 2 - dy * d * bow * 1.15).toFixed(1));
+      e.labelEl.setAttribute('y', ((y1 + y2) / 2 + dx * d * bow * 1.15).toFixed(1));
+    }
+  }
+}
+
+/* animacion de posiciones */
+let raf = null;
+function animate() {
+  if (raf) cancelAnimationFrame(raf);
+  const t0 = performance.now();
+  const from = new Map();
+  for (const [id, p] of ST.pos) from.set(id, { ...p });
+  const DUR = 380;
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+  const step = (now) => {
+    const t = Math.min(1, (now - t0) / DUR);
+    const e = ease(t);
+    for (const [id, tp] of ST.tgt) {
+      const f = from.get(id) || tp;
+      ST.pos.set(id, { x: f.x + (tp.x - f.x) * e, y: f.y + (tp.y - f.y) * e });
+    }
+    paint();
+    if (t < 1) raf = requestAnimationFrame(step);
+    else raf = null;
+  };
+  raf = requestAnimationFrame(step);
+}
+
+function commit({ animated = true } = {}) {
+  layout();
+  buildDom();
+  if (animated) animate();
+  else { for (const [id, tp] of ST.tgt) ST.pos.set(id, { ...tp }); paint(); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   7. VIEWPORT: PAN Y ZOOM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function applyView() {
+  VP.setAttribute('transform', `translate(${ST.view.x},${ST.view.y}) scale(${ST.view.k})`);
+}
+const clampK = (k) => Math.max(0.2, Math.min(2.6, k));
+
+function zoomAt(factor, cx, cy) {
+  const k2 = clampK(ST.view.k * factor);
+  const r = k2 / ST.view.k;
+  ST.view.x = cx - (cx - ST.view.x) * r;
+  ST.view.y = cy - (cy - ST.view.y) * r;
+  ST.view.k = k2;
+  applyView();
+}
+
+function fitView(pad = 90) {
+  const vis = visibleNodes();
+  if (!vis.length) return;
+  let x1 = Infinity, y1 = Infinity, x2 = -Infinity, y2 = -Infinity;
+  for (const n of vis) {
+    const p = ST.pos.get(n.id); if (!p) continue;
+    const r = radiusOf(n) + 40;
+    x1 = Math.min(x1, p.x - r); y1 = Math.min(y1, p.y - r);
+    x2 = Math.max(x2, p.x + r); y2 = Math.max(y2, p.y + r);
+  }
+  const W = SVG.clientWidth, H = SVG.clientHeight;
+  const panelOpen = document.getElementById('panel').classList.contains('open');
+  const usableW = W - (panelOpen && W > 900 ? 372 : 0);
+  const k = clampK(Math.min((usableW - pad * 2) / (x2 - x1), (H - pad * 2) / (y2 - y1)));
+  ST.view.k = k;
+  ST.view.x = (usableW - (x2 - x1) * k) / 2 - x1 * k;
+  ST.view.y = (H - (y2 - y1) * k) / 2 - y1 * k;
+  applyView();
+}
+
+function centerOn(id, k) {
+  const p = ST.pos.get(id); if (!p) return;
+  const W = SVG.clientWidth, H = SVG.clientHeight;
+  const panelOpen = document.getElementById('panel').classList.contains('open');
+  const usableW = W - (panelOpen && W > 900 ? 372 : 0);
+  if (k) ST.view.k = clampK(k);
+  ST.view.x = usableW / 2 - p.x * ST.view.k;
+  ST.view.y = H / 2 - p.y * ST.view.k;
+  applyView();
+}
+
+/* conversion pantalla -> modelo */
+function toModel(clientX, clientY) {
+  const b = SVG.getBoundingClientRect();
+  return {
+    x: (clientX - b.left - ST.view.x) / ST.view.k,
+    y: (clientY - b.top - ST.view.y) / ST.view.k,
+  };
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   8. INTERACCION (pointer events: mouse y touch con el mismo codigo)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+let drag = null;
+
+SVG.addEventListener('pointerdown', (ev) => {
+  const g = ev.target.closest('.node');
+  const m = toModel(ev.clientX, ev.clientY);
+  if (g) {
+    const id = g.dataset.id;
+    const p = ST.pos.get(id);
+    drag = { type: 'node', id, dx: m.x - p.x, dy: m.y - p.y, moved: false, sx: ev.clientX, sy: ev.clientY };
+  } else {
+    drag = { type: 'pan', sx: ev.clientX, sy: ev.clientY, ox: ST.view.x, oy: ST.view.y, moved: false };
+    SVG.classList.add('panning');
+  }
+  SVG.setPointerCapture(ev.pointerId);
+});
+
+SVG.addEventListener('pointermove', (ev) => {
+  if (!drag) return;
+  const far = Math.abs(ev.clientX - drag.sx) + Math.abs(ev.clientY - drag.sy) > 4;
+  if (far) drag.moved = true;
+  if (drag.type === 'pan') {
+    ST.view.x = drag.ox + (ev.clientX - drag.sx);
+    ST.view.y = drag.oy + (ev.clientY - drag.sy);
+    applyView();
+  } else if (drag.moved) {
+    const m = toModel(ev.clientX, ev.clientY);
+    ST.pos.set(drag.id, { x: m.x - drag.dx, y: m.y - drag.dy });
+    ST.tgt.set(drag.id, { ...ST.pos.get(drag.id) });
+    ST.pinned.add(drag.id);
+    paint();
+  }
+});
+
+SVG.addEventListener('pointerup', (ev) => {
+  if (!drag) return;
+  SVG.classList.remove('panning');
+  if (!drag.moved) {
+    if (drag.type === 'node') tapNode(drag.id);
+    else { closePanel(); clearSearch(); }
+  }
+  drag = null;
+});
+
+SVG.addEventListener('dblclick', (ev) => {
+  const g = ev.target.closest('.node');
+  if (g) focusNode(g.dataset.id);
+});
+
+SVG.addEventListener('wheel', (ev) => {
+  ev.preventDefault();
+  const b = SVG.getBoundingClientRect();
+  zoomAt(ev.deltaY < 0 ? 1.12 : 1 / 1.12, ev.clientX - b.left, ev.clientY - b.top);
+}, { passive: false });
+
+function tapNode(id) {
+  const n = NODES.get(id);
+  ST.sel = id;
+  if (hasKids(n)) {
+    if (ST.open.has(id)) collapseSubtree(id);
+    else ST.open.add(id);
+    document.getElementById('hint').classList.add('hidden');
+    commit();
+  } else {
+    applyMarks();
+  }
+  openPanel(n);
+}
+
+/* al contraer, olvidar tambien los descendientes (si no, reaparecen abiertos) */
+function collapseSubtree(id) {
+  (function walk(n) {
+    ST.open.delete(n.id);
+    kids(n).forEach((k) => { ST.pos.delete(k.id); ST.pinned.delete(k.id); walk(k); });
+  })(NODES.get(id));
+}
+
+function focusNode(id) {
+  const n = NODES.get(id);
+  if (!hasKids(n)) { openPanel(n); return; }
+  ST.rootId = id;
+  ST.open.add(id);
+  ST.pos.clear(); ST.pinned.clear();
+  ST.sel = id;
+  document.getElementById('hint').classList.add('hidden');
+  commit({ animated: false });
+  fitView();
+  openPanel(n);
+}
+
+function expandAll() {
+  (function walk(n) { if (hasKids(n)) { ST.open.add(n.id); kids(n).forEach(walk); } })(NODES.get(ST.rootId));
+  document.getElementById('hint').classList.add('hidden');
+  commit({ animated: false });
+  fitView();
+}
+
+function collapseAll() {
+  collapseSubtree(ST.rootId);
+  ST.pos.clear(); ST.pinned.clear();
+  ST.sel = null;
+  closePanel();
+  commit({ animated: false });
+  centerOn(ST.rootId, 1);
+  document.getElementById('hint').classList.remove('hidden');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. MIGAS Y ESTADO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function renderCrumbs() {
+  const box = document.getElementById('crumbs');
+  box.textContent = '';
+  const chain = pathTo(ST.sel || ST.rootId);
+  chain.forEach((n, i) => {
+    if (i) {
+      const sep = document.createElement('span');
+      sep.className = 'crumb-sep'; sep.textContent = '›';
+      box.appendChild(sep);
+    }
+    const c = document.createElement('span');
+    c.className = 'crumb' + (i === chain.length - 1 ? ' last' : '');
+    c.textContent = n.label;
+    c.onclick = () => { revealNode(n.id); };
+    box.appendChild(c);
+  });
+  if (ST.rootId !== GRAFO.id) {
+    const back = document.createElement('span');
+    back.id = 'focus-tag'; back.className = 'on';
+    back.textContent = '↩ salir del enfoque';
+    back.onclick = () => {
+      ST.rootId = GRAFO.id; ST.pos.clear(); ST.pinned.clear();
+      commit({ animated: false }); fitView();
+    };
+    box.appendChild(back);
+  }
+}
+
+function renderStatus() {
+  const vis = visibleNodes().length;
+  let hidden = 0;
+  for (const n of visibleNodes()) if (hasKids(n) && !ST.open.has(n.id)) hidden += countSub(n);
+  const depth = Math.max(...visibleNodes().map((n) => n._depth)) - NODES.get(ST.rootId)._depth;
+  document.getElementById('status').textContent =
+    `${vis} nodos visibles · ${hidden} plegados · profundidad ${depth} · ${NODES.size} nodos en total`;
+}
+function countSub(n) {
+  let c = 0;
+  (function walk(x) { kids(x).forEach((k) => { c++; walk(k); }); })(n);
+  return c;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   10. FICHA LATERAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const panel = document.getElementById('panel');
+
+function openPanel(n) {
+  document.getElementById('p-kind').textContent = KIND_LABEL[n.kind] || n.kind;
+  document.getElementById('p-title').textContent = n.label;
+  document.getElementById('p-greek').textContent = n.greek || '';
+  document.getElementById('p-greek').style.display = n.greek ? '' : 'none';
+
+  const chain = pathTo(n.id).map((x) => x.label);
+  const sub = countSub(n);
+  document.getElementById('p-meta').textContent =
+    chain.join(' › ') + (sub ? ` · ${sub} subnodo${sub > 1 ? 's' : ''}` : '');
+
+  const body = document.getElementById('p-body');
+  body.textContent = '';
+
+  const sec = (title) => {
+    const s = document.createElement('div'); s.className = 'p-sec';
+    if (title) { const h = document.createElement('h3'); h.textContent = title; s.appendChild(h); }
+    body.appendChild(s);
+    return s;
+  };
+
+  /* descripcion */
+  const s1 = sec(null);
+  const pd = document.createElement('p');
+  if (n.definicion) { pd.className = 'p-def'; pd.textContent = n.definicion; }
+  else { pd.className = 'placeholder'; pd.textContent = 'Todavía sin descripción. Se carga en el campo «definicion» del nodo.'; }
+  s1.appendChild(pd);
+
+  /* pasajes del corpus */
+  if (n.citas && n.citas.length) {
+    const s2 = sec('En el texto');
+    for (const c of n.citas) {
+      const d = document.createElement('div'); d.className = 'cita';
+      const r = document.createElement('span'); r.className = 'ref';
+      const rid = document.createElement('span'); rid.textContent = c.ref;
+      const bk = document.createElement('span'); bk.className = 'bk'; bk.textContent = c.bekker;
+      r.appendChild(rid); r.appendChild(bk);
+      const t = document.createElement('p'); t.textContent = '«' + c.texto + '»';
+      d.appendChild(r); d.appendChild(t);
+      s2.appendChild(d);
+    }
+  }
+
+  /* bibliografia secundaria */
+  if (n.biblio && n.biblio.length) {
+    const s3 = sec('Bibliografía secundaria');
+    const ul = document.createElement('ul'); ul.className = 'biblio';
+    n.biblio.forEach((b) => { const li = document.createElement('li'); li.textContent = b; ul.appendChild(li); });
+    s3.appendChild(ul);
+  }
+
+  /* relaciones no jerarquicas, salientes y entrantes */
+  const rels = [];
+  (n.rel || []).forEach((r) => rels.push({ id: r.to, kind: r.kind || 'ver', label: r.label }));
+  for (const other of NODES.values()) {
+    (other.rel || []).forEach((r) => {
+      if (r.to === n.id) rels.push({ id: other.id, kind: r.kind || 'ver', label: r.label, back: true });
+    });
+  }
+  if (rels.length) {
+    const s4 = sec('Relaciones');
+    const box = document.createElement('div'); box.className = 'rels';
+    for (const r of rels) {
+      const other = NODES.get(r.id); if (!other) continue;
+      const el = document.createElement('div'); el.className = 'rel';
+      const k = document.createElement('span'); k.className = 'rel-k';
+      k.textContent = (r.back ? '← ' : '→ ') + (REL_LABEL[r.kind] || r.kind);
+      const l = document.createElement('span'); l.textContent = other.label;
+      el.appendChild(k); el.appendChild(l);
+      el.onclick = () => revealNode(other.id);
+      box.appendChild(el);
+    }
+    s4.appendChild(box);
+  }
+
+  /* subnodos directos */
+  if (hasKids(n)) {
+    const s5 = sec('Subnodos');
+    const box = document.createElement('div'); box.className = 'rels';
+    for (const k of kids(n)) {
+      const el = document.createElement('div'); el.className = 'rel';
+      const kk = document.createElement('span'); kk.className = 'rel-k';
+      kk.textContent = KIND_LABEL[k.kind] || k.kind;
+      const l = document.createElement('span'); l.textContent = k.label;
+      el.appendChild(kk); el.appendChild(l);
+      el.onclick = () => revealNode(k.id);
+      box.appendChild(el);
+    }
+    s5.appendChild(box);
+  }
+
+  /* acciones */
+  const sa = sec(null);
+  sa.className = 'p-sec p-actions';
+  if (hasKids(n)) {
+    const b1 = document.createElement('button');
+    b1.className = 'p-btn';
+    b1.textContent = ST.open.has(n.id) ? 'Contraer este nodo' : 'Desplegar este nodo';
+    b1.onclick = () => tapNode(n.id);
+    sa.appendChild(b1);
+
+    const b2 = document.createElement('button');
+    b2.className = 'p-btn';
+    b2.textContent = 'Enfocar: usar como centro';
+    b2.onclick = () => focusNode(n.id);
+    sa.appendChild(b2);
+  }
+  if (n.eje) {
+    const a = document.createElement('a');
+    a.className = 'p-btn primary';
+    a.href = 'index.html#eje=' + n.eje;
+    a.textContent = 'Ver pasajes del eje «' + n.eje + '»';
+    a.title = 'Abre la app principal filtrando por este eje del vectorizador';
+    sa.appendChild(a);
+  }
+
+  panel.classList.add('open');
+  applyMarks();
+  renderCrumbs();
+}
+
+function closePanel() {
+  panel.classList.remove('open');
+  ST.sel = null;
+  applyMarks();
+  renderCrumbs();
+}
+document.getElementById('p-close').onclick = closePanel;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   11. IR A UN NODO CUALQUIERA (abre todos sus ancestros)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function revealNode(id) {
+  const chain = pathTo(id);
+  const underRoot = chain.some((n) => n.id === ST.rootId);
+  if (!underRoot) { ST.rootId = GRAFO.id; ST.pos.clear(); ST.pinned.clear(); }
+  for (const n of chain) if (n.id !== id && hasKids(n)) ST.open.add(n.id);
+  ST.sel = id;
+  document.getElementById('hint').classList.add('hidden');
+  commit();
+  setTimeout(() => centerOn(id), 200);
+  openPanel(NODES.get(id));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   12. BUSQUEDA
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const input = document.getElementById('search');
+const resBox = document.getElementById('results');
+let resList = [];
+let resCur = -1;
+
+const norm = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+function doSearch(q) {
+  const nq = norm(q).trim();
+  resList = []; resCur = -1;
+  ST.hits = new Set();
+  if (nq.length < 2) { resBox.classList.remove('open'); applyMarks(); return; }
+
+  for (const n of NODES.values()) {
+    const hay = [n.label, n.greek, n.definicion, n.eje, ...(n.citas || []).map((c) => c.ref + ' ' + c.bekker + ' ' + c.texto)].map(norm).join(' · ');
+    if (hay.includes(nq)) resList.push(n);
+  }
+  resList.sort((a, b) => (norm(a.label).startsWith(nq) ? -1 : 0) - (norm(b.label).startsWith(nq) ? -1 : 0) || a._depth - b._depth);
+  resList = resList.slice(0, 14);
+  resList.forEach((n) => ST.hits.add(n.id));
+
+  resBox.textContent = '';
+  if (!resList.length) {
+    const e = document.createElement('div'); e.className = 'res-empty';
+    e.textContent = 'Sin resultados';
+    resBox.appendChild(e);
+  } else {
+    resList.forEach((n, i) => {
+      const el = document.createElement('div');
+      el.className = 'res'; el.dataset.i = i;
+      const k = document.createElement('span'); k.className = 'rk'; k.textContent = KIND_LABEL[n.kind] || n.kind;
+      const l = document.createElement('span'); l.className = 'rl'; l.textContent = n.label;
+      el.appendChild(k); el.appendChild(l);
+      if (n.greek) { const g = document.createElement('span'); g.className = 'rg'; g.textContent = n.greek; el.appendChild(g); }
+      el.onclick = () => { pick(i); };
+      resBox.appendChild(el);
+    });
+  }
+  resBox.classList.add('open');
+  applyMarks();
+}
+
+function highlightRes() {
+  [...resBox.querySelectorAll('.res')].forEach((el, i) => el.classList.toggle('cur', i === resCur));
+}
+
+function pick(i) {
+  const n = resList[i]; if (!n) return;
+  clearSearch();
+  revealNode(n.id);
+}
+
+function clearSearch() {
+  input.value = '';
+  resBox.classList.remove('open');
+  resList = []; resCur = -1;
+  ST.hits = new Set();
+  applyMarks();
+}
+
+input.addEventListener('input', () => doSearch(input.value));
+input.addEventListener('keydown', (ev) => {
+  if (ev.key === 'ArrowDown') { ev.preventDefault(); resCur = Math.min(resCur + 1, resList.length - 1); highlightRes(); }
+  else if (ev.key === 'ArrowUp') { ev.preventDefault(); resCur = Math.max(resCur - 1, 0); highlightRes(); }
+  else if (ev.key === 'Enter') { ev.preventDefault(); pick(resCur < 0 ? 0 : resCur); }
+  else if (ev.key === 'Escape') { clearSearch(); input.blur(); }
+});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   13. TECLADO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.target === input) return;
+  const help = document.getElementById('help');
+
+  if (ev.key === '/') { ev.preventDefault(); input.focus(); return; }
+  if (ev.key === 'Escape') { help.classList.remove('open'); closePanel(); clearSearch(); return; }
+  if (ev.key === 'f' || ev.key === 'F') { fitView(); return; }
+  if (ev.key === '?') { help.classList.toggle('open'); return; }
+
+  const cur = ST.sel ? NODES.get(ST.sel) : NODES.get(ST.rootId);
+  if (!cur) return;
+
+  if (ev.key === 'Enter') { ev.preventDefault(); tapNode(cur.id); return; }
+
+  if (ev.key === 'ArrowUp' && cur._parent && pathTo(cur.id).some((n) => n.id === ST.rootId) && cur.id !== ST.rootId) {
+    ev.preventDefault(); revealNode(cur._parent.id); return;
+  }
+  if (ev.key === 'ArrowDown' && hasKids(cur)) {
+    ev.preventDefault(); ST.open.add(cur.id); commit(); revealNode(kids(cur)[0].id); return;
+  }
+  if ((ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') && cur._parent) {
+    ev.preventDefault();
+    const sib = kids(cur._parent);
+    const i = sib.findIndex((n) => n.id === cur.id);
+    const j = (i + (ev.key === 'ArrowRight' ? 1 : -1) + sib.length) % sib.length;
+    revealNode(sib[j].id);
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   14. BOTONES E INICIO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+document.getElementById('zoom-in').onclick = () => zoomAt(1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
+document.getElementById('zoom-out').onclick = () => zoomAt(1 / 1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
+document.getElementById('zoom-fit').onclick = () => fitView();
+document.getElementById('btn-expand').onclick = () => expandAll();
+document.getElementById('btn-collapse').onclick = () => collapseAll();
+document.getElementById('btn-help').onclick = () => document.getElementById('help').classList.toggle('open');
+document.getElementById('help-close').onclick = () => document.getElementById('help').classList.remove('open');
+document.getElementById('help').addEventListener('click', (ev) => {
+  if (ev.target.id === 'help') ev.currentTarget.classList.remove('open');
+});
+window.addEventListener('resize', () => fitView());
+
+/* estado inicial: raiz desplegada un nivel, centrada y ajustada */
+ST.open.add(GRAFO.id);
+commit({ animated: false });
+fitView();
+document.getElementById('hint').textContent = 'Click para desplegar · doble click para enfocar · arrastrá para reubicar';
+setTimeout(() => document.getElementById('hint').classList.add('hidden'), 6000);
+
+/* expuesto para depuracion y para pruebas automatizadas */
+window.GRAFO = GRAFO;
+window.ST = ST;
+window.api = { revealNode, focusNode, tapNode, expandAll, collapseAll, fitView, visibleNodes, NODES };
+</script>
+</body>
+</html>

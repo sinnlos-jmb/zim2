@@ -1,0 +1,237 @@
+/* ============================================================================
+   shell.css - capa comun a todas las secciones.
+   Se carga DESPUES de app.css y solo agrega o pisa lo necesario:
+   app.css sigue siendo el dueno de las tarjetas de resultado, los chips de
+   eje y la grilla general. Aca vive lo que comparten Inicio, Busquedas, IA,
+   Paseos y Comunidad: la barra de secciones, las migas y la sidebar nueva.
+   ========================================================================= */
+
+:root{
+  --head:56px;            /* alto de la barra de secciones (era el header viejo) */
+  --nav:#F4F3F1;          /* fondo de la barra */
+}
+
+/* ------------------------------------------------------- BARRA DE SECCIONES */
+/* Ocupa el area "hd" que app.css ya reservaba para el header viejo, asi la
+   grilla del body no cambia y la sidebar sigue calzando abajo. */
+#topbar{
+  grid-area:hd; display:flex; align-items:center; gap:12px;
+  padding:0 14px 0 10px; background:var(--nav);
+  border-bottom:1px solid var(--border);
+}
+#sbtoggle{
+  flex:none; width:34px; height:34px; display:flex; align-items:center;
+  justify-content:center; color:var(--muted); background:transparent;
+  border-color:transparent; font-size:15px; line-height:1;
+}
+#sbtoggle:hover{color:var(--text);background:var(--canvas);border-color:var(--border)}
+body.no-sb #sbtoggle{display:none}
+
+/* marca: el sigma-eta griego hace de logo y ancla siempre a la landing */
+.logo{
+  flex:none; display:flex; align-items:center; gap:10px; text-decoration:none;
+  color:var(--text); padding:4px 6px; border-radius:8px; min-width:0;
+}
+.logo:hover{background:var(--canvas)}
+.logo .mark{
+  flex:none; width:30px; height:30px; border-radius:8px; background:var(--text);
+  color:var(--canvas); display:flex; align-items:center; justify-content:center;
+  font:600 14px/1 "Times New Roman",Georgia,serif; letter-spacing:.02em;
+}
+.logo .tit{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.logo .tit b{font-size:14px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+.logo .tit span{font-size:11.5px;color:var(--muted);white-space:nowrap}
+
+/* ------------------------------------------------------------ NAV SECCIONES */
+#secnav{
+  display:flex; align-items:center; gap:2px; margin:0 auto;
+  background:var(--canvas); border:1px solid var(--border);
+  border-radius:10px; padding:3px;
+}
+#secnav a{
+  position:relative; display:flex; align-items:center; gap:7px;
+  height:32px; padding:0 11px; border-radius:7px; text-decoration:none;
+  color:var(--muted); font-size:13.5px; white-space:nowrap;
+}
+#secnav a:hover{background:var(--soft);color:var(--text)}
+#secnav a[aria-current="page"]{background:var(--blue-soft);color:var(--blue);font-weight:500}
+#secnav svg{flex:none;width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* secciones todavia sin contenido real: punto naranja en el icono */
+#secnav a.wip::after{
+  content:""; position:absolute; top:5px; right:6px; width:5px; height:5px;
+  border-radius:50%; background:var(--orange);
+}
+#secnav a[aria-current="page"].wip::after{display:none}
+
+.tbright{flex:none;display:flex;align-items:center;gap:8px}
+.tbnote{font-size:11.5px;color:var(--muted);white-space:nowrap}
+
+/* ---------------------------------------------------------------- MIGAS */
+/* Barra fina arriba del main. Es el "menu de items" del que hablabas: no
+   solo dice donde estas, cada miga es clickeable y vuelve a ese nivel. */
+#crumbs{
+  display:flex; align-items:center; flex-wrap:wrap; gap:2px;
+  margin:-4px 0 18px; padding-bottom:10px;
+  border-bottom:1px solid var(--border); font-size:12.5px; color:var(--muted);
+}
+#crumbs .cr{
+  background:transparent; border:1px solid transparent; color:var(--muted);
+  padding:3px 8px; border-radius:6px; font-size:12.5px; text-decoration:none;
+  display:inline-flex; align-items:center; gap:6px; max-width:340px;
+}
+#crumbs button.cr:hover{background:var(--soft);color:var(--text);border-color:var(--border)}
+#crumbs .cr.here{color:var(--text);font-weight:500;cursor:default}
+#crumbs .cr.here:hover{background:transparent;border-color:transparent}
+#crumbs .sep{color:var(--border);font-size:12px;padding:0 1px}
+#crumbs .cr .ic{font-size:11px;opacity:.8}
+#crumbs .crclear{margin-left:auto;color:var(--muted);font-size:12px;padding:3px 9px;border-color:transparent;background:transparent}
+#crumbs .crclear:hover{color:var(--text);border-color:var(--border)}
+
+/* ------------------------------------------------------- SIDEBAR: SECCIONES */
+/* La sidebar deja de ser "solo categorias": ahora es la caja de herramientas
+   de la seccion. Scrollea entera (antes scrolleaba solo #axes). */
+/* ancho fijo, no var(--sbw): al colapsar, la columna va a 0 pero el contenido
+   no debe reflowear durante la animacion */
+.sbin{width:288px;flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
+.sbsec{flex:none;border-bottom:1px solid var(--border)}
+.sbsec:last-child{border-bottom:0}
+
+/* titulo plegable de cada bloque */
+.sbtitle{
+  width:100%; display:flex; align-items:center; gap:8px;
+  padding:11px 14px; background:transparent; border:0; border-radius:0;
+  font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--muted); text-align:left;
+}
+.sbtitle:hover{color:var(--text);background:var(--canvas)}
+.sbtitle .car{font-size:9px;transition:transform .15s ease;flex:none;opacity:.75}
+.sbtitle[aria-expanded="true"] .car{transform:rotate(90deg)}
+.sbtitle[aria-expanded="true"]{color:var(--text)}
+.sbtitle .n{margin-left:auto;font-weight:400;letter-spacing:0;font-size:11px;color:var(--muted);opacity:.85}
+.sbtitle .n.on{color:var(--blue);opacity:1}
+.sbbody{padding:0 14px 14px}
+.sbbody[hidden]{display:none}
+
+/* busqueda libre, ahora en la sidebar */
+.sbsearch{display:flex;flex-direction:column;gap:7px}
+.sbsearch input[type=text]{width:100%;height:36px;font-size:14px}
+.sbsearch #go{width:100%;height:34px;font-size:13.5px}
+.sbtip{margin:8px 0 0;font-size:11.5px;line-height:1.45;color:var(--muted)}
+
+/* items de Preguntas y Definiciones dentro de la sidebar */
+.sblist{display:flex;flex-direction:column;gap:1px;max-height:none}
+.sbq{
+  display:block; width:100%; text-align:left; border:1px solid transparent;
+  background:transparent; padding:7px 9px; font-size:13px; line-height:1.35;
+  color:var(--muted); border-radius:7px;
+}
+.sbq:hover{background:var(--canvas);color:var(--text);border-color:var(--border)}
+.sbq.on{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+.sbq .gr{color:var(--muted);font-size:12px}
+.sbq.on .gr{color:var(--blue)}
+.sbempty{margin:2px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+
+/* la grilla de chips ya no scrollea sola: la sidebar entera scrollea */
+#axes{flex:none;overflow:visible;border-top:0;padding:0 0 4px}
+.sbsec .sbhint{padding:0;margin:0 0 10px}
+#clearax{margin-left:0}
+
+/* ==================================================================== INICIO */
+/* La landing no lleva sidebar: body.no-sb colapsa la columna. */
+body.no-sb{grid-template-columns:minmax(0,1fr);grid-template-areas:"hd" "mn" "ft"}
+body.no-sb #sb,body.no-sb #scrim{display:none}
+.wide{max-width:940px;margin:0 auto}
+
+.hero{padding:38px 0 30px;border-bottom:1px solid var(--border)}
+.hero .kicker{
+  font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--blue);margin:0 0 12px;
+}
+.hero h1{font-size:34px;line-height:1.15;margin:0 0 14px;letter-spacing:-.02em;max-width:19ch}
+.hero .lead{font-size:16.5px;line-height:1.6;color:var(--text);margin:0 0 10px;max-width:64ch}
+.hero .lead2{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:64ch}
+.hero .grk{font-family:"Times New Roman",Georgia,serif;font-size:17px}
+
+.figures{display:flex;flex-wrap:wrap;gap:26px;padding:20px 0 26px;border-bottom:1px solid var(--border)}
+.fig b{display:block;font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{font-size:12px;color:var(--muted)}
+
+h2.sech{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:28px 0 14px}
+
+/* tarjetas de seccion de la landing */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+.card-sec{
+  display:flex;flex-direction:column;gap:8px;padding:16px;text-decoration:none;
+  color:var(--text);background:var(--canvas);border:1px solid var(--border);border-radius:12px;
+}
+.card-sec:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(39,131,222,.08)}
+.card-sec .ctit{display:flex;align-items:center;gap:9px}
+.card-sec .ctit b{font-size:15px;font-weight:600}
+.card-sec svg{width:19px;height:19px;stroke:var(--blue);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.card-sec p{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.card-sec .go{margin-top:auto;padding-top:6px;font-size:12.5px;color:var(--blue)}
+.tagpill{
+  margin-left:auto;flex:none;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);background:var(--soft);
+}
+.tagpill.live{color:var(--green);border-color:#CDE8D9;background:#EDF7F1}
+.tagpill.wip{color:var(--orange);border-color:#F0DCC6;background:#FBF1E8}
+
+.note{
+  margin:26px 0 40px;padding:16px 18px;background:var(--soft);
+  border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;
+}
+.note h3{margin:0 0 6px;font-size:14px}
+.note p{margin:0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.note p+p{margin-top:8px}
+
+/* ============================================ SECCIONES EN CONSTRUCCION (IA, COMUNIDAD) */
+.soon{max-width:680px}
+.soon .kicker{font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);margin:0 0 10px}
+.soon h1{font-size:26px;margin:0 0 12px;letter-spacing:-.01em}
+.soon .lead{font-size:15.5px;line-height:1.6;color:var(--muted);margin:0 0 24px}
+.plan{display:flex;flex-direction:column;gap:10px}
+.plan .it{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--canvas)}
+.plan .it .num{
+  flex:none;width:24px;height:24px;border-radius:7px;background:var(--surface);color:var(--muted);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-variant-numeric:tabular-nums;
+}
+.plan .it b{display:block;font-size:14px;margin-bottom:3px}
+.plan .it p{margin:0;font-size:13px;line-height:1.5;color:var(--muted)}
+
+/* ==================================================================== PASEOS */
+/* El main de Paseos no lleva el padding habitual: el grafo ocupa todo. */
+body.sec-paseos #mn{padding:0;overflow:hidden;display:flex;flex-direction:column}
+#walkframe{flex:1;min-height:0;width:100%;border:0;display:block;background:var(--canvas)}
+#walkintro{flex:1;min-height:0;overflow-y:auto;padding:24px}
+
+/* items de la sidebar de paseos */
+.walk{
+  display:block;width:100%;text-align:left;background:var(--canvas);border:1px solid var(--border);
+  border-radius:10px;padding:10px 12px;margin-bottom:8px;color:var(--text);text-decoration:none;
+}
+.walk:hover{border-color:var(--blue)}
+.walk.on{border-color:var(--blue);background:var(--blue-soft)}
+.walk b{display:block;font-size:13.5px;margin-bottom:2px}
+.walk b .gr{font-weight:400;color:var(--muted);font-size:12.5px}
+.walk.on b .gr{color:var(--blue)}
+.walk span{display:block;font-size:11.5px;line-height:1.4;color:var(--muted)}
+.walk[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.walk[aria-disabled="true"]:hover{border-color:var(--border)}
+
+/* ==================================================================== MOVIL */
+@media(max-width:1080px){
+  .logo .tit span{display:none}
+  #secnav a span.lab{display:none}
+  #secnav a{padding:0 10px}
+  .tbnote{display:none}
+}
+@media(max-width:820px){
+  #topbar{padding:0 10px;gap:8px}
+  #secnav{margin:0 0 0 auto}
+  .logo .tit{display:none}
+  .hero{padding:26px 0 22px}
+  .hero h1{font-size:26px}
+  .figures{gap:18px}
+  #crumbs{margin-bottom:14px}
+}

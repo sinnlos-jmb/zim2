@@ -1,0 +1,275 @@
+// vectorize.js - texto -> vector de 24 dimensiones.
+// El MISMO pipeline se aplica a pasajes y a consultas.
+
+import { esTokens, grTokens, esStem, grStem, grSurfaceForms, grStrip } from './normalize.js';
+
+// formas griegas exactas: se normalizan (sin acentos, sigma final) pero NO se stemmean
+// piso en 2, misma razon que en normalize.grTokens: terminos de 2 letras
+// como "εὖ" no deben quedar afuera solo por ser cortos.
+const grExactTokens = (text) => grSurfaceForms(text).map(grStrip).filter((t) => t.length >= 2);
+import { AXES, DEFAULT_WEIGHTS } from './lexicon.js';
+
+export const DIM = AXES.length;
+const MAX_NGRAM = 4;
+const COLLAPSED = [];
+// DUPLICATE_TERMS: entradas del lexico descartadas por resolver al mismo
+// token que otra entrada anterior del mismo eje/canal (ver load() abajo).
+const DUPLICATE_TERMS = [];
+
+// Indices invertidos separados para unigramas y frases.
+// Las frases NO se descomponen en tokens sueltos: "vivir bien" no debe hacer
+// que el token "bien" active el eje felicidad.
+// Se construyen DOS indices con el mismo codigo:
+//   INDEX    sin alias  -> se aplica a los PASAJES
+//   INDEX_Q  con alias  -> se aplica a las CONSULTAS
+// Asi un alias no puede tocar el corpus. Ver la nota larga en vectorize().
+function buildIndex(withAliases = false) {
+  const esUni = new Map(), esPhr = new Map();
+  const grUni = new Map(), grPhr = new Map();
+  const gxUni = new Map(), gxPhr = new Map();
+  COLLAPSED.length = 0;
+  DUPLICATE_TERMS.length = 0;
+
+  const add = (map, key, axis, w) => {
+    if (!key) return;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push({ axis, w });
+  };
+
+  AXES.forEach((ax, ai) => {
+    // Registro de lo ya cargado en ESTE eje, para que un alias repetido no
+    // sume dos veces. Sin esta guarda, agregar un sinonimo que ya estaba en
+    // otra lista duplicaria el peso del eje en silencio.
+    const seen = new Set();
+
+    const load = (list, tokenize, uni, phr, defW, canal) => {
+      for (const raw of list || []) {
+        const [term, w] = Array.isArray(raw) ? raw : [raw, defW];
+        const toks = tokenize(term);
+        // TRAMPA: un termino de varias palabras cuyas stopwords se caen queda
+        // reducido a un unigrama y deja de ser restrictivo. "lo mejor de todo"
+        // se convertia en el unigrama "mejor", que aparece en 30/70 pasajes.
+        if (toks.length === 1 && String(term).trim().split(/\s+/).length > 1) {
+          COLLAPSED.push({ axis: ax.id, term, token: toks[0] });
+        }
+        // toks.length === 0 -> el termino se disolvio en stopwords, se descarta
+        if (!toks.length || toks.length > MAX_NGRAM) continue;
+        const key = toks.join(' ');
+        const reg = canal + '|' + key;
+        // DEDUP SIEMPRE, no solo en alias: dos entradas del MISMO eje y canal
+        // que terminan en el mismo token se sumaban una vez por cada
+        // aparicion real de la palabra en el texto (p.ej. una sola ocurrencia
+        // de 'ἀγαθὸν' llegaba a contar 4 veces el peso base porque 'ἀγαθόν',
+        // 'ἀγαθά', 'ἀγαθῶν' y 'ἀγαθοὺς' stemean todas a 'αγαθ'). Se guarda solo
+        // la PRIMERA entrada de la lista por token; las siguientes quedan en
+        // DUPLICATE_TERMS para poder auditarlas.
+        if (seen.has(reg)) {
+          DUPLICATE_TERMS.push({ axis: ax.id, term, token: key });
+          continue;
+        }
+        seen.add(reg);
+        if (toks.length === 1) add(uni, key, ai, w);
+        else add(phr, key, ai, w);
+      }
+    };
+
+    load(ax.es, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
+    load(ax.gr, grTokens, grUni, grPhr, DEFAULT_WEIGHTS.gr, 'gr');
+    load(ax.grForms, grExactTokens, gxUni, gxPhr, DEFAULT_WEIGHTS.grForms, 'gx');
+    // ALIAS: castellano, mismo canal y mismo peso que `es`. Van ultimos, asi
+    // que la guarda de dedup hace que agregar un alias solo pueda sumar
+    // cobertura nueva: nunca duplica el peso de un termino que ya estaba.
+    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
+  });
+
+  return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr };
+}
+
+export const INDEX = buildIndex(false);   // pasajes
+export const INDEX_Q = buildIndex(true);  // consultas
+
+// Auditoria de terminos colapsados. Se revisa en el build, no en el navegador.
+export function collapsedTerms() { return COLLAPSED.slice(); }
+
+// Terminos que la guarda descarto por resolver al mismo token que otro ya
+// cargado en el mismo eje/canal.
+export function duplicateTerms() { return DUPLICATE_TERMS.slice(); }
+// alias del nombre anterior, por compatibilidad con scripts existentes
+export function aliasDupes() { return DUPLICATE_TERMS.slice(); }
+
+// tf sublineal: la 5a aparicion vale menos que la 1a
+const tf = (n) => 1 + Math.log(n);
+
+function accumulate(tokens, uni, phr, lang, vec, hits) {
+  // 1. frases (n-gramas). Se marcan las posiciones consumidas.
+  const used = new Array(tokens.length).fill(false);
+  const phraseCounts = new Map();
+  for (let n = MAX_NGRAM; n >= 2; n--) {
+    for (let i = 0; i + n <= tokens.length; i++) {
+      if (used.slice(i, i + n).some(Boolean)) continue;
+      const key = tokens.slice(i, i + n).join(' ');
+      if (!phr.has(key)) continue;
+      for (let j = i; j < i + n; j++) used[j] = true;
+      phraseCounts.set(key, (phraseCounts.get(key) || 0) + 1);
+    }
+  }
+  for (const [key, n] of phraseCounts) {
+    for (const { axis, w } of phr.get(key)) {
+      const contrib = w * tf(n);
+      vec[axis] += contrib;
+      hits.push({ axis, token: key, n, lang, contrib, phrase: true });
+    }
+  }
+
+  // 2. unigramas (solo tokens no consumidos por una frase)
+  const counts = new Map();
+  tokens.forEach((t, i) => { if (!used[i]) counts.set(t, (counts.get(t) || 0) + 1); });
+  for (const [tok, n] of counts) {
+    const entries = uni.get(tok);
+    if (!entries) continue;
+    for (const { axis, w } of entries) {
+      const contrib = w * tf(n);
+      vec[axis] += contrib;
+      hits.push({ axis, token: tok, n, lang, contrib, phrase: false });
+    }
+  }
+}
+
+/**
+ * @param {string} spanish  texto castellano (sin glosas)
+ * @param {string[]} glosses  glosas griegas del pasaje
+ * @param {{query?: boolean}} opts  query:true para vectorizar una CONSULTA
+ *
+ * Los alias entran SOLO por el indice de consulta, y la razon se midio:
+ *
+ *  1. Un alias de varias palabras le roba tokens a otro eje. Las frases se
+ *     resuelven antes que los unigramas y consumen posiciones, asi que el
+ *     alias 'tener la virtud' (habito) se comia el token 'virtud' del eje
+ *     Virtud en los pasajes donde aparecia la expresion. Cambiaba el resultado
+ *     de "que es la virtud?" sin que nadie hubiera tocado el eje Virtud.
+ *  2. El df del corpus dejaba de ser una propiedad de la traduccion y pasaba a
+ *     depender de cuantos sinonimos hubiera escrito el administrador.
+ *
+ * Separando los indices, agregar o quitar un alias NO puede alterar un solo
+ * vector de pasaje: solo cambia por que puertas entra la pregunta. No hace
+ * falta revectorizar el corpus al editar la lista.
+ */
+export function vectorize(spanish, glosses = [], opts = {}) {
+  const IX = opts.query ? INDEX_Q : INDEX;
+  const vec = new Array(DIM).fill(0);
+  const hits = [];
+  const greek = glosses.join(' ');
+  accumulate(esTokens(spanish), IX.esUni, IX.esPhr, 'es', vec, hits);
+  accumulate(grTokens(greek), IX.grUni, IX.grPhr, 'gr', vec, hits);
+  accumulate(grExactTokens(greek), IX.gxUni, IX.gxPhr, 'gr', vec, hits);
+  return { vector: l2(vec), raw: vec, hits };
+}
+
+export function l2(v) {
+  const n = Math.sqrt(v.reduce((s, x) => s + x * x, 0));
+  if (!n) return v.slice();
+  return v.map((x) => x / n);
+}
+
+// Vector armado directamente desde ejes seleccionados (querybuilder)
+export function vectorFromAxes(selected) {
+  const vec = new Array(DIM).fill(0);
+  for (const [axisId, weight] of Object.entries(selected)) {
+    const i = AXES.findIndex((a) => a.id === axisId);
+    if (i >= 0) vec[i] = weight;
+  }
+  return { vector: l2(vec), raw: vec, hits: [] };
+}
+
+export function cosine(a, b) {
+  let s = 0;
+  for (let i = 0; i < a.length; i++) s += a[i] * b[i];
+  return s;
+}
+
+// COBERTURA DE EJES (coordination level matching).
+// El coseno premia la magnitud, no el reparto: un pasaje con un valor altisimo
+// en un solo eje le gana a otro con valores medios en los dos ejes que la
+// consulta pidio. Este factor corrige eso.
+// Se pondera por la MASA que cada eje tiene en la consulta, no por conteo de
+// ejes: si la pregunta activo un eje apenas, no tocarlo no puede castigar lo
+// mismo que no tocar el eje central de la pregunta.
+// lambda = 0.5 esta medido en build/exp_cobertura3.mjs: es el valor maximo con
+// CERO regresiones sobre las 23 preguntas del menu. Con 0.6 se pierde
+// EN.I.5.c (la virtud dormida) frente a EN.I.13.e, que solo comparte el
+// vocabulario del sueno pero habla de las partes del alma.
+export const COVERAGE_LAMBDA = 0.5;
+
+// fraccion de la masa de la consulta que el pasaje efectivamente toca
+export function coverage(queryVec, passageVec) {
+  let total = 0;
+  let touched = 0;
+  for (let i = 0; i < queryVec.length; i++) {
+    if (queryVec[i] <= 0) continue;
+    total += queryVec[i];
+    if (passageVec[i] > 0) touched += queryVec[i];
+  }
+  return total ? touched / total : 1;
+}
+
+// RELEGACION DE LOS PASAJES DE UN SOLO EJE.
+// Cuando la consulta pide varios ejes y el pasaje toca uno solo, no es una
+// respuesta debil: es otro tema que comparte una palabra.
+// No se filtran, se mandan al fondo: el estudiante tiene que poder ver que el
+// motor los considero y por que quedaron ahi.
+//
+// Medido sobre las 23 preguntas del menu (build/exp_balance2.mjs, exp_lexico.mjs):
+//   valor 3  ->  0 top-1 rotos, 0 top-5 alterados
+//   valor 2  ->  1 top-1 roto, 8 top-5 alterados
+// El unico caso que rompe en 2 es "\u00bfalcanza con ser rico para vivir bien?":
+// EN.I.5.d es la respuesta correcta y toca 1 de 2 ejes porque el eje Felicidad
+// no reconoce "vivir bien". Es una laguna del lexico, no del ordenamiento; al
+// cubrirla, el costo de este valor desaparece.
+const MIN_AXES_TO_DEMOTE = 2;
+
+// CONSULTA DE UN SOLO EJE: el coseno entre vectores L2-normalizados con un
+// solo eje activo en la consulta se reduce siempre a la componente
+// normalizada del pasaje en ese eje, lo que premia a pasajes que no tocan
+// ningun otro eje por sobre pasajes que si tocan el eje pedido con fuerza
+// real pero ademas tocan legitimamente otros ejes. Para este caso puntuamos
+// con el valor CRUDO del eje (sin L2), aplastado a (0,1) con x/(x+1). No se
+// toca el calculo de coseno para consultas de varios ejes (texto libre, FAQ,
+// Definiciones).
+function singleAxisOf(queryVec) {
+  let axis = -1, count = 0;
+  for (let i = 0; i < queryVec.length; i++) {
+    if (queryVec[i] > 0) { axis = i; count++; if (count > 1) return -1; }
+  }
+  return count === 1 ? axis : -1;
+}
+
+export function topK(queryVec, passages, k = 8) {
+  const axes = [];
+  for (let i = 0; i < queryVec.length; i++) if (queryVec[i] > 0) axes.push(i);
+  const singleAxis = singleAxisOf(queryVec);
+
+  return passages
+    .map((p) => {
+      const cos = cosine(queryVec, p.vector);
+      const mass = coverage(queryVec, p.vector);
+      const hitAxes = axes.filter((i) => p.vector[i] > 0).length;
+      const axisRaw = singleAxis >= 0 ? (p.raw ? p.raw[singleAxis] : 0) : null;
+      return {
+        passage: p,
+        cos,
+        mass,
+        hitAxes,
+        axisCount: axes.length,
+        demoted: axes.length >= MIN_AXES_TO_DEMOTE && hitAxes === 1,
+        // el coseno queda disponible aparte: la barra de aportes por eje se
+        // calcula sobre el, no sobre el puntaje ya reponderado
+        score: axisRaw !== null ? axisRaw / (axisRaw + 1) : cos * (1 - COVERAGE_LAMBDA + COVERAGE_LAMBDA * mass),
+      };
+    })
+    .filter((r) => r.cos > 0)
+    // los relegados van al fondo en bloque, ordenados entre si por puntaje
+    .sort((a, b) => (Number(a.demoted) - Number(b.demoted)) || (b.score - a.score))
+    .slice(0, k);
+}
+
+export { esStem, grStem };

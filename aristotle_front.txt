@@ -1,0 +1,1322 @@
+//// lexicon.js
+
+// lexicon.js - los 23 ejes semanticos del libro I de la Etica Nicomaquea.
+//
+// Cada eje puede tener:
+//   gr      : lemas griegos, se comparan por RAIZ (stemming). Peso por defecto 1.0
+//   grForms : formas griegas EXACTAS, sin stemming. Para terminos con homonimia
+//             fuerte donde la raiz confundiria sentidos distintos (kalon/kalos,
+//             theion/theoria). Peso por defecto 1.0
+//   es      : palabras castellanas, se comparan por raiz. Peso por defecto 0.5
+//   aliases : COMO SE NOMBRA el concepto. Mismo canal y mismo peso que `es`.
+//             Se diferencia de `es` por su funcion, no por su mecanica:
+//               es      -> vocabulario que APARECE en la traduccion
+//               aliases -> vocabulario con que el ESTUDIANTE pregunta
+//             Un alias puede tener df 0 y servir igual, porque el mismo
+//             pipeline vectoriza los pasajes y las consultas: nadie escribe
+//             "lo mejor" al preguntar, escribe "el sumo bien".
+//             Los alias se cargan ultimos y con guarda antiduplicados: agregar
+//             uno solo puede sumar cobertura nueva, nunca duplicar peso.
+//             Es la lista pensada para editar sin miedo desde el dashboard.
+//
+// Cualquier termino admite la forma [termino, peso] para ajustarlo caso por caso.
+
+export const AXES = [
+  {
+    id: 'telos', label: 'Fin', greek: 'τέλος',
+    gr: ['τέλος', 'τέλη', 'ἐφίεσθαι', 'προαίρεσις', 'πρακτῶν', 'ἕνεκα'],
+    es: [['fin', 0.5], ['fines', 0.5], 'tender', 'tienden', ['aquello a que', 0.6], 'en vista de', 'subordinada', 'subordinan'],
+  },
+  {
+    // AGATHON: los bienes, en plural y enumerables. NO el bien supremo (ver ariston).
+    id: 'agathon', label: 'Bienes', greek: 'ἀγαθόν',
+    gr: ['ἀγαθόν', 'τἀγαθόν', 'ἀγαθά', 'ἀγαθῶν', 'ἀγαθοὺς', ['βέλτιον', 0.4]],
+    es: [['bien', 0.2], ['bienes', 0.35], ['bueno', 0.3], ['buenas', 0.3]],
+  },
+  {
+    // ARISTON: el fin unico y superlativo. Se apoya en el griego; el castellano
+    // "mejor" es comparativo corriente en 30/70 pasajes y quedaria fuera.
+    id: 'ariston', label: 'Bien supremo', greek: 'ἄριστον',
+    gr: ['ἄριστον', 'ἀρίστην', 'ἀρίσταις', 'ἀρίστων', 'βέλτιστον', 'ἀκρότατον', 'κυριώτατα'],
+    // OJO: nada de "mejor" suelto. Es comparativo corriente en 30/70 pasajes.
+    // Tampoco "lo mejor de todo": colapsa al unigrama "mejor" al quitar stopwords.
+    // Las cuatro expresiones castellanas de abajo tienen df 0: la traduccion
+    // dice "lo mejor", nunca "el sumo bien". Viven del lado de la consulta.
+    aliases: ['mayor bien', 'bien ultimo', 'fin ultimo'],
+    es: ['bien supremo', 'sumo bien', 'fin supremo', 'bien mas alto', ['supremo', 0.3], ['optimo', 0.4]],
+  },
+  {
+    id: 'eudaimonia', label: 'Felicidad', greek: 'εὐδαιμονία',
+    aliases: ['eudaimonia', 'buena vida', 'vida feliz', 'florecimiento'],
+    gr: ['εὐδαιμονία', 'εὐδαιμονεῖν', 'εὐδαιμονίζομεν', 'εὐπραξία', 'ἄθλιος', ['μακαρίους', 0.5]],
+    es: ['felicidad', 'feliz', 'felices', 'dichoso', 'vivir bien', 'obrar bien', 'desdichado', 'venturoso'],
+  },
+  {
+    id: 'ergon', label: 'Función propia', greek: 'ἔργον',
+    gr: ['ἔργον', 'ἔργα', 'οἰκεῖον', 'ἴδιον', 'ἀργόν'],
+    // carpintero/zapatero sostienen la analogia del ergon en 7.g. Si se crea el
+    // eje techne (artes y oficios), estos terminos se mudan alli.
+    es: [['obra', 0.5], ['obras', 0.5], ['funcion', 0.6], 'función propia', 'tarea', 'oficio', 'propio del hombre', 'carpintero', 'zapatero'],
+  },
+  {
+    id: 'arete', label: 'Virtud', greek: 'ἀρετή',
+    aliases: ['arete', 'excelencia etica', 'excelencia moral'],
+    gr: ['ἀρετή', 'ἀρεταί', 'σπουδαῖον', 'ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'διανοητικαί', 'ἠθικαί'],
+    es: ['virtud', 'virtudes', 'excelencia', 'esforzado', 'valentía', 'justicia', 'justo', 'dianoetica', 'etica'],
+  },
+  {
+    id: 'energeia', label: 'Actividad', greek: 'ἐνέργεια',
+    // 'acto' lo descarta la guarda: "en acto" ya colapsa a ese mismo unigrama.
+    aliases: ['energeia', 'acto', 'actualidad', 'estar en acto'],
+    gr: ['ἐνέργεια', 'ἐνεργεῖν', 'ἐνέργειαι', 'πρᾶξις', 'πράξεις', 'πράττειν', 'κινήσεων'],
+    es: ['actividad', 'actividades', 'en acto', 'ejercicio', 'obrar', 'accion', 'acciones', 'movimiento'],
+  },
+  {
+    id: 'psyche', label: 'Alma', greek: 'ψυχή',
+    aliases: ['psique', 'parte racional del alma', 'parte irracional'],
+    gr: ['ψυχή', 'σώματος', 'ἄλογον', 'μόριον', 'ἐπιθυμητικόν', 'θρεπτικόν'],
+    es: ['alma', 'cuerpo', 'irracional', 'apetitivo', 'nutritivo', 'vegetativo', 'partes del alma'],
+  },
+  {
+    id: 'logos', label: 'Razón', greek: 'λόγος',
+    gr: ['λόγος', 'λόγον ἔχον', 'νοῦς', '  ρόνησις', 'σοφία', 'σύνεσις', 'ἀλήθειαν', 'ὀρθῶς'],
+    es: [['razon', 0.45], 'racional', 'entendimiento', 'prudencia', 'sabiduría', 'inteligencia', 'obedecer a la razon'],
+  },
+  {
+    // HEXIS: el lado de la POSESION en el contraste tener/ejercer del libro I
+    // (5.c, 8.d, 13.e). Por eso entran ktesis y katheudein: el que tiene la
+    // virtud pero duerme. El lado del USO (chresis, energein) es de energeia.
+    // NO se agrega ἀργόν: ya es de ergon, donde sostiene el argumento de 7.g.
+    id: 'hexis', label: 'Hábito', greek: 'ἕξις',
+    aliases: ['hexis', 'estado del alma', 'tener la virtud', 'virtud adquirida'],
+    // Formas atestiguadas en el libro I. Ojo: en 5.c (καθεύδειν) y 4.b (ἔθεσιν)
+    // el griego esta solo en el texto paralelo, que no se indexa; ahi el eje
+    // entra por castellano. Se listan igual para cuando haya mas glosas.
+    gr: ['ἕξιν', 'ἕξει', 'ἕξεων', 'ἔθος', 'ἔθη', 'ἔθεσιν', 'κτῆσις', 'κτήσει', 'καθεύδειν', 'καθεύδοντι'],
+    es: [
+      'habito', 'habitos', 'costumbre', 'acostumbrar', 'disposicion', 'disposiciones', 'ejercitar',
+      // posesion inerte. Pesos bajos en los genericos: "poseer" e "inactivo"
+      // aparecen tambien en 7.g y 10.c/10.i, donde el tema es otro.
+      'dormido', 'durmiendo', 'duerme', 'sueno', 'sin ejercitar',
+      ['poseer', 0.5], ['posee', 0.5], ['posesion', 0.5], ['inactivo', 0.5],
+    ],
+  },
+  {
+    id: 'hedone', label: 'Placer', greek: 'ἡδονή',
+    gr: ['ἡδονήν', 'ἀπόλαυσις', 'ἀπολαυστικός'],
+    es: ['placer', 'placeres', 'deleite', 'goce', 'gozar', 'gozan', 'vida de goce', 'sensual', 'bestias', 'vulgar'],
+  },
+  {
+    id: 'time', label: 'Honor', greek: 'τιμή',
+    aliases: ['prestigio', 'fama', 'recibir honores'],
+    gr: ['τιμήν', 'τιμίων', 'τίμιόν', 'ἐπαινετῶν', 'ἐπαινοῦμεν', 'ἐπαίνων'],
+    es: ['honor', 'honra', 'elogio', 'elogiable', 'reputacion', 'estima', 'alabanza', 'encomio'],
+  },
+  {
+    id: 'ploutos', label: 'Riqueza', greek: 'πλοῦτος',
+    gr: ['πλοῦτος', 'χρήσιμον', 'ὄργανα', 'χρηματιστής'],
+    es: ['riqueza', 'riquezas', 'rico', 'ricos', 'dinero', 'util', 'utilidad', 'instrumento', 'negocio', 'lucro'],
+  },
+  {
+    id: 'tyche', label: 'Fortuna', greek: 'τύχη',
+    gr: ['τύχης', 'ἐκτός', 'εὐγένεια', 'φίλοι', 'μεταβολάς'],
+    es: ['fortuna', 'azar', 'suerte', 'externos', 'bienes exteriores', 'amigos', 'salud', 'linaje', 'hijos', 'infortunio'],
+  },
+  {
+    id: 'autarkeia', label: 'Autarquía', greek: 'αὐτάρκεια',
+    // TELEIOS SALIO DE ACA. La autarkeia es una CONSECUENCIA de la teleiotes
+    // (1097b6-8), no un sinonimo: teniendo ambos terminos en un solo eje,
+    // 7.b marcaba Autarquia 0.912 sin contener la palabra autarkeia.
+    gr: ['αὔταρκες', 'αὐταρκείας', 'αἱρετὸν', 'αἱρούμεθα'],
+    // 'autosuficiencia' no es lo mismo que 'autosuficiente' para el stemmer
+    // castellano: da 'autosuficienci' y no entraba por ninguna puerta.
+    aliases: ['autosuficiencia', 'autarkeia', 'autosuficientes'],
+    es: ['autosuficiente', 'autarquia', 'por si mismo', 'elegible', 'deseable', 'no necesita nada'],
+  },
+  {
+    id: 'akribeia', label: 'Método', greek: 'ἀκρίβεια',
+    gr: ['ἀκρίβειαν', 'μέθοδος', 'ὕλην', 'ὑποτυπῶσαι', 'ἐπαγωγῇ', 'ἐπισκεπτέον'],
+    // kalos adverbial ("delimitar bien", "juzgar bien") es METODO, no lo noble.
+    grForms: [['καλῶς', 0.6]],
+    es: ['exactitud', 'rigor', 'metodo', 'bosquejo', 'materia', 'precision', 'contentarse', 'grandes rasgos', 'investigacion'],
+  },
+  {
+    id: 'endoxa', label: 'Opiniones recibidas', greek: 'ἔνδοξα',
+    aliases: ['que dice la gente', 'opinion comun', 'creencia comun', 'endoxa'],
+    gr: ['δόξαν', 'συνᾴδει', 'λέγεται', 'σοφοί'],
+    // οἱ πολλοί va por grForms (igualdad exacta) y no por gr (stem): el stem
+    // πολλ- captura toda la familia de πολύς. Con 'πολλὰ' / 'πολλῶν' ('grandes
+    // y numerosos', 1100b22 y 1101a12) el eje se activaba sin doxografia alguna.
+    grForms: ['πολλοί', 'πολλοὶ'],
+    // 'parece a todos' se retiro: colapsaba al unigrama 'parec' y disparaba en
+    // 32/70 pasajes, midiendo un tic de la traduccion y no la doxografia.
+    es: ['opinion', 'opiniones', 'los mas', 'la mayoria', 'vulgo', 'se dice', 'sabios', 'antiguos'],
+  },
+  {
+    id: 'politike', label: 'Política', greek: 'πολιτική',
+    // techne y los oficios estan aca solo porque el libro I los usa como
+    // escalones del argumento arquitectonico. Es su lugar provisorio.
+    gr: ['πολιτικὸν', 'ἀρχιτεκτονικῶν', 'νομοθέτης', 'νόμῳ', 'ἐπιστημῶν', 'τέχνη', 'δύναμιν'],
+    es: ['politica', 'ciudad', 'legislador', 'ciencia', 'ciencias', 'arte', 'artes', 'arquitectonica', 'rectora', 'estrategia', 'medicina'],
+  },
+  {
+    id: 'akroates', label: 'Oyente', greek: 'ἀκροατής',
+    aliases: ['estudiante', 'alumno', 'capaz de aprender'],
+    gr: ['ἀκροατής', 'νέος', 'ἄπειρος', 'παιδεία', 'μανθάνειν', 'γνῶσις'],
+    es: ['joven', 'jovenes', 'oyente', 'inexperto', 'educacion', 'educado', 'aprender', 'ensenanza', 'pasiones', 'discipulo'],
+  },
+  {
+    id: 'idea', label: 'Idea platónica', greek: 'ἰδέα',
+    // NO poner 'el bien en si': con las stopwords fuera colapsa al unigrama
+    // 'bien', que dispara en 45 pasajes. Medido. Ver COLLAPSED en vectorize.js.
+    aliases: ['idea platonica', 'formas platonicas', 'idea del bien', 'bien separado'],
+    // \u1F01\u03C0\u03BB\u1FF6\u03C2 retirado: es el adverbio "en sentido absoluto", no tiene
+    // relacion con Platon. Falso amigo, como \u03C6\u03C5\u03C4\u03CC\u03BD/\u03C6\u03CD\u03C3\u03B9\u03C2 y \u1F14\u03B8\u03BD\u03BF\u03C2/\u1F14\u03B8\u03BF\u03C2.
+    gr: ['ἰδέα', 'εἶδος', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι'],
+    es: ['idea', 'ideas', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
+  },
+  {
+    // BIOS: la vida BIOGRAFICA. El genero de vida que uno elige y el tramo que
+    // dura. Por eso se dice bios teleios y nunca zoe teleia.
+    // NO lleva el unigrama 'vida' ni 'toda la vida' (que colapsa a 'vida'):
+    // esa era la puerta por la que el eje se volvia un detector de la palabra
+    // 'vida' y aparecia en 26 de 70 pasajes, incluidos 5.a "completamente",
+    // 7.g "caballo" y 3.c, donde no se habla de la vida de nadie.
+    id: 'bios', label: 'Curso de vida', greek: 'βίος',
+    gr: ['βίον', 'βίου', 'βίῳ', 'χρόνος'],
+    aliases: ['cuanto dura la vida', 'a lo largo de la vida', 'que vida elegir', 'tipo de vida'],
+    es: ['vida entera', 'vida completa', 'golondrina', 'un solo dia', ['tiempo', 0.5], 'mudanza', 'vicisitudes', 'genero de vida', 'generos de vida'],
+  },
+  {
+    // ZOE: el VIVIR como actividad, no como biografia. Es el termino del
+    // argumento del ergon (7.g, 7.h) y del eu zen (4.a, 8.b). Separado de
+    // bios porque son dos conceptos distintos que compartian un solo eje.
+    id: 'zoe', label: 'El vivir', greek: 'ζωή',
+    gr: ['ζῆν', 'ζωή', 'ζωήν', 'ζωῆς', 'εὐζωία'],
+    aliases: ['estar vivo', 'la vida humana', 'vida vegetativa'],
+    es: [['vivir', 0.5], ['viviente', 0.5], ['vivientes', 0.5], ['vive', 0.5], ['viven', 0.5], 'vivir bien', 'plantas', 'animales'],
+  },
+  {
+    // KALON: lo noble. Formas EXACTAS para no arrastrar el adverbio kalos
+    // (que va a metodo) ni la belleza fisica de los atletas en 8.e.
+    id: 'kalon', label: 'Lo noble', greek: 'καλόν',
+    grForms: ['καλόν', 'καλὸν', 'καλά', 'καλὰ', 'καλῶν', 'καλαί', 'καλαὶ', 'καλαῖς', 'καλὴ', 'κάλλιον', 'κάλλιστα', 'κάλλιστον'],
+    es: ['noble', 'nobles', 'hermoso', 'hermosa', 'hermosas', 'bello', 'bella', 'belleza', 'hechos nobles'],
+  },
+  {
+    // THEION: lo divino en la praxis. Formas EXACTAS: la raiz "the-" arrastraria
+    // theoria/theorein, que en el libro I significa casi siempre "examinar".
+    id: 'theion', label: 'Lo divino', greek: 'θεῖον',
+    grForms: [
+      'θεῖον', 'θεῖόν', 'θείαν', 'θείων', 'θειότερον', 'θειότερόν', 'θειοτάτων',
+      'θεός', 'θεοὺς', 'θεούς', 'θεῶν', 'θεῷ',
+      ['μακάριον', 0.5], ['μακαρίους', 0.5], ['μακαρίζομεν', 0.5], ['μακαρίζει', 0.5],
+    ],
+    es: ['divino', 'divina', 'dios', 'dioses', 'bienaventurado', 'don de los dioses', 'providencia'],
+  },
+  {
+    // ARKHE: en el libro I es sobre todo el punto de partida del RAZONAMIENTO
+    // (4.b, 4.c, 4.d, 7.k, 8.a): los argumentos que parten de los principios
+    // frente a los que conducen a ellos, el "que" como arche. En 12.d converge
+    // con la causa: "principio y causa de los bienes" (arche kai aition).
+    // NO entra el prefijo archi- de mando (architektonike, archikos, 1.b y
+    // 2.b): es otra palabra y ese sentido ya vive en politike. El stem griego
+    // los separa solo; verificado, df=8 sin 1.b ni 2.b.
+    // Tampoco entra "comienzo": en 9.b es temporal ("lo que dijimos al
+    // comienzo"), una referencia interna al tratado, no el concepto.
+    id: 'arkhe', label: 'Principio', greek: 'ἀρχή',
+    gr: ['ἀρχή', 'ἀρχὴ', 'ἀρχῆς', 'ἀρχῇ', 'ἀρχήν', 'ἀρχὴν', 'ἀρχάς', 'ἀρχὰς', 'ἀρχῶν'],
+    es: ['principio', 'principios', 'punto de partida'],
+  },
+  {
+    // TELEIOS: lo completo o acabado. Concepto propio, no un matiz de la
+    // autarkeia. Cubre la cadena teleion -> autarkes -> eudaimonia del cap. 7
+    // y el bios teleios, que ahora se pide combinando este eje con 'Curso de
+    // vida'. Una forma griega POR STEM: teleion/teleios/teleion(gen. pl.)/
+    // teleiotaton/teleioteron/teleioutai cubren los siete stems distintos.
+    id: 'teleios', label: 'Lo completo', greek: 'τέλειος',
+    gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότατον', 'τελειότερον', 'τελειοῦται'],
+    aliases: ['teleios', 'fin perfecto', 'fin acabado'],
+    es: ['perfecto', 'perfecta', 'perfectos', 'perfectas', ['completo', 0.5], ['acabado', 0.5], ['cabal', 0.5], ['pleno', 0.5]],
+  },
+];
+
+export const DEFAULT_WEIGHTS = { gr: 1.0, grForms: 1.0, es: 0.5 };
+
+
+
+
+//  normalize.js
+// normalize.js — capa de normalizacion. Se usa SOLO para indexar/buscar.
+// Nunca se muestra al usuario: la UI siempre renderiza el texto original.
+
+const GREEK_CHAR = /[\u0370-\u03FF\u1F00-\u1FFF]/;
+
+export const hasGreek = (s) => GREEK_CHAR.test(s);
+
+export function greekRatio(s) {
+  const letters = [...s].filter((c) => /\p{L}/u.test(c));
+  if (!letters.length) return 0;
+  return letters.filter((c) => GREEK_CHAR.test(c)).length / letters.length;
+}
+
+/* ---------------------------------------------------------------- CASTELLANO */
+
+export const ES_STOP = new Set(
+  ('a al algo alguna algunas alguno algunos ante antes aquel aquella aquellas aquello aquellos aqui asi aun aunque cada como con contra cual cuales cuando de del desde donde dos e el ella ellas ello ellos en entre era eran es esa esas ese eso esos esta estan estas este esto estos ha han hay la las le les lo los mas me mi mientras misma mismo mismas mismos mucha muchas mucho muchos muy nada ni no nos nosotros o os otra otras otro otros para pero poco por porque pues que quien quienes se sea sean segun ser si sin sino sobre solo son su sus tal tales tambien tanto te toda todas todo todos tras un una unas uno unos y ya').split(' ')
+);
+
+// sufijos castellanos, de mas largo a mas corto
+const ES_SUF = [
+  'amientos','imientos','amiento','imiento','aciones','iciones','adoras','adores',
+  'ancias','encias','ismos','istas','ables','ibles','anzas','icos','icas','ismo',
+  'able','ible','ista','osos','osas','ivos','ivas','anza','icar','izar','ando',
+  'iendo','arse','erse','irse','ador','idad','ivo','iva','oso','osa','ico','ica',
+  'ion','dad','mente','ar','er','ir','os','as','es','a','o','e','s',
+];
+
+export function esNormalize(s) {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')   // quita tildes latinas
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+export function esStem(w) {
+  if (w.length <= 4) return w;
+  for (const suf of ES_SUF) {
+    if (w.endsWith(suf) && w.length - suf.length >= 4) return w.slice(0, -suf.length);
+  }
+  return w;
+}
+
+export function esTokens(text) {
+  return esNormalize(text)
+    .split(' ')
+    .filter((w) => w && w.length > 2 && !ES_STOP.has(w))
+    .map(esStem);
+}
+
+/* -------------------------------------------------------------------- GRIEGO */
+
+// articulos, particulas y pronombres que aparecen dentro de glosas multi-palabra
+export const GR_STOP = new Set(
+  ('και τε δε μεν ο η το τον την τω τη τα των τους τας οι αι του της γαρ ουν δη '
+  + 'αλλα αλλ περι προς εν εις εκ εξ απο κατα κατ καθ δια δι μη ου ουκ ουχ ως ει αν '
+  + 'τι τις τινα τινος τουτο ταυτα τουτων αυτο αυτου αυτων αυτο αυτη ουτος ουτω '
+  + 'μαλλον ετι ηδη νυν οτι εαν ινα τε γε μεντοι ουδε μηδε ειτε ουτε μητε παρα παρ '
+  + 'υπο υπερ συν μετα επι εφ αφ ωσπερ οσον οσα ουδεν πας πασα παν εστι ειναι').split(/\s+/)
+);
+
+// terminaciones de declinacion/conjugacion, de mas larga a mas corta
+const GR_SUF = [
+  'ουσιν','οντων','ωσιν','ουσα','οντα','ασιν','εσθαι','ηναι','εων','ιων','ους',
+  'ωσι','ατος','ατι','ατα','ων','ας','ης','οι','αι','ες','εα','ον','αν','ην',
+  'ῳ','ᾳ','ῃ','ω','α','η','ο','ε','ι','ν','σ',
+];
+
+// quita diacriticos politonicos, marcas de elision y unifica sigma final
+export function grStrip(s) {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f\u0345]/g, '')      // acentos, espiritus, iota suscrita
+    .replace(/[\u1FBD\u1FBF\u1FFE\u2019\u02BC']/g, '') // apostrofo de elision: κατ᾽ -> κατ
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/ς/g, 'σ');
+}
+
+// la stoplist se compara SIEMPRE normalizada (bug: 'τας' !== 'τασ')
+let GR_STOP_N = null;
+export function isGrStop(token) {
+  if (!GR_STOP_N) GR_STOP_N = new Set([...GR_STOP].map(grStrip));
+  return GR_STOP_N.has(grStrip(token));
+}
+
+export function grStem(w) {
+  const base = grStrip(w);
+  if (base.length <= 4) return base;
+  for (const suf of GR_SUF) {
+    const s = grStrip(suf);
+    if (base.endsWith(s) && base.length - s.length >= 4) return base.slice(0, -s.length);
+  }
+  return base;
+}
+
+const GR_TOKEN = /[\u0370-\u03FF\u1F00-\u1FFF]+/g;
+
+export function grTokens(text) {
+  return (text.match(GR_TOKEN) || [])
+    .filter((t) => !isGrStop(t))
+    .map(grStem)
+    .filter((t) => t.length >= 3);
+}
+
+// devuelve las formas originales (para el glosario), sin stemming
+export function grSurfaceForms(text) {
+  return (text.match(GR_TOKEN) || []).filter((t) => !isGrStop(t));
+}
+
+
+
+
+// ui.js
+/* ui.js - interfaz. Usa las funciones del motor inlineadas arriba. */
+
+import { AXES } from './lexicon.js';
+import { vectorize, vectorFromAxes, topK } from './vectorize.js';
+
+// El corpus no viaja dentro del script: se pide al servidor. new URL(...)
+// lo resuelve relativo a este modulo, asi la app funciona montada en / o
+// en un subdirectorio como /en1 sin tocar una linea.
+const CORPUS = await fetch(new URL('../data/corpus.json', import.meta.url)).then((r) => {
+  if (!r.ok) throw new Error('no se pudo cargar el corpus: HTTP ' + r.status);
+  return r.json();
+});
+
+
+// v2 = 23 dimensiones (ariston, kalon, theion) + formas griegas exactas.
+// v3 = 24 dimensiones: se agrega arkhe (Principio), medido con 3 mejoras,
+//      0 regresiones y 0 degeneracion frente a v2.
+// Al subir la clave se reconstruye el indice solo en el navegador.
+// Subir esta clave en CADA cambio de lexico: si no, un navegador que ya abrio
+// la version anterior recupera de localStorage un indice con otra cantidad de
+// dimensiones y el coseno compara vectores incompatibles.
+const STORE_KEY = 'en1:index:v7';
+const SB_KEY = 'en1:sidebar';
+// Preguntas frecuentes del menu del header. NO son texto decorativo: cada una
+// fue medida contra el indice con build/exp_preguntas.mjs y solo entra si
+// activa al menos un eje y su top-1 es defendible. Dos candidatas quedaron
+// afuera por dar vector nulo: "que es la verdad" (no hay eje de verdad) y
+// "se debe exigir la causa" (aitia todavia no es un eje).
+// Al agregar preguntas, volver a correr ese script antes de publicarlas.
+const FAQ = [
+  ['Definiciones', [
+    '¿qué es la felicidad?',
+    '¿qué es la energeia o actividad?',
+    '¿qué es la virtud?',
+    '¿qué es el bien supremo?',
+  ]],
+  ['Discusiones', [
+    '¿qué dice contra la idea platónica del bien?',
+    '¿qué opina la mayoría sobre la felicidad?',
+    '¿qué dicen los poetas y los sabios antiguos?',
+    '¿qué vida eligen los muchos y qué los sabios?',
+  ]],
+  ['Método', [
+    '¿con cuánta exactitud se puede tratar la política?',
+    '¿hay que partir de los principios o llegar a ellos?',
+    '¿puede un joven estudiar política?',
+  ]],
+  ['Fin y bienes', [
+    '¿todas las cosas tienden a algún fin?',
+    '¿por qué el fin de la política es el bien más alto?',
+    '¿por qué la felicidad es autosuficiente y perfecta?',
+    '¿la felicidad es un don divino o se adquiere?',
+  ]],
+  ['Vida y fortuna', [
+    '¿alcanza con ser rico para vivir bien?',
+    '¿la virtud basta o hacen falta bienes exteriores?',
+    '¿hay que esperar el fin de la vida para llamar feliz a alguien?',
+    '¿la fortuna puede cambiar la felicidad?',
+  ]],
+  ['Alma y virtud', [
+    '¿cuál es la función propia del hombre?',
+    '¿cómo se divide el alma?',
+    '¿la virtud es un hábito o una actividad?',
+    '¿en qué se distinguen las virtudes del alma racional?',
+  ]],
+];
+const $ = (s) => document.querySelector(s);
+const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
+
+let PASSAGES = [];
+let selectedAxes = {};
+let lastResults = [];
+let lastQuery = null;
+
+/* ------------------------------------------------ INDEXADO + localStorage --- */
+
+function buildIndexNow() {
+  const t0 = performance.now();
+  PASSAGES = CORPUS.passages.map((p) => {
+    const { vector, raw, hits } = vectorize(p.esOnly, p.glosses);
+    return { ...p, vector, raw, hits, vectorizedFrom: p.textHash };
+  });
+  const ms = performance.now() - t0;
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify({
+      builtAt: new Date().toISOString(),
+      items: PASSAGES.map((p) => ({ id: p.id, vector: p.vector, raw: p.raw, vectorizedFrom: p.vectorizedFrom })),
+    }));
+  } catch (e) { /* cuota */ }
+  return ms;
+}
+
+function loadIndex() {
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); } catch (e) {}
+  if (cached && cached.items && cached.items.length === CORPUS.passages.length) {
+    const map = new Map(cached.items.map((i) => [i.id, i]));
+    let stale = 0;
+    PASSAGES = CORPUS.passages.map((p) => {
+      const c = map.get(p.id);
+      if (!c || c.vectorizedFrom !== p.textHash) { stale++; const v = vectorize(p.esOnly, p.glosses); return { ...p, ...v, vectorizedFrom: p.textHash }; }
+      const { hits } = vectorize(p.esOnly, p.glosses);
+      return { ...p, vector: c.vector, raw: c.raw, hits, vectorizedFrom: c.vectorizedFrom };
+    });
+    setStatus(stale ? `Índice cargado de localStorage · ${stale} pasaje(s) revectorizado(s)` : `Índice cargado de localStorage · ${PASSAGES.length} pasajes`);
+    return;
+  }
+  const ms = buildIndexNow();
+  setStatus(`Índice construido en ${ms.toFixed(0)} ms · ${PASSAGES.length} pasajes · guardado en localStorage`);
+}
+
+const setStatus = (t) => { $('#status').textContent = t; };
+
+/* --------------------------------------------------------------- BUSQUEDA -- */
+
+function runQuery(qv, label, hits) {
+  lastQuery = { vector: qv, label, hits: hits || [] };
+  lastResults = topK(qv, PASSAGES, 8);
+  renderResults();
+  renderQueryVector();
+}
+
+function searchText() {
+  const q = $('#q').value.trim();
+  if (!q) return;
+  // query:true -> la consulta pasa por el indice que incluye los alias
+  const { vector, hits } = vectorize(q, [], { query: true });
+  if (!vector.some((x) => x)) {
+    lastQuery = null;
+    $('#results').innerHTML = '';
+    $('#results').append(emptyState('Ningún término de la consulta activó un eje. Probá con otras palabras, abrí el menú Preguntas o usá las categorías de la izquierda.'));
+    renderSidebarHint();
+    return;
+  }
+  runQuery(vector, q, hits);
+}
+
+function searchAxes() {
+  const active = Object.keys(selectedAxes);
+  if (!active.length) return;
+  const { vector } = vectorFromAxes(selectedAxes);
+  runQuery(vector, active.map((a) => AXES.find((x) => x.id === a).label).join(' + '), []);
+}
+
+/* ---------------------------------------------------------------- RENDER --- */
+
+// Ya no lleva ejemplos adentro: las preguntas viven en el menu del header,
+// donde siguen disponibles despues de la primera busqueda.
+function emptyState(msg) {
+  const d = el('div', 'empty');
+  d.append(el('p', null, msg));
+  return d;
+}
+
+/* -------------------------------------------------- MENU DE PREGUNTAS ----- */
+
+function toggleFaq(open) {
+  $('#faqmenu').hidden = !open;
+  $('#faqbtn').setAttribute('aria-expanded', String(open));
+}
+
+function renderFaq() {
+  const box = $('#faqmenu');
+  box.innerHTML = '';
+  FAQ.forEach(([cat, qs], i) => {
+    const d = el('details', 'faqcat');
+    if (i === 0) d.open = true;
+    d.append(el('summary', null, cat));
+    qs.forEach((t) => {
+      const b = el('button', 'faqq', t);
+      b.type = 'button';
+      b.setAttribute('role', 'menuitem');
+      b.onclick = () => { $('#q').value = t; toggleFaq(false); searchText(); };
+      d.append(b);
+    });
+    box.append(d);
+  });
+}
+
+function renderAxisChips() {
+  const box = $('#axes');
+  box.innerHTML = '';
+  AXES.forEach((ax) => {
+    const b = el('button', 'chip');
+    b.type = 'button';
+    b.innerHTML = `<span>${ax.label}</span><span class="gr">${ax.greek}</span>`;
+    b.onclick = () => {
+      if (selectedAxes[ax.id]) delete selectedAxes[ax.id];
+      else selectedAxes[ax.id] = 1;
+      b.classList.toggle('on', Boolean(selectedAxes[ax.id]));
+      syncAxCount();
+      if (Object.keys(selectedAxes).length) searchAxes();
+      else resetToStart();
+    };
+    box.append(b);
+  });
+}
+
+function barRow(label, value, max, extra) {
+  const row = el('div', 'bar');
+  row.append(el('span', 'bl', label));
+  const track = el('span', 'bt');
+  const fill = el('span', 'bf');
+  fill.style.width = `${Math.max(2, (value / (max || 1)) * 100)}%`;
+  track.append(fill);
+  row.append(track);
+  row.append(el('span', 'bv', extra != null ? extra : value.toFixed(2)));
+  return row;
+}
+
+function syncAxCount() {
+  const n = Object.keys(selectedAxes).length;
+  $('#axcount').textContent = n ? `${n} de ${AXES.length}` : '';
+  $('#clearax').hidden = !n;
+}
+
+function clearAxes() {
+  selectedAxes = {};
+  document.querySelectorAll('.chip.on').forEach((c) => c.classList.remove('on'));
+  syncAxCount();
+  resetToStart();
+}
+
+// estado inicial: sin consulta, con la franja del vector en modo pista
+function resetToStart() {
+  lastQuery = null;
+  lastResults = [];
+  renderSidebarHint();
+  const box = $('#results');
+  box.innerHTML = '';
+  box.append(emptyState('Escribí una pregunta, abrí el menú Preguntas del encabezado o seleccioná categorías para empezar.'));
+}
+
+function renderSidebarHint() {
+  const box = $('#qvec');
+  box.innerHTML = '';
+  box.append(el('h3', null, 'Vector de la consulta'));
+  box.append(el('p', 'muted', 'Acá vas a ver en qué ejes se proyecta tu pregunta y qué términos los activaron.'));
+}
+
+function renderQueryVector() {
+  const box = $('#qvec');
+  box.innerHTML = '';
+  if (!lastQuery) { renderSidebarHint(); return; }
+  const pairs = lastQuery.vector.map((v, i) => ({ v, ax: AXES[i] })).filter((p) => p.v > 0).sort((a, b) => b.v - a.v);
+  if (!pairs.length) { renderSidebarHint(); return; }
+  box.append(el('h3', null, 'Vector de la consulta'));
+  box.append(el('p', 'qlabel', lastQuery.label));
+  const max = pairs[0].v;
+  const grid = el('div', 'vgrid');
+  pairs.forEach((p) => grid.append(barRow(p.ax.label, p.v, max)));
+  box.append(grid);
+  if (lastQuery.hits.length) {
+    const d = el('div', 'hitlist');
+    d.append(el('span', 'muted', 'Términos reconocidos: '));
+    const seen = new Set();
+    lastQuery.hits.forEach((h) => { if (!seen.has(h.token)) { seen.add(h.token); d.append(el('code', null, h.token)); } });
+    box.append(d);
+  }
+}
+
+function renderResults() {
+  const box = $('#results');
+  box.innerHTML = '';
+  if (!lastResults.length) { box.append(emptyState('Sin coincidencias.')); return; }
+  const head = el('div', 'rhead');
+  head.append(el('h3', null, `${lastResults.length} pasajes`));
+  head.append(el('span', 'muted', lastQuery.label));
+  box.append(head);
+
+  lastResults.forEach((r, i) => {
+    const p = r.passage;
+    const card = el('article', 'card');
+
+    const top = el('div', 'ctop');
+    top.append(el('span', 'rank', String(i + 1)));
+    const meta = el('div', 'meta');
+    meta.append(el('strong', null, p.id));
+    meta.append(el('span', 'bek', p.bekker || ''));
+    top.append(meta);
+    // cuantos de los ejes que pidio la consulta toca este pasaje
+    if (r.axisCount > 1) {
+      const cov = el('span', 'cov', `${r.hitAxes}/${r.axisCount} ejes`);
+      if (r.hitAxes === r.axisCount) cov.classList.add('full');
+      if (r.demoted) cov.classList.add('weak');
+      cov.title = r.demoted
+        ? 'Toca un solo eje de una consulta de varios: relegado al final'
+        : r.hitAxes === r.axisCount
+          ? 'Toca todos los ejes de la consulta'
+          : 'No toca todos los ejes de la consulta: el puntaje se reduce';
+      top.append(cov);
+    }
+    const score = el('span', 'score', r.score.toFixed(3));
+    top.append(score);
+    card.append(top);
+
+    card.append(el('p', 'text', p.esOnly.length > 320 ? p.esOnly.slice(0, 320) + '…' : p.esOnly));
+
+    // por que gano: contribucion por eje al producto escalar
+    const contrib = p.vector.map((v, j) => ({ j, c: v * lastQuery.vector[j] })).filter((x) => x.c > 0).sort((a, b) => b.c - a.c).slice(0, 4);
+    if (contrib.length) {
+      const why = el('div', 'why');
+      why.append(el('span', 'muted', 'Aporte al puntaje'));
+      const max = contrib[0].c;
+      // el porcentaje se calcula sobre el coseno, no sobre el puntaje final:
+      // el factor de cobertura escala el total y desbalancearia los aportes
+      contrib.forEach((c) => why.append(barRow(AXES[c.j].label, c.c, max, ((c.c / r.cos) * 100).toFixed(0) + '%')));
+      card.append(why);
+    }
+
+    if (p.glosses.length) {
+      const g = el('div', 'gloss');
+      p.glosses.slice(0, 8).forEach((x) => g.append(el('span', 'gtag', x)));
+      card.append(g);
+    }
+
+    if (p.greekParallel) {
+      const det = el('details');
+      det.append(el('summary', null, 'Griego original'));
+      det.append(el('p', 'grtext', p.greekParallel));
+      card.append(det);
+    }
+
+    // ACORDEON DEL CAPITULO COMPLETO.
+    // Se arma con el campo `es`, NO con `esOnly`: `es` lleva las glosas griegas
+    // intercaladas entre guiones, que es como el estudiante se familiariza con
+    // los terminos sin salir del castellano. `esOnly` es solo para el indice.
+    // El contenido se arma recien al abrirlo: hay 8 tarjetas en pantalla y el
+    // capitulo 7 tiene 11 pasajes, no tiene sentido construir 88 parrafos que
+    // nadie va a mirar.
+    const chap = PASSAGES.filter((x) => x.chapter === p.chapter);
+    if (chap.length) {
+      const cd = el('details', 'chap');
+      const rango = chap[0].bekker + (chap.length > 1 ? ' – ' + chap[chap.length - 1].bekker : '');
+      cd.append(el('summary', null, `Capítulo ${p.chapter} completo · ${chap.length} pasajes · ${rango}`));
+      const body = el('div', 'chapbody');
+      cd.append(body);
+      cd.addEventListener('toggle', () => {
+        if (!cd.open || body.dataset.done) return;
+        body.dataset.done = '1';
+        chap.forEach((c) => {
+          const here = c.id === p.id;
+          const par = el('div', 'cpar' + (here ? ' here' : ''));
+          const cm = el('div', 'cmeta');
+          cm.append(el('span', 'cbek', c.bekker || ''));
+          cm.append(el('span', 'cid', c.id));
+          if (here) cm.append(el('span', 'chere', 'este pasaje'));
+          par.append(cm);
+          par.append(el('p', 'ctext', c.es));
+          body.append(par);
+        });
+        // el griego del capitulo, anidado un nivel mas adentro
+        const gd = el('details', 'grk');
+        gd.append(el('summary', null, 'Texto griego del capítulo'));
+        chap.forEach((c) => {
+          if (!c.greekParallel) return;
+          const gp = el('p', 'grtext' + (c.id === p.id ? ' here' : ''));
+          gp.textContent = c.greekParallel;
+          gd.append(gp);
+        });
+        body.append(gd);
+        // el capitulo 7 no entra en pantalla: se lleva el resaltado a la vista
+        // sin mover el scroll de la pagina entera
+        const mark = body.querySelector('.cpar.here');
+        if (mark) body.scrollTop = Math.max(0, mark.offsetTop - body.offsetTop - 12);
+      });
+      card.append(cd);
+    }
+
+    box.append(card);
+  });
+}
+
+/* ------------------------------------------------------------------ INIT -- */
+
+function init() {
+  loadIndex();
+  renderAxisChips();
+  renderFaq();
+  // el recuento sale del arreglo, no de un numero escrito a mano en el HTML
+  $('.sbhint').textContent = `Las ${AXES.length} dimensiones del espacio. Seleccioná una o varias para consultar desde los ejes, sin escribir texto.`;
+  $('#faqbtn').onclick = (e) => { e.stopPropagation(); toggleFaq($('#faqmenu').hidden); };
+  // click afuera y Escape cierran el menu
+  document.addEventListener('click', (e) => { if (!e.target.closest('.faq')) toggleFaq(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleFaq(false); });
+  $('#go').onclick = searchText;
+  $('#q').addEventListener('keydown', (e) => { if (e.key === 'Enter') searchText(); });
+  $('#rebuild').onclick = () => { localStorage.removeItem(STORE_KEY); const ms = buildIndexNow(); setStatus(`Índice reconstruido en ${ms.toFixed(0)} ms`); if (lastQuery) runQuery(lastQuery.vector, lastQuery.label, lastQuery.hits); };
+  $('#clearax').onclick = clearAxes;
+
+  // Colapsar la sidebar. En escritorio se anima el ancho de la columna del
+  // grid; abajo de 820px la misma clase abre un cajon por encima del main.
+  const mobile = () => window.matchMedia('(max-width:820px)').matches;
+  const setSidebar = (open) => {
+    document.body.classList.toggle(mobile() ? 'sb-open' : 'sb-off', mobile() ? open : !open);
+    $('#sbtoggle').setAttribute('aria-expanded', String(open));
+    if (!mobile()) { try { localStorage.setItem(SB_KEY, open ? 'open' : 'off'); } catch (e) {} }
+  };
+  $('#sbtoggle').onclick = () => {
+    const open = mobile() ? !document.body.classList.contains('sb-open') : document.body.classList.contains('sb-off');
+    setSidebar(open);
+  };
+  $('#scrim').onclick = () => setSidebar(false);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobile()) setSidebar(false); });
+  // en movil el cajon arranca cerrado siempre; en escritorio se recuerda
+  if (mobile()) document.body.classList.remove('sb-open');
+  else { let s = null; try { s = localStorage.getItem(SB_KEY); } catch (e) {} if (s === 'off') document.body.classList.add('sb-off'); }
+
+  syncAxCount();
+  resetToStart();
+  const cov = PASSAGES.filter((p) => p.vector.some((x) => x)).length;
+  $('#stats').textContent = `${PASSAGES.length} pasajes · ${AXES.length} dimensiones · ${cov} vectorizados`;
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+
+
+
+
+// vectorize.js
+// vectorize.js - texto -> vector de 24 dimensiones.
+// El MISMO pipeline se aplica a pasajes y a consultas.
+
+import { esTokens, grTokens, esStem, grStem, grSurfaceForms, grStrip } from './normalize.js';
+
+// formas griegas exactas: se normalizan (sin acentos, sigma final) pero NO se stemmean
+const grExactTokens = (text) => grSurfaceForms(text).map(grStrip).filter((t) => t.length >= 3);
+import { AXES, DEFAULT_WEIGHTS } from './lexicon.js';
+
+export const DIM = AXES.length;
+const MAX_NGRAM = 4;
+const COLLAPSED = [];
+const ALIAS_DUPES = [];
+
+// Indices invertidos separados para unigramas y frases.
+// Las frases NO se descomponen en tokens sueltos: "vivir bien" no debe hacer
+// que el token "bien" active el eje felicidad.
+// Se construyen DOS indices con el mismo codigo:
+//   INDEX    sin alias  -> se aplica a los PASAJES
+//   INDEX_Q  con alias  -> se aplica a las CONSULTAS
+// Asi un alias no puede tocar el corpus. Ver la nota larga en vectorize().
+function buildIndex(withAliases = false) {
+  const esUni = new Map(), esPhr = new Map();
+  const grUni = new Map(), grPhr = new Map();
+  const gxUni = new Map(), gxPhr = new Map();
+  COLLAPSED.length = 0;
+  ALIAS_DUPES.length = 0;
+
+  const add = (map, key, axis, w) => {
+    if (!key) return;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push({ axis, w });
+  };
+
+  AXES.forEach((ax, ai) => {
+    // Registro de lo ya cargado en ESTE eje, para que un alias repetido no
+    // sume dos veces. Sin esta guarda, agregar un sinonimo que ya estaba en
+    // otra lista duplicaria el peso del eje en silencio.
+    const seen = new Set();
+
+    const load = (list, tokenize, uni, phr, defW, canal, dedup = false) => {
+      for (const raw of list || []) {
+        const [term, w] = Array.isArray(raw) ? raw : [raw, defW];
+        const toks = tokenize(term);
+        // TRAMPA: un termino de varias palabras cuyas stopwords se caen queda
+        // reducido a un unigrama y deja de ser restrictivo. "lo mejor de todo"
+        // se convertia en el unigrama "mejor", que aparece en 30/70 pasajes.
+        if (toks.length === 1 && String(term).trim().split(/\s+/).length > 1) {
+          COLLAPSED.push({ axis: ax.id, term, token: toks[0] });
+        }
+        // toks.length === 0 -> el termino se disolvio en stopwords, se descarta
+        if (!toks.length || toks.length > MAX_NGRAM) continue;
+        const key = toks.join(' ');
+        const reg = canal + '|' + key;
+        if (dedup && seen.has(reg)) {
+          ALIAS_DUPES.push({ axis: ax.id, term, token: key });
+          continue;
+        }
+        seen.add(reg);
+        if (toks.length === 1) add(uni, key, ai, w);
+        else add(phr, key, ai, w);
+      }
+    };
+
+    load(ax.es, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
+    load(ax.gr, grTokens, grUni, grPhr, DEFAULT_WEIGHTS.gr, 'gr');
+    load(ax.grForms, grExactTokens, gxUni, gxPhr, DEFAULT_WEIGHTS.grForms, 'gx');
+    // ALIAS: castellano, mismo canal y mismo peso que `es`. Van ultimos y con
+    // la guarda activa, de modo que agregar un alias solo puede sumar cobertura
+    // nueva: nunca puede duplicar el peso de un termino que ya estaba.
+    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', true);
+  });
+
+  return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr };
+}
+
+export const INDEX = buildIndex(false);   // pasajes
+export const INDEX_Q = buildIndex(true);  // consultas
+
+// Auditoria de terminos colapsados. Se revisa en el build, no en el navegador.
+export function collapsedTerms() { return COLLAPSED.slice(); }
+
+// Alias que la guarda descarto por estar ya cargados en el mismo eje.
+// No son errores: son la prueba de que agregar sinonimos es seguro.
+export function aliasDupes() { return ALIAS_DUPES.slice(); }
+
+// tf sublineal: la 5a aparicion vale menos que la 1a
+const tf = (n) => 1 + Math.log(n);
+
+function accumulate(tokens, uni, phr, lang, vec, hits) {
+  // 1. frases (n-gramas). Se marcan las posiciones consumidas.
+  const used = new Array(tokens.length).fill(false);
+  const phraseCounts = new Map();
+  for (let n = MAX_NGRAM; n >= 2; n--) {
+    for (let i = 0; i + n <= tokens.length; i++) {
+      if (used.slice(i, i + n).some(Boolean)) continue;
+      const key = tokens.slice(i, i + n).join(' ');
+      if (!phr.has(key)) continue;
+      for (let j = i; j < i + n; j++) used[j] = true;
+      phraseCounts.set(key, (phraseCounts.get(key) || 0) + 1);
+    }
+  }
+  for (const [key, n] of phraseCounts) {
+    for (const { axis, w } of phr.get(key)) {
+      const contrib = w * tf(n);
+      vec[axis] += contrib;
+      hits.push({ axis, token: key, n, lang, contrib, phrase: true });
+    }
+  }
+
+  // 2. unigramas (solo tokens no consumidos por una frase)
+  const counts = new Map();
+  tokens.forEach((t, i) => { if (!used[i]) counts.set(t, (counts.get(t) || 0) + 1); });
+  for (const [tok, n] of counts) {
+    const entries = uni.get(tok);
+    if (!entries) continue;
+    for (const { axis, w } of entries) {
+      const contrib = w * tf(n);
+      vec[axis] += contrib;
+      hits.push({ axis, token: tok, n, lang, contrib, phrase: false });
+    }
+  }
+}
+
+/**
+ * @param {string} spanish  texto castellano (sin glosas)
+ * @param {string[]} glosses  glosas griegas del pasaje
+ * @param {{query?: boolean}} opts  query:true para vectorizar una CONSULTA
+ *
+ * Los alias entran SOLO por el indice de consulta, y la razon se midio:
+ *
+ *  1. Un alias de varias palabras le roba tokens a otro eje. Las frases se
+ *     resuelven antes que los unigramas y consumen posiciones, asi que el
+ *     alias 'tener la virtud' (habito) se comia el token 'virtud' del eje
+ *     Virtud en los pasajes donde aparecia la expresion. Cambiaba el resultado
+ *     de "que es la virtud?" sin que nadie hubiera tocado el eje Virtud.
+ *  2. El df del corpus dejaba de ser una propiedad de la traduccion y pasaba a
+ *     depender de cuantos sinonimos hubiera escrito el administrador.
+ *
+ * Separando los indices, agregar o quitar un alias NO puede alterar un solo
+ * vector de pasaje: solo cambia por que puertas entra la pregunta. No hace
+ * falta revectorizar el corpus al editar la lista.
+ */
+export function vectorize(spanish, glosses = [], opts = {}) {
+  const IX = opts.query ? INDEX_Q : INDEX;
+  const vec = new Array(DIM).fill(0);
+  const hits = [];
+  const greek = glosses.join(' ');
+  accumulate(esTokens(spanish), IX.esUni, IX.esPhr, 'es', vec, hits);
+  accumulate(grTokens(greek), IX.grUni, IX.grPhr, 'gr', vec, hits);
+  accumulate(grExactTokens(greek), IX.gxUni, IX.gxPhr, 'gr', vec, hits);
+  return { vector: l2(vec), raw: vec, hits };
+}
+
+export function l2(v) {
+  const n = Math.sqrt(v.reduce((s, x) => s + x * x, 0));
+  if (!n) return v.slice();
+  return v.map((x) => x / n);
+}
+
+// Vector armado directamente desde ejes seleccionados (querybuilder)
+export function vectorFromAxes(selected) {
+  const vec = new Array(DIM).fill(0);
+  for (const [axisId, weight] of Object.entries(selected)) {
+    const i = AXES.findIndex((a) => a.id === axisId);
+    if (i >= 0) vec[i] = weight;
+  }
+  return { vector: l2(vec), raw: vec, hits: [] };
+}
+
+export function cosine(a, b) {
+  let s = 0;
+  for (let i = 0; i < a.length; i++) s += a[i] * b[i];
+  return s;
+}
+
+// COBERTURA DE EJES (coordination level matching).
+// El coseno premia la magnitud, no el reparto: un pasaje con un valor altisimo
+// en un solo eje le gana a otro con valores medios en los dos ejes que la
+// consulta pidio. Este factor corrige eso.
+// Se pondera por la MASA que cada eje tiene en la consulta, no por conteo de
+// ejes: si la pregunta activo un eje apenas, no tocarlo no puede castigar lo
+// mismo que no tocar el eje central de la pregunta.
+// lambda = 0.5 esta medido en build/exp_cobertura3.mjs: es el valor maximo con
+// CERO regresiones sobre las 23 preguntas del menu. Con 0.6 se pierde
+// EN.I.5.c (la virtud dormida) frente a EN.I.13.e, que solo comparte el
+// vocabulario del sueno pero habla de las partes del alma.
+export const COVERAGE_LAMBDA = 0.5;
+
+// fraccion de la masa de la consulta que el pasaje efectivamente toca
+export function coverage(queryVec, passageVec) {
+  let total = 0;
+  let touched = 0;
+  for (let i = 0; i < queryVec.length; i++) {
+    if (queryVec[i] <= 0) continue;
+    total += queryVec[i];
+    if (passageVec[i] > 0) touched += queryVec[i];
+  }
+  return total ? touched / total : 1;
+}
+
+// RELEGACION DE LOS PASAJES DE UN SOLO EJE.
+// Cuando la consulta pide varios ejes y el pasaje toca uno solo, no es una
+// respuesta debil: es otro tema que comparte una palabra.
+// No se filtran, se mandan al fondo: el estudiante tiene que poder ver que el
+// motor los considero y por que quedaron ahi.
+//
+// Medido sobre las 23 preguntas del menu (build/exp_balance2.mjs, exp_lexico.mjs):
+//   valor 3  ->  0 top-1 rotos, 0 top-5 alterados
+//   valor 2  ->  1 top-1 roto, 8 top-5 alterados
+// El unico caso que rompe en 2 es "\u00bfalcanza con ser rico para vivir bien?":
+// EN.I.5.d es la respuesta correcta y toca 1 de 2 ejes porque el eje Felicidad
+// no reconoce "vivir bien". Es una laguna del lexico, no del ordenamiento; al
+// cubrirla, el costo de este valor desaparece.
+const MIN_AXES_TO_DEMOTE = 2;
+
+export function topK(queryVec, passages, k = 8) {
+  const axes = [];
+  for (let i = 0; i < queryVec.length; i++) if (queryVec[i] > 0) axes.push(i);
+
+  return passages
+    .map((p) => {
+      const cos = cosine(queryVec, p.vector);
+      const mass = coverage(queryVec, p.vector);
+      const hitAxes = axes.filter((i) => p.vector[i] > 0).length;
+      return {
+        passage: p,
+        cos,
+        mass,
+        hitAxes,
+        axisCount: axes.length,
+        demoted: axes.length >= MIN_AXES_TO_DEMOTE && hitAxes === 1,
+        // el coseno queda disponible aparte: la barra de aportes por eje se
+        // calcula sobre el, no sobre el puntaje ya reponderado
+        score: cos * (1 - COVERAGE_LAMBDA + COVERAGE_LAMBDA * mass),
+      };
+    })
+    .filter((r) => r.cos > 0)
+    // los relegados van al fondo en bloque, ordenados entre si por puntaje
+    .sort((a, b) => (Number(a.demoted) - Number(b.demoted)) || (b.score - a.score))
+    .slice(0, k);
+}
+
+export { esStem, grStem };
+
+
+
+
+
+// index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectorizador · Ética Nicomaquea I</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header id="hd">
+  <button id="sbtoggle" type="button" aria-label="Mostrar u ocultar categorías" aria-expanded="true">☰</button>
+  <div class="brand">
+    <h1>Vectorizador semántico</h1>
+    <span class="sub">Aristóteles &middot; Ética Nicomaquea, libro I</span>
+  </div>
+  <div class="faq">
+    <button id="faqbtn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="faqmenu">
+      <span class="faqlab">Preguntas</span><span class="car">▼</span>
+    </button>
+    <div id="faqmenu" role="menu" hidden></div>
+  </div>
+  <div class="searchbar">
+    <input type="text" id="q" placeholder="Escribí una pregunta: ¿qué es la felicidad?" aria-label="Consulta">
+    <button id="go">Buscar</button>
+  </div>
+</header>
+
+<aside id="sb">
+  <div class="sbin">
+    <div class="sbhead">
+      <h2>Categorías</h2>
+      <span id="axcount"></span>
+      <button id="clearax" type="button" hidden>limpiar</button>
+    </div>
+    <p class="sbhint">Las 24 dimensiones del espacio. Seleccioná una o varias para consultar desde los ejes, sin escribir texto.</p>
+    <div id="axes"></div>
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<main id="mn">
+  <div class="mnin">
+    <section id="qvec"></section>
+    <div id="results"></div>
+  </div>
+</main>
+
+<footer id="ft">
+  <span id="status"></span>
+  <span id="stats"></span>
+  <button id="rebuild">Reconstruir índice</button>
+</footer>
+
+<script type="module" src="js/ui.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+// app.css
+:root{
+  --text:#2C2C2B; --muted:#7D7A75; --canvas:#FFFFFF; --soft:#F9F8F7;
+  --surface:#F0EFED; --border:#E6E5E3; --blue:#2783DE; --blue-soft:#E5F2FC;
+  --green:#46A171; --orange:#D5803B;
+  --sbw:288px;              /* ancho de la sidebar; 0 cuando colapsa */
+  --head:60px; --foot:40px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text); background:var(--canvas);
+  /* El header y el footer no se mueven porque no scrollean: el scroll vive
+     dentro de la sidebar y del main por separado. Sin position:fixed. */
+  height:100dvh; display:grid;
+  /* minmax(0,...) y no 1fr: un track 1fr tiene minimo automatico min-content,
+     asi que cualquier contenido con nowrap adentro estira la columna y
+     desborda el viewport. */
+  grid-template-columns:var(--sbw) minmax(0,1fr);
+  grid-template-rows:var(--head) 1fr var(--foot);
+  grid-template-areas:"hd hd" "sb mn" "ft ft";
+  transition:grid-template-columns .18s ease;
+}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--border);background:var(--canvas);color:var(--text)}
+.muted{color:var(--muted);font-size:13px}
+
+/* ------------------------------------------------------------------ HEADER */
+#hd{
+  grid-area:hd; display:flex; align-items:center; gap:14px;
+  padding:0 20px; border-bottom:1px solid var(--border); background:var(--canvas);
+}
+#sbtoggle{
+  flex:none; width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-size:15px; line-height:1;
+}
+#sbtoggle:hover{color:var(--text);border-color:var(--muted)}
+.brand{flex:none;display:flex;align-items:baseline;gap:10px;min-width:0}
+.brand h1{font-size:16px;line-height:1.2;margin:0;letter-spacing:-.01em;white-space:nowrap}
+.brand .sub{color:var(--muted);font-size:13px;white-space:nowrap}
+@media(max-width:1080px){.brand .sub{display:none}}
+
+.searchbar{display:flex;gap:8px;flex:1;min-width:0;max-width:620px;margin:0 auto}
+input[type=text]{
+  flex:1;min-width:0;height:38px;padding:0 12px;font-size:15px;color:var(--text);
+  background:var(--canvas);border:1px solid var(--border);border-radius:8px;
+}
+input[type=text]:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue)}
+#go{height:38px;padding:0 16px;background:var(--blue);border-color:var(--blue);color:#fff;font-weight:500;flex:none}
+#go:hover{filter:brightness(.95)}
+/* boton Preguntas + su menu desplegable, a la izquierda de la searchbar */
+.faq{position:relative;flex:none}
+#faqbtn{height:38px;padding:0 14px;background:var(--soft);color:var(--text);display:flex;align-items:center;gap:7px}
+#faqbtn:hover{border-color:var(--muted)}
+#faqbtn[aria-expanded="true"]{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
+#faqbtn .car{font-size:10px;color:var(--muted)}
+#faqbtn[aria-expanded="true"] .car{color:var(--blue)}
+#faqmenu{
+  position:absolute;top:calc(100% + 6px);left:0;z-index:30;
+  width:330px;max-width:calc(100vw - 24px);max-height:min(70vh,520px);overflow-y:auto;
+  overscroll-behavior:contain;background:var(--canvas);border:1px solid var(--border);
+  border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.13);padding:6px;
+}
+#faqmenu[hidden]{display:none}
+.faqcat{border-bottom:1px solid var(--border)}
+.faqcat:last-child{border-bottom:0}
+.faqcat>summary{
+  list-style:none;padding:9px 10px;font-size:12px;font-weight:600;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--muted);border-radius:6px;
+  display:flex;align-items:center;gap:8px;
+}
+.faqcat>summary::-webkit-details-marker{display:none}
+.faqcat>summary:hover{background:var(--soft);color:var(--text)}
+.faqcat>summary::before{content:"\25B8";font-size:10px;transition:transform .15s ease}
+.faqcat[open]>summary::before{transform:rotate(90deg)}
+.faqcat[open]>summary{color:var(--text)}
+.faqq{
+  display:block;width:100%;text-align:left;border:1px solid transparent;background:transparent;
+  padding:7px 10px 7px 28px;font-size:13.5px;line-height:1.35;color:var(--muted);border-radius:6px;
+}
+.faqq:hover{background:var(--soft);color:var(--text)}
+.faqq:last-child{margin-bottom:6px}
+
+/* ----------------------------------------------------------------- SIDEBAR */
+#sb{
+  /* columna flex que NO scrollea: el encabezado queda fijo y el scroll vive
+     dentro de #axes. min-height:0 en la cadena o el hijo flexible se niega
+     a encogerse y el scroll se escapa al contenedor de arriba. */
+  grid-area:sb; display:flex; flex-direction:column; overflow:hidden;
+  border-right:1px solid var(--border); background:var(--soft);
+}
+body.sb-off{--sbw:0px}
+body.sb-off #sb{border-right:0}
+.sbin{width:288px;flex:1;min-height:0;display:flex;flex-direction:column}
+.sbhead{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;padding:16px 14px 0;flex:none}
+.sbhead h2{font-size:12px;margin:0;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+#axcount{font-size:12px;color:var(--blue)}
+#clearax{margin-left:auto;font-size:12px;padding:2px 8px;color:var(--muted);border-color:transparent;background:transparent}
+#clearax:hover{color:var(--text);border-color:var(--border)}
+#clearax[hidden]{display:none}
+.sbhint{font-size:12px;color:var(--muted);margin:0 0 10px;padding:0 14px;line-height:1.45;flex:none}
+#axes{
+  flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain;
+  /* auto-fill: mete tantas columnas como entren. En la sidebar de 288px dan
+     dos; si el contenedor crece, pasan a tres solas. */
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr));
+  gap:6px; align-content:start; padding:10px 14px 24px;
+  border-top:1px solid var(--border);
+}
+.chip{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  gap:1px;width:100%;text-align:left;padding:6px 9px;font-size:12.5px;
+  line-height:1.25;min-height:46px;background:var(--canvas);
+}
+.chip .gr{color:var(--muted);font-size:12px;margin-left:0}
+.chip:hover{border-color:var(--muted)}
+.chip.on{background:var(--blue-soft);border-color:var(--blue)}
+.chip.on .gr{color:var(--blue)}
+
+/* -------------------------------------------------------------------- MAIN */
+#mn{grid-area:mn;overflow-y:auto;padding:24px 24px 56px}
+.mnin{max-width:760px;margin:0 auto}
+
+/* franja horizontal del vector de la consulta, arriba de los resultados */
+#qvec{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--soft);margin-bottom:20px}
+#qvec h3{font-size:12px;margin:0 0 2px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);font-weight:600}
+#qvec .qlabel{font-size:13px;color:var(--text);margin:0 0 10px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:2px 20px}
+.hitlist{margin-top:10px;padding-top:9px;border-top:1px solid var(--border);line-height:2.1}
+.hitlist code{font:12px/1 Menlo,Consolas,monospace;background:var(--surface);padding:3px 6px;border-radius:4px;margin-right:4px}
+
+.rhead{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.rhead h3{font-size:15px;margin:0}
+
+.card{border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;background:var(--canvas)}
+.ctop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rank{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:var(--surface);font-size:12px;color:var(--muted);flex:none}
+.meta{display:flex;align-items:baseline;gap:8px;min-width:0}
+.meta strong{font-size:14px}
+.bek{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.score{margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums;color:var(--blue);font-weight:600;flex:none}
+.text{margin:0 0 12px;font-size:15px;line-height:1.55}
+
+.why{border-top:1px solid var(--border);padding-top:10px;margin-bottom:10px}
+.why .muted{display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.bar{display:flex;align-items:center;gap:8px;margin:3px 0}
+.bl{font-size:12px;color:var(--muted);width:140px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bt{flex:1;height:6px;background:var(--surface);border-radius:3px;overflow:hidden;min-width:30px}
+.bf{display:block;height:100%;background:var(--blue);border-radius:3px}
+.bv{font-size:12px;color:var(--muted);width:42px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+
+.gloss{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.gtag{font-size:13px;padding:3px 8px;background:var(--soft);border:1px solid var(--border);border-radius:6px}
+details{font-size:13px}
+summary{cursor:pointer;color:var(--muted);min-height:24px}
+summary:hover{color:var(--text)}
+.grtext{margin:8px 0 0;padding:12px;background:var(--soft);border-radius:8px;line-height:1.7}
+/* acordeon del capitulo completo */
+.chap{margin-top:8px;border-top:1px solid var(--border);padding-top:8px}
+.chapbody{margin-top:8px;max-height:440px;overflow-y:auto;padding-right:4px}
+.cpar{padding:8px 10px;border-left:3px solid transparent;border-radius:0 6px 6px 0}
+.cpar+.cpar{margin-top:4px}
+.cpar.here{background:var(--blue-soft);border-left-color:var(--blue)}
+.cmeta{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.cbek{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cid{font-size:11px;color:var(--muted)}
+.chere{font-size:11px;color:var(--blue);border:1px solid var(--blue);border-radius:999px;padding:0 7px;line-height:16px}
+.ctext{margin:0;font-size:14px;line-height:1.6;color:var(--text)}
+.grk{margin-top:10px;padding-left:10px}
+.grk .grtext{font-size:13px}
+.grk .grtext.here{background:var(--blue-soft)}
+
+.empty{padding:36px 20px;text-align:center;border:1px dashed var(--border);border-radius:12px}
+.empty p{margin:0 0 16px;font-size:14px;color:var(--muted)}
+.examples{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ex{font-size:13px;padding:6px 12px;background:var(--soft);color:var(--muted)}
+.ex:hover{background:var(--surface);color:var(--text)}
+
+/* ------------------------------------------------------------------ FOOTER */
+#ft{
+  grid-area:ft; display:flex; align-items:center; gap:12px; padding:0 20px;
+  border-top:1px solid var(--border); background:var(--canvas);
+}
+#status{font-size:12px;color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#stats{flex:none;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+#rebuild{margin-left:4px;font-size:12px;padding:5px 12px;color:var(--muted);flex:none}
+#rebuild:hover{color:var(--text);border-color:var(--muted)}
+
+/* ------------------------------------------------------------------- MOVIL */
+#scrim{display:none}
+@media(max-width:820px){
+  body{grid-template-columns:minmax(0,1fr);grid-template-areas:"hd" "mn" "ft"}
+  /* unico lugar donde fixed se justifica: la sidebar pasa a ser un cajon */
+  #sb{
+    position:fixed;top:var(--head);bottom:var(--foot);left:0;width:288px;z-index:20;
+    transform:translateX(-100%);transition:transform .18s ease;border-right:1px solid var(--border);
+  }
+  body.sb-open #sb{transform:none}
+  body.sb-open #scrim{display:block;position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.28)}
+  #mn{padding:16px 16px 40px}
+  /* el titulo con nowrap desbordaba el header a 390px; con la app abierta
+     el hamburguesa y el input alcanzan para orientarse */
+  .brand{display:none}
+  #hd{gap:10px;padding:0 12px}
+  .searchbar{max-width:none;margin:0}
+  #ft{padding:0 12px}
+  #stats{display:none}
+  /* el boton se reduce a su icono para no comerle ancho al input; sin la
+     etiqueta, un cursor solo no dice nada, asi que entra el signo */
+  .faqlab{display:none}
+  #faqbtn{padding:0 10px;gap:4px}
+  #faqbtn::before{content:"?";font-size:15px;font-weight:600}
+  #faqbtn .car{font-size:9px}
+  .bl{width:110px}
+  .cov{display:none}
+}
+
+/* cobertura de ejes: cuantos de los ejes de la consulta toca el pasaje */
+.cov{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px 8px;white-space:nowrap}
+.cov.full{color:var(--green);background:#EDF7F1;border-color:#CDE8D9}
+.cov.weak{color:var(--orange);background:#FBF1E8;border-color:#F0DCC6}

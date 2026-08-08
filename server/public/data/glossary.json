@@ -1,0 +1,8035 @@
+{
+ "version": 1,
+ "lemmas": [
+  {
+   "stem": "αγαθ",
+   "canonical": "ἀγαθὸν",
+   "total": 37,
+   "formCount": 7,
+   "forms": [
+    {
+     "form": "ἀγαθὸν",
+     "n": 12
+    },
+    {
+     "form": "ἀγαθόν",
+     "n": 9
+    },
+    {
+     "form": "ἀγαθῶν",
+     "n": 7
+    },
+    {
+     "form": "ἀγαθά",
+     "n": 4
+    },
+    {
+     "form": "ἀγαθὰ",
+     "n": 2
+    },
+    {
+     "form": "ἀγαθοὺς",
+     "n": 2
+    },
+    {
+     "form": "ἀγαθαί",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.2.a",
+    "EN.I.2.b",
+    "EN.I.3.a",
+    "EN.I.4.a",
+    "EN.I.5.a",
+    "EN.I.5.b",
+    "EN.I.5.d",
+    "EN.I.6.b",
+    "EN.I.6.c",
+    "EN.I.6.d",
+    "EN.I.6.g",
+    "EN.I.6.h",
+    "EN.I.7.a",
+    "EN.I.7.e",
+    "EN.I.7.f",
+    "EN.I.7.g",
+    "EN.I.7.j",
+    "EN.I.8.b",
+    "EN.I.8.d",
+    "EN.I.8.h",
+    "EN.I.8.i",
+    "EN.I.9.b",
+    "EN.I.10.a",
+    "EN.I.10.g",
+    "EN.I.12.b",
+    "EN.I.12.c",
+    "EN.I.12.d",
+    "EN.I.13.b",
+    "EN.I.13.c"
+   ],
+   "passageCount": 30
+  },
+  {
+   "stem": "αρετ",
+   "canonical": "ἀρετὴν",
+   "total": 30,
+   "formCount": 7,
+   "forms": [
+    {
+     "form": "ἀρετὴν",
+     "n": 12
+    },
+    {
+     "form": "ἀρετὴ",
+     "n": 6
+    },
+    {
+     "form": "ἀρετῆς",
+     "n": 5
+    },
+    {
+     "form": "ἀρετήν",
+     "n": 4
+    },
+    {
+     "form": "ἀρετῇ",
+     "n": 1
+    },
+    {
+     "form": "ἀρεταί",
+     "n": 1
+    },
+    {
+     "form": "ἀρετὰς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b",
+    "EN.I.5.c",
+    "EN.I.6.c",
+    "EN.I.7.i",
+    "EN.I.8.c",
+    "EN.I.8.d",
+    "EN.I.8.f",
+    "EN.I.8.g",
+    "EN.I.8.i",
+    "EN.I.9.b",
+    "EN.I.9.c",
+    "EN.I.10.c",
+    "EN.I.10.d",
+    "EN.I.10.e",
+    "EN.I.10.i",
+    "EN.I.12.b",
+    "EN.I.12.d",
+    "EN.I.13.a",
+    "EN.I.13.c",
+    "EN.I.13.e",
+    "EN.I.13.h"
+   ],
+   "passageCount": 21
+  },
+  {
+   "stem": "ευδαιμονι",
+   "canonical": "εὐδαιμονίαν",
+   "total": 22,
+   "formCount": 4,
+   "forms": [
+    {
+     "form": "εὐδαιμονίαν",
+     "n": 11
+    },
+    {
+     "form": "εὐδαιμονίας",
+     "n": 6
+    },
+    {
+     "form": "εὐδαιμονία",
+     "n": 4
+    },
+    {
+     "form": "εὐδαιμονίᾳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.5.a",
+    "EN.I.7.d",
+    "EN.I.7.f",
+    "EN.I.7.g",
+    "EN.I.8.h",
+    "EN.I.8.i",
+    "EN.I.10.a",
+    "EN.I.10.c",
+    "EN.I.10.h",
+    "EN.I.10.i",
+    "EN.I.12.a",
+    "EN.I.12.b",
+    "EN.I.12.d",
+    "EN.I.13.a",
+    "EN.I.13.c"
+   ],
+   "passageCount": 16
+  },
+  {
+   "stem": "ενεργει",
+   "canonical": "ἐνεργείας",
+   "total": 19,
+   "formCount": 8,
+   "forms": [
+    {
+     "form": "ἐνεργείας",
+     "n": 4
+    },
+    {
+     "form": "ἐνέργειαν",
+     "n": 4
+    },
+    {
+     "form": "ἐνέργεια",
+     "n": 4
+    },
+    {
+     "form": "ἐνέργειαι",
+     "n": 3
+    },
+    {
+     "form": "ἐνεργείᾳ",
+     "n": 1
+    },
+    {
+     "form": "ἐνέργειάν",
+     "n": 1
+    },
+    {
+     "form": "ἐνέργειά",
+     "n": 1
+    },
+    {
+     "form": "ἐνεργεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.1.b",
+    "EN.I.7.h",
+    "EN.I.7.i",
+    "EN.I.8.b",
+    "EN.I.8.d",
+    "EN.I.9.b",
+    "EN.I.9.c",
+    "EN.I.10.a",
+    "EN.I.10.c",
+    "EN.I.10.d",
+    "EN.I.10.g",
+    "EN.I.13.a",
+    "EN.I.13.c",
+    "EN.I.13.e"
+   ],
+   "passageCount": 15
+  },
+  {
+   "stem": "ψυχη",
+   "canonical": "ψυχῆς",
+   "total": 17,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "ψυχῆς",
+     "n": 15
+    },
+    {
+     "form": "ψυχῇ",
+     "n": 1
+    },
+    {
+     "form": "ψυχὴν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h",
+    "EN.I.7.i",
+    "EN.I.8.b",
+    "EN.I.9.b",
+    "EN.I.13.a",
+    "EN.I.13.c",
+    "EN.I.13.d",
+    "EN.I.13.e",
+    "EN.I.13.f"
+   ],
+   "passageCount": 9
+  },
+  {
+   "stem": "πολιτικ",
+   "canonical": "πολιτικῆς",
+   "total": 13,
+   "formCount": 7,
+   "forms": [
+    {
+     "form": "πολιτικῆς",
+     "n": 4
+    },
+    {
+     "form": "πολιτικὴ",
+     "n": 3
+    },
+    {
+     "form": "πολιτικὸν",
+     "n": 2
+    },
+    {
+     "form": "πολιτική",
+     "n": 1
+    },
+    {
+     "form": "πολιτικὴν",
+     "n": 1
+    },
+    {
+     "form": "πολιτικῶν",
+     "n": 1
+    },
+    {
+     "form": "πολιτικῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b",
+    "EN.I.3.a",
+    "EN.I.3.c",
+    "EN.I.4.a",
+    "EN.I.4.d",
+    "EN.I.7.e",
+    "EN.I.8.i",
+    "EN.I.9.b",
+    "EN.I.13.b",
+    "EN.I.13.c"
+   ],
+   "passageCount": 10
+  },
+  {
+   "stem": "τελει",
+   "canonical": "τέλειον",
+   "total": 13,
+   "formCount": 6,
+   "forms": [
+    {
+     "form": "τέλειον",
+     "n": 6
+    },
+    {
+     "form": "τελείῳ",
+     "n": 2
+    },
+    {
+     "form": "τελείαν",
+     "n": 2
+    },
+    {
+     "form": "τέλεια",
+     "n": 1
+    },
+    {
+     "form": "τέλειόν",
+     "n": 1
+    },
+    {
+     "form": "τελείας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.b",
+    "EN.I.7.c",
+    "EN.I.7.e",
+    "EN.I.7.f",
+    "EN.I.7.i",
+    "EN.I.9.c",
+    "EN.I.10.h",
+    "EN.I.10.i",
+    "EN.I.13.a"
+   ],
+   "passageCount": 9
+  },
+  {
+   "stem": "αριστ",
+   "canonical": "ἄριστον",
+   "total": 12,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "ἄριστον",
+     "n": 8
+    },
+    {
+     "form": "ἀρίστην",
+     "n": 3
+    },
+    {
+     "form": "ἀρίστων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.4.a",
+    "EN.I.7.b",
+    "EN.I.7.g",
+    "EN.I.7.i",
+    "EN.I.8.d",
+    "EN.I.8.h",
+    "EN.I.9.a",
+    "EN.I.9.b",
+    "EN.I.12.b"
+   ],
+   "passageCount": 10
+  },
+  {
+   "stem": "τελο",
+   "canonical": "τέλος",
+   "total": 11,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τέλος",
+     "n": 11
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.5.a",
+    "EN.I.7.a",
+    "EN.I.7.f",
+    "EN.I.8.b",
+    "EN.I.9.a",
+    "EN.I.9.b",
+    "EN.I.10.a",
+    "EN.I.10.c",
+    "EN.I.10.i"
+   ],
+   "passageCount": 10
+  },
+  {
+   "stem": "λογο",
+   "canonical": "λόγον",
+   "total": 10,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "λόγον",
+     "n": 7
+    },
+    {
+     "form": "λόγος",
+     "n": 2
+    },
+    {
+     "form": "λόγοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.4.c",
+    "EN.I.6.e",
+    "EN.I.6.i",
+    "EN.I.7.h",
+    "EN.I.7.i",
+    "EN.I.10.b",
+    "EN.I.13.d",
+    "EN.I.13.f",
+    "EN.I.13.g"
+   ],
+   "passageCount": 10
+  },
+  {
+   "stem": "εργο",
+   "canonical": "ἔργον",
+   "total": 10,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔργον",
+     "n": 10
+    }
+   ],
+   "passages": [
+    "EN.I.7.g",
+    "EN.I.7.h",
+    "EN.I.7.i",
+    "EN.I.7.k"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "βιον",
+   "canonical": "βίον",
+   "total": 9,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίον",
+     "n": 9
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.3.c",
+    "EN.I.5.a",
+    "EN.I.7.e",
+    "EN.I.7.f",
+    "EN.I.10.f",
+    "EN.I.10.i",
+    "EN.I.11.b"
+   ],
+   "passageCount": 8
+  },
+  {
+   "stem": "ηδον",
+   "canonical": "ἡδονὴν",
+   "total": 8,
+   "formCount": 5,
+   "forms": [
+    {
+     "form": "ἡδονὴν",
+     "n": 3
+    },
+    {
+     "form": "ἡδονῆς",
+     "n": 2
+    },
+    {
+     "form": "ἡδονήν",
+     "n": 1
+    },
+    {
+     "form": "ἡδοναί",
+     "n": 1
+    },
+    {
+     "form": "ἡδονῇ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.5.a",
+    "EN.I.6.g",
+    "EN.I.7.d",
+    "EN.I.8.c",
+    "EN.I.8.g",
+    "EN.I.12.c"
+   ],
+   "passageCount": 7
+  },
+  {
+   "stem": "καλω",
+   "canonical": "καλῶς",
+   "total": 7,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "καλῶς",
+     "n": 4
+    },
+    {
+     "form": "καλῶν",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.4.d",
+    "EN.I.7.i",
+    "EN.I.7.l",
+    "EN.I.8.h",
+    "EN.I.9.b",
+    "EN.I.12.d"
+   ],
+   "passageCount": 6
+  },
+  {
+   "stem": "βιου",
+   "canonical": "βίου",
+   "total": 7,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίου",
+     "n": 7
+    }
+   ],
+   "passages": [
+    "EN.I.5.a",
+    "EN.I.5.c",
+    "EN.I.9.c",
+    "EN.I.10.b",
+    "EN.I.10.e",
+    "EN.I.13.e"
+   ],
+   "passageCount": 6
+  },
+  {
+   "stem": "μακαρι",
+   "canonical": "μακάριον",
+   "total": 7,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "μακάριον",
+     "n": 4
+    },
+    {
+     "form": "μακαρίους",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.8.i",
+    "EN.I.9.a",
+    "EN.I.10.d",
+    "EN.I.10.f",
+    "EN.I.10.i",
+    "EN.I.11.c"
+   ],
+   "passageCount": 6
+  },
+  {
+   "stem": "αρχη",
+   "canonical": "ἀρχή",
+   "total": 7,
+   "formCount": 4,
+   "forms": [
+    {
+     "form": "ἀρχή",
+     "n": 4
+    },
+    {
+     "form": "ἀρχὴ",
+     "n": 1
+    },
+    {
+     "form": "ἀρχὴν",
+     "n": 1
+    },
+    {
+     "form": "ἀρχῆς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d",
+    "EN.I.7.l",
+    "EN.I.8.a",
+    "EN.I.12.d",
+    "EN.I.13.b"
+   ],
+   "passageCount": 5
+  },
+  {
+   "stem": "πρακτ",
+   "canonical": "πρακτῶν",
+   "total": 6,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "πρακτῶν",
+     "n": 4
+    },
+    {
+     "form": "πρακτὸν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.4.a",
+    "EN.I.6.h",
+    "EN.I.7.a",
+    "EN.I.7.f"
+   ],
+   "passageCount": 5
+  },
+  {
+   "stem": "πραξει",
+   "canonical": "πράξεις",
+   "total": 6,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράξεις",
+     "n": 6
+    }
+   ],
+   "passages": [
+    "EN.I.7.h",
+    "EN.I.7.i",
+    "EN.I.8.b",
+    "EN.I.8.g",
+    "EN.I.12.b"
+   ],
+   "passageCount": 5
+  },
+  {
+   "stem": "επιστημ",
+   "canonical": "ἐπιστημῶν",
+   "total": 5,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἐπιστημῶν",
+     "n": 4
+    },
+    {
+     "form": "ἐπιστήμη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.2.a",
+    "EN.I.6.d",
+    "EN.I.10.d"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "γνωσι",
+   "canonical": "γνῶσις",
+   "total": 5,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "γνῶσις",
+     "n": 3
+    },
+    {
+     "form": "γνῶσιν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.4.a",
+    "EN.I.6.i",
+    "EN.I.13.c"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "πολλ",
+   "canonical": "πολλοὶ",
+   "total": 5,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "πολλοὶ",
+     "n": 3
+    },
+    {
+     "form": "πολλὰ",
+     "n": 1
+    },
+    {
+     "form": "πολλῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.5.a",
+    "EN.I.10.f",
+    "EN.I.10.h"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "πραξε",
+   "canonical": "πράξει",
+   "total": 5,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράξει",
+     "n": 5
+    }
+   ],
+   "passages": [
+    "EN.I.7.a",
+    "EN.I.8.d",
+    "EN.I.10.e",
+    "EN.I.10.g"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "καλλιστ",
+   "canonical": "κάλλιστον",
+   "total": 5,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "κάλλιστον",
+     "n": 2
+    },
+    {
+     "form": "κάλλιστα",
+     "n": 2
+    },
+    {
+     "form": "κάλλιστοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e",
+    "EN.I.8.h",
+    "EN.I.9.b",
+    "EN.I.10.g"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "τελη",
+   "canonical": "τέλη",
+   "total": 5,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τέλη",
+     "n": 5
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.5.d",
+    "EN.I.7.b"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "τεχν",
+   "canonical": "τέχνη",
+   "total": 4,
+   "formCount": 4,
+   "forms": [
+    {
+     "form": "τέχνη",
+     "n": 1
+    },
+    {
+     "form": "τεχνῶν",
+     "n": 1
+    },
+    {
+     "form": "τέχνην",
+     "n": 1
+    },
+    {
+     "form": "τέχνῃ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.1.b",
+    "EN.I.6.i",
+    "EN.I.7.a"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "αγαθου",
+   "canonical": "ἀγαθοῦ",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀγαθοῦ",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.4.a",
+    "EN.I.6.i",
+    "EN.I.11.b"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "αυτα",
+   "canonical": "αὐτὰς",
+   "total": 4,
+   "formCount": 4,
+   "forms": [
+    {
+     "form": "αὐτὰς",
+     "n": 1
+    },
+    {
+     "form": "αὑτὰ",
+     "n": 1
+    },
+    {
+     "form": "αὑτά",
+     "n": 1
+    },
+    {
+     "form": "αὑτὰς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.5.d",
+    "EN.I.6.g",
+    "EN.I.8.g"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "φυσε",
+   "canonical": "φύσει",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φύσει",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.6.b",
+    "EN.I.7.e",
+    "EN.I.8.g"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "αγαθο",
+   "canonical": "ἀγαθὸς",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀγαθὸς",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.8.g",
+    "EN.I.10.e",
+    "EN.I.13.e"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "ζην",
+   "canonical": "ζῆν",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζῆν",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.4.a",
+    "EN.I.7.h",
+    "EN.I.8.b"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "πραττει",
+   "canonical": "πράττειν",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράττειν",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.8.b",
+    "EN.I.8.i",
+    "EN.I.10.g"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "τιμη",
+   "canonical": "τιμήν",
+   "total": 4,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τιμήν",
+     "n": 2
+    },
+    {
+     "form": "τιμὴν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.5.a",
+    "EN.I.5.b",
+    "EN.I.7.d"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "αιτι",
+   "canonical": "αἴτιον",
+   "total": 4,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "αἴτιον",
+     "n": 2
+    },
+    {
+     "form": "αἴτιόν",
+     "n": 1
+    },
+    {
+     "form": "αἰτίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.7.l",
+    "EN.I.12.d",
+    "EN.I.13.d"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "εργω",
+   "canonical": "ἔργων",
+   "total": 4,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἔργων",
+     "n": 3
+    },
+    {
+     "form": "ἔργῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.g",
+    "EN.I.7.k",
+    "EN.I.10.d",
+    "EN.I.12.d"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "ευδαιμον",
+   "canonical": "εὐδαίμονα",
+   "total": 4,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "εὐδαίμονα",
+     "n": 2
+    },
+    {
+     "form": "εὐδαίμονι",
+     "n": 1
+    },
+    {
+     "form": "εὐδαίμονας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.b",
+    "EN.I.10.e",
+    "EN.I.10.i",
+    "EN.I.11.c"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "αιρουμεθ",
+   "canonical": "αἱρούμεθα",
+   "total": 4,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "αἱρούμεθα",
+     "n": 3
+    },
+    {
+     "form": "αἱρούμεθά",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.7.b",
+    "EN.I.7.d"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "οικει",
+   "canonical": "οἰκεῖόν",
+   "total": 4,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "οἰκεῖόν",
+     "n": 2
+    },
+    {
+     "form": "οἰκεῖα",
+     "n": 1
+    },
+    {
+     "form": "οἰκείαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b",
+    "EN.I.6.a",
+    "EN.I.7.i"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "ιδεα",
+   "canonical": "ἰδέας",
+   "total": 4,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "ἰδέας",
+     "n": 2
+    },
+    {
+     "form": "ἰδέα",
+     "n": 1
+    },
+    {
+     "form": "ἰδέαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b",
+    "EN.I.6.g",
+    "EN.I.6.h"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "αυταρκ",
+   "canonical": "αὔταρκες",
+   "total": 4,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὔταρκες",
+     "n": 4
+    }
+   ],
+   "passages": [
+    "EN.I.7.e",
+    "EN.I.7.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πραξι",
+   "canonical": "πρᾶξις",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "πρᾶξις",
+     "n": 2
+    },
+    {
+     "form": "πρᾶξίς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.3.c",
+    "EN.I.7.g"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "προαιρεσι",
+   "canonical": "προαίρεσις",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "προαίρεσις",
+     "n": 2
+    },
+    {
+     "form": "προαίρεσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.4.a",
+    "EN.I.13.b"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "εργα",
+   "canonical": "ἔργα",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔργα",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.7.h",
+    "EN.I.12.b"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "δυναμι",
+   "canonical": "δύναμιν",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "δύναμιν",
+     "n": 2
+    },
+    {
+     "form": "δύναμις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.13.d",
+    "EN.I.13.e"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "μαλιστ",
+   "canonical": "μάλιστα",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μάλιστα",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.2.b",
+    "EN.I.8.b",
+    "EN.I.13.e"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "καλα",
+   "canonical": "καλὰ",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "καλὰ",
+     "n": 2
+    },
+    {
+     "form": "καλαί",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.8.h",
+    "EN.I.8.i"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "δικαι",
+   "canonical": "δίκαια",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "δίκαια",
+     "n": 2
+    },
+    {
+     "form": "δίκαιον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.8.f",
+    "EN.I.12.b"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "φυσι",
+   "canonical": "φύσις",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "φύσις",
+     "n": 2
+    },
+    {
+     "form": "φύσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b",
+    "EN.I.9.b",
+    "EN.I.13.f"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "αρχα",
+   "canonical": "ἀρχάς",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἀρχάς",
+     "n": 2
+    },
+    {
+     "form": "ἀρχὰς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.c",
+    "EN.I.4.d",
+    "EN.I.7.l"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "ημιν",
+   "canonical": "ἡμῖν",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἡμῖν",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.4.c",
+    "EN.I.6.h",
+    "EN.I.10.i"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "απλω",
+   "canonical": "ἁπλῶς",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἁπλῶς",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.4.c",
+    "EN.I.7.c",
+    "EN.I.11.c"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "ζωντ",
+   "canonical": "ζῶντας",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ζῶντας",
+     "n": 2
+    },
+    {
+     "form": "ζῶντα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.c",
+    "EN.I.10.c",
+    "EN.I.11.b"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "καθολου",
+   "canonical": "καθόλου",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καθόλου",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.6.a",
+    "EN.I.6.c",
+    "EN.I.11.a"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "κοιν",
+   "canonical": "κοινή",
+   "total": 3,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "κοινή",
+     "n": 1
+    },
+    {
+     "form": "κοινόν",
+     "n": 1
+    },
+    {
+     "form": "κοινῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b",
+    "EN.I.6.g",
+    "EN.I.13.d"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "τυχη",
+   "canonical": "τύχην",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τύχην",
+     "n": 2
+    },
+    {
+     "form": "τύχης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h",
+    "EN.I.9.a",
+    "EN.I.10.f"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "εστι",
+   "canonical": "ἐστιν",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἐστιν",
+     "n": 2
+    },
+    {
+     "form": "ἐστίν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.g",
+    "EN.I.7.k",
+    "EN.I.10.i"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "πεφυκε",
+   "canonical": "πέφυκεν",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πέφυκεν",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.7.h",
+    "EN.I.9.b",
+    "EN.I.10.f"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "εχον",
+   "canonical": "ἔχον",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔχον",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.7.h",
+    "EN.I.13.d",
+    "EN.I.13.f"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "εκτο",
+   "canonical": "ἐκτὸς",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐκτὸς",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.8.b",
+    "EN.I.8.c",
+    "EN.I.8.i"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "λογω",
+   "canonical": "λόγῳ",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λόγῳ",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.8.b",
+    "EN.I.10.d",
+    "EN.I.13.d"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "βιοσ",
+   "canonical": "βίος",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίος",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.8.e",
+    "EN.I.8.g",
+    "EN.I.10.c"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "βελτι",
+   "canonical": "βέλτιον",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βέλτιον",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.9.b",
+    "EN.I.12.b",
+    "EN.I.13.a"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "ευδαιμ",
+   "canonical": "εὐδαίμων",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαίμων",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.10.b",
+    "EN.I.10.c",
+    "EN.I.10.h"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "τυχα",
+   "canonical": "τύχας",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τύχας",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.10.e",
+    "EN.I.10.g",
+    "EN.I.11.a"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "σπουδαι",
+   "canonical": "σπουδαία",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "σπουδαία",
+     "n": 2
+    },
+    {
+     "form": "σπουδαῖον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f",
+    "EN.I.12.b",
+    "EN.I.13.e"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "πραξ",
+   "canonical": "πράξεων",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράξεων",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.3.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "προαιρουμεν",
+   "canonical": "προαιρούμενοι",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "προαιρούμενοι",
+     "n": 2
+    },
+    {
+     "form": "προαιρουμένων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.a",
+    "EN.I.13.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αυτη",
+   "canonical": "αὐτῆς",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "αὐτῆς",
+     "n": 2
+    },
+    {
+     "form": "αὐτὴν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.a",
+    "EN.I.8.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "εχει",
+   "canonical": "ἔχειν",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔχειν",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.12.b",
+    "EN.I.13.g"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ηδει",
+   "canonical": "ἡδεῖαι",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἡδεῖαι",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μεθοδο",
+   "canonical": "μέθοδος",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μέθοδος",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.2.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "εφιεσθ",
+   "canonical": "ἐφίεσθαι",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐφίεσθαι",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.1.a",
+    "EN.I.4.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αρχιτεκτονικ",
+   "canonical": "ἀρχιτεκτονικῶν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἀρχιτεκτονικῶν",
+     "n": 1
+    },
+    {
+     "form": "ἀρχιτεκτονικῆς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.b",
+    "EN.I.2.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "δυναμ",
+   "canonical": "δυνάμεων",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δυνάμεων",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.2.a",
+    "EN.I.12.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "μειζ",
+   "canonical": "μεῖζόν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "μεῖζόν",
+     "n": 1
+    },
+    {
+     "form": "μεῖζον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b",
+    "EN.I.7.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "τελειοτερ",
+   "canonical": "τελειότερον",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τελειότερον",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.2.b",
+    "EN.I.7.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "θειοτερ",
+   "canonical": "θειότερον",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "θειότερον",
+     "n": 1
+    },
+    {
+     "form": "θειότερόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b",
+    "EN.I.12.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "υποκειμεν",
+   "canonical": "ὑποκειμένην",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑποκειμένην",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.7.k"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "υλην",
+   "canonical": "ὕλην",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὕλην",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.7.k"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "λογοι",
+   "canonical": "λόγοις",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λόγοις",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.13.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "νομω",
+   "canonical": "νόμῳ",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "νόμῳ",
+     "n": 1
+    },
+    {
+     "form": "νόμων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.13.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "μονο",
+   "canonical": "μόνον",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μόνον",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.7.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ανδρει",
+   "canonical": "ἀνδρείαν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἀνδρείαν",
+     "n": 1
+    },
+    {
+     "form": "ἀνδρεῖον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a",
+    "EN.I.12.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "κρινε",
+   "canonical": "κρίνει",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κρίνει",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.8.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ειδεν",
+   "canonical": "εἰδέναι",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εἰδέναι",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.c",
+    "EN.I.13.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "χαριεντ",
+   "canonical": "χαρίεντες",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "χαρίεντες",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.5.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πλουτ",
+   "canonical": "πλοῦτον",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πλοῦτον",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.4.a",
+    "EN.I.7.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πολιτικο",
+   "canonical": "πολιτικὸς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πολιτικὸς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.5.a",
+    "EN.I.13.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πρακτικ",
+   "canonical": "πρακτικοὶ",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "πρακτικοὶ",
+     "n": 1
+    },
+    {
+     "form": "πρακτική",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.a",
+    "EN.I.7.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πολιτικου",
+   "canonical": "πολιτικοῦ",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πολιτικοῦ",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.5.a",
+    "EN.I.5.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αληθει",
+   "canonical": "ἀλήθειαν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀλήθειαν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.6.a",
+    "EN.I.13.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "δοξα",
+   "canonical": "δόξαν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δόξαν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.6.b",
+    "EN.I.8.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "νουσ",
+   "canonical": "νοῦς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νοῦς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.6.c",
+    "EN.I.6.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "χρησιμ",
+   "canonical": "χρήσιμον",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "χρήσιμον",
+     "n": 1
+    },
+    {
+     "form": "χρησίμη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c",
+    "EN.I.7.k"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ιατρικ",
+   "canonical": "ἰατρική",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἰατρική",
+     "n": 1
+    },
+    {
+     "form": "ἰατρικῆς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.d",
+    "EN.I.13.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ειδο",
+   "canonical": "εἶδος",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εἶδος",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.6.f",
+    "EN.I.6.g"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "τιμα",
+   "canonical": "τιμαί",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τιμαί",
+     "n": 1
+    },
+    {
+     "form": "τιμαὶ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.g",
+    "EN.I.10.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "απαντ",
+   "canonical": "ἅπαντα",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἅπαντα",
+     "n": 1
+    },
+    {
+     "form": "ἁπάντων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h",
+    "EN.I.7.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ζητουμεν",
+   "canonical": "ζητούμενον",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ζητούμενον",
+     "n": 1
+    },
+    {
+     "form": "ζητούμενα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.a",
+    "EN.I.13.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "τελειοτατ",
+   "canonical": "τελειότατον",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τελειότατον",
+     "n": 1
+    },
+    {
+     "form": "τελειοτάτην",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.b",
+    "EN.I.7.i"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αιρετ",
+   "canonical": "αἱρετὸν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αἱρετὸν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.c",
+    "EN.I.7.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αλλο",
+   "canonical": "ἄλλο",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄλλο",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.c",
+    "EN.I.13.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "τεχνιτ",
+   "canonical": "τεχνίτῃ",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τεχνίτῃ",
+     "n": 1
+    },
+    {
+     "form": "τεχνίτας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.g",
+    "EN.I.10.g"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "θρεπτικ",
+   "canonical": "θρεπτικὴν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "θρεπτικὴν",
+     "n": 1
+    },
+    {
+     "form": "θρεπτικὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h",
+    "EN.I.13.e"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ζωην",
+   "canonical": "ζωήν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζωήν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.h",
+    "EN.I.7.i"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "λογου",
+   "canonical": "λόγου",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λόγου",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.i",
+    "EN.I.13.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "βιω",
+   "canonical": "βίῳ",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίῳ",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.i",
+    "EN.I.8.e"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "συναδε",
+   "canonical": "συνᾴδει",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συνᾴδει",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.a",
+    "EN.I.8.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ορθω",
+   "canonical": "ὀρθῶς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀρθῶς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.b",
+    "EN.I.8.e"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ευπραξι",
+   "canonical": "εὐπραξία",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "εὐπραξία",
+     "n": 1
+    },
+    {
+     "form": "εὐπραξίαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.b",
+    "EN.I.10.a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "φρονησι",
+   "canonical": "φρόνησις",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "φρόνησις",
+     "n": 1
+    },
+    {
+     "form": "φρόνησιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c",
+    "EN.I.13.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "σοφι",
+   "canonical": "σοφία",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "σοφία",
+     "n": 1
+    },
+    {
+     "form": "σοφίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c",
+    "EN.I.13.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "εξιν",
+   "canonical": "ἕξιν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἕξιν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.d",
+    "EN.I.13.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ψυχικ",
+   "canonical": "ψυχικῶν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ψυχικῶν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.f",
+    "EN.I.12.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "υπαρχε",
+   "canonical": "ὑπάρχει",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπάρχει",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.h",
+    "EN.I.10.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ενεργειαι",
+   "canonical": "ἐνεργείαις",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐνεργείαις",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.h",
+    "EN.I.10.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "βελτιστ",
+   "canonical": "βέλτιστον",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "βέλτιστον",
+     "n": 1
+    },
+    {
+     "form": "βέλτιστα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a",
+    "EN.I.13.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "θειοτατ",
+   "canonical": "θειοτάτων",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "θειοτάτων",
+     "n": 1
+    },
+    {
+     "form": "θειοτάτους",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a",
+    "EN.I.12.b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "θειο",
+   "canonical": "θεῖόν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "θεῖόν",
+     "n": 1
+    },
+    {
+     "form": "θεῖον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a",
+    "EN.I.12.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "αθλιο",
+   "canonical": "ἄθλιος",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄθλιος",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.10.b",
+    "EN.I.10.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "ζωησ",
+   "canonical": "ζωῆς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζωῆς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.10.f",
+    "EN.I.10.g"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "μεγαλ",
+   "canonical": "μεγάλα",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "μεγάλα",
+     "n": 1
+    },
+    {
+     "form": "μεγάλων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f",
+    "EN.I.10.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "επαινετ",
+   "canonical": "ἐπαινετῶν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἐπαινετῶν",
+     "n": 1
+    },
+    {
+     "form": "ἐπαινετὰς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.a",
+    "EN.I.13.h"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "τιμι",
+   "canonical": "τιμίων",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τιμίων",
+     "n": 1
+    },
+    {
+     "form": "τίμιόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.a",
+    "EN.I.12.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "επισκεπτε",
+   "canonical": "ἐπισκεπτέον",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπισκεπτέον",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.13.a",
+    "EN.I.13.c"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "σωματο",
+   "canonical": "σώματος",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σώματος",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.13.c",
+    "EN.I.13.d"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "κινησ",
+   "canonical": "κινήσεων",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "κινήσεων",
+     "n": 1
+    },
+    {
+     "form": "κινῆσαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e",
+    "EN.I.13.f"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "εγκρατ",
+   "canonical": "ἐγκρατοῦς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐγκρατοῦς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.13.f",
+    "EN.I.13.g"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "πλαν",
+   "canonical": "πλάνην",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πλάνην",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φρονει",
+   "canonical": "φρονεῖν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φρονεῖν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.6.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σπουδαιου",
+   "canonical": "σπουδαίου",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σπουδαίου",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηδεα",
+   "canonical": "ἡδέα",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἡδέα",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πραξεσι",
+   "canonical": "πράξεσιν",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράξεσιν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πωσ",
+   "canonical": "πῶς",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "πῶς",
+     "n": 1
+    },
+    {
+     "form": "πως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακρατ",
+   "canonical": "ἀκρατοῦς",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "ἀκρατοῦς",
+     "n": 1
+    },
+    {
+     "form": "ἀκρατῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διττ",
+   "canonical": "διττόν",
+   "total": 2,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "διττόν",
+     "n": 1
+    },
+    {
+     "form": "διττὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τελω",
+   "canonical": "τελῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τελῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ενεργε",
+   "canonical": "ἐνεργειῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐνεργειῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "λεχθεισ",
+   "canonical": "λεχθεισῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λεχθεισῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βουλομεθ",
+   "canonical": "βουλόμεθα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βουλόμεθα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορεξι",
+   "canonical": "ὄρεξιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὄρεξιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "περιλαβει",
+   "canonical": "περιλαβεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "περιλαβεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κυριωτατ",
+   "canonical": "κυριωτάτης",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κυριωτάτης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τανθρωπιν",
+   "canonical": "τἀνθρώπινον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τἀνθρώπινον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καλλι",
+   "canonical": "κάλλιον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κάλλιον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πολεσι",
+   "canonical": "πόλεσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πόλεσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εφιετ",
+   "canonical": "ἐφίεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐφίεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.2.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διασαφηθει",
+   "canonical": "διασαφηθείη",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διασαφηθείη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακριβ",
+   "canonical": "ἀκριβὲς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκριβὲς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απασ",
+   "canonical": "ἅπασι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἅπασι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τοισ",
+   "canonical": "τοῖς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τοῖς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαφορ",
+   "canonical": "διαφορὰν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διαφορὰν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αληθ",
+   "canonical": "ἀληθὲς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀληθὲς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ενδεικνυσθ",
+   "canonical": "ἐνδείκνυσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐνδείκνυσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πεπαιδευμενου",
+   "canonical": "πεπαιδευμένου",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πεπαιδευμένου",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πραγμ",
+   "canonical": "πράγματος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράγματος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αποδειξει",
+   "canonical": "ἀποδείξεις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀποδείξεις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κριτ",
+   "canonical": "κριτής",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κριτής",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πεπαιδευμενο",
+   "canonical": "πεπαιδευμένος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πεπαιδευμένος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νεοσ",
+   "canonical": "νέος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νέος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παθεσι",
+   "canonical": "πάθεσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πάθεσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηθοσ",
+   "canonical": "ἦθος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἦθος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παθο",
+   "canonical": "πάθος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πάθος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακρατεσι",
+   "canonical": "ἀκρατέσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκρατέσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορεξει",
+   "canonical": "ὀρέξεις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀρέξεις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πραττουσ",
+   "canonical": "πράττουσι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράττουσι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αποδεκτε",
+   "canonical": "ἀποδεκτέον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀποδεκτέον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.3.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορεγετ",
+   "canonical": "ὀρέγεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀρέγεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακροτατ",
+   "canonical": "ἀκρότατον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκρότατον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευδαιμονει",
+   "canonical": "εὐδαιμονεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαιμονεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σοφοι",
+   "canonical": "σοφοῖς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σοφοῖς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υγιει",
+   "canonical": "ὑγίειαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑγίειαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θαυμαζ",
+   "canonical": "θαυμάζουσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θαυμάζουσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ωοντ",
+   "canonical": "ᾤοντο",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ᾤοντο",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αρχω",
+   "canonical": "ἀρχῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀρχῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "γνωριμ",
+   "canonical": "γνωρίμων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "γνωρίμων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακουσομεν",
+   "canonical": "ἀκουσόμενον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκουσόμενον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δικα",
+   "canonical": "δικαίων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δικαίων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηχθα",
+   "canonical": "ἦχθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἦχθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εθεσι",
+   "canonical": "ἔθεσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔθεσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διοτ",
+   "canonical": "διότι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διότι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παναριστο",
+   "canonical": "πανάριστος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πανάριστος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.4.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βιων",
+   "canonical": "βίων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απολαυστικ",
+   "canonical": "ἀπολαυστικόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀπολαυστικόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεωρητικο",
+   "canonical": "θεωρητικός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεωρητικός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιπολαιοτερ",
+   "canonical": "ἐπιπολαιότερον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιπολαιότερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τιμωσ",
+   "canonical": "τιμῶσι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τιμῶσι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τιμωμεν",
+   "canonical": "τιμωμένῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τιμωμένῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μαντευομεθ",
+   "canonical": "μαντευόμεθα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μαντευόμεθα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δυσαφαιρετ",
+   "canonical": "δυσαφαίρετον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δυσαφαίρετον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τιμασθ",
+   "canonical": "τιμᾶσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τιμᾶσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φρονιμ",
+   "canonical": "φρονίμων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φρονίμων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υπολαβ",
+   "canonical": "ὑπολάβοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπολάβοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ατελεστερ",
+   "canonical": "ἀτελεστέρα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀτελεστέρα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απρακτει",
+   "canonical": "ἀπρακτεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀπρακτεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ατυχει",
+   "canonical": "ἀτυχεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀτυχεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "χρηματιστ",
+   "canonical": "χρηματιστὴς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "χρηματιστὴς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βιαιο",
+   "canonical": "βίαιός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βίαιός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πλουτο",
+   "canonical": "πλοῦτος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πλοῦτος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.5.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επισκεψασθ",
+   "canonical": "ἐπισκέψασθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπισκέψασθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαπορησ",
+   "canonical": "διαπορῆσαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διαπορῆσαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ειδη",
+   "canonical": "εἴδη",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εἴδη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αναιρει",
+   "canonical": "ἀναιρεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀναιρεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αριθμ",
+   "canonical": "ἀριθμῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀριθμῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ποιω",
+   "canonical": "ποιῷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ποιῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ουσι",
+   "canonical": "οὐσία",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "οὐσία",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "οντο",
+   "canonical": "ὄντος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὄντος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "οντι",
+   "canonical": "ὄντι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὄντι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ποσω",
+   "canonical": "ποσῷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ποσῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μετρι",
+   "canonical": "μέτριον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μέτριον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καιρο",
+   "canonical": "καιρός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καιρός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαιτ",
+   "canonical": "δίαιτα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δίαιτα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μετριου",
+   "canonical": "μετρίου",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μετρίου",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυτοεκαστ",
+   "canonical": "αὐτοέκαστον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὐτοέκαστον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αιδι",
+   "canonical": "ἀίδιον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀίδιον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υποφαινετ",
+   "canonical": "ὑποφαίνεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑποφαίνεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ωφελ",
+   "canonical": "ὠφελ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὠφελ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μων",
+   "canonical": "μων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μιαν",
+   "canonical": "μίαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μαται",
+   "canonical": "μάταιον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μάταιον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συντελει",
+   "canonical": "συντελεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συντελεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "οικειοτερ",
+   "canonical": "οἰκειότερον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "οἰκειότερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "χωριστ",
+   "canonical": "χωριστὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "χωριστὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ζητειτ",
+   "canonical": "ζητεῖται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζητεῖται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "γνωριζει",
+   "canonical": "γνωρίζειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "γνωρίζειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εισομεθ",
+   "canonical": "εἰσόμεθα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εἰσόμεθα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εφιεμεν",
+   "canonical": "ἐφιέμεναι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐφιέμεναι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευλογ",
+   "canonical": "εὔλογον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὔλογον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απορ",
+   "canonical": "ἄπορον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄπορον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ειδω",
+   "canonical": "εἰδὼς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εἰδὼς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τεθεαμενο",
+   "canonical": "τεθεαμένος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τεθεαμένος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ιατρο",
+   "canonical": "ἰατρός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἰατρός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εκαστ",
+   "canonical": "ἑκάστης",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἑκάστης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ταγαθ",
+   "canonical": "τἀγαθόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τἀγαθόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νικη",
+   "canonical": "νίκη",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νίκη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "προαιρεσε",
+   "canonical": "προαιρέσει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "προαιρέσει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "οργαν",
+   "canonical": "ὄργανα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὄργανα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διωκτ",
+   "canonical": "διωκτὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διωκτὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αει",
+   "canonical": "ἀεὶ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀεὶ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νουν",
+   "canonical": "νοῦν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νοῦν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ελοιμεθ",
+   "canonical": "ἑλοίμεθ᾽",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἑλοίμεθ᾽",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευδαιμονησει",
+   "canonical": "εὐδαιμονήσειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαιμονήσειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αιρειτ",
+   "canonical": "αἱρεῖται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αἱρεῖται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυταρκει",
+   "canonical": "αὐταρκείας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὐταρκείας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "λεγομε",
+   "canonical": "λέγομεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λέγομεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μονωτ",
+   "canonical": "μονώτην",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μονώτην",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απειρ",
+   "canonical": "ἄπειρον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄπειρον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "προεισι",
+   "canonical": "πρόεισιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πρόεισιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τιθεμε",
+   "canonical": "τίθεμεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τίθεμεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ενδε",
+   "canonical": "ἐνδεᾶ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐνδεᾶ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "οιομεθ",
+   "canonical": "οἰόμεθα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "οἰόμεθα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αιρετωτατ",
+   "canonical": "αἱρετωτάτην",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αἱρετωτάτην",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αργο",
+   "canonical": "ἀργὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀργὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ιδιο",
+   "canonical": "ἴδιον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἴδιον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυξητικ",
+   "canonical": "αὐξητικὴν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὐξητικὴν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αισθητικ",
+   "canonical": "αἰσθητική",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αἰσθητική",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ζωω",
+   "canonical": "ζῴῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζῴῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιπειθ",
+   "canonical": "ἐπιπειθὲς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιπειθὲς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διανοουμεν",
+   "canonical": "διανοούμενον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διανοούμενον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κυριωτερ",
+   "canonical": "κυριώτερον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κυριώτερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "λεγεσθ",
+   "canonical": "λέγεσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λέγεσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υποτυπωσ",
+   "canonical": "ὑποτυπῶσαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑποτυπῶσαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.j"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "προαγαγει",
+   "canonical": "προαγαγεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "προαγαγεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.j"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συνεργο",
+   "canonical": "συνεργὸς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συνεργὸς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.j"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακριβει",
+   "canonical": "ἀκρίβειαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκρίβειαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιζητει",
+   "canonical": "ἐπιζητεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιζητεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μεθοδ",
+   "canonical": "μεθόδῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μεθόδῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ποιο",
+   "canonical": "ποῖόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ποῖόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεατ",
+   "canonical": "θεατὴς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεατὴς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παρεργ",
+   "canonical": "πάρεργα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πάρεργα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πλει",
+   "canonical": "πλείω",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πλείω",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.k"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πρωτ",
+   "canonical": "πρῶτον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πρῶτον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επαγωγ",
+   "canonical": "ἐπαγωγῇ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπαγωγῇ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αισθησε",
+   "canonical": "αἰσθήσει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αἰσθήσει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εθισμ",
+   "canonical": "ἐθισμῷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐθισμῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πεφυκ",
+   "canonical": "πεφύκασιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πεφύκασιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διορισθ",
+   "canonical": "διορισθῶσι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διορισθῶσι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συμφαν",
+   "canonical": "συμφανῆ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συμφανῆ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "γινεσθ",
+   "canonical": "γίνεσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "γίνεσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.7.l"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "λεγομεν",
+   "canonical": "λεγομένων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λεγομένων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υπαρχ",
+   "canonical": "ὑπάρχοντα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπάρχοντα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαφωνε",
+   "canonical": "διαφωνεῖ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διαφωνεῖ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σωμα",
+   "canonical": "σῶμα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σῶμα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κυριωτ",
+   "canonical": "κυριώτατα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κυριώτατα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευζωι",
+   "canonical": "εὐζωία",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐζωία",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευετηρι",
+   "canonical": "εὐετηρίαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐετηρίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ολιγ",
+   "canonical": "ὀλίγοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀλίγοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ενδοξ",
+   "canonical": "ἔνδοξοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔνδοξοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ανδρ",
+   "canonical": "ἄνδρες",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄνδρες",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαμαρτανει",
+   "canonical": "διαμαρτάνειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διαμαρτάνειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κατορθου",
+   "canonical": "κατορθοῦν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κατορθοῦν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συνωδο",
+   "canonical": "συνῳδός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συνῳδός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υπολαμβανει",
+   "canonical": "ὑπολαμβάνειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπολαμβάνειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κτησε",
+   "canonical": "κτήσει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κτήσει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "χρησε",
+   "canonical": "χρήσει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "χρήσει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εξει",
+   "canonical": "ἕξει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἕξει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υπαρχουσ",
+   "canonical": "ὑπάρχουσαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπάρχουσαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μηδε",
+   "canonical": "μηδὲν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μηδὲν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εξηργηκοτ",
+   "canonical": "ἐξηργηκότι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐξηργηκότι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αναγκ",
+   "canonical": "ἀνάγκης",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀνάγκης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ισχυροτατ",
+   "canonical": "ἰσχυρότατοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἰσχυρότατοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "στεφανουντ",
+   "canonical": "στεφανοῦνται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "στεφανοῦνται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νικωσι",
+   "canonical": "νικῶσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νικῶσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πραττοντ",
+   "canonical": "πράττοντες",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράττοντες",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυτο",
+   "canonical": "αὑτὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὑτὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηδυσ",
+   "canonical": "ἡδύς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἡδύς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φιλοδικαι",
+   "canonical": "φιλοδικαίῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φιλοδικαίῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φιλαρετ",
+   "canonical": "φιλαρέτῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φιλαρέτῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φιλοκαλοι",
+   "canonical": "φιλοκάλοις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φιλοκάλοις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εχειε",
+   "canonical": "ἔχειἐν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔχειἐν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καλαι",
+   "canonical": "καλαῖς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καλαῖς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δικαιοπραγει",
+   "canonical": "δικαιοπραγεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δικαιοπραγεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ελευθεριοι",
+   "canonical": "ἐλευθερίοις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐλευθερίοις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σπουδαιο",
+   "canonical": "σπουδαῖος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σπουδαῖος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηδιστ",
+   "canonical": "ἥδιστον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἥδιστον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διωριστ",
+   "canonical": "διώρισται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διώρισται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υγιαινει",
+   "canonical": "ὑγιαίνειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑγιαίνειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ερα",
+   "canonical": "ἐρᾷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐρᾷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τυχει",
+   "canonical": "τυχεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τυχεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αρισται",
+   "canonical": "ἀρίσταις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀρίσταις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δυναμεω",
+   "canonical": "δυνάμεως",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δυνάμεως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευτυχι",
+   "canonical": "εὐτυχίαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐτυχίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.8.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μαθητ",
+   "canonical": "μαθητὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μαθητὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εθιστ",
+   "canonical": "ἐθιστὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐθιστὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεια",
+   "canonical": "θείαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θείαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μοιρ",
+   "canonical": "μοῖραν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μοῖραν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεοπεμπτο",
+   "canonical": "θεόπεμπτός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεόπεμπτός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αθλο",
+   "canonical": "ἆθλον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἆθλον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συνεργ",
+   "canonical": "συνεργὰ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συνεργὰ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιμελει",
+   "canonical": "ἐπιμέλειαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιμέλειαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κοινωνησ",
+   "canonical": "κοινωνῆσαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κοινωνῆσαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τοιαυτ",
+   "canonical": "τοιαύτης",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τοιαύτης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ελπιδ",
+   "canonical": "ἐλπίδα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐλπίδα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριζοντ",
+   "canonical": "μακαρίζονται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίζονται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τελειου",
+   "canonical": "τελείου",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τελείου",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.9.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευδαιμονιστε",
+   "canonical": "εὐδαιμονιστέον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαιμονιστέον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εωσ",
+   "canonical": "ἕως",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἕως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ατοπ",
+   "canonical": "ἄτοπον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄτοπον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βουλετ",
+   "canonical": "βούλεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βούλεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ασφαλω",
+   "canonical": "ἀσφαλῶς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀσφαλῶς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαρισειε",
+   "canonical": "μακαρίσειεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίσειεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κακο",
+   "canonical": "κακὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κακὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δυστυχι",
+   "canonical": "δυστυχίαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δυστυχίαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριω",
+   "canonical": "μακαρίως",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αξια",
+   "canonical": "ἀξίαν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀξίαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συμμεταβαλλ",
+   "canonical": "συμμεταβάλλοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συμμεταβάλλοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τεθνεω",
+   "canonical": "τεθνεὼς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τεθνεὼς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριζει",
+   "canonical": "μακαρίζειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίζειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βουλ",
+   "canonical": "βούλεσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βούλεσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευδαιμονιζει",
+   "canonical": "εὐδαιμονίζειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαιμονίζειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μεταβολ",
+   "canonical": "μεταβολάς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μεταβολάς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ουδαμω",
+   "canonical": "οὐδαμῶς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "οὐδαμῶς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορθο",
+   "canonical": "ὀρθόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀρθόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ανθρωπινο",
+   "canonical": "ἀνθρώπινος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀνθρώπινος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βεβαιοτ",
+   "canonical": "βεβαιότης",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βεβαιότης",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καταζ",
+   "canonical": "καταζῆν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καταζῆν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ληθη",
+   "canonical": "λήθην",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λήθην",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεωρησε",
+   "canonical": "θεωρήσει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεωρήσει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αληθω",
+   "canonical": "ἀληθῶς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀληθῶς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριωτερ",
+   "canonical": "μακαριώτερον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαριώτερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συνεπικοσμει",
+   "canonical": "συνεπικοσμεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "συνεπικοσμεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καλη",
+   "canonical": "καλή",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καλή",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "λυπα",
+   "canonical": "λύπας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "λύπας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "διαλαμπε",
+   "canonical": "διαλάμπει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "διαλάμπει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "καλο",
+   "canonical": "καλόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "καλόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ατυχι",
+   "canonical": "ἀτυχίας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀτυχίας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "γενναδ",
+   "canonical": "γεννάδας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "γεννάδας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μεγαλοψυχο",
+   "canonical": "μεγαλόψυχος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μεγαλόψυχος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαρ",
+   "canonical": "μακαρίων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εμφρον",
+   "canonical": "ἔμφρονα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔμφρονα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φερει",
+   "canonical": "φέρειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φέρειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ποιει",
+   "canonical": "ποιεῖν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ποιεῖν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριο",
+   "canonical": "μακάριός",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακάριός",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κινηθησετ",
+   "canonical": "κινηθήσεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κινηθήσεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ραδιω",
+   "canonical": "ῥᾳδίως",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ῥᾳδίως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επηβολο",
+   "canonical": "ἐπήβολος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπήβολος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βιωσομεν",
+   "canonical": "βιωσόμενον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βιωσόμενον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αφαν",
+   "canonical": "ἀφανὲς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀφανὲς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.10.i"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αφιλ",
+   "canonical": "ἄφιλον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄφιλον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δοξαι",
+   "canonical": "δόξαις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δόξαις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακρ",
+   "canonical": "μακρὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακρὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "απεραντ",
+   "canonical": "ἀπέραντον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀπέραντον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τυπω",
+   "canonical": "τύπῳ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τύπῳ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παθω",
+   "canonical": "παθῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "παθῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παρανομ",
+   "canonical": "παράνομα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "παράνομα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δειν",
+   "canonical": "δεινὰ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δεινὰ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κοινων",
+   "canonical": "κοινωνοῦσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κοινωνοῦσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εκεινοι",
+   "canonical": "ἐκείνοις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐκείνοις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.11.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεου",
+   "canonical": "θεοὺς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεοὺς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επαιν",
+   "canonical": "ἐπαίνων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπαίνων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ημασ",
+   "canonical": "ἡμᾶς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἡμᾶς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αναφερομεν",
+   "canonical": "ἀναφερόμενοι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀναφερόμενοι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αναφορ",
+   "canonical": "ἀναφορᾶς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀναφορᾶς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριζομε",
+   "canonical": "μακαρίζομεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίζομεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ευδαιμονιζομε",
+   "canonical": "εὐδαιμονίζομεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "εὐδαιμονίζομεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μακαριζε",
+   "canonical": "μακαρίζει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μακαρίζει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεον",
+   "canonical": "θεὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αναφερ",
+   "canonical": "ἀναφέρεσθαι",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀναφέρεσθαι",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επαινο",
+   "canonical": "ἔπαινος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔπαινος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εγκωμι",
+   "canonical": "ἐγκώμια",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐγκώμια",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σωματικ",
+   "canonical": "σωματικῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σωματικῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "δηλο",
+   "canonical": "δῆλον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "δῆλον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τελε",
+   "canonical": "τελείων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τελείων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.12.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεωρησαιμε",
+   "canonical": "θεωρήσαιμεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεωρήσαιμεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.a"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πολιτ",
+   "canonical": "πολίτας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πολίτας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υπηκο",
+   "canonical": "ὑπηκόους",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὑπηκόους",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νομοθετ",
+   "canonical": "νομοθέτας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νομοθέτας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σκεψι",
+   "canonical": "σκέψις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σκέψις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ζητησι",
+   "canonical": "ζήτησις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζήτησις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τιμιωτερ",
+   "canonical": "τιμιωτέρα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τιμιωτέρα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "βελτ",
+   "canonical": "βελτίων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "βελτίων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "θεωρητε",
+   "canonical": "θεωρητέον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "θεωρητέον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εξακριβου",
+   "canonical": "ἐξακριβοῦν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐξακριβοῦν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.c"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εξωτερικοι",
+   "canonical": "ἐξωτερικοῖς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐξωτερικοῖς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "χρηστε",
+   "canonical": "χρηστέον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "χρηστέον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυτοι",
+   "canonical": "αὐτοῖς",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὐτοῖς",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αλογ",
+   "canonical": "ἄλογον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἄλογον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μορι",
+   "canonical": "μόρια",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μόρια",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φυτικ",
+   "canonical": "φυτικῷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φυτικῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "τελειοι",
+   "canonical": "τελείοις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "τελείοις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.d"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "υδαιμον",
+   "canonical": "ὐδαίμονας",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὐδαίμονας",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αθλι",
+   "canonical": "ἀθλίων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀθλίων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αργι",
+   "canonical": "ἀργία",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀργία",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φαυλ",
+   "canonical": "φαύλη",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φαύλη",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "φαντασμ",
+   "canonical": "φαντάσματα",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "φαντάσματα",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιεικ",
+   "canonical": "ἐπιεικῶν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιεικῶν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.e"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επαινουμε",
+   "canonical": "ἐπαινοῦμεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπαινοῦμεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μαχετ",
+   "canonical": "μάχεται",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μάχεται",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αντιτεινε",
+   "canonical": "ἀντιτείνει",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀντιτείνει",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορμα",
+   "canonical": "ὁρμαὶ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὁρμαὶ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορωμε",
+   "canonical": "ὁρῶμεν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὁρῶμεν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "νομιστε",
+   "canonical": "νομιστέον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "νομιστέον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αντιβαιν",
+   "canonical": "ἀντιβαῖνον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀντιβαῖνον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ετερ",
+   "canonical": "ἕτερον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἕτερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "μετεχει",
+   "canonical": "μετέχειν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "μετέχειν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.f"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σωφρονο",
+   "canonical": "σώφρονος",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σώφρονος",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ανδρειου",
+   "canonical": "ἀνδρείου",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀνδρείου",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κοινωνε",
+   "canonical": "κοινωνεῖ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κοινωνεῖ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "επιθυμητικ",
+   "canonical": "ἐπιθυμητικὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἐπιθυμητικὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ορεκτικ",
+   "canonical": "ὀρεκτικὸν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ὀρεκτικὸν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κατηκο",
+   "canonical": "κατήκοόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κατήκοόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πειθαρχικ",
+   "canonical": "πειθαρχικόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πειθαρχικόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "πειθετ",
+   "canonical": "πείθεταί",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πείθεταί",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "παρακλησι",
+   "canonical": "παράκλησις",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "παράκλησις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κυριω",
+   "canonical": "κυρίως",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κυρίως",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "αυτω",
+   "canonical": "αὑτῷ",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "αὑτῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ακουστικ",
+   "canonical": "ἀκουστικόν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἀκουστικόν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.g"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "συνεσι",
+   "canonical": "σύνεσιν",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σύνεσιν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σωφροσυν",
+   "canonical": "σωφροσύνην",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σωφροσύνην",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ηθου",
+   "canonical": "ἤθους",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἤθους",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "σωφρ",
+   "canonical": "σώφρων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σώφρων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "εξεω",
+   "canonical": "ἕξεων",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἕξεων",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.13.h"
+   ],
+   "passageCount": 1
+  }
+ ]
+}
