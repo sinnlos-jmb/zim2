@@ -165,6 +165,15 @@ body.sb-off #sb{border-right:0}
 .hitlist{margin-top:10px;padding-top:9px;border-top:1px solid var(--border);line-height:2.1}
 .hitlist code{font:12px/1 Menlo,Consolas,monospace;background:var(--surface);padding:3px 6px;border-radius:4px;margin-right:4px}
 
+/* subchips de sentido, arriba de todo en #qvec: mismo mecanismo que los chips
+   de categoria del sidebar, acotado a los sentidos de un eje polisemico */
+.sensesel{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.sensel-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.sensel-label{font-size:12px;color:var(--muted);white-space:nowrap}
+.sensel-chip{font-size:12.5px;padding:4px 11px;border-radius:999px;background:var(--canvas);color:var(--muted)}
+.sensel-chip:hover{border-color:var(--muted);color:var(--text)}
+.sensel-chip.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue);font-weight:500}
+
 .rhead{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
 .rhead h3{font-size:15px;margin:0}
 
@@ -248,7 +257,7 @@ summary:hover{color:var(--text)}
   .dropbtn{padding:0 10px;gap:4px}
   .dropbtn .car{font-size:9px}
   #faqbtn::before{content:"?";font-size:15px;font-weight:600}
-  #defbtn::before{content:"📖";font-size:14px}  /* o "D" si preferís */
+  #defbtn::before{content:"\1F4D6";font-size:14px}  /* o "D" si preferís */
   .bl{width:110px}
   .cov{display:none}
 }
