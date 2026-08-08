@@ -108,7 +108,7 @@ function buildIndex(withAliases = false) {
       // claro de todos. Declarado en el sentido, se atribuye a `acto`.
       if (withAliases) load(sn.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
     }
-    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
+    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es);
   });
 
   return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr };
@@ -331,7 +331,7 @@ export function coverage(queryVec, passageVec) {
 // Medido sobre las 23 preguntas del menu (build/exp_balance2.mjs, exp_lexico.mjs):
 //   valor 3  ->  0 top-1 rotos, 0 top-5 alterados
 //   valor 2  ->  1 top-1 roto, 8 top-5 alterados
-// El unico caso que rompe en 2 es "\u00bfalcanza con ser rico para vivir bien?":
+// El unico caso que rompe en 2 es "¿alcanza con ser rico para vivir bien?":
 // EN.I.5.d es la respuesta correcta y toca 1 de 2 ejes porque el eje Felicidad
 // no reconoce "vivir bien". Es una laguna del lexico, no del ordenamiento; al
 // cubrirla, el costo de este valor desaparece.
