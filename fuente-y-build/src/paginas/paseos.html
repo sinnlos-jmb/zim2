@@ -75,7 +75,7 @@
 
 <footer id="ft">
   <span id="status">Paseo activo: Felicidad · εὐδαιμονία</span>
-  <span id="stats">peripatético: se piensa caminando</span>
+  <span id="stats">peripátetico: se piensa caminando</span>
 </footer>
 
 <script src="js/shell.js"></script>
@@ -84,6 +84,7 @@
 (function () {
   var frame = document.getElementById('walkframe');
   var status = document.getElementById('status');
+  var stats = document.getElementById('stats');
   document.querySelectorAll('.walk').forEach(function (b) {
     b.addEventListener('click', function () {
       if (b.getAttribute('aria-disabled') === 'true') return;
@@ -94,6 +95,11 @@
       status.textContent = 'Paseo activo: ' + b.dataset.label;
       if (window.matchMedia('(max-width:820px)').matches) document.body.classList.remove('sb-open');
     });
+  });
+  window.addEventListener('message', function (ev) {
+    if (ev.data && ev.data.type === 'grafo-status' && typeof ev.data.text === 'string') {
+      stats.textContent = ev.data.text;
+    }
   });
 })();
 </script>
