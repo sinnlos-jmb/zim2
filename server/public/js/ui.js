@@ -509,3 +509,153 @@ function renderResults() {
             : 'No toca todos los ejes de la consulta: el puntaje se reduce';
         top.append(cov);
       }
+      const score = el('span', 'score', r.score.toFixed(3));
+      // si la capa de sentidos movio el puntaje, la ficha lo dice: el pasaje
+      // no bajo por el coseno sino porque usa el eje en otra acepcion
+      if (r.senseFactor != null && r.senseFactor < 0.999) {
+        score.classList.add('sensedown');
+        score.title = `La consulta pide otra acepción de un eje: puntaje al ${(r.senseFactor * 100).toFixed(0)}%`;
+      }
+      top.append(score);
+    }
+    card.append(top);
+
+    card.append(el('p', 'text', p.esOnly.length > 320 ? p.esOnly.slice(0, 320) + '…' : p.esOnly));
+
+    // por que gano: contribucion por eje al producto escalar (no aplica a
+    // resultados citados directamente por tag: no hay coseno que explicar)
+    const contrib = r.tagged ? [] : p.vector.map((v, j) => ({ j, c: v * lastQuery.vector[j] })).filter((x) => x.c > 0).sort((a, b) => b.c - a.c).slice(0, 4);
+    if (contrib.length) {
+      const why = el('div', 'why');
+      why.append(el('span', 'muted', 'Aporte al puntaje'));
+      const max = contrib[0].c;
+      // el porcentaje se calcula sobre el coseno, no sobre el puntaje final:
+      // el factor de cobertura escala el total y desbalancearia los aportes
+      contrib.forEach((c) => why.append(barRow(AXES[c.j].label, c.c, max, ((c.c / r.cos) * 100).toFixed(0) + '%')));
+      card.append(why);
+    }
+
+    /* SENTIDO. En que acepcion usa el pasaje los ejes polisemicos.
+     * Se muestra solo para los ejes que la consulta activo: mostrar todos
+     * llenaria la ficha de informacion que nadie pidio.
+     * Cuando el reparto esta partido (menos del 70% en el sentido dominante) se
+     * marca como mezcla y se muestra el porcentaje, porque ahi el pasaje esta
+     * usando de veras los dos sentidos: es el caso de 7.g-7.i con ergon.
+     */
+    const senseChips = [];
+    for (const axisId of Object.keys(p.senses || {})) {
+      const j = AXES.findIndex((a) => a.id === axisId);
+      if (j < 0 || !(lastQuery.vector[j] > 0)) continue;
+      const dom = dominantSense(p.senses, axisId);
+      if (!dom) continue;
+      const pinned = (p.sensesPinned || []).includes(axisId);
+      const mixed = dom.share < 0.7;
+      const chip = el('span', 'sensechip' + (pinned ? ' pinned' : '') + (mixed ? ' mixed' : ''));
+      chip.textContent = `${AXES[j].label} · ${senseLabel(axisId, dom.sense)}`
+        + (mixed ? ` ${Math.round(dom.share * 100)}%` : '');
+      chip.title = pinned
+        ? 'Sentido fijado a mano con un tag del texto fuente'
+        : mixed
+          ? 'El pasaje usa mas de un sentido de este eje: '
+            + Object.entries(p.senses[axisId])
+              .sort((a, b) => b[1] - a[1])
+              .map(([s, v]) => senseLabel(axisId, s) + ' ' + Math.round(v * 100) + '%')
+              .join(' · ')
+          : 'Sentido en que el pasaje usa este eje, deducido de sus lemas';
+      senseChips.push(chip);
+    }
+    if (senseChips.length) {
+      const sb = el('div', 'senses');
+      sb.append(el('span', 'muted', 'Sentido'));
+      senseChips.forEach((c) => sb.append(c));
+      card.append(sb);
+    }
+
+    if (p.glosses.length) {
+      const g = el('div', 'gloss');
+      p.glosses.slice(0, 8).forEach((x) => g.append(el('span', 'gtag', x)));
+      card.append(g);
+    }
+
+    if (p.greekParallel) {
+      const det = el('details');
+      det.append(el('summary', null, 'Griego original'));
+      det.append(el('p', 'grtext', p.greekParallel));
+      card.append(det);
+    }
+
+    // ACORDEON DEL CAPITULO COMPLETO.
+    // Se arma con el campo `es`, NO con `esOnly`: `es` lleva las glosas griegas
+    // intercaladas entre guiones, que es como el estudiante se familiariza con
+    // los terminos sin salir del castellano. `esOnly` es solo para el indice.
+    // El contenido se arma recien al abrirlo: hay 8 tarjetas en pantalla y el
+    // capitulo 7 tiene 11 pasajes, no tiene sentido construir 88 parrafos que
+    // nadie va a mirar.
+    const chap = PASSAGES.filter((x) => x.chapter === p.chapter);
+    if (chap.length) {
+      const cd = el('details', 'chap');
+      const rango = chap[0].bekker + (chap.length > 1 ? ' – ' + chap[chap.length - 1].bekker : '');
+      cd.append(el('summary', null, `Capítulo ${p.chapter} completo · ${chap.length} pasajes · ${rango}`));
+      const body = el('div', 'chapbody');
+      cd.append(body);
+      cd.addEventListener('toggle', () => {
+        if (!cd.open || body.dataset.done) return;
+        body.dataset.done = '1';
+        chap.forEach((c) => {
+          const here = c.id === p.id;
+          const par = el('div', 'cpar' + (here ? ' here' : ''));
+          const cm = el('div', 'cmeta');
+          cm.append(el('span', 'cbek', c.bekker || ''));
+          cm.append(el('span', 'cid', c.id));
+          if (here) cm.append(el('span', 'chere', 'este pasaje'));
+          par.append(cm);
+          par.append(el('p', 'ctext', c.es));
+          body.append(par);
+        });
+        // el griego del capitulo, anidado un nivel mas adentro
+        const gd = el('details', 'grk');
+        gd.append(el('summary', null, 'Texto griego del capítulo'));
+        chap.forEach((c) => {
+          if (!c.greekParallel) return;
+          const gp = el('p', 'grtext' + (c.id === p.id ? ' here' : ''));
+          gp.textContent = c.greekParallel;
+          gd.append(gp);
+        });
+        body.append(gd);
+        // el capitulo 7 no entra en pantalla: se lleva el resaltado a la vista
+        // sin mover el scroll de la pagina entera
+        const mark = body.querySelector('.cpar.here');
+        if (mark) body.scrollTop = Math.max(0, mark.offsetTop - body.offsetTop - 12);
+      });
+      card.append(cd);
+    }
+
+    box.append(card);
+  });
+}
+
+/* ------------------------------------------------------------------ INIT -- */
+
+function init() {
+  loadIndex();
+  renderAxisChips();
+  renderFaq();
+  renderDefs();
+  // el recuento sale del arreglo, no de un numero escrito a mano en el HTML
+  $('.sbhint').textContent = `Las ${AXES.length} dimensiones del espacio, agrupadas en siete familias. Seleccioná una o varias para consultar desde los ejes, sin escribir texto.`;
+  // Los menus desplegables del header ya no existen: Preguntas, Definiciones
+  // y busqueda libre son bloques de la sidebar, y de plegarlos se ocupa
+  // js/panels.js, que es comun a todas las secciones.
+  $('#go').onclick = searchText;
+  $('#q').addEventListener('keydown', (e) => { if (e.key === 'Enter') searchText(); });
+  $('#rebuild').onclick = () => { localStorage.removeItem(STORE_KEY); const ms = buildIndexNow(); setStatus(`Índice reconstruido en ${ms.toFixed(0)} ms`); if (lastQuery) runQuery(lastQuery.vector, lastQuery.label, lastQuery.hits); };
+  $('#clearax').onclick = clearAxes;
+
+  syncAxCount();
+  resetToStart();
+  const cov = PASSAGES.filter((p) => p.vector.some((x) => x)).length;
+  $('#stats').textContent = `${PASSAGES.length} pasajes · ${AXES.length} dimensiones · ${cov} vectorizados`;
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
