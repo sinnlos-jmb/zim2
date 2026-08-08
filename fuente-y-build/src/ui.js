@@ -1,5 +1,5 @@
 import { AXES, AXES_BY_GROUP } from './lexicon.js';
-import { vectorize, vectorFromAxes, topK, senseMixFromHits, applySenseTags, dominantSense, senseLabel } from './vectorize.js';
+import { vectorize, vectorFromAxes, topK, senseMixFromHits, applySenseTags, dominantSense, senseLabel, axesWithSenses } from './vectorize.js';
 
 // El corpus no viaja dentro del script: se pide al servidor. new URL(...)
 // lo resuelve relativo a este modulo, asi la app funciona montada en / o
@@ -58,6 +58,12 @@ let PASSAGES = [];
 let selectedAxes = {};
 let lastResults = [];
 let lastQuery = null;
+// SELECCION MANUAL DE SENTIDO, por eje: que sentidos participan de la consulta.
+// Por defecto (recien declarado) trae TODOS los sentidos del eje, que es la
+// forma de decir "sin diferenciar sentidos" (ver computeManualSenseMix()).
+// No vive en localStorage: es un ajuste fino de la sesion en curso, no del
+// indice ni del corpus.
+let senseSelections = {};
 
 /* ------------------------------------------------ INDEXADO + localStorage --- */
 
@@ -116,13 +122,39 @@ const setStatus = (t) => { $('#status').textContent = t; };
 
 function runQuery(qv, label, hits) {
   lastQuery = { vector: qv, label, hits: hits || [] };
-  // MEZCLA DE SENTIDOS DE LA CONSULTA. Sale de sus propios hits, asi que vale
-  // igual para busqueda libre, FAQ y definiciones sin escribir nada aparte.
-  // Si la consulta no eligio ningun sentido (por ejemplo, la busqueda por
-  // categorias, que no tiene texto), se pasa null y topK ordena como siempre.
-  const mix = senseMixFromHits(hits || []);
+  recomputeSenseMixAndResults();
+}
+
+/* MEZCLA DE SENTIDOS DE LA CONSULTA, en dos capas:
+ *  1. automatica -> sale de los hits (vale igual para busqueda libre, FAQ y
+ *     definiciones sin escribir nada aparte).
+ *  2. manual -> los subchips de sentido en #qvec. Solo pisa un eje cuando el
+ *     usuario desmarco al menos un sentido; con todos marcados (el estado por
+ *     defecto) el eje ni siquiera entra en el mix, que es la forma de decir
+ *     "sin diferenciar sentidos" y deja el ordenamiento identico al de antes
+ *     de esta capa.
+ * La manual pisa a la automatica eje por eje: si el usuario ya toco los
+ * subchips de un eje, esa eleccion manda por sobre lo que haya escrito.
+ */
+function computeManualSenseMix() {
+  const out = {};
+  axesWithSenses().forEach((axDef) => {
+    const sel = senseSelections[axDef.id];
+    if (!sel || sel.size === axDef.senses.length) return; // sin tocar, o todos marcados: neutral
+    const share = 1 / sel.size;
+    out[axDef.id] = {};
+    axDef.senses.forEach((s) => { if (sel.has(s.id)) out[axDef.id][s.id] = share; });
+  });
+  return out;
+}
+
+function recomputeSenseMixAndResults() {
+  if (!lastQuery) return;
+  const auto = senseMixFromHits(lastQuery.hits || []);
+  const manual = computeManualSenseMix();
+  const mix = { ...auto, ...manual };
   lastQuery.senseMix = Object.keys(mix).length ? mix : null;
-  lastResults = topK(qv, PASSAGES, 8, { senseMix: lastQuery.senseMix });
+  lastResults = topK(lastQuery.vector, PASSAGES, 8, { senseMix: lastQuery.senseMix });
   renderResults();
   renderQueryVector();
 }
@@ -330,6 +362,7 @@ function clearAxes() {
 function resetToStart() {
   lastQuery = null;
   lastResults = [];
+  senseSelections = {};
   markActive(null);
   clearAxChips();
   renderSidebarHint();
@@ -353,10 +386,65 @@ function renderSidebarHint() {
   box.append(el('p', 'muted', 'Acá vas a ver en qué ejes se proyecta tu pregunta y qué términos los activaron.'));
 }
 
+// EJES ACTIVOS CON SENTIDO en la consulta actual: solo los que la consulta
+// esta tocando de veras (vector>0), para no llenar el hero con subchips de
+// ejes que no vienen al caso.
+function activeSenseAxes() {
+  if (!lastQuery || !lastQuery.vector) return [];
+  return axesWithSenses().filter((axDef) => {
+    const i = AXES.findIndex((a) => a.id === axDef.id);
+    return i >= 0 && lastQuery.vector[i] > 0;
+  });
+}
+
+// Estado por defecto de un eje la primera vez que aparece: TODOS sus sentidos
+// marcados. Se inicializa perezosamente, al renderizar, para no tener que
+// conocer de antemano cada eje con sentido.
+function ensureSenseSelection(axDef) {
+  if (!senseSelections[axDef.id]) senseSelections[axDef.id] = new Set(axDef.senses.map((s) => s.id));
+  return senseSelections[axDef.id];
+}
+
+// SUBCHIPS DE SENTIDO, arriba del todo en #qvec. Mismo mecanismo que las
+// categorias del sidebar (seleccion multiple, on/off al click), pero acotado
+// a los sentidos DENTRO de un eje: nunca se puede dejar un eje sin ningun
+// sentido marcado, porque eso lo sacaria de la consulta sin que el usuario lo
+// haya pedido.
+function renderSenseChipsBlock() {
+  const axes = activeSenseAxes();
+  if (!axes.length) return null;
+  const wrap = el('div', 'sensesel');
+  axes.forEach((axDef) => {
+    const sel = ensureSenseSelection(axDef);
+    const row = el('div', 'sensel-row');
+    row.append(el('span', 'sensel-label', `Sentido de ${axDef.label}:`));
+    axDef.senses.forEach((s) => {
+      const b = el('button', 'sensel-chip' + (sel.has(s.id) ? ' on' : ''), s.label);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(sel.has(s.id)));
+      b.onclick = () => {
+        if (sel.has(s.id)) {
+          if (sel.size <= 1) return; // no se puede desmarcar el ultimo sentido
+          sel.delete(s.id);
+        } else {
+          sel.add(s.id);
+        }
+        recomputeSenseMixAndResults();
+      };
+      row.append(b);
+    });
+    wrap.append(row);
+  });
+  return wrap;
+}
+
 function renderQueryVector() {
   const box = $('#qvec');
   box.innerHTML = '';
   if (!lastQuery) { renderSidebarHint(); return; }
+  // Subchips de sentido: van arriba de todo en el hero.
+  const senseBlock = renderSenseChipsBlock();
+  if (senseBlock) box.append(senseBlock);
   if ('tagNote' in lastQuery) {
     box.append(el('h3', null, 'Cita directa por tag'));
     box.append(el('p', 'qlabel', lastQuery.label));
@@ -370,7 +458,7 @@ function renderQueryVector() {
     return;
   }
   const pairs = lastQuery.vector.map((v, i) => ({ v, ax: AXES[i] })).filter((p) => p.v > 0).sort((a, b) => b.v - a.v);
-  if (!pairs.length) { renderSidebarHint(); return; }
+  if (!pairs.length) { if (!senseBlock) renderSidebarHint(); return; }
   box.append(el('h3', null, 'Vector de la consulta'));
   box.append(el('p', 'qlabel', lastQuery.label));
   const max = pairs[0].v;
