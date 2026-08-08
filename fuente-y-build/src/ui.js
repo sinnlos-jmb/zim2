@@ -1,5 +1,5 @@
 import { AXES, AXES_BY_GROUP } from './lexicon.js';
-import { vectorize, vectorFromAxes, topK } from './vectorize.js';
+import { vectorize, vectorFromAxes, topK, senseMixFromHits, applySenseTags, dominantSense, senseLabel } from './vectorize.js';
 
 // El corpus no viaja dentro del script: se pide al servidor. new URL(...)
 // lo resuelve relativo a este modulo, asi la app funciona montada en / o
@@ -17,7 +17,9 @@ const CORPUS = await fetch(new URL('../data/corpus.json', import.meta.url)).then
 // Subir esta clave en CADA cambio de lexico: si no, un navegador que ya abrio
 // la version anterior recupera de localStorage un indice con otra cantidad de
 // dimensiones y el coseno compara vectores incompatibles.
-const STORE_KEY = 'en1:index:v9';
+// v10: capa de sentidos (ergon: obra/funcion, energeia: acto/accion) y limpieza
+// de lemas de esos dos ejes. Los vectores cambiaron, el indice viejo no sirve.
+const STORE_KEY = 'en1:index:v10';
 
 // Preguntas y definiciones del menu del header: a diferencia de una version
 // anterior con preguntas escritas a mano, estas surgen del centinela
@@ -59,11 +61,25 @@ let lastQuery = null;
 
 /* ------------------------------------------------ INDEXADO + localStorage --- */
 
+/* SENTIDOS DEL PASAJE.
+ * La mezcla se calcula con los aportes que quedaron marcados con un sentido y
+ * despues el tag manual del .txt la pisa, si existe. `sensesPinned` recuerda
+ * cuales quedaron fijados a mano, para que la ficha pueda distinguir lo que
+ * decidio una persona de lo que dedujo el motor.
+ * No se guarda en el cache de localStorage: sale de los hits, que loadIndex
+ * recalcula siempre (son baratos), asi que editar un sentido en el lexico o
+ * agregar un tag no obliga a revectorizar el corpus entero.
+ */
+function sensesOf(p, hits) {
+  const { mix, pinned } = applySenseTags(senseMixFromHits(hits), p.tags);
+  return { senses: mix, sensesPinned: pinned };
+}
+
 function buildIndexNow() {
   const t0 = performance.now();
   PASSAGES = CORPUS.passages.map((p) => {
     const { vector, raw, hits } = vectorize(p.esOnly, p.glosses);
-    return { ...p, vector, raw, hits, vectorizedFrom: p.textHash };
+    return { ...p, vector, raw, hits, ...sensesOf(p, hits), vectorizedFrom: p.textHash };
   });
   const ms = performance.now() - t0;
   try {
@@ -83,9 +99,9 @@ function loadIndex() {
     let stale = 0;
     PASSAGES = CORPUS.passages.map((p) => {
       const c = map.get(p.id);
-      if (!c || c.vectorizedFrom !== p.textHash) { stale++; const v = vectorize(p.esOnly, p.glosses); return { ...p, ...v, vectorizedFrom: p.textHash }; }
+      if (!c || c.vectorizedFrom !== p.textHash) { stale++; const v = vectorize(p.esOnly, p.glosses); return { ...p, ...v, ...sensesOf(p, v.hits), vectorizedFrom: p.textHash }; }
       const { hits } = vectorize(p.esOnly, p.glosses);
-      return { ...p, vector: c.vector, raw: c.raw, hits, vectorizedFrom: c.vectorizedFrom };
+      return { ...p, vector: c.vector, raw: c.raw, hits, ...sensesOf(p, hits), vectorizedFrom: c.vectorizedFrom };
     });
     setStatus(stale ? `Índice cargado de localStorage · ${stale} pasaje(s) revectorizado(s)` : `Índice cargado de localStorage · ${PASSAGES.length} pasajes`);
     return;
@@ -100,7 +116,13 @@ const setStatus = (t) => { $('#status').textContent = t; };
 
 function runQuery(qv, label, hits) {
   lastQuery = { vector: qv, label, hits: hits || [] };
-  lastResults = topK(qv, PASSAGES, 8);
+  // MEZCLA DE SENTIDOS DE LA CONSULTA. Sale de sus propios hits, asi que vale
+  // igual para busqueda libre, FAQ y definiciones sin escribir nada aparte.
+  // Si la consulta no eligio ningun sentido (por ejemplo, la busqueda por
+  // categorias, que no tiene texto), se pasa null y topK ordena como siempre.
+  const mix = senseMixFromHits(hits || []);
+  lastQuery.senseMix = Object.keys(mix).length ? mix : null;
+  lastResults = topK(qv, PASSAGES, 8, { senseMix: lastQuery.senseMix });
   renderResults();
   renderQueryVector();
 }
@@ -400,6 +422,12 @@ function renderResults() {
         top.append(cov);
       }
       const score = el('span', 'score', r.score.toFixed(3));
+      // si la capa de sentidos movio el puntaje, la ficha lo dice: el pasaje
+      // no bajo por el coseno sino porque usa el eje en otra acepcion
+      if (r.senseFactor != null && r.senseFactor < 0.999) {
+        score.classList.add('sensedown');
+        score.title = `La consulta pide otra acepción de un eje: puntaje al ${(r.senseFactor * 100).toFixed(0)}%`;
+      }
       top.append(score);
     }
     card.append(top);
@@ -417,6 +445,42 @@ function renderResults() {
       // el factor de cobertura escala el total y desbalancearia los aportes
       contrib.forEach((c) => why.append(barRow(AXES[c.j].label, c.c, max, ((c.c / r.cos) * 100).toFixed(0) + '%')));
       card.append(why);
+    }
+
+    /* SENTIDO. En que acepcion usa el pasaje los ejes polisemicos.
+     * Se muestra solo para los ejes que la consulta activo: mostrar todos
+     * llenaria la ficha de informacion que nadie pidio.
+     * Cuando el reparto esta partido (menos del 70% en el sentido dominante) se
+     * marca como mezcla y se muestra el porcentaje, porque ahi el pasaje esta
+     * usando de veras los dos sentidos: es el caso de 7.g-7.i con ergon.
+     */
+    const senseChips = [];
+    for (const axisId of Object.keys(p.senses || {})) {
+      const j = AXES.findIndex((a) => a.id === axisId);
+      if (j < 0 || !(lastQuery.vector[j] > 0)) continue;
+      const dom = dominantSense(p.senses, axisId);
+      if (!dom) continue;
+      const pinned = (p.sensesPinned || []).includes(axisId);
+      const mixed = dom.share < 0.7;
+      const chip = el('span', 'sensechip' + (pinned ? ' pinned' : '') + (mixed ? ' mixed' : ''));
+      chip.textContent = `${AXES[j].label} · ${senseLabel(axisId, dom.sense)}`
+        + (mixed ? ` ${Math.round(dom.share * 100)}%` : '');
+      chip.title = pinned
+        ? 'Sentido fijado a mano con un tag del texto fuente'
+        : mixed
+          ? 'El pasaje usa mas de un sentido de este eje: '
+            + Object.entries(p.senses[axisId])
+              .sort((a, b) => b[1] - a[1])
+              .map(([s, v]) => senseLabel(axisId, s) + ' ' + Math.round(v * 100) + '%')
+              .join(' · ')
+          : 'Sentido en que el pasaje usa este eje, deducido de sus lemas';
+      senseChips.push(chip);
+    }
+    if (senseChips.length) {
+      const sb = el('div', 'senses');
+      sb.append(el('span', 'muted', 'Sentido'));
+      senseChips.forEach((c) => sb.append(c));
+      card.append(sb);
     }
 
     if (p.glosses.length) {

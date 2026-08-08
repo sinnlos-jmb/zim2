@@ -35,13 +35,11 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobile()) setSidebar(false);
     });
-    // en movil el cajon arranca cerrado siempre; en escritorio se recuerda
-    if (mobile()) document.body.classList.remove('sb-open');
-    else {
-      var s = null;
-      try { s = localStorage.getItem(SB_KEY); } catch (e) {}
-      if (s === 'off') document.body.classList.add('sb-off');
-    }
+    // La sidebar arranca siempre desplegada, en cualquier seccion: en movil
+    // el cajon empieza cerrado (se abre con el boton), y en escritorio la
+    // columna nunca arranca colapsada, sin importar como haya quedado en
+    // una visita anterior. El toggle sigue funcionando dentro de la sesion.
+    document.body.classList.remove(mobile() ? 'sb-open' : 'sb-off');
   }
 
   /* ------------------------------------------- 2. bloques plegables ------- */

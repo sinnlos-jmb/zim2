@@ -3,6 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { parseSource, spanishOnly } from '../src/parse.js';
 import { grStem, grSurfaceForms, grStrip } from '../src/normalize.js';
+import { AXES } from '../src/lexicon.js';
 
 const SRC = process.argv[2] || '/data/en1/app/EN_libro1_v7_tags_fixed.txt';
 const OUT = '/data/en1/app/data';
@@ -160,12 +161,53 @@ const tagRoles = {};
 let taggedParagraphs = 0;
 for (const p of passages) {
   if (p.parrafoNros && p.parrafoNros.length) taggedParagraphs += p.parrafoNros.length;
-  for (const t of p.tags) tagRoles[t.rol] = (tagRoles[t.rol] || 0) + 1;
+  // un tag que solo fija un sentido no tiene rol: no debe contar como rol vacio
+  for (const t of p.tags) { if (!t || !t.rol) continue; tagRoles[t.rol] = (tagRoles[t.rol] || 0) + 1; }
 }
 console.log('\n=== TAGS ===');
 console.log('parrafos numerados (tags)  :', taggedParagraphs);
 console.log('pasajes con algun rol      :', passages.filter((p) => p.tags.length).length);
 for (const [rol, n] of Object.entries(tagRoles)) console.log(`  rol "${rol}" \u00d7 ${n}`);
+
+/* ------------------------------------------- SENTIDOS FIJADOS A MANO --------
+ * Un tag con la forma
+ *     { "parrafo_nro": 42, "tags": [{"eje": "ergon", "sentido": "obra"}] }
+ * fija la acepcion con que ese parrafo usa el eje y pisa la que el motor deduce
+ * de los lemas. Puede ir solo o junto a un rol:
+ *     {"rol": "define", "eje": "ergon", "peso": 0.9, "sentido": "funcion"}
+ *
+ * Este reporte existe para poder taggear con red: un eje mal escrito o un
+ * sentido inexistente es el unico error que el formato permite cometer en
+ * silencio, porque el tag es JSON libre y nadie lo valida antes.
+ */
+const SENSES_BY_AXIS = new Map(AXES.map((a) => [a.id, (a.senses || []).map((s) => s.id)]));
+const senseCounts = {};
+const senseErrors = [];
+for (const p of passages) {
+  for (const t of p.tags) {
+    if (!t || !t.sentido) continue;
+    const k = `${t.eje} = ${t.sentido}`;
+    senseCounts[k] = (senseCounts[k] || 0) + 1;
+    if (!t.eje) { senseErrors.push(`${p.id}: tag con "sentido" pero sin "eje"`); continue; }
+    if (!SENSES_BY_AXIS.has(t.eje)) { senseErrors.push(`${p.id}: el eje "${t.eje}" no existe en el lexico`); continue; }
+    const validos = SENSES_BY_AXIS.get(t.eje);
+    if (!validos.length) senseErrors.push(`${p.id}: el eje "${t.eje}" todavia no declara sentidos en lexicon.js`);
+    else if (!validos.includes(t.sentido)) senseErrors.push(`${p.id}: "${t.sentido}" no es un sentido de "${t.eje}" (validos: ${validos.join(', ')})`);
+  }
+}
+console.log('\n=== SENTIDOS FIJADOS A MANO ===');
+const senseKeys = Object.keys(senseCounts).sort();
+if (!senseKeys.length) {
+  console.log('  ninguno todavia. Formato del tag:');
+  console.log('  { "parrafo_nro": 42, "tags": [{"eje": "ergon", "sentido": "obra"}] }');
+  for (const [id, ss] of SENSES_BY_AXIS) if (ss.length) console.log(`  el eje "${id}" admite: ${ss.join(', ')}`);
+} else {
+  for (const k of senseKeys) console.log(`  ${k} \u00d7 ${senseCounts[k]}`);
+}
+if (senseErrors.length) {
+  console.log('  !! REVISAR:');
+  senseErrors.forEach((e) => console.log('     ' + e));
+}
 
 console.log('\n=== POR CAPITULO ===');
 for (let c = 1; c <= 13; c++) {

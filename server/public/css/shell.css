@@ -114,8 +114,8 @@ body.no-sb #sbtoggle{display:none}
 
 /* busqueda libre, ahora en la sidebar: input y lupa en la misma fila */
 .sbsearch{display:flex;flex-direction:row;gap:7px}
-.sbsearch input[type=text]{width:100%;height:36px;font-size:14px}
-.sbsearch #go{width:36px;height:36px;padding:0;flex:none;display:flex;align-items:center;justify-content:center}
+.sbsearch input[type=text]{width:100%;height:40px;font-size:14px}
+.sbsearch #go{width:40px;height:40px;padding:0;flex:none;display:flex;align-items:center;justify-content:center}
 .sbsearch #go svg{width:16px;height:16px}
 .sbtip{margin:8px 0 0;font-size:11.5px;line-height:1.45;color:var(--muted)}
 
@@ -236,3 +236,21 @@ body.sec-paseos #mn{padding:0;overflow:hidden;display:flex;flex-direction:column
   .figures{gap:18px}
   #crumbs{margin-bottom:14px}
 }
+
+/* ------------------------------------------------------------- SENTIDOS ----
+ * Acepciones de un eje polisemico (ergon: obra / funcion propia;
+ * energeia: estar-en-acto / accion). Se dibujan en la ficha del resultado,
+ * debajo del aporte al puntaje, y solo para los ejes que la consulta activo.
+ *   normal  -> sentido dominante deducido de los lemas
+ *   .mixed  -> el pasaje usa los dos sentidos (borde punteado + porcentaje)
+ *   .pinned -> sentido fijado a mano con un tag del .txt (tilde + verde)
+ */
+.senses{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 0}
+.senses .muted{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.sensechip{font-size:12px;line-height:1;padding:5px 9px;border-radius:999px;
+  border:1px solid var(--border);background:var(--soft);color:var(--text);cursor:help}
+.sensechip.mixed{border-style:dashed;color:var(--muted)}
+.sensechip.pinned{border-color:var(--green);background:#EDF7F1;color:#2F6B4B}
+.sensechip.pinned::before{content:'\2713\00a0'}
+/* puntaje reducido por desacuerdo de sentido: se avisa, no se esconde */
+.score.sensedown{color:var(--orange)}

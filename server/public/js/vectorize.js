@@ -30,10 +30,12 @@ function buildIndex(withAliases = false) {
   COLLAPSED.length = 0;
   DUPLICATE_TERMS.length = 0;
 
-  const add = (map, key, axis, w) => {
+  // `sense`: id del sentido al que pertenece el termino, o undefined si el
+  // termino es del eje y no elige sentido. Viaja hasta los hits.
+  const add = (map, key, axis, w, sense) => {
     if (!key) return;
     if (!map.has(key)) map.set(key, []);
-    map.get(key).push({ axis, w });
+    map.get(key).push({ axis, w, sense });
   };
 
   AXES.forEach((ax, ai) => {
@@ -42,9 +44,13 @@ function buildIndex(withAliases = false) {
     // otra lista duplicaria el peso del eje en silencio.
     const seen = new Set();
 
-    const load = (list, tokenize, uni, phr, defW, canal) => {
+    const load = (list, tokenize, uni, phr, defW, canal, sense, scale = 1) => {
       for (const raw of list || []) {
-        const [term, w] = Array.isArray(raw) ? raw : [raw, defW];
+        const [term, w0] = Array.isArray(raw) ? raw : [raw, defW];
+        // `scale` es el multiplicador del sentido (1 para las listas del eje).
+        // Se aplica TAMBIEN a los pesos explicitos [termino, peso]: si no, un
+        // termino con peso propio se saltearia el peso de su sentido.
+        const w = w0 * scale;
         const toks = tokenize(term);
         // TRAMPA: un termino de varias palabras cuyas stopwords se caen queda
         // reducido a un unigrama y deja de ser restrictivo. "lo mejor de todo"
@@ -68,8 +74,8 @@ function buildIndex(withAliases = false) {
           continue;
         }
         seen.add(reg);
-        if (toks.length === 1) add(uni, key, ai, w);
-        else add(phr, key, ai, w);
+        if (toks.length === 1) add(uni, key, ai, w, sense);
+        else add(phr, key, ai, w, sense);
       }
     };
 
@@ -79,6 +85,29 @@ function buildIndex(withAliases = false) {
     // ALIAS: castellano, mismo canal y mismo peso que `es`. Van ultimos, asi
     // que la guarda de dedup hace que agregar un alias solo pueda sumar
     // cobertura nueva: nunca duplica el peso de un termino que ya estaba.
+    // SENTIDOS: subcapa DENTRO del eje. No agregan dimensiones. Cargan
+    // terminos del mismo eje `ai`, con el peso multiplicado por sense.weight y
+    // marcados con el id del sentido. Esa marca es lo unico que hace falta
+    // para atribuir despues cada aporte a un sentido (senseMixFromHits).
+    // Van despues de las listas propias del eje y antes de los alias, bajo la
+    // misma guarda de dedup: un lema que ya estaba en el eje no se cuenta dos
+    // veces por figurar tambien en un sentido.
+    for (const sn of ax.senses || []) {
+      const sw = sn.weight == null ? 1 : sn.weight;
+      load(sn.es, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
+      load(sn.gr, grTokens, grUni, grPhr, DEFAULT_WEIGHTS.gr, 'gr', sn.id, sw);
+      load(sn.grForms, grExactTokens, gxUni, gxPhr, DEFAULT_WEIGHTS.grForms, 'gx', sn.id, sw);
+      // Los alias del sentido entran SOLO por el indice de consulta, igual que
+      // los del eje: son la puerta por la que pregunta el estudiante y no deben
+      // tocar un solo vector del corpus.
+      // Van ANTES de los alias del eje por una razon medida: un alias del eje
+      // que es FRASE se resuelve antes que cualquier unigrama y se queda con
+      // las posiciones. Con "estar en acto" declarado a nivel de eje, la
+      // consulta "estar en acto" entraba por esa frase, que no tiene sentido
+      // asignado, y la consulta terminaba SIN sentido justo en el caso mas
+      // claro de todos. Declarado en el sentido, se atribuye a `acto`.
+      if (withAliases) load(sn.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
+    }
     if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
   });
 
@@ -114,10 +143,10 @@ function accumulate(tokens, uni, phr, lang, vec, hits) {
     }
   }
   for (const [key, n] of phraseCounts) {
-    for (const { axis, w } of phr.get(key)) {
+    for (const { axis, w, sense } of phr.get(key)) {
       const contrib = w * tf(n);
       vec[axis] += contrib;
-      hits.push({ axis, token: key, n, lang, contrib, phrase: true });
+      hits.push({ axis, token: key, n, lang, contrib, phrase: true, sense });
     }
   }
 
@@ -127,10 +156,10 @@ function accumulate(tokens, uni, phr, lang, vec, hits) {
   for (const [tok, n] of counts) {
     const entries = uni.get(tok);
     if (!entries) continue;
-    for (const { axis, w } of entries) {
+    for (const { axis, w, sense } of entries) {
       const contrib = w * tf(n);
       vec[axis] += contrib;
-      hits.push({ axis, token: tok, n, lang, contrib, phrase: false });
+      hits.push({ axis, token: tok, n, lang, contrib, phrase: false, sense });
     }
   }
 }
@@ -163,6 +192,87 @@ export function vectorize(spanish, glosses = [], opts = {}) {
   accumulate(grTokens(greek), IX.grUni, IX.grPhr, 'gr', vec, hits);
   accumulate(grExactTokens(greek), IX.gxUni, IX.gxPhr, 'gr', vec, hits);
   return { vector: l2(vec), raw: vec, hits };
+}
+
+/* ------------------------------------------------------------- SENTIDOS ----
+ * MEZCLA DE SENTIDOS de un texto, armada con los aportes que quedaron
+ * atribuidos a un sentido en vectorize():
+ *
+ *   senseMixFromHits(hits) -> { ergon: { obra: 0.8, funcion: 0.2 } }
+ *
+ * Es una MEZCLA y no una etiqueta unica, a proposito: en 7.g-7.i los dos
+ * sentidos de ergon estan en juego a la vez, y pasar de "la obra del carpintero" a
+ * "la funcion propia del hombre" ES el argumento. Forzar una etiqueta
+ * borraria justo el paso que hay que poder mostrar.
+ *
+ * Los aportes SIN sentido (los terminos que el eje declara para si, como
+ * carpintero/zapatero) no entran en la cuenta: no eligen sentido.
+ * Un eje sin ningun aporte marcado NO aparece en el resultado, y mas abajo eso
+ * se interpreta como "sin informacion", nunca como desacuerdo.
+ */
+export function senseMixFromHits(hits = []) {
+  const byAxis = new Map();
+  for (const h of hits) {
+    if (!h || !h.sense) continue;
+    const id = AXES[h.axis] ? AXES[h.axis].id : String(h.axis);
+    if (!byAxis.has(id)) byAxis.set(id, new Map());
+    const m = byAxis.get(id);
+    m.set(h.sense, (m.get(h.sense) || 0) + h.contrib);
+  }
+  const out = {};
+  for (const [axisId, m] of byAxis) {
+    let total = 0;
+    for (const v of m.values()) total += v;
+    if (!total) continue;
+    out[axisId] = {};
+    for (const [sense, v] of m) out[axisId][sense] = v / total;
+  }
+  return out;
+}
+
+// Sentido dominante de un eje, con su participacion. Para el chip de la ficha.
+export function dominantSense(mix, axisId) {
+  const m = mix && mix[axisId];
+  if (!m) return null;
+  let best = null;
+  for (const [sense, share] of Object.entries(m)) {
+    if (!best || share > best.share) best = { sense, share };
+  }
+  return best;
+}
+
+// Etiqueta legible de un sentido, tal como lo declara el lexico.
+export function senseLabel(axisId, senseId) {
+  const ax = AXES.find((a) => a.id === axisId);
+  const sn = ax && (ax.senses || []).find((s) => s.id === senseId);
+  return sn ? (sn.label || sn.id) : senseId;
+}
+
+// Ejes que declaran sentidos. Sirve para no mostrar la capa donde no aplica.
+export function axesWithSenses() {
+  return AXES.filter((a) => (a.senses || []).length).map((a) => ({
+    id: a.id, label: a.label,
+    senses: a.senses.map((s) => ({ id: s.id, label: s.label || s.id, weight: s.weight == null ? 1 : s.weight })),
+  }));
+}
+
+/* TAG MANUAL. Un tag del .txt con la forma
+ *   { "eje": "ergon", "sentido": "obra" }
+ * PISA la mezcla calculada para ese eje (queda 1.0 en el sentido elegido) y no
+ * toca los demas ejes. El tagueo a mano es la fuente de verdad; la heuristica
+ * de lemas solo cubre lo que todavia no fue taggeado.
+ * Devuelve tambien que ejes quedaron fijados a mano, para poder distinguirlo
+ * en la interfaz de lo que decidio el motor.
+ */
+export function applySenseTags(mix, tags = []) {
+  const out = { ...(mix || {}) };
+  const pinned = [];
+  for (const t of tags || []) {
+    if (!t || !t.eje || !t.sentido) continue;
+    out[t.eje] = { [t.sentido]: 1 };
+    pinned.push(t.eje);
+  }
+  return { mix: out, pinned };
 }
 
 export function l2(v) {
@@ -227,6 +337,47 @@ export function coverage(queryVec, passageVec) {
 // cubrirla, el costo de este valor desaparece.
 const MIN_AXES_TO_DEMOTE = 2;
 
+/* ACUERDO DE SENTIDO entre la consulta y el pasaje.
+ *
+ * Solo interviene cuando la consulta ELIGE un sentido. Si el estudiante
+ * pregunta por "la obra del hombre", el pasaje que usa ergon como obra sube y
+ * el que lo usa como funcion propia baja. Si la pregunta no distingue, o si el
+ * pasaje no tiene informacion de sentido en ese eje, el factor es 1 y el orden
+ * queda EXACTAMENTE como estaba. Esa es la garantia de no regresion: sin senal
+ * de sentido, el motor es el de siempre.
+ *
+ * La superposicion de dos mezclas se mide por interseccion (suma de los
+ * minimos): 1 si coinciden, 0 si son sentidos disjuntos, intermedio si el
+ * pasaje usa los dos (7.g-7.i nunca quedan castigados a fondo, porque de
+ * hecho contienen el sentido que se pidio).
+ *
+ * Cada eje pesa segun la masa que tiene EN LA CONSULTA: desambiguar el eje
+ * central de la pregunta importa mas que desambiguar uno marginal.
+ *
+ * lambda 0.25 es deliberadamente moderado: el sentido reordena, no filtra. Un
+ * pasaje con el sentido "equivocado" pierde a lo sumo un 25% del puntaje, asi
+ * que sigue siendo visible y el estudiante puede ver por que quedo mas abajo.
+ */
+export const SENSE_LAMBDA = 0.25;
+
+export function senseAgreement(queryMix, passageMix, queryVec) {
+  if (!queryMix || !passageMix) return 1;
+  let wsum = 0, acc = 0;
+  for (const [axisId, qm] of Object.entries(queryMix)) {
+    const pm = passageMix[axisId];
+    // el pasaje no habla de este eje, o lo toca sin elegir sentido: neutral
+    if (!pm) continue;
+    const i = AXES.findIndex((a) => a.id === axisId);
+    const w = queryVec && i >= 0 ? queryVec[i] : 1;
+    if (!w) continue;
+    let inter = 0;
+    for (const [sense, qs] of Object.entries(qm)) inter += Math.min(qs, pm[sense] || 0);
+    wsum += w;
+    acc += w * inter;
+  }
+  return wsum ? acc / wsum : 1;
+}
+
 // CONSULTA DE UN SOLO EJE: el coseno entre vectores L2-normalizados con un
 // solo eje activo en la consulta se reduce siempre a la componente
 // normalizada del pasaje en ese eje, lo que premia a pasajes que no tocan
@@ -243,10 +394,14 @@ function singleAxisOf(queryVec) {
   return count === 1 ? axis : -1;
 }
 
-export function topK(queryVec, passages, k = 8) {
+export function topK(queryVec, passages, k = 8, opts = {}) {
   const axes = [];
   for (let i = 0; i < queryVec.length; i++) if (queryVec[i] > 0) axes.push(i);
   const singleAxis = singleAxisOf(queryVec);
+  // Mezcla de sentidos de la CONSULTA. Si no viene, la capa de sentidos queda
+  // apagada y el ordenamiento es identico al anterior: es la garantia de no
+  // regresion para todo lo que ya funcionaba (FAQ, definiciones, querybuilder).
+  const queryMix = opts.senseMix || null;
 
   return passages
     .map((p) => {
@@ -254,6 +409,12 @@ export function topK(queryVec, passages, k = 8) {
       const mass = coverage(queryVec, p.vector);
       const hitAxes = axes.filter((i) => p.vector[i] > 0).length;
       const axisRaw = singleAxis >= 0 ? (p.raw ? p.raw[singleAxis] : 0) : null;
+      const base = axisRaw !== null
+        ? axisRaw / (axisRaw + 1)
+        : cos * (1 - COVERAGE_LAMBDA + COVERAGE_LAMBDA * mass);
+      // acuerdo de sentido: 1 (neutral) si la consulta no desambigua nada
+      const agree = queryMix ? senseAgreement(queryMix, p.senses, queryVec) : 1;
+      const senseFactor = 1 - SENSE_LAMBDA + SENSE_LAMBDA * agree;
       return {
         passage: p,
         cos,
@@ -261,9 +422,11 @@ export function topK(queryVec, passages, k = 8) {
         hitAxes,
         axisCount: axes.length,
         demoted: axes.length >= MIN_AXES_TO_DEMOTE && hitAxes === 1,
+        senseAgree: agree,
+        senseFactor,
         // el coseno queda disponible aparte: la barra de aportes por eje se
         // calcula sobre el, no sobre el puntaje ya reponderado
-        score: axisRaw !== null ? axisRaw / (axisRaw + 1) : cos * (1 - COVERAGE_LAMBDA + COVERAGE_LAMBDA * mass),
+        score: base * senseFactor,
       };
     })
     .filter((r) => r.cos > 0)

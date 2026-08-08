@@ -16,6 +16,18 @@
 //             Los alias se cargan ultimos y con guarda antiduplicados: agregar
 //             uno solo puede sumar cobertura nueva, nunca duplicar peso.
 //             Es la lista pensada para editar sin miedo desde el dashboard.
+//   senses  : SENTIDOS de un mismo eje polisemico (ver ergon y energeia).
+//             NO son ejes nuevos: el vector sigue teniendo UNA componente por
+//             eje y el espacio sigue teniendo la misma cantidad de
+//             dimensiones. Cada sentido declara sus propios lemas (gr /
+//             grForms / es) y un `weight` opcional que multiplica el peso de
+//             esos lemas. Cada aporte queda ATRIBUIDO a su sentido, y de ahi
+//             sale la mezcla del pasaje: { obra: 0.8, funcion: 0.2 }.
+//             Es mezcla y no etiqueta unica a proposito: en 7.g-7.i
+//             Aristoteles usa los dos sentidos de ergon a la vez, y ese
+//             deslizamiento es el argumento mismo.
+//             Un tag manual en el .txt pisa la mezcla calculada:
+//               { "parrafo_nro": 42, "tags": [{"eje": "ergon", "sentido": "obra"}] }
 //
 // Cualquier termino admite la forma [termino, peso] para ajustarlo caso por caso.
 
@@ -50,11 +62,39 @@ export const AXES = [
     es: ['felicidad', 'feliz', 'felices', 'dichoso', 'vivir bien', 'obrar bien', 'desdichado', 'venturoso'],
   },
   {
+    // ERGON: eje con dos sentidos, declarados abajo en `senses`.
+    //   funcion -> la funcion propia. Es el argumento del cap. 7 (7.g, 7.h, 7.i)
+    //   obra    -> la obra o el hecho hecho (1.a, 7.k, 10.d, 12.b, 12.d)
+    // Medido sobre los 72 pasajes: fuera del cap. 7 casi todo es 'obra'.
+    //
+    // LIMPIEZA: οἰκεῖον e ἴδιον SALIERON del eje. Eran un "propio de" generico
+    // y arrastraban 3.c, 5.b y 6.a, que no hablan de ergon en absoluto. 7.h y
+    // 7.k no se pierden: ya entran por ἔργον.
+    //
+    // Las formas de ἔργον no se declaran aca sino en cada sentido, y por
+    // grForms (igualdad exacta) en lugar de gr (raiz): el stem εργ- no
+    // distingue singular de plural, y la oposicion ἔργον / ἔργα es justamente
+    // la pista principal del sentido.
     id: 'ergon', label: 'Función propia', greek: 'ἔργον',
-    gr: ['ἔργον', 'ἔργα', 'οἰκεῖον', 'ἴδιον', 'ἀργόν'],
-    // carpintero/zapatero sostienen la analogia del ergon en 7.g. Si se crea el
-    // eje techne (artes y oficios), estos terminos se mudan alli.
-    es: [['obra', 0.5], ['obras', 0.5], ['funcion', 0.6], 'función propia', 'tarea', 'oficio', 'propio del hombre', 'carpintero', 'zapatero'],
+    // carpintero/zapatero sostienen la analogia del ergon en 7.g y no eligen
+    // sentido: se quedan en el eje. Si se crea el eje techne, se mudan alli.
+    es: ['carpintero', 'zapatero'],
+    aliases: ['ergon'],
+    senses: [
+      {
+        id: 'funcion', label: 'función propia', greek: 'ἔργον',
+        // ἀργόν ("inactivo") con peso menor: es el reverso del argumento en 7.h
+        grForms: ['ἔργον', 'ἔργου', 'ἔργῳ', ['ἀργόν', 0.5], ['ἀργὸν', 0.5]],
+        es: [['funcion', 0.6], 'función propia', 'tarea', 'oficio', 'propio del hombre'],
+        aliases: ['funcion caracteristica', 'funcion del hombre', 'para que sirve el hombre'],
+      },
+      {
+        id: 'obra', label: 'obra, hecho realizado', greek: 'ἔργα',
+        grForms: ['ἔργα', 'ἔργων', 'ἔργοις'],
+        es: [['obra', 0.5], ['obras', 0.5], 'hechos realizados'],
+        aliases: ['obra realizada', 'hechos y obras', 'las obras del hombre'],
+      },
+    ],
   },
   {
     id: 'arete', label: 'Virtud', greek: 'ἀρετή',
@@ -63,11 +103,41 @@ export const AXES = [
     es: ['virtud', 'virtudes', 'excelencia', 'esforzado', 'valentía', 'justicia', 'justo', 'dianoetica', 'etica'],
   },
   {
+    // ENERGEIA: eje con dos sentidos, declarados abajo en `senses`.
+    //   acto   -> el estar-en-acto, ἐνέργεια propiamente dicha
+    //   accion -> la praxis humana, πρᾶξις / πράττειν
+    //
+    // LIMPIEZA MEDIDA: πρᾶξις y πράττειν activaban este eje en 26 de los 72
+    // pasajes, y 17 de ellos NO contienen una sola ocurrencia de ἐνέργεια. El
+    // eje "Actividad" era en realidad dos ejes solapados. Ahora la praxis
+    // entra por el sentido 'accion' con weight 0.4: sigue aportando, pero un
+    // pasaje que solo habla de acciones ya no pesa como uno que habla del
+    // estar-en-acto.
+    //
+    // κινήσεων salio del todo: aparecia solo en 13.e, que ya entra por
+    // ἐνέργεια, y en Aristoteles la kinesis se OPONE a la energeia.
+    // 'obrar' tambien salio: su raiz castellana es la misma que la de 'obra'
+    // (eje ergon), asi que no puede distinguir un sentido de otro.
     id: 'energeia', label: 'Actividad', greek: 'ἐνέργεια',
     // 'acto' lo descarta la guarda: "en acto" ya colapsa a ese mismo unigrama.
-    aliases: ['energeia', 'acto', 'actualidad', 'estar en acto'],
-    gr: ['ἐνέργεια', 'ἐνεργεῖν', 'ἐνέργειαι', 'πρᾶξις', 'πράξεις', 'πράττειν', 'κινήσεων'],
-    es: ['actividad', 'actividades', 'en acto', 'ejercicio', 'obrar', 'accion', 'acciones', 'movimiento'],
+    // Solo queda arriba el nombre del eje, que es neutral entre los dos
+    // sentidos. Cada alias que SI elige un sentido baja al sentido: si se queda
+    // aca, la consulta activa el eje sin decir en que acepcion pregunta.
+    aliases: ['energeia'],
+    senses: [
+      {
+        id: 'acto', label: 'estar-en-acto', greek: 'ἐνέργεια',
+        gr: ['ἐνέργεια', 'ἐνεργεῖν', 'ἐνέργειαι'],
+        es: ['actividad', 'actividades', 'en acto', 'ejercicio'],
+        aliases: ['acto', 'actualidad', 'estar en acto', 'estar en obra', 'being at work'],
+      },
+      {
+        id: 'accion', label: 'acción, praxis', greek: 'πρᾶξις', weight: 0.4,
+        gr: ['πρᾶξις', 'πράξεις', 'πράττειν', 'πρακτῶν'],
+        es: ['accion', 'acciones'],
+        aliases: ['praxis', 'accion humana', 'conducta'],
+      },
+    ],
   },
   {
     id: 'psyche', label: 'Alma', greek: 'ψυχή',
