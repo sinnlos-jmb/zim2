@@ -147,7 +147,7 @@ export const AXES = [
   },
   {
     id: 'logos', label: 'Razón', greek: 'λόγος',
-    gr: ['λόγος', 'λόγον ἔχον', 'νοῦς', '��ρόνησις', 'σοφία', 'σύνεσις', 'ἀλήθειαν', 'ὀρθῶς'],
+    gr: ['λόγος', 'λόγον ἔχον', 'νοῦς', 'φρόνησις', 'σοφία', 'σύνεσις', 'ἀλήθειαν', 'ὀρθῶς'],
     es: [['razon', 0.45], 'racional', 'entendimiento', 'prudencia', 'sabiduría', 'inteligencia', 'obedecer a la razon'],
   },
   {
@@ -238,8 +238,8 @@ export const AXES = [
     // NO poner 'el bien en si': con las stopwords fuera colapsa al unigrama
     // 'bien', que dispara en 45 pasajes. Medido. Ver COLLAPSED en vectorize.js.
     aliases: ['idea platonica', 'formas platonicas', 'idea del bien', 'bien separado'],
-    // \u1F01\u03C0\u03BB\u1FF6\u03C2 retirado: es el adverbio "en sentido absoluto", no tiene
-    // relacion con Platon. Falso amigo, como \u03C6\u03C5\u03C4\u03CC\u03BD/\u03C6\u03CD\u03C3\u03B9\u03C2 y \u1F14\u03B8\u03BD\u03BF\u03C2/\u1F14\u03B8\u03BF\u03C2.
+    // ἁπλῶς retirado: es el adverbio "en sentido absoluto", no tiene
+    // relacion con Platon. Falso amigo, como φυτόν/φύσις y ἔθνος/ἔθος.
     gr: ['ἰδέα', 'εἶδος', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι'],
     es: ['idea', 'ideas', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
   },
