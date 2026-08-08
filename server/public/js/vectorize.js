@@ -261,16 +261,38 @@ export function axesWithSenses() {
  * PISA la mezcla calculada para ese eje (queda 1.0 en el sentido elegido) y no
  * toca los demas ejes. El tagueo a mano es la fuente de verdad; la heuristica
  * de lemas solo cubre lo que todavia no fue taggeado.
+ *
+ * Un mismo parrafo puede usar DOS sentidos del mismo eje a la vez: se
+ * declaran DOS tags con el mismo "eje" y distinto "sentido", cada uno con su
+ * propio "peso_sentido" (por defecto 1 si se omite). Los peso_sentido de un
+ * mismo eje se SUMAN y se NORMALIZAN entre si -no hace falta que sumen 1-:
+ *   { "parrafo_nro": 43, "tags": [
+ *       {"eje": "arete", "sentido": "etica", "peso_sentido": 0.8},
+ *       {"eje": "arete", "sentido": "dianoetica", "peso_sentido": 0.2}
+ *   ] }
+ * "peso_sentido" es un campo aparte de "peso" (que pondera un tag de "rol");
+ * un tag de sentido nunca lee "peso".
+ *
  * Devuelve tambien que ejes quedaron fijados a mano, para poder distinguirlo
  * en la interfaz de lo que decidio el motor.
  */
 export function applySenseTags(mix, tags = []) {
   const out = { ...(mix || {}) };
   const pinned = [];
+  const porEje = new Map(); // eje -> Map(sentido -> peso_sentido acumulado)
   for (const t of tags || []) {
     if (!t || !t.eje || !t.sentido) continue;
-    out[t.eje] = { [t.sentido]: 1 };
-    pinned.push(t.eje);
+    if (!porEje.has(t.eje)) porEje.set(t.eje, new Map());
+    const m = porEje.get(t.eje);
+    const w = t.peso_sentido == null ? 1 : t.peso_sentido;
+    m.set(t.sentido, (m.get(t.sentido) || 0) + w);
+  }
+  for (const [eje, m] of porEje) {
+    let total = 0;
+    for (const v of m.values()) total += v;
+    out[eje] = {};
+    for (const [sentido, v] of m) out[eje][sentido] = total ? v / total : 0;
+    pinned.push(eje);
   }
   return { mix: out, pinned };
 }
