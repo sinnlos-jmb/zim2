@@ -25,6 +25,8 @@
   --orange-dark: #8F5A28;
   --grey-line: #B8B5B0;
   --head: 56px;
+  --tb: 46px;
+  --foot: 34px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -34,9 +36,16 @@ body {
   background: var(--canvas);
   height: 100dvh;
   display: grid;
-  grid-template-rows: var(--head) 1fr;
+  grid-template-rows: var(--head) var(--tb) 1fr var(--foot);
   overflow: hidden;
 }
+/* modo embebido: paseos.html mete este archivo en un iframe. El header (marca
+   y link de vuelta) sobra porque la barra de secciones de la pagina que lo
+   contiene ya cumple esa funcion, asi que se oculta entero -no solo la marca-
+   para no dejar un renglon vacio; la barra de herramientas pasa a ser la
+   primera fila. */
+body.embed { grid-template-rows: var(--tb) 1fr var(--foot); }
+body.embed #hd { display: none; }
 
 /* ------------------------------------------------------------- ENCABEZADO -- */
 #hd {
@@ -49,6 +58,20 @@ body {
 .brand { display: flex; align-items: baseline; gap: 9px; flex: none; }
 .brand h1 { font-size: 15px; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
 .brand .sub { color: var(--muted); font-size: 12.5px; }
+.back { flex: none; font-size: 12.5px; color: var(--blue); text-decoration: none; margin-left: auto; }
+.back:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------ BARRA DE HERRAMIENTAS -- */
+/* Busqueda, migas y los tres botones de accion. Separados del header para
+   que este pueda ocultarse entero en modo embebido, y para que las migas
+   dejen de flotar sobre el lienzo y le devuelvan ese espacio al grafo. */
+#tb {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px; height: var(--tb);
+  border-bottom: 1px solid var(--border);
+  background: var(--canvas);
+  z-index: 15;
+}
 
 #search-wrap { position: relative; margin-left: auto; }
 #search {
@@ -86,13 +109,6 @@ body {
   transition: background .15s, color .15s, border-color .15s;
 }
 .hd-btn:hover { background: var(--soft); color: var(--text); }
-.back { flex: none; font-size: 12.5px; color: var(--blue); text-decoration: none; }
-.back:hover { text-decoration: underline; }
-/* Modo embebido: paseos.html carga este archivo en un iframe. La marca y el
-   link de vuelta los aporta la barra de secciones de la pagina contenedora,
-   asi que aca sobran; el buscador y los botones del grafo se quedan. */
-body.embed .brand, body.embed .back { display: none; }
-body.embed #hd { padding-left: 14px; }
 
 /* ------------------------------------------------------------------ LIENZO -- */
 #stage { position: relative; overflow: hidden; }
@@ -149,9 +165,8 @@ body.embed #hd { padding-left: 14px; }
 
 /* --------------------------------------------------------------- MIGAS -- */
 #crumbs {
-  position: absolute; top: 12px; left: 14px; z-index: 8;
   display: flex; align-items: center; gap: 5px; flex-wrap: wrap;
-  max-width: calc(100% - 380px); font-size: 12.5px;
+  min-width: 0; flex: 1 1 auto; font-size: 12.5px;
 }
 .crumb {
   background: var(--canvas); border: 1px solid var(--border); border-radius: 7px;
@@ -182,11 +197,6 @@ body.embed #hd { padding-left: 14px; }
 }
 #controls button:hover { background: var(--soft); color: var(--text); }
 
-#status {
-  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-  font-size: 12px; color: var(--faint); z-index: 7; white-space: nowrap;
-  background: rgba(255,255,255,.85); padding: 4px 12px; border-radius: 999px;
-}
 #hint {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, 120px);
   background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
@@ -199,10 +209,13 @@ body.embed #hd { padding-left: 14px; }
 /* Ficha del nodo seleccionado. A diferencia de un cajon lateral clasico,
    asoma desde ARRIBA en una porcion chica (para no tapar el grafo) y el
    usuario la extiende a su tamano completo con el tirador de abajo. Se
-   repliega sola a la porcion chica cada vez que se abre un nodo nuevo. */
+   repliega sola a la porcion chica cada vez que se abre un nodo nuevo.
+   Es position:fixed -no vive dentro de #stage- y arranca justo debajo del
+   header: asi, en vez de restarle espacio al lienzo, se apoya por encima
+   de la barra de herramientas (busqueda / colapsar / expandir / ayuda). */
 #panel {
-  position: absolute; top: 0; right: 18px; width: 372px; max-width: calc(100% - 36px);
-  max-height: 38%;
+  position: fixed; top: var(--head); right: 18px; width: 372px; max-width: calc(100% - 36px);
+  max-height: 38dvh;
   background: var(--canvas); border: 1px solid var(--border); border-top: none;
   border-radius: 0 0 14px 14px;
   transform: translateY(-100%);
@@ -211,7 +224,8 @@ body.embed #hd { padding-left: 14px; }
   box-shadow: 0 10px 28px rgba(0,0,0,.14);
 }
 #panel.open { transform: translateY(0); }
-#panel.full { max-height: calc(100% - 40px); }
+#panel.full { max-height: calc(100dvh - var(--head) - var(--foot) - 40px); }
+body.embed #panel { top: 0; }
 .p-handle {
   flex: none; border: none; border-top: 1px solid var(--border);
   background: var(--soft); color: var(--muted); font: inherit; font-size: 12px;
@@ -279,6 +293,19 @@ body.embed #hd { padding-left: 14px; }
   padding: 9px 11px; font-size: 12.5px; color: var(--orange-dark); margin: 0;
 }
 
+/* ------------------------------------------------------------------ PIE -- */
+/* El contador de nodos vivia flotando sobre el lienzo y tapaba el grafo.
+   Ahora es un pie de pagina fijo, igual que en el resto del sitio. */
+#gft {
+  display: flex; align-items: center;
+  height: var(--foot); padding: 0 16px;
+  border-top: 1px solid var(--border);
+  background: var(--canvas);
+  font-size: 12px; color: var(--faint);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  z-index: 20;
+}
+
 /* ------------------------------------------------------------ ATAJOS -- */
 #help {
   position: absolute; inset: 0; z-index: 50; display: none;
@@ -315,15 +342,14 @@ body.embed #hd { padding-left: 14px; }
 
 @media (max-width: 900px) {
   .brand .sub { display: none; }
-  #crumbs { max-width: calc(100% - 28px); }
   #search { width: 150px; }
   #panel {
-    width: 100%; max-width: 100%; top: auto; right: 0; bottom: 0; height: 62%; max-height: 62%;
+    width: 100%; max-width: 100%; top: auto; right: 0; bottom: var(--foot); height: 62%; max-height: 62%;
     border-left: none; border-right: none; border-top: 1px solid var(--border); border-radius: 14px 14px 0 0;
     transform: translateY(100%);
   }
   #panel.open { transform: translateY(0); }
-  #panel.full { height: 92%; max-height: 92%; }
+  #panel.full { height: calc(92% - var(--foot)); max-height: calc(92% - var(--foot)); }
 }
 </style>
 </head>
@@ -338,6 +364,11 @@ body.embed #hd { padding-left: 14px; }
     <h1>Grafo conceptual</h1>
     <span class="sub">Aristóteles · Ética Nicomaquea, libro I</span>
   </div>
+  <a href="index.html" class="back" target="_top">← App principal</a>
+</header>
+
+<div id="tb">
+  <nav id="crumbs" aria-label="Ruta del nodo"></nav>
   <div id="search-wrap">
     <input id="search" type="text" placeholder="Buscar nodo…  ( / )" autocomplete="off" spellcheck="false">
     <div id="results"></div>
@@ -345,8 +376,7 @@ body.embed #hd { padding-left: 14px; }
   <button class="hd-btn" id="btn-collapse">Colapsar</button>
   <button class="hd-btn" id="btn-expand">Expandir todo</button>
   <button class="hd-btn" id="btn-help">?</button>
-  <a href="index.html" class="back">← App principal</a>
-</header>
+</div>
 
 <div id="stage">
   <svg id="cy">
@@ -364,29 +394,13 @@ body.embed #hd { padding-left: 14px; }
     </g>
   </svg>
 
-  <div id="crumbs"></div>
   <div id="hint">Hacé click en <strong>εὐδαιμονία</strong> para desplegar · doble click para enfocar</div>
-  <div id="status"></div>
 
   <div id="controls">
     <button id="zoom-in" title="Acercar">+</button>
     <button id="zoom-out" title="Alejar">−</button>
     <button id="zoom-fit" title="Ajustar a la vista (F)">⊙</button>
   </div>
-
-  <aside id="panel">
-    <div class="p-hd">
-      <div class="p-hd-main">
-        <span class="p-kind" id="p-kind"></span>
-        <h2 id="p-title"></h2>
-        <p class="p-greek" id="p-greek"></p>
-      </div>
-      <button id="p-close" title="Cerrar (Esc)">✕</button>
-    </div>
-    <div class="p-meta" id="p-meta"></div>
-    <div class="p-body" id="p-body"></div>
-    <button id="p-handle" class="p-handle" type="button" title="Ver la ficha completa">⌄ Ver completo</button>
-  </aside>
 
   <div id="help">
     <div class="help-card">
@@ -419,6 +433,22 @@ body.embed #hd { padding-left: 14px; }
     </div>
   </div>
 </div>
+
+<aside id="panel">
+  <div class="p-hd">
+    <div class="p-hd-main">
+      <span class="p-kind" id="p-kind"></span>
+      <h2 id="p-title"></h2>
+      <p class="p-greek" id="p-greek"></p>
+    </div>
+    <button id="p-close" title="Cerrar (Esc)">✕</button>
+  </div>
+  <div class="p-meta" id="p-meta"></div>
+  <div class="p-body" id="p-body"></div>
+  <button id="p-handle" class="p-handle" type="button" title="Ver la ficha completa">⌄ Ver completo</button>
+</aside>
+
+<footer id="gft"><span id="status"></span></footer>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -610,7 +640,7 @@ const GRAFO = {
       ],
     },
 
-    /* ─────────────────────────────────── ¿DE QUÉ SE DISTINGUE? ─────────── */
+    /* ─────────────────────────────────────── ¿DE QUÉ SE DISTINGUE? ─────────── */
     {
       id: 'q-distingue', label: '¿De qué se distingue?', kind: 'pregunta',
       definicion: 'Los candidatos rivales al título de bien supremo, cada uno asociado a una forma de vida. Se descartan por no cumplir los criterios de fin último y autosuficiencia.',
@@ -813,739 +843,3 @@ function relax() {
         const min = radiusOf(na) + radiusOf(nb) + 46;
         let dx = B.x - A.x, dy = B.y - A.y;
         let d = Math.hypot(dx, dy);
-        if (d > min || d === 0) continue;
-        const push = (min - d) / 2;
-        dx /= d; dy /= d;
-        const aFixed = ids[a] === ST.rootId || ST.pinned.has(ids[a]);
-        const bFixed = ids[b] === ST.rootId || ST.pinned.has(ids[b]);
-        if (!aFixed) { A.x -= dx * push; A.y -= dy * push; }
-        if (!bFixed) { B.x += dx * push; B.y += dy * push; }
-        moved = true;
-      }
-    }
-    if (!moved) break;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   6. RENDER
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-const SVG = document.getElementById('cy');
-const VP = document.getElementById('vp');
-const GE = document.getElementById('g-edges');
-const GN = document.getElementById('g-nodes');
-const svgEl = (t) => document.createElementNS('http://www.w3.org/2000/svg', t);
-
-let nodeEls = new Map();   // id -> <g>
-let edgeEls = [];          // { el, path, labelEl, from, to, kind }
-
-function wrapLabel(text, max) {
-  const words = String(text).split(/\s+/);
-  const lines = [];
-  let cur = '';
-  for (const w of words) {
-    if (!cur) { cur = w; continue; }
-    if ((cur + ' ' + w).length <= max) cur += ' ' + w;
-    else { lines.push(cur); cur = w; }
-  }
-  if (cur) lines.push(cur);
-  return lines.slice(0, 3);
-}
-
-function buildDom() {
-  const vis = visibleNodes();
-  const visIds = new Set(vis.map((n) => n.id));
-
-  // ---- aristas: jerarquia + relaciones cruzadas entre nodos visibles ----
-  GE.textContent = '';
-  edgeEls = [];
-  const addEdge = (from, to, kind, label) => {
-    const path = svgEl('path');
-    path.setAttribute('class', 'e-' + kind);
-    if (kind === 'infiere') path.setAttribute('marker-end', 'url(#arrow-green)');
-    if (kind === 'opone') path.setAttribute('marker-end', 'url(#arrow-orange)');
-    const g = svgEl('g');
-    g.setAttribute('class', 'edge');
-    g.appendChild(path);
-    let labelEl = null;
-    if (label) {
-      labelEl = svgEl('text');
-      labelEl.setAttribute('class', 'e-label');
-      labelEl.textContent = label;
-      g.appendChild(labelEl);
-    }
-    GE.appendChild(g);
-    edgeEls.push({ el: g, path, labelEl, from, to, kind });
-  };
-
-  for (const n of vis) {
-    if (ST.open.has(n.id)) {
-      for (const k of kids(n)) if (visIds.has(k.id)) addEdge(n.id, k.id, 'sub', null);
-    }
-    for (const r of n.rel || []) {
-      if (visIds.has(r.to)) addEdge(n.id, r.to, r.kind || 'ver', r.label || null);
-    }
-  }
-
-  // ---- nodos ----
-  GN.textContent = '';
-  nodeEls = new Map();
-  for (const n of vis) {
-    const s = shapeOf(n);
-    const g = svgEl('g');
-    g.setAttribute('class', 'node k-' + n.kind);
-    g.dataset.id = n.id;
-
-    let shape;
-    if (s.shape === 'circle') {
-      shape = svgEl('circle');
-      shape.setAttribute('r', s.r);
-    } else {
-      shape = svgEl('rect');
-      shape.setAttribute('x', -s.w / 2); shape.setAttribute('y', -s.h / 2);
-      shape.setAttribute('width', s.w); shape.setAttribute('height', s.h);
-      shape.setAttribute('rx', 8);
-    }
-    shape.setAttribute('class', 'n-shape');
-    g.appendChild(shape);
-
-    // etiqueta debajo del nodo
-    const yTop = (s.shape === 'circle' ? s.r : s.h / 2) + 15;
-    const label = svgEl('text');
-    label.setAttribute('class', 'n-label');
-    label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('y', yTop);
-    wrapLabel(n.label, n.kind === 'premisa' || n.kind === 'conclusion' || n.kind === 'tesis' ? 24 : 18)
-      .forEach((line, i) => {
-        const ts = svgEl('tspan');
-        ts.setAttribute('x', 0);
-        if (i) ts.setAttribute('dy', '1.2em');
-        ts.textContent = line;
-        label.appendChild(ts);
-      });
-    g.appendChild(label);
-
-    if (n.greek) {
-      const gk = svgEl('text');
-      gk.setAttribute('class', 'n-greek');
-      gk.setAttribute('text-anchor', 'middle');
-      gk.setAttribute('y', yTop + 14 * wrapLabel(n.label, 18).length);
-      gk.textContent = n.greek;
-      g.appendChild(gk);
-    }
-
-    // badge con la cantidad de hijos ocultos
-    if (hasKids(n) && !ST.open.has(n.id)) {
-      const bx = (s.shape === 'circle' ? s.r : s.w / 2) - 2;
-      const by = -(s.shape === 'circle' ? s.r : s.h / 2) + 2;
-      const bg = svgEl('g');
-      bg.setAttribute('class', 'n-badge');
-      bg.setAttribute('transform', `translate(${bx},${by})`);
-      const c = svgEl('circle'); c.setAttribute('r', 9);
-      const t = svgEl('text'); t.setAttribute('y', 3.4);
-      t.textContent = kids(n).length;
-      bg.appendChild(c); bg.appendChild(t);
-      g.appendChild(bg);
-    }
-
-    GN.appendChild(g);
-    nodeEls.set(n.id, g);
-
-    if (!ST.pos.has(n.id)) {
-      // aparece desde la posicion del padre: da la sensacion de despliegue
-      const par = n._parent && ST.pos.get(n._parent.id);
-      ST.pos.set(n.id, par ? { ...par } : { ...(ST.tgt.get(n.id) || { x: 0, y: 0 }) });
-    }
-  }
-
-  applyMarks();
-  paint();
-  renderCrumbs();
-  renderStatus();
-}
-
-/* resaltado de busqueda y seleccion */
-function applyMarks() {
-  for (const [id, el] of nodeEls) {
-    el.classList.toggle('sel', ST.sel === id);
-    el.classList.toggle('hit', ST.hits.has(id));
-    el.classList.toggle('dim', ST.hits.size > 0 && !ST.hits.has(id));
-  }
-  for (const e of edgeEls) {
-    e.el.classList.toggle('dim', ST.hits.size > 0 && !(ST.hits.has(e.from) && ST.hits.has(e.to)));
-  }
-}
-
-/* dibuja posiciones actuales (se llama en cada frame de animacion) */
-function paint() {
-  for (const [id, el] of nodeEls) {
-    const p = ST.pos.get(id);
-    if (p) el.setAttribute('transform', `translate(${p.x.toFixed(2)},${p.y.toFixed(2)})`);
-  }
-  for (const e of edgeEls) {
-    const a = ST.pos.get(e.from); const b = ST.pos.get(e.to);
-    if (!a || !b) continue;
-    const ra = radiusOf(NODES.get(e.from)) + 3;
-    const rb = radiusOf(NODES.get(e.to)) + (e.kind === 'sub' ? 3 : 9);
-    let dx = b.x - a.x, dy = b.y - a.y;
-    const d = Math.hypot(dx, dy) || 1;
-    dx /= d; dy /= d;
-    const x1 = a.x + dx * ra, y1 = a.y + dy * ra;
-    const x2 = b.x - dx * rb, y2 = b.y - dy * rb;
-    // curvatura suave; las relaciones cruzadas se arquean mas para distinguirse
-    const bow = e.kind === 'sub' ? 0.06 : 0.18;
-    const mx = (x1 + x2) / 2 - dy * d * bow;
-    const my = (y1 + y2) / 2 + dx * d * bow;
-    e.path.setAttribute('d', `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`);
-    if (e.labelEl) {
-      e.labelEl.setAttribute('x', ((x1 + x2) / 2 - dy * d * bow * 1.15).toFixed(1));
-      e.labelEl.setAttribute('y', ((y1 + y2) / 2 + dx * d * bow * 1.15).toFixed(1));
-    }
-  }
-}
-
-/* animacion de posiciones */
-let raf = null;
-function animate() {
-  if (raf) cancelAnimationFrame(raf);
-  const t0 = performance.now();
-  const from = new Map();
-  for (const [id, p] of ST.pos) from.set(id, { ...p });
-  const DUR = 380;
-  const ease = (t) => 1 - Math.pow(1 - t, 3);
-
-  const step = (now) => {
-    const t = Math.min(1, (now - t0) / DUR);
-    const e = ease(t);
-    for (const [id, tp] of ST.tgt) {
-      const f = from.get(id) || tp;
-      ST.pos.set(id, { x: f.x + (tp.x - f.x) * e, y: f.y + (tp.y - f.y) * e });
-    }
-    paint();
-    if (t < 1) raf = requestAnimationFrame(step);
-    else raf = null;
-  };
-  raf = requestAnimationFrame(step);
-}
-
-function commit({ animated = true } = {}) {
-  layout();
-  buildDom();
-  if (animated) animate();
-  else { for (const [id, tp] of ST.tgt) ST.pos.set(id, { ...tp }); paint(); }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   7. VIEWPORT: PAN Y ZOOM
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-function applyView() {
-  VP.setAttribute('transform', `translate(${ST.view.x},${ST.view.y}) scale(${ST.view.k})`);
-}
-const clampK = (k) => Math.max(0.2, Math.min(2.6, k));
-
-function zoomAt(factor, cx, cy) {
-  const k2 = clampK(ST.view.k * factor);
-  const r = k2 / ST.view.k;
-  ST.view.x = cx - (cx - ST.view.x) * r;
-  ST.view.y = cy - (cy - ST.view.y) * r;
-  ST.view.k = k2;
-  applyView();
-}
-
-function fitView(pad = 90) {
-  const vis = visibleNodes();
-  if (!vis.length) return;
-  let x1 = Infinity, y1 = Infinity, x2 = -Infinity, y2 = -Infinity;
-  for (const n of vis) {
-    const p = ST.pos.get(n.id); if (!p) continue;
-    const r = radiusOf(n) + 40;
-    x1 = Math.min(x1, p.x - r); y1 = Math.min(y1, p.y - r);
-    x2 = Math.max(x2, p.x + r); y2 = Math.max(y2, p.y + r);
-  }
-  const W = SVG.clientWidth, H = SVG.clientHeight;
-  const panelOpen = document.getElementById('panel').classList.contains('open');
-  const usableW = W - (panelOpen && W > 900 ? 372 : 0);
-  const k = clampK(Math.min((usableW - pad * 2) / (x2 - x1), (H - pad * 2) / (y2 - y1)));
-  ST.view.k = k;
-  ST.view.x = (usableW - (x2 - x1) * k) / 2 - x1 * k;
-  ST.view.y = (H - (y2 - y1) * k) / 2 - y1 * k;
-  applyView();
-}
-
-function centerOn(id, k) {
-  const p = ST.pos.get(id); if (!p) return;
-  const W = SVG.clientWidth, H = SVG.clientHeight;
-  const panelOpen = document.getElementById('panel').classList.contains('open');
-  const usableW = W - (panelOpen && W > 900 ? 372 : 0);
-  if (k) ST.view.k = clampK(k);
-  ST.view.x = usableW / 2 - p.x * ST.view.k;
-  ST.view.y = H / 2 - p.y * ST.view.k;
-  applyView();
-}
-
-/* conversion pantalla -> modelo */
-function toModel(clientX, clientY) {
-  const b = SVG.getBoundingClientRect();
-  return {
-    x: (clientX - b.left - ST.view.x) / ST.view.k,
-    y: (clientY - b.top - ST.view.y) / ST.view.k,
-  };
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   8. INTERACCION (pointer events: mouse y touch con el mismo codigo)
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-let drag = null;
-
-SVG.addEventListener('pointerdown', (ev) => {
-  const g = ev.target.closest('.node');
-  const m = toModel(ev.clientX, ev.clientY);
-  if (g) {
-    const id = g.dataset.id;
-    const p = ST.pos.get(id);
-    drag = { type: 'node', id, dx: m.x - p.x, dy: m.y - p.y, moved: false, sx: ev.clientX, sy: ev.clientY };
-  } else {
-    drag = { type: 'pan', sx: ev.clientX, sy: ev.clientY, ox: ST.view.x, oy: ST.view.y, moved: false };
-    SVG.classList.add('panning');
-  }
-  SVG.setPointerCapture(ev.pointerId);
-});
-
-SVG.addEventListener('pointermove', (ev) => {
-  if (!drag) return;
-  const far = Math.abs(ev.clientX - drag.sx) + Math.abs(ev.clientY - drag.sy) > 4;
-  if (far) drag.moved = true;
-  if (drag.type === 'pan') {
-    ST.view.x = drag.ox + (ev.clientX - drag.sx);
-    ST.view.y = drag.oy + (ev.clientY - drag.sy);
-    applyView();
-  } else if (drag.moved) {
-    const m = toModel(ev.clientX, ev.clientY);
-    ST.pos.set(drag.id, { x: m.x - drag.dx, y: m.y - drag.dy });
-    ST.tgt.set(drag.id, { ...ST.pos.get(drag.id) });
-    ST.pinned.add(drag.id);
-    paint();
-  }
-});
-
-SVG.addEventListener('pointerup', (ev) => {
-  if (!drag) return;
-  SVG.classList.remove('panning');
-  if (!drag.moved) {
-    if (drag.type === 'node') tapNode(drag.id);
-    else { closePanel(); clearSearch(); }
-  }
-  drag = null;
-});
-
-SVG.addEventListener('dblclick', (ev) => {
-  const g = ev.target.closest('.node');
-  if (g) focusNode(g.dataset.id);
-});
-
-SVG.addEventListener('wheel', (ev) => {
-  ev.preventDefault();
-  const b = SVG.getBoundingClientRect();
-  zoomAt(ev.deltaY < 0 ? 1.12 : 1 / 1.12, ev.clientX - b.left, ev.clientY - b.top);
-}, { passive: false });
-
-function tapNode(id) {
-  const n = NODES.get(id);
-  ST.sel = id;
-  if (hasKids(n)) {
-    if (ST.open.has(id)) collapseSubtree(id);
-    else ST.open.add(id);
-    document.getElementById('hint').classList.add('hidden');
-    commit();
-  } else {
-    applyMarks();
-  }
-  openPanel(n);
-}
-
-/* al contraer, olvidar tambien los descendientes (si no, reaparecen abiertos) */
-function collapseSubtree(id) {
-  (function walk(n) {
-    ST.open.delete(n.id);
-    kids(n).forEach((k) => { ST.pos.delete(k.id); ST.pinned.delete(k.id); walk(k); });
-  })(NODES.get(id));
-}
-
-function focusNode(id) {
-  const n = NODES.get(id);
-  if (!hasKids(n)) { openPanel(n); return; }
-  ST.rootId = id;
-  ST.open.add(id);
-  ST.pos.clear(); ST.pinned.clear();
-  ST.sel = id;
-  document.getElementById('hint').classList.add('hidden');
-  commit({ animated: false });
-  fitView();
-  openPanel(n);
-}
-
-function expandAll() {
-  (function walk(n) { if (hasKids(n)) { ST.open.add(n.id); kids(n).forEach(walk); } })(NODES.get(ST.rootId));
-  document.getElementById('hint').classList.add('hidden');
-  commit({ animated: false });
-  fitView();
-}
-
-function collapseAll() {
-  collapseSubtree(ST.rootId);
-  ST.pos.clear(); ST.pinned.clear();
-  ST.sel = null;
-  closePanel();
-  commit({ animated: false });
-  centerOn(ST.rootId, 1);
-  document.getElementById('hint').classList.remove('hidden');
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   9. MIGAS Y ESTADO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-function renderCrumbs() {
-  const box = document.getElementById('crumbs');
-  box.textContent = '';
-  const chain = pathTo(ST.sel || ST.rootId);
-  chain.forEach((n, i) => {
-    if (i) {
-      const sep = document.createElement('span');
-      sep.className = 'crumb-sep'; sep.textContent = '›';
-      box.appendChild(sep);
-    }
-    const c = document.createElement('span');
-    c.className = 'crumb' + (i === chain.length - 1 ? ' last' : '');
-    c.textContent = n.label;
-    c.onclick = () => { revealNode(n.id); };
-    box.appendChild(c);
-  });
-  if (ST.rootId !== GRAFO.id) {
-    const back = document.createElement('span');
-    back.id = 'focus-tag'; back.className = 'on';
-    back.textContent = '↩ salir del enfoque';
-    back.onclick = () => {
-      ST.rootId = GRAFO.id; ST.pos.clear(); ST.pinned.clear();
-      commit({ animated: false }); fitView();
-    };
-    box.appendChild(back);
-  }
-}
-
-function renderStatus() {
-  const vis = visibleNodes().length;
-  let hidden = 0;
-  for (const n of visibleNodes()) if (hasKids(n) && !ST.open.has(n.id)) hidden += countSub(n);
-  const depth = Math.max(...visibleNodes().map((n) => n._depth)) - NODES.get(ST.rootId)._depth;
-  document.getElementById('status').textContent =
-    `${vis} nodos visibles · ${hidden} plegados · profundidad ${depth} · ${NODES.size} nodos en total`;
-}
-function countSub(n) {
-  let c = 0;
-  (function walk(x) { kids(x).forEach((k) => { c++; walk(k); }); })(n);
-  return c;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   10. FICHA LATERAL
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-const panel = document.getElementById('panel');
-const panelHandle = document.getElementById('p-handle');
-
-// El tirador expande/contrae la ficha. Se resetea a "chica" cada vez que se
-// abre un nodo nuevo (ver openPanel), asi el usuario siempre arranca viendo
-// el grafo casi entero y decide el si quiere mas detalle.
-function setPanelFull(full) {
-  panel.classList.toggle('full', full);
-  panelHandle.textContent = full ? '⌃ Contraer' : '⌄ Ver completo';
-  panelHandle.title = full ? 'Volver al tamaño reducido' : 'Ver la ficha completa';
-}
-panelHandle.onclick = () => setPanelFull(!panel.classList.contains('full'));
-
-function openPanel(n) {
-  setPanelFull(false);
-  document.getElementById('p-kind').textContent = KIND_LABEL[n.kind] || n.kind;
-  document.getElementById('p-title').textContent = n.label;
-  document.getElementById('p-greek').textContent = n.greek || '';
-  document.getElementById('p-greek').style.display = n.greek ? '' : 'none';
-
-  const chain = pathTo(n.id).map((x) => x.label);
-  const sub = countSub(n);
-  document.getElementById('p-meta').textContent =
-    chain.join(' › ') + (sub ? ` · ${sub} subnodo${sub > 1 ? 's' : ''}` : '');
-
-  const body = document.getElementById('p-body');
-  body.textContent = '';
-
-  const sec = (title) => {
-    const s = document.createElement('div'); s.className = 'p-sec';
-    if (title) { const h = document.createElement('h3'); h.textContent = title; s.appendChild(h); }
-    body.appendChild(s);
-    return s;
-  };
-
-  /* descripcion */
-  const s1 = sec(null);
-  const pd = document.createElement('p');
-  if (n.definicion) { pd.className = 'p-def'; pd.textContent = n.definicion; }
-  else { pd.className = 'placeholder'; pd.textContent = 'Todavía sin descripción. Se carga en el campo «definicion» del nodo.'; }
-  s1.appendChild(pd);
-
-  /* pasajes del corpus */
-  if (n.citas && n.citas.length) {
-    const s2 = sec('En el texto');
-    for (const c of n.citas) {
-      const d = document.createElement('div'); d.className = 'cita';
-      const r = document.createElement('span'); r.className = 'ref';
-      const rid = document.createElement('span'); rid.textContent = c.ref;
-      const bk = document.createElement('span'); bk.className = 'bk'; bk.textContent = c.bekker;
-      r.appendChild(rid); r.appendChild(bk);
-      const t = document.createElement('p'); t.textContent = '«' + c.texto + '»';
-      d.appendChild(r); d.appendChild(t);
-      s2.appendChild(d);
-    }
-  }
-
-  /* bibliografia secundaria */
-  if (n.biblio && n.biblio.length) {
-    const s3 = sec('Bibliografía secundaria');
-    const ul = document.createElement('ul'); ul.className = 'biblio';
-    n.biblio.forEach((b) => { const li = document.createElement('li'); li.textContent = b; ul.appendChild(li); });
-    s3.appendChild(ul);
-  }
-
-  /* relaciones no jerarquicas, salientes y entrantes */
-  const rels = [];
-  (n.rel || []).forEach((r) => rels.push({ id: r.to, kind: r.kind || 'ver', label: r.label }));
-  for (const other of NODES.values()) {
-    (other.rel || []).forEach((r) => {
-      if (r.to === n.id) rels.push({ id: other.id, kind: r.kind || 'ver', label: r.label, back: true });
-    });
-  }
-  if (rels.length) {
-    const s4 = sec('Relaciones');
-    const box = document.createElement('div'); box.className = 'rels';
-    for (const r of rels) {
-      const other = NODES.get(r.id); if (!other) continue;
-      const el = document.createElement('div'); el.className = 'rel';
-      const k = document.createElement('span'); k.className = 'rel-k';
-      k.textContent = (r.back ? '← ' : '→ ') + (REL_LABEL[r.kind] || r.kind);
-      const l = document.createElement('span'); l.textContent = other.label;
-      el.appendChild(k); el.appendChild(l);
-      el.onclick = () => revealNode(other.id);
-      box.appendChild(el);
-    }
-    s4.appendChild(box);
-  }
-
-  /* subnodos directos */
-  if (hasKids(n)) {
-    const s5 = sec('Subnodos');
-    const box = document.createElement('div'); box.className = 'rels';
-    for (const k of kids(n)) {
-      const el = document.createElement('div'); el.className = 'rel';
-      const kk = document.createElement('span'); kk.className = 'rel-k';
-      kk.textContent = KIND_LABEL[k.kind] || k.kind;
-      const l = document.createElement('span'); l.textContent = k.label;
-      el.appendChild(kk); el.appendChild(l);
-      el.onclick = () => revealNode(k.id);
-      box.appendChild(el);
-    }
-    s5.appendChild(box);
-  }
-
-  /* acciones */
-  const sa = sec(null);
-  sa.className = 'p-sec p-actions';
-  if (hasKids(n)) {
-    const b1 = document.createElement('button');
-    b1.className = 'p-btn';
-    b1.textContent = ST.open.has(n.id) ? 'Contraer este nodo' : 'Desplegar este nodo';
-    b1.onclick = () => tapNode(n.id);
-    sa.appendChild(b1);
-
-    const b2 = document.createElement('button');
-    b2.className = 'p-btn';
-    b2.textContent = 'Enfocar: usar como centro';
-    b2.onclick = () => focusNode(n.id);
-    sa.appendChild(b2);
-  }
-  if (n.eje) {
-    const a = document.createElement('a');
-    a.className = 'p-btn primary';
-    a.href = 'busquedas.html#eje=' + n.eje;
-    a.textContent = 'Ver pasajes del eje «' + n.eje + '»';
-    a.title = 'Abre Búsquedas filtrando por este eje del vectorizador';
-    sa.appendChild(a);
-  }
-
-  panel.classList.add('open');
-  applyMarks();
-  renderCrumbs();
-}
-
-function closePanel() {
-  panel.classList.remove('open');
-  setPanelFull(false);
-  ST.sel = null;
-  applyMarks();
-  renderCrumbs();
-}
-document.getElementById('p-close').onclick = closePanel;
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   11. IR A UN NODO CUALQUIERA (abre todos sus ancestros)
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-function revealNode(id) {
-  const chain = pathTo(id);
-  const underRoot = chain.some((n) => n.id === ST.rootId);
-  if (!underRoot) { ST.rootId = GRAFO.id; ST.pos.clear(); ST.pinned.clear(); }
-  for (const n of chain) if (n.id !== id && hasKids(n)) ST.open.add(n.id);
-  ST.sel = id;
-  document.getElementById('hint').classList.add('hidden');
-  commit();
-  setTimeout(() => centerOn(id), 200);
-  openPanel(NODES.get(id));
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   12. BUSQUEDA
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-const input = document.getElementById('search');
-const resBox = document.getElementById('results');
-let resList = [];
-let resCur = -1;
-
-const norm = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-
-function doSearch(q) {
-  const nq = norm(q).trim();
-  resList = []; resCur = -1;
-  ST.hits = new Set();
-  if (nq.length < 2) { resBox.classList.remove('open'); applyMarks(); return; }
-
-  for (const n of NODES.values()) {
-    const hay = [n.label, n.greek, n.definicion, n.eje, ...(n.citas || []).map((c) => c.ref + ' ' + c.bekker + ' ' + c.texto)].map(norm).join(' · ');
-    if (hay.includes(nq)) resList.push(n);
-  }
-  resList.sort((a, b) => (norm(a.label).startsWith(nq) ? -1 : 0) - (norm(b.label).startsWith(nq) ? -1 : 0) || a._depth - b._depth);
-  resList = resList.slice(0, 14);
-  resList.forEach((n) => ST.hits.add(n.id));
-
-  resBox.textContent = '';
-  if (!resList.length) {
-    const e = document.createElement('div'); e.className = 'res-empty';
-    e.textContent = 'Sin resultados';
-    resBox.appendChild(e);
-  } else {
-    resList.forEach((n, i) => {
-      const el = document.createElement('div');
-      el.className = 'res'; el.dataset.i = i;
-      const k = document.createElement('span'); k.className = 'rk'; k.textContent = KIND_LABEL[n.kind] || n.kind;
-      const l = document.createElement('span'); l.className = 'rl'; l.textContent = n.label;
-      el.appendChild(k); el.appendChild(l);
-      if (n.greek) { const g = document.createElement('span'); g.className = 'rg'; g.textContent = n.greek; el.appendChild(g); }
-      el.onclick = () => { pick(i); };
-      resBox.appendChild(el);
-    });
-  }
-  resBox.classList.add('open');
-  applyMarks();
-}
-
-function highlightRes() {
-  [...resBox.querySelectorAll('.res')].forEach((el, i) => el.classList.toggle('cur', i === resCur));
-}
-
-function pick(i) {
-  const n = resList[i]; if (!n) return;
-  clearSearch();
-  revealNode(n.id);
-}
-
-function clearSearch() {
-  input.value = '';
-  resBox.classList.remove('open');
-  resList = []; resCur = -1;
-  ST.hits = new Set();
-  applyMarks();
-}
-
-input.addEventListener('input', () => doSearch(input.value));
-input.addEventListener('keydown', (ev) => {
-  if (ev.key === 'ArrowDown') { ev.preventDefault(); resCur = Math.min(resCur + 1, resList.length - 1); highlightRes(); }
-  else if (ev.key === 'ArrowUp') { ev.preventDefault(); resCur = Math.max(resCur - 1, 0); highlightRes(); }
-  else if (ev.key === 'Enter') { ev.preventDefault(); pick(resCur < 0 ? 0 : resCur); }
-  else if (ev.key === 'Escape') { clearSearch(); input.blur(); }
-});
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   13. TECLADO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-document.addEventListener('keydown', (ev) => {
-  if (ev.target === input) return;
-  const help = document.getElementById('help');
-
-  if (ev.key === '/') { ev.preventDefault(); input.focus(); return; }
-  if (ev.key === 'Escape') { help.classList.remove('open'); closePanel(); clearSearch(); return; }
-  if (ev.key === 'f' || ev.key === 'F') { fitView(); return; }
-  if (ev.key === '?') { help.classList.toggle('open'); return; }
-
-  const cur = ST.sel ? NODES.get(ST.sel) : NODES.get(ST.rootId);
-  if (!cur) return;
-
-  if (ev.key === 'Enter') { ev.preventDefault(); tapNode(cur.id); return; }
-
-  if (ev.key === 'ArrowUp' && cur._parent && pathTo(cur.id).some((n) => n.id === ST.rootId) && cur.id !== ST.rootId) {
-    ev.preventDefault(); revealNode(cur._parent.id); return;
-  }
-  if (ev.key === 'ArrowDown' && hasKids(cur)) {
-    ev.preventDefault(); ST.open.add(cur.id); commit(); revealNode(kids(cur)[0].id); return;
-  }
-  if ((ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') && cur._parent) {
-    ev.preventDefault();
-    const sib = kids(cur._parent);
-    const i = sib.findIndex((n) => n.id === cur.id);
-    const j = (i + (ev.key === 'ArrowRight' ? 1 : -1) + sib.length) % sib.length;
-    revealNode(sib[j].id);
-  }
-});
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   14. BOTONES E INICIO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-document.getElementById('zoom-in').onclick = () => zoomAt(1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
-document.getElementById('zoom-out').onclick = () => zoomAt(1 / 1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
-document.getElementById('zoom-fit').onclick = () => fitView();
-document.getElementById('btn-expand').onclick = () => expandAll();
-document.getElementById('btn-collapse').onclick = () => collapseAll();
-document.getElementById('btn-help').onclick = () => document.getElementById('help').classList.toggle('open');
-document.getElementById('help-close').onclick = () => document.getElementById('help').classList.remove('open');
-document.getElementById('help').addEventListener('click', (ev) => {
-  if (ev.target.id === 'help') ev.currentTarget.classList.remove('open');
-});
-window.addEventListener('resize', () => fitView());
-
-/* estado inicial: raiz desplegada un nivel, centrada y ajustada */
-ST.open.add(GRAFO.id);
-commit({ animated: false });
-fitView();
-document.getElementById('hint').textContent = 'Click para desplegar · doble click para enfocar · arrastrá para reubicar';
-setTimeout(() => document.getElementById('hint').classList.add('hidden'), 6000);
-
-/* expuesto para depuracion y para pruebas automatizadas */
-window.GRAFO = GRAFO;
-window.ST = ST;
-window.api = { revealNode, focusNode, tapNode, expandAll, collapseAll, fitView, visibleNodes, NODES };
-</script>
-</body>
-</html>
