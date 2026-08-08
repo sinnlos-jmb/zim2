@@ -28,6 +28,13 @@
 //             deslizamiento es el argumento mismo.
 //             Un tag manual en el .txt pisa la mezcla calculada:
 //               { "parrafo_nro": 42, "tags": [{"eje": "ergon", "sentido": "obra"}] }
+//             Dos sentidos del mismo eje a la vez van en DOS tags con el
+//             mismo "eje" y su propio "peso_sentido" (ver applySenseTags en
+//             vectorize.js):
+//               { "parrafo_nro": 43, "tags": [
+//                   {"eje": "arete", "sentido": "etica", "peso_sentido": 0.8},
+//                   {"eje": "arete", "sentido": "dianoetica", "peso_sentido": 0.2}
+//               ] }
 //
 // Cualquier termino admite la forma [termino, peso] para ajustarlo caso por caso.
 
@@ -97,10 +104,35 @@ export const AXES = [
     ],
   },
   {
+    // ARETE: eje con dos sentidos, declarados abajo en `senses`.
+    //   etica      -> virtudes del caracter (valentia, justicia, templanza...)
+    //   dianoetica -> virtudes del intelecto (techne, phronesis, sophia...)
+    // Cuando el parrafo habla de la virtud en general sin distinguir tipo, no
+    // se tagea ningun sentido: el eje queda neutral, igual que
+    // carpintero/zapatero en ergon.
+    // 'etica' (palabra suelta) se deja SIN mover a un sentido: coincide con
+    // el stem del titulo del tratado ("Etica Nicomaquea") ademas del
+    // adjetivo "etica/eticas" referido a la virtud, y sin medirlo contra los
+    // 72 pasajes no se sabe si moverla arrastraria menciones del titulo.
+    // Queda como estaba, a la espera de esa medicion.
     id: 'arete', label: 'Virtud', greek: 'ἀρετή',
-    aliases: ['arete', 'excelencia etica', 'excelencia moral'],
-    gr: ['ἀρετή', 'ἀρεταί', 'σπουδαῖον', 'ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'διανοητικαί', 'ἠθικαί'],
-    es: ['virtud', 'virtudes', 'excelencia', 'esforzado', 'valentía', 'justicia', 'justo', 'dianoetica', 'etica'],
+    aliases: ['arete', 'excelencia'],
+    gr: ['ἀρετή', 'ἀρεταί', 'σπουδαῖον'],
+    es: ['virtud', 'virtudes', 'excelencia', 'esforzado', 'etica'],
+    senses: [
+      {
+        id: 'etica', label: 'virtud ética (del carácter)', greek: 'ἠθική',
+        gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί'],
+        es: ['valentía', 'justicia', 'justo'],
+        aliases: ['virtud moral', 'virtudes del caracter', 'excelencia moral', 'excelencia etica'],
+      },
+      {
+        id: 'dianoetica', label: 'virtud dianoética (del intelecto)', greek: 'διανοητική',
+        gr: ['διανοητικαί'],
+        es: ['dianoetica'],
+        aliases: ['techne', 'phronesis', 'sophia', 'episteme', 'nous'],
+      },
+    ],
   },
   {
     // ENERGEIA: eje con dos sentidos, declarados abajo en `senses`.

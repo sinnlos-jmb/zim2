@@ -124,7 +124,20 @@ Puede ir solo o combinado con un rol:
 { "parrafo_nro": 42, "tags": [{"rol": "define", "eje": "ergon", "peso": 0.9, "sentido": "funcion"}] }
 ```
 
-Valores válidos hoy: `ergon` → `funcion` | `obra`; `energeia` → `acto` | `accion`.
+Cuando un mismo párrafo usa los dos sentidos de un eje a la vez, se declaran
+**dos tags** con el mismo `eje` y un `peso_sentido` cada uno (campo distinto de
+`peso`, que pondera un tag de `rol`). Los `peso_sentido` de un mismo eje se
+suman y se normalizan entre sí; no hace falta que sumen 1:
+
+```
+{ "parrafo_nro": 43, "tags": [
+    {"eje": "arete", "sentido": "etica", "peso_sentido": 0.8},
+    {"eje": "arete", "sentido": "dianoetica", "peso_sentido": 0.2}
+] }
+```
+
+Valores válidos hoy: `ergon` → `funcion` | `obra`; `energeia` → `acto` | `accion`;
+`arete` → `etica` | `dianoetica`.
 `build-corpus.mjs` imprime la sección **=== SENTIDOS FIJADOS A MANO ===** con la
 cuenta de sentidos fijados y avisa si un eje está mal escrito o si el sentido no
 existe — es el único error que el formato de tag permite cometer en silencio.
