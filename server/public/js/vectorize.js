@@ -108,7 +108,7 @@ function buildIndex(withAliases = false) {
       // claro de todos. Declarado en el sentido, se atribuye a `acto`.
       if (withAliases) load(sn.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
     }
-    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es);
+    if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
   });
 
   return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr };
