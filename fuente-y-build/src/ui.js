@@ -321,6 +321,10 @@ function renderAxisChips() {
       const b = el('button', 'chip');
       b.type = 'button';
       b.dataset.group = g.id;
+      // el id del eje viaja en el DOM: hace falta para poder pintar el chip
+      // como "on" cuando la seleccion se fija desde afuera (deep link de la
+      // URL, ver syncChipVisuals) y no por un click directo del usuario.
+      b.dataset.axis = ax.id;
       b.innerHTML = `<span>${ax.label}</span><span class="gr">${ax.greek}</span>`;
       b.onclick = () => {
         if (selectedAxes[ax.id]) delete selectedAxes[ax.id];
@@ -329,6 +333,7 @@ function renderAxisChips() {
         syncAxCount();
         if (Object.keys(selectedAxes).length) searchAxes();
         else resetToStart();
+        syncHash(true);
       };
       box.append(b);
     });
@@ -356,6 +361,7 @@ function syncAxCount() {
 function clearAxes() {
   clearAxChips();
   resetToStart();
+  syncHash(true);
 }
 
 // estado inicial: sin consulta, con la franja del vector en modo pista
@@ -384,6 +390,93 @@ function renderSidebarHint() {
   box.innerHTML = '';
   box.append(el('h3', null, 'Vector de la consulta'));
   box.append(el('p', 'muted', 'Acá vas a ver en qué ejes se proyecta tu pregunta y qué términos los activaron.'));
+}
+
+/* ------------------------------------------------------------- URL COMO ESTADO
+ * La seleccion de ejes (categorias del sidebar) y, dentro de un eje, la de
+ * sentidos, tambien viven en el hash de la URL. Eso resuelve tres cosas de
+ * una sola vez:
+ *   - los deep links del grafo conceptual funcionan (#eje=<id>: formato que
+ *     usa el boton "Ver pasajes del eje" de grafo.html);
+ *   - una consulta armada con chips se puede compartir con un link;
+ *   - atras/adelante del navegador recorren el historial de consultas en vez
+ *     de sacar al usuario de la pagina.
+ * Formato propio, al escribir: #ejes=id1,id2&sentidos=eje:sentA+sentB;otro:s
+ * Al leer se acepta ademas `eje=<id>` (singular), que es el que genera el
+ * grafo para un solo eje.
+ * Alcance deliberadamente acotado: solo la consulta por categorias (chips) y
+ * sus subchips de sentido quedan en la URL. La busqueda libre y los menus de
+ * Preguntas/Definiciones no lo necesitan para lo que se pidio ahora.
+ * ------------------------------------------------------------------------- */
+
+function parseHashState() {
+  const raw = location.hash.replace(/^#/, '');
+  if (!raw) return null;
+  const params = new URLSearchParams(raw);
+  const multi = params.get('ejes');
+  const single = params.get('eje');
+  const ids = multi ? multi.split(',').filter(Boolean) : (single ? [single] : []);
+  if (!ids.length) return null;
+  const sentidos = {};
+  (params.get('sentidos') || '').split(';').forEach((part) => {
+    const [axisId, senseList] = part.split(':');
+    if (axisId && senseList) sentidos[axisId] = senseList.split('+').filter(Boolean);
+  });
+  return { ids, sentidos };
+}
+
+// pinta en los chips del sidebar el estado actual de `selectedAxes`, para
+// cuando ese estado se fija a mano (desde la URL) y no por un click directo
+function syncChipVisuals() {
+  document.querySelectorAll('.chip').forEach((c) => {
+    c.classList.toggle('on', Boolean(selectedAxes[c.dataset.axis]));
+  });
+}
+
+// Aplica un estado leido del hash: selecciona los ejes, pre-carga los
+// sentidos elegidos (si vienen) y corre la consulta. Devuelve false si el
+// hash no traia nada aprovechable, para que quien llama pueda arrancar en
+// blanco como siempre.
+function applyHashState(state) {
+  if (!state || !state.ids.length) return false;
+  const valid = state.ids.filter((id) => AXES.some((a) => a.id === id));
+  if (!valid.length) return false;
+  selectedAxes = {};
+  valid.forEach((id) => { selectedAxes[id] = 1; });
+  senseSelections = {};
+  Object.entries(state.sentidos).forEach(([axisId, senseIds]) => {
+    const axDef = axesWithSenses().find((a) => a.id === axisId);
+    if (!axDef) return;
+    const okSenses = senseIds.filter((s) => axDef.senses.some((x) => x.id === s));
+    if (okSenses.length) senseSelections[axisId] = new Set(okSenses);
+  });
+  syncChipVisuals();
+  syncAxCount();
+  searchAxes();
+  return true;
+}
+
+function currentHashString() {
+  const ids = Object.keys(selectedAxes);
+  if (!ids.length) return '';
+  const parts = ['ejes=' + ids.join(',')];
+  const senseParts = [];
+  activeSenseAxes().forEach((axDef) => {
+    const sel = senseSelections[axDef.id];
+    if (sel && sel.size && sel.size < axDef.senses.length) senseParts.push(axDef.id + ':' + [...sel].join('+'));
+  });
+  if (senseParts.length) parts.push('sentidos=' + senseParts.join(';'));
+  return parts.join('&');
+}
+
+// push=true marca una consulta nueva (queda en el historial: atras vuelve a
+// la anterior). push=false ajusta la consulta actual sin abrir un escalon
+// nuevo (tocar un subchip de sentido es un ajuste fino, no una consulta nueva).
+function syncHash(push) {
+  const h = currentHashString();
+  const url = location.pathname + location.search + (h ? '#' + h : '');
+  if (push) history.pushState(null, '', url);
+  else history.replaceState(null, '', url);
 }
 
 // EJES ACTIVOS CON SENTIDO en la consulta actual: solo los que la consulta
@@ -430,6 +523,7 @@ function renderSenseChipsBlock() {
           sel.add(s.id);
         }
         recomputeSenseMixAndResults();
+        syncHash(false);
       };
       row.append(b);
     });
@@ -652,7 +746,19 @@ function init() {
   $('#clearax').onclick = clearAxes;
 
   syncAxCount();
-  resetToStart();
+  // La URL manda si trae un eje (deep link del grafo, o una consulta
+  // compartida por otra persona); si no hay nada aprovechable, arranca en
+  // blanco como siempre.
+  const initial = parseHashState();
+  if (!initial || !applyHashState(initial)) resetToStart();
+  // atras/adelante del navegador: releer el hash y re-renderizar, sin volver
+  // a tocar el historial (el navegador ya lo hizo por su cuenta).
+  window.addEventListener('popstate', () => {
+    const state = parseHashState();
+    if (state && applyHashState(state)) return;
+    clearAxChips();
+    resetToStart();
+  });
   const cov = PASSAGES.filter((p) => p.vector.some((x) => x)).length;
   $('#stats').textContent = `${PASSAGES.length} pasajes · ${AXES.length} dimensiones · ${cov} vectorizados`;
 }
