@@ -25,6 +25,8 @@
   --orange-dark: #8F5A28;
   --grey-line: #B8B5B0;
   --head: 56px;
+  --tb: 46px;
+  --foot: 34px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -34,11 +36,12 @@ body {
   background: var(--canvas);
   height: 100dvh;
   display: grid;
-  grid-template-rows: var(--head) 1fr;
+  grid-template-rows: var(--head) var(--tb) 1fr var(--foot);
   overflow: hidden;
 }
+body.embed { grid-template-rows: var(--tb) 1fr var(--foot); }
+body.embed #hd { display: none; }
 
-/* ------------------------------------------------------------- ENCABEZADO -- */
 #hd {
   display: flex; align-items: center; gap: 14px;
   padding: 0 16px;
@@ -49,6 +52,16 @@ body {
 .brand { display: flex; align-items: baseline; gap: 9px; flex: none; }
 .brand h1 { font-size: 15px; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
 .brand .sub { color: var(--muted); font-size: 12.5px; }
+.back { flex: none; font-size: 12.5px; color: var(--blue); text-decoration: none; margin-left: auto; }
+.back:hover { text-decoration: underline; }
+
+#tb {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px; height: var(--tb);
+  border-bottom: 1px solid var(--border);
+  background: var(--canvas);
+  z-index: 15;
+}
 
 #search-wrap { position: relative; margin-left: auto; }
 #search {
@@ -86,15 +99,7 @@ body {
   transition: background .15s, color .15s, border-color .15s;
 }
 .hd-btn:hover { background: var(--soft); color: var(--text); }
-.back { flex: none; font-size: 12.5px; color: var(--blue); text-decoration: none; }
-.back:hover { text-decoration: underline; }
-/* Modo embebido: paseos.html carga este archivo en un iframe. La marca y el
-   link de vuelta los aporta la barra de secciones de la pagina contenedora,
-   asi que aca sobran; el buscador y los botones del grafo se quedan. */
-body.embed .brand, body.embed .back { display: none; }
-body.embed #hd { padding-left: 14px; }
 
-/* ------------------------------------------------------------------ LIENZO -- */
 #stage { position: relative; overflow: hidden; }
 #cy {
   width: 100%; height: 100%; display: block;
@@ -104,7 +109,6 @@ body.embed #hd { padding-left: 14px; }
 }
 #cy.panning { cursor: grabbing; }
 
-/* nodos */
 .n-shape { transition: stroke .15s, stroke-width .15s, fill .15s; }
 .node { cursor: pointer; }
 .node .n-label { font-size: 12px; font-weight: 500; fill: var(--text); pointer-events: none; }
@@ -134,11 +138,9 @@ body.embed #hd { padding-left: 14px; }
 .node:hover .n-shape { stroke: var(--blue); stroke-width: 3; }
 .node.sel .n-shape { stroke: var(--blue); stroke-width: 3.5; }
 
-/* badge de hijos colapsados */
 .n-badge circle { fill: var(--canvas); stroke: var(--grey-line); stroke-width: 1.2; }
 .n-badge text { font-size: 9.5px; font-weight: 700; fill: var(--muted); text-anchor: middle; }
 
-/* aristas */
 .e-sub      { stroke: var(--line);   stroke-width: 1.6; fill: none; }
 .e-infiere  { stroke: var(--green);  stroke-width: 1.8; fill: none; stroke-dasharray: 6 4; }
 .e-opone    { stroke: var(--orange); stroke-width: 1.6; fill: none; stroke-dasharray: 2 4; }
@@ -147,11 +149,9 @@ body.embed #hd { padding-left: 14px; }
 .e-label { font-size: 10px; fill: var(--muted); text-anchor: middle; pointer-events: none; }
 .edge.dim { opacity: .18; }
 
-/* --------------------------------------------------------------- MIGAS -- */
 #crumbs {
-  position: absolute; top: 12px; left: 14px; z-index: 8;
   display: flex; align-items: center; gap: 5px; flex-wrap: wrap;
-  max-width: calc(100% - 380px); font-size: 12.5px;
+  min-width: 0; flex: 1 1 auto; font-size: 12.5px;
 }
 .crumb {
   background: var(--canvas); border: 1px solid var(--border); border-radius: 7px;
@@ -167,7 +167,6 @@ body.embed #hd { padding-left: 14px; }
 }
 #focus-tag.on { display: block; }
 
-/* ------------------------------------------------------------ CONTROLES -- */
 #controls {
   position: absolute; bottom: 18px; right: 18px; z-index: 8;
   display: flex; flex-direction: column; gap: 5px;
@@ -182,23 +181,6 @@ body.embed #hd { padding-left: 14px; }
 }
 #controls button:hover { background: var(--soft); color: var(--text); }
 
-#legend {
-  position: absolute; bottom: 18px; left: 18px; z-index: 8;
-  background: var(--canvas); border: 1px solid var(--border); border-radius: 10px;
-  padding: 11px 13px; font-size: 11.5px; color: var(--muted);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
-  max-width: 340px;
-}
-.lg { display: flex; align-items: center; gap: 7px; }
-.lg i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; }
-.lg i.sq { border-radius: 3px; }
-#legend .lg-note { grid-column: 1 / -1; color: var(--faint); font-size: 11px; padding-top: 3px; border-top: 1px solid var(--border); margin-top: 2px; }
-
-#status {
-  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-  font-size: 12px; color: var(--faint); z-index: 7; white-space: nowrap;
-  background: rgba(255,255,255,.85); padding: 4px 12px; border-radius: 999px;
-}
 #hint {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, 120px);
   background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
@@ -207,15 +189,25 @@ body.embed #hd { padding-left: 14px; }
 }
 #hint.hidden { opacity: 0; }
 
-/* ---------------------------------------------------------------- PANEL -- */
 #panel {
-  position: absolute; top: 0; right: 0; bottom: 0; width: 372px;
-  background: var(--canvas); border-left: 1px solid var(--border);
-  transform: translateX(100%); transition: transform .22s ease;
-  z-index: 30; display: flex; flex-direction: column;
-  box-shadow: -4px 0 18px rgba(0,0,0,.07);
+  position: fixed; top: var(--head); right: 18px; width: 372px; max-width: calc(100% - 36px);
+  max-height: 38dvh;
+  background: var(--canvas); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 14px 14px;
+  transform: translateY(-100%);
+  transition: transform .22s ease, max-height .22s ease;
+  z-index: 30; display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,.14);
 }
-#panel.open { transform: translateX(0); }
+#panel.open { transform: translateY(0); }
+#panel.full { max-height: calc(100dvh - var(--head) - var(--foot) - 40px); }
+body.embed #panel { top: 0; }
+.p-handle {
+  flex: none; border: none; border-top: 1px solid var(--border);
+  background: var(--soft); color: var(--muted); font: inherit; font-size: 12px;
+  padding: 7px 0; cursor: pointer; text-align: center;
+}
+.p-handle:hover { background: var(--surface); color: var(--text); }
 .p-hd { display: flex; align-items: flex-start; gap: 10px; padding: 16px 16px 0; }
 .p-hd-main { flex: 1; min-width: 0; }
 .p-kind {
@@ -277,7 +269,16 @@ body.embed #hd { padding-left: 14px; }
   padding: 9px 11px; font-size: 12.5px; color: var(--orange-dark); margin: 0;
 }
 
-/* ------------------------------------------------------------ ATAJOS -- */
+#gft {
+  display: flex; align-items: center;
+  height: var(--foot); padding: 0 16px;
+  border-top: 1px solid var(--border);
+  background: var(--canvas);
+  font-size: 12px; color: var(--faint);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  z-index: 20;
+}
+
 #help {
   position: absolute; inset: 0; z-index: 50; display: none;
   background: rgba(44,44,43,.32); align-items: center; justify-content: center;
@@ -285,9 +286,11 @@ body.embed #hd { padding-left: 14px; }
 #help.open { display: flex; }
 .help-card {
   background: var(--canvas); border-radius: 12px; padding: 22px 26px;
-  max-width: 460px; box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  max-width: 480px; max-height: 86vh; overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
 }
 .help-card h3 { margin: 0 0 14px; font-size: 16px; }
+.help-card h3:not(:first-child) { margin-top: 20px; }
 .help-card table { border-collapse: collapse; font-size: 13px; width: 100%; }
 .help-card td { padding: 4px 0; vertical-align: top; }
 .help-card td:first-child { width: 130px; }
@@ -297,19 +300,30 @@ body.embed #hd { padding-left: 14px; }
 }
 .help-card .close { margin-top: 16px; }
 
+.legend-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
+  font-size: 11.5px; color: var(--muted); margin-bottom: 10px;
+}
+.lg { display: flex; align-items: center; gap: 7px; }
+.lg i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; }
+.lg i.sq { border-radius: 3px; }
+.lg-note { color: var(--faint); font-size: 11px; margin: 0 0 4px; }
+
 @media (max-width: 900px) {
   .brand .sub { display: none; }
-  #legend { display: none; }
-  #crumbs { max-width: calc(100% - 28px); }
   #search { width: 150px; }
-  #panel { width: 100%; top: auto; height: 62%; border-left: none; border-top: 1px solid var(--border); transform: translateY(100%); }
+  #panel {
+    width: 100%; max-width: 100%; top: auto; right: 0; bottom: var(--foot); height: 62%; max-height: 62%;
+    border-left: none; border-right: none; border-top: 1px solid var(--border); border-radius: 14px 14px 0 0;
+    transform: translateY(100%);
+  }
   #panel.open { transform: translateY(0); }
+  #panel.full { height: calc(92% - var(--foot)); max-height: calc(92% - var(--foot)); }
 }
 </style>
 </head>
 <body>
 <script>
-  /* ?embed=1 -> el grafo vive dentro de otra pagina y no repite su cabecera */
   if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('embed');
 </script>
 
@@ -318,6 +332,11 @@ body.embed #hd { padding-left: 14px; }
     <h1>Grafo conceptual</h1>
     <span class="sub">Aristóteles · Ética Nicomaquea, libro I</span>
   </div>
+  <a href="index.html" class="back" target="_top">← App principal</a>
+</header>
+
+<div id="tb">
+  <nav id="crumbs" aria-label="Ruta del nodo"></nav>
   <div id="search-wrap">
     <input id="search" type="text" placeholder="Buscar nodo…  ( / )" autocomplete="off" spellcheck="false">
     <div id="results"></div>
@@ -325,8 +344,7 @@ body.embed #hd { padding-left: 14px; }
   <button class="hd-btn" id="btn-collapse">Colapsar</button>
   <button class="hd-btn" id="btn-expand">Expandir todo</button>
   <button class="hd-btn" id="btn-help">?</button>
-  <a href="index.html" class="back">← App principal</a>
-</header>
+</div>
 
 <div id="stage">
   <svg id="cy">
@@ -344,9 +362,7 @@ body.embed #hd { padding-left: 14px; }
     </g>
   </svg>
 
-  <div id="crumbs"></div>
   <div id="hint">Hacé click en <strong>εὐδαιμονία</strong> para desplegar · doble click para enfocar</div>
-  <div id="status"></div>
 
   <div id="controls">
     <button id="zoom-in" title="Acercar">+</button>
@@ -354,33 +370,20 @@ body.embed #hd { padding-left: 14px; }
     <button id="zoom-fit" title="Ajustar a la vista (F)">⊙</button>
   </div>
 
-  <div id="legend">
-    <div class="lg"><i style="background:#E5F2FC;border-color:#2783DE"></i> Concepto</div>
-    <div class="lg"><i class="sq" style="background:#E5F2FC;border-color:#2783DE"></i> Pregunta</div>
-    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#B8B5B0"></i> Afirmación</div>
-    <div class="lg"><i style="background:#EDF7F1;border-color:#46A171"></i> Componente</div>
-    <div class="lg"><i class="sq" style="background:#FBF1E8;border-color:#D5803B"></i> Aporía</div>
-    <div class="lg"><i style="background:#F9F8F7;border-color:#D5803B"></i> Bien rival</div>
-    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#7D7A75"></i> Premisa</div>
-    <div class="lg"><i class="sq" style="background:#EDF7F1;border-color:#46A171"></i> Conclusión</div>
-    <div class="lg-note">Línea llena: jerarquía · verde punteada: inferencia · naranja: oposición</div>
-  </div>
-
-  <aside id="panel">
-    <div class="p-hd">
-      <div class="p-hd-main">
-        <span class="p-kind" id="p-kind"></span>
-        <h2 id="p-title"></h2>
-        <p class="p-greek" id="p-greek"></p>
-      </div>
-      <button id="p-close" title="Cerrar (Esc)">✕</button>
-    </div>
-    <div class="p-meta" id="p-meta"></div>
-    <div class="p-body" id="p-body"></div>
-  </aside>
-
   <div id="help">
     <div class="help-card">
+      <h3>Símbolos</h3>
+      <div class="legend-grid">
+        <div class="lg"><i style="background:#E5F2FC;border-color:#2783DE"></i> Concepto</div>
+        <div class="lg"><i class="sq" style="background:#E5F2FC;border-color:#2783DE"></i> Pregunta</div>
+        <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#B8B5B0"></i> Afirmación</div>
+        <div class="lg"><i style="background:#EDF7F1;border-color:#46A171"></i> Componente</div>
+        <div class="lg"><i class="sq" style="background:#FBF1E8;border-color:#D5803B"></i> Aporía</div>
+        <div class="lg"><i style="background:#F9F8F7;border-color:#D5803B"></i> Bien rival</div>
+        <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#7D7A75"></i> Premisa</div>
+        <div class="lg"><i class="sq" style="background:#EDF7F1;border-color:#46A171"></i> Conclusión</div>
+      </div>
+      <p class="lg-note">Línea llena: jerarquía · verde punteada: inferencia · naranja: oposición</p>
       <h3>Cómo navegar</h3>
       <table>
         <tr><td><kbd>click</kbd></td><td>Desplegar / contraer un nodo y abrir su ficha</td></tr>
@@ -399,38 +402,23 @@ body.embed #hd { padding-left: 14px; }
   </div>
 </div>
 
+<aside id="panel">
+  <div class="p-hd">
+    <div class="p-hd-main">
+      <span class="p-kind" id="p-kind"></span>
+      <h2 id="p-title"></h2>
+      <p class="p-greek" id="p-greek"></p>
+    </div>
+    <button id="p-close" title="Cerrar (Esc)">✕</button>
+  </div>
+  <div class="p-meta" id="p-meta"></div>
+  <div class="p-body" id="p-body"></div>
+  <button id="p-handle" class="p-handle" type="button" title="Ver la ficha completa">⌄ Ver completo</button>
+</aside>
+
+<footer id="gft"><span id="status"></span></footer>
+
 <script>
-/* ═══════════════════════════════════════════════════════════════════════════
-   1. DATOS DEL GRAFO
-   ═══════════════════════════════════════════════════════════════════════════
-
-   Este bloque es lo unico que hay que editar para hacer crecer el grafo: el
-   motor de abajo es generico y no sabe nada de Aristoteles.
-
-   Cada nodo admite:
-     id         obligatorio y unico
-     label      texto visible
-     greek      termino griego (opcional, se muestra debajo del label)
-     kind       define forma y color. Valores:
-                  concepto | pregunta | tesis | grupo | componente
-                  rival | aporia | argumento | premisa | conclusion
-     eje        id del eje del vectorizador, si corresponde. Habilita el boton
-                "Consultar en el vectorizador" en la ficha lateral.
-     definicion parrafo explicativo (lo que hoy seria la definicion estatica)
-     citas      [{ ref, bekker, texto }] pasajes del corpus. ref es el id del
-                pasaje (EN.I.7.d), asi despues se puede linkear al texto real.
-     biblio     ["..."] bibliografia secundaria
-     rel        [{ to, kind, label }] enlaces que NO son de jerarquia.
-                kind: infiere | opone | requiere | ver
-                Se dibujan solo cuando los dos nodos estan visibles.
-     children   subnodos. Un nodo con children se despliega al hacerle click.
-
-   NOTA SOBRE ARGUMENTOS: el kind 'argumento' con hijos 'premisa' y
-   'conclusion' ya esta soportado (ver 'arg-ergon' mas abajo). Cuando termines
-   de taguear premisas y conclusiones en el texto, esos subgrafos se pueden
-   generar automaticamente con la misma forma que este ejemplo escrito a mano.
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 const GRAFO = {
   id: 'eudaimonia', label: 'Felicidad', greek: 'εὐδαιμονία', kind: 'concepto', eje: 'eudaimonia',
   definicion: 'El concepto que organiza todo el libro I. Aristóteles no lo introduce como una definición cerrada sino como el nombre en el que todos coinciden y sobre cuyo contenido se discute: hay acuerdo verbal y desacuerdo real.',
@@ -442,7 +430,6 @@ const GRAFO = {
     'R. Kraut, «Two Conceptions of Happiness», The Philosophical Review, 1979.',
   ],
   children: [
-    /* ───────────────────────────────────────────────── ¿QUÉ ES? ─────────── */
     {
       id: 'q-que-es', label: '¿Qué es?', kind: 'pregunta',
       definicion: 'La vía de acceso conceptual: qué condiciones tiene que cumplir algo para ser el bien supremo, y qué contenido concreto termina teniendo.',
@@ -508,7 +495,6 @@ const GRAFO = {
       ],
     },
 
-    /* ─────────────────────────────────────── ¿CÓMO SE ADQUIERE? ─────────── */
     {
       id: 'q-como', label: '¿Cómo se adquiere?', kind: 'pregunta',
       definicion: 'El proceso, no el resultado. Aristóteles descarta que sea don del azar y la sitúa en el terreno del aprendizaje, el hábito y la actividad sostenida en el tiempo.',
@@ -589,7 +575,6 @@ const GRAFO = {
       ],
     },
 
-    /* ─────────────────────────────────── ¿DE QUÉ SE DISTINGUE? ─────────── */
     {
       id: 'q-distingue', label: '¿De qué se distingue?', kind: 'pregunta',
       definicion: 'Los candidatos rivales al título de bien supremo, cada uno asociado a una forma de vida. Se descartan por no cumplir los criterios de fin último y autosuficiencia.',
@@ -617,7 +602,6 @@ const GRAFO = {
       ],
     },
 
-    /* ────────────────────────────────── ¿QUÉ PROBLEMAS PLANTEA? ─────────── */
     {
       id: 'q-aporias', label: '¿Qué problemas plantea?', kind: 'pregunta',
       definicion: 'Las dificultades que Aristóteles deja abiertas o resuelve con matices. Son el mejor punto de entrada para discutir el texto, más que las tesis ya cerradas.',
@@ -650,17 +634,12 @@ const GRAFO = {
   ],
 };
 
-/* Etiquetas legibles de cada kind y de cada tipo de relacion */
 const KIND_LABEL = {
   concepto: 'Concepto', pregunta: 'Pregunta', tesis: 'Afirmación', grupo: 'Familia',
   componente: 'Componente', rival: 'Bien rival', aporia: 'Aporía',
   argumento: 'Argumento', premisa: 'Premisa', conclusion: 'Conclusión',
 };
 const REL_LABEL = { infiere: 'infiere', opone: 'se opone a', requiere: 'requiere', ver: 'ver también' };
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   2. INDICE DEL ARBOL
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 const NODES = new Map();
 (function index(node, parent, depth) {
@@ -680,22 +659,17 @@ function pathTo(id) {
   return out;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   3. ESTADO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 const ST = {
-  rootId: GRAFO.id,          // nodo que hace de centro (modo enfoque)
-  open: new Set(),           // nodos desplegados
-  sel: null,                 // nodo seleccionado (ficha abierta)
-  pos: new Map(),            // id -> {x,y} posicion actual (animada)
-  tgt: new Map(),            // id -> {x,y} posicion objetivo
-  pinned: new Set(),         // el usuario los movio a mano: no se recalculan
+  rootId: GRAFO.id,
+  open: new Set(),
+  sel: null,
+  pos: new Map(),
+  tgt: new Map(),
+  pinned: new Set(),
   view: { x: 0, y: 0, k: 1 },
-  hits: new Set(),           // resultados de busqueda resaltados
+  hits: new Set(),
 };
 
-/* medidas por kind: r = radio de circulo, w/h = caja del roundrect */
 const SHAPE = {
   concepto:   { shape: 'circle', r: 34 },
   pregunta:   { shape: 'rect', w: 62, h: 34 },
@@ -714,10 +688,6 @@ function radiusOf(n) {
   return s.shape === 'circle' ? s.r : Math.max(s.w, s.h) / 2;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   4. NODOS VISIBLES
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 function visibleNodes() {
   const out = [];
   (function walk(n) {
@@ -726,15 +696,6 @@ function visibleNodes() {
   })(NODES.get(ST.rootId));
   return out;
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   5. LAYOUT RADIAL POR SECTORES
-   ───────────────────────────────────────────────────────────────────────────
-   Mejora central respecto de un circulo completo por nivel: a partir del
-   segundo nivel los hijos se abren en un ABANICO orientado hacia afuera
-   (en la direccion padre -> nodo), de modo que nunca se superponen con el
-   abuelo ni con las ramas hermanas.
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 function layout() {
   ST.tgt.clear();
@@ -752,11 +713,9 @@ function place(node, dir, spread) {
   const isRoot = node.id === ST.rootId;
   const p = ST.tgt.get(node.id);
 
-  // radio: crece con la cantidad de hijos y con el tamaño de los nodos
   const base = isRoot ? 230 : 190;
   const r = Math.max(base, cs.length * 46);
 
-  // abanico: completo en la raiz, acotado y orientado hacia afuera despues
   const arc = isRoot
     ? Math.PI * 2
     : Math.min(Math.PI * 1.15, Math.max(Math.PI * 0.55, cs.length * 0.44));
@@ -777,7 +736,6 @@ function place(node, dir, spread) {
   });
 }
 
-/* separacion: empuja nodos demasiado cerca, respetando raiz y nodos fijados */
 function relax() {
   const vis = visibleNodes();
   const ids = vis.map((n) => n.id);
@@ -788,7 +746,6 @@ function relax() {
         const A = ST.tgt.get(ids[a]); const B = ST.tgt.get(ids[b]);
         if (!A || !B) continue;
         const na = NODES.get(ids[a]); const nb = NODES.get(ids[b]);
-        // margen: radio + espacio para la etiqueta de abajo
         const min = radiusOf(na) + radiusOf(nb) + 46;
         let dx = B.x - A.x, dy = B.y - A.y;
         let d = Math.hypot(dx, dy);
@@ -806,18 +763,14 @@ function relax() {
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   6. RENDER
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 const SVG = document.getElementById('cy');
 const VP = document.getElementById('vp');
 const GE = document.getElementById('g-edges');
 const GN = document.getElementById('g-nodes');
 const svgEl = (t) => document.createElementNS('http://www.w3.org/2000/svg', t);
 
-let nodeEls = new Map();   // id -> <g>
-let edgeEls = [];          // { el, path, labelEl, from, to, kind }
+let nodeEls = new Map();
+let edgeEls = [];
 
 function wrapLabel(text, max) {
   const words = String(text).split(/\s+/);
@@ -836,7 +789,6 @@ function buildDom() {
   const vis = visibleNodes();
   const visIds = new Set(vis.map((n) => n.id));
 
-  // ---- aristas: jerarquia + relaciones cruzadas entre nodos visibles ----
   GE.textContent = '';
   edgeEls = [];
   const addEdge = (from, to, kind, label) => {
@@ -867,7 +819,6 @@ function buildDom() {
     }
   }
 
-  // ---- nodos ----
   GN.textContent = '';
   nodeEls = new Map();
   for (const n of vis) {
@@ -889,7 +840,6 @@ function buildDom() {
     shape.setAttribute('class', 'n-shape');
     g.appendChild(shape);
 
-    // etiqueta debajo del nodo
     const yTop = (s.shape === 'circle' ? s.r : s.h / 2) + 15;
     const label = svgEl('text');
     label.setAttribute('class', 'n-label');
@@ -914,7 +864,6 @@ function buildDom() {
       g.appendChild(gk);
     }
 
-    // badge con la cantidad de hijos ocultos
     if (hasKids(n) && !ST.open.has(n.id)) {
       const bx = (s.shape === 'circle' ? s.r : s.w / 2) - 2;
       const by = -(s.shape === 'circle' ? s.r : s.h / 2) + 2;
@@ -932,7 +881,6 @@ function buildDom() {
     nodeEls.set(n.id, g);
 
     if (!ST.pos.has(n.id)) {
-      // aparece desde la posicion del padre: da la sensacion de despliegue
       const par = n._parent && ST.pos.get(n._parent.id);
       ST.pos.set(n.id, par ? { ...par } : { ...(ST.tgt.get(n.id) || { x: 0, y: 0 }) });
     }
@@ -944,7 +892,6 @@ function buildDom() {
   renderStatus();
 }
 
-/* resaltado de busqueda y seleccion */
 function applyMarks() {
   for (const [id, el] of nodeEls) {
     el.classList.toggle('sel', ST.sel === id);
@@ -956,7 +903,6 @@ function applyMarks() {
   }
 }
 
-/* dibuja posiciones actuales (se llama en cada frame de animacion) */
 function paint() {
   for (const [id, el] of nodeEls) {
     const p = ST.pos.get(id);
@@ -972,7 +918,6 @@ function paint() {
     dx /= d; dy /= d;
     const x1 = a.x + dx * ra, y1 = a.y + dy * ra;
     const x2 = b.x - dx * rb, y2 = b.y - dy * rb;
-    // curvatura suave; las relaciones cruzadas se arquean mas para distinguirse
     const bow = e.kind === 'sub' ? 0.06 : 0.18;
     const mx = (x1 + x2) / 2 - dy * d * bow;
     const my = (y1 + y2) / 2 + dx * d * bow;
@@ -984,7 +929,6 @@ function paint() {
   }
 }
 
-/* animacion de posiciones */
 let raf = null;
 function animate() {
   if (raf) cancelAnimationFrame(raf);
@@ -1014,10 +958,6 @@ function commit({ animated = true } = {}) {
   if (animated) animate();
   else { for (const [id, tp] of ST.tgt) ST.pos.set(id, { ...tp }); paint(); }
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   7. VIEWPORT: PAN Y ZOOM
-   ════════════════════════════════════════════��══════════════════════════════ */
 
 function applyView() {
   VP.setAttribute('transform', `translate(${ST.view.x},${ST.view.y}) scale(${ST.view.k})`);
@@ -1064,7 +1004,6 @@ function centerOn(id, k) {
   applyView();
 }
 
-/* conversion pantalla -> modelo */
 function toModel(clientX, clientY) {
   const b = SVG.getBoundingClientRect();
   return {
@@ -1072,10 +1011,6 @@ function toModel(clientX, clientY) {
     y: (clientY - b.top - ST.view.y) / ST.view.k,
   };
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   8. INTERACCION (pointer events: mouse y touch con el mismo codigo)
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 let drag = null;
 
@@ -1145,7 +1080,6 @@ function tapNode(id) {
   openPanel(n);
 }
 
-/* al contraer, olvidar tambien los descendientes (si no, reaparecen abiertos) */
 function collapseSubtree(id) {
   (function walk(n) {
     ST.open.delete(n.id);
@@ -1182,10 +1116,6 @@ function collapseAll() {
   centerOn(ST.rootId, 1);
   document.getElementById('hint').classList.remove('hidden');
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   9. MIGAS Y ESTADO
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 function renderCrumbs() {
   const box = document.getElementById('crumbs');
@@ -1229,13 +1159,18 @@ function countSub(n) {
   return c;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   10. FICHA LATERAL
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 const panel = document.getElementById('panel');
+const panelHandle = document.getElementById('p-handle');
+
+function setPanelFull(full) {
+  panel.classList.toggle('full', full);
+  panelHandle.textContent = full ? '⌃ Contraer' : '⌄ Ver completo';
+  panelHandle.title = full ? 'Volver al tamaño reducido' : 'Ver la ficha completa';
+}
+panelHandle.onclick = () => setPanelFull(!panel.classList.contains('full'));
 
 function openPanel(n) {
+  setPanelFull(false);
   document.getElementById('p-kind').textContent = KIND_LABEL[n.kind] || n.kind;
   document.getElementById('p-title').textContent = n.label;
   document.getElementById('p-greek').textContent = n.greek || '';
@@ -1256,14 +1191,12 @@ function openPanel(n) {
     return s;
   };
 
-  /* descripcion */
   const s1 = sec(null);
   const pd = document.createElement('p');
   if (n.definicion) { pd.className = 'p-def'; pd.textContent = n.definicion; }
   else { pd.className = 'placeholder'; pd.textContent = 'Todavía sin descripción. Se carga en el campo «definicion» del nodo.'; }
   s1.appendChild(pd);
 
-  /* pasajes del corpus */
   if (n.citas && n.citas.length) {
     const s2 = sec('En el texto');
     for (const c of n.citas) {
@@ -1278,7 +1211,6 @@ function openPanel(n) {
     }
   }
 
-  /* bibliografia secundaria */
   if (n.biblio && n.biblio.length) {
     const s3 = sec('Bibliografía secundaria');
     const ul = document.createElement('ul'); ul.className = 'biblio';
@@ -1286,7 +1218,6 @@ function openPanel(n) {
     s3.appendChild(ul);
   }
 
-  /* relaciones no jerarquicas, salientes y entrantes */
   const rels = [];
   (n.rel || []).forEach((r) => rels.push({ id: r.to, kind: r.kind || 'ver', label: r.label }));
   for (const other of NODES.values()) {
@@ -1310,7 +1241,6 @@ function openPanel(n) {
     s4.appendChild(box);
   }
 
-  /* subnodos directos */
   if (hasKids(n)) {
     const s5 = sec('Subnodos');
     const box = document.createElement('div'); box.className = 'rels';
@@ -1326,7 +1256,6 @@ function openPanel(n) {
     s5.appendChild(box);
   }
 
-  /* acciones */
   const sa = sec(null);
   sa.className = 'p-sec p-actions';
   if (hasKids(n)) {
@@ -1345,9 +1274,10 @@ function openPanel(n) {
   if (n.eje) {
     const a = document.createElement('a');
     a.className = 'p-btn primary';
-    a.href = 'index.html#eje=' + n.eje;
+    a.href = 'busquedas.html#eje=' + n.eje;
+    a.target = '_top';
     a.textContent = 'Ver pasajes del eje «' + n.eje + '»';
-    a.title = 'Abre la app principal filtrando por este eje del vectorizador';
+    a.title = 'Abre Búsquedas filtrando por este eje del vectorizador';
     sa.appendChild(a);
   }
 
@@ -1358,15 +1288,12 @@ function openPanel(n) {
 
 function closePanel() {
   panel.classList.remove('open');
+  setPanelFull(false);
   ST.sel = null;
   applyMarks();
   renderCrumbs();
 }
 document.getElementById('p-close').onclick = closePanel;
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   11. IR A UN NODO CUALQUIERA (abre todos sus ancestros)
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 function revealNode(id) {
   const chain = pathTo(id);
@@ -1379,10 +1306,6 @@ function revealNode(id) {
   setTimeout(() => centerOn(id), 200);
   openPanel(NODES.get(id));
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   12. BUSQUEDA
-   ═══════════════════════════════════════════════════════════════════════════ */
 
 const input = document.getElementById('search');
 const resBox = document.getElementById('results');
@@ -1452,10 +1375,6 @@ input.addEventListener('keydown', (ev) => {
   else if (ev.key === 'Escape') { clearSearch(); input.blur(); }
 });
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   13. TECLADO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 document.addEventListener('keydown', (ev) => {
   if (ev.target === input) return;
   const help = document.getElementById('help');
@@ -1485,10 +1404,6 @@ document.addEventListener('keydown', (ev) => {
   }
 });
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   14. BOTONES E INICIO
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 document.getElementById('zoom-in').onclick = () => zoomAt(1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
 document.getElementById('zoom-out').onclick = () => zoomAt(1 / 1.25, SVG.clientWidth / 2, SVG.clientHeight / 2);
 document.getElementById('zoom-fit').onclick = () => fitView();
@@ -1501,14 +1416,12 @@ document.getElementById('help').addEventListener('click', (ev) => {
 });
 window.addEventListener('resize', () => fitView());
 
-/* estado inicial: raiz desplegada un nivel, centrada y ajustada */
 ST.open.add(GRAFO.id);
 commit({ animated: false });
 fitView();
 document.getElementById('hint').textContent = 'Click para desplegar · doble click para enfocar · arrastrá para reubicar';
 setTimeout(() => document.getElementById('hint').classList.add('hidden'), 6000);
 
-/* expuesto para depuracion y para pruebas automatizadas */
 window.GRAFO = GRAFO;
 window.ST = ST;
 window.api = { revealNode, focusNode, tapNode, expandAll, collapseAll, fitView, visibleNodes, NODES };
