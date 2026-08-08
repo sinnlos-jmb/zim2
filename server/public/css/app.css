@@ -194,8 +194,14 @@ body.sb-off #sb{border-right:0}
 .bf{display:block;height:100%;background:var(--blue);border-radius:3px}
 .bv{font-size:12px;color:var(--muted);width:42px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
 
-.gloss{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.gtag{font-size:13px;padding:3px 8px;background:var(--soft);border:1px solid var(--border);border-radius:6px}
+/* GLOSAS. Los terminos griegos que el traductor dejo entre guiones en el
+   pasaje. Antes eran chips (span.gtag) y le disputaban la atencion al texto
+   y al puntaje sin aportarle gran cosa al estudiante: ahora son una sola
+   linea de texto corrido, deliberadamente discreta, con un rotulo que dice
+   que es esa lista. */
+.gloss{margin:0 0 10px;font-size:13px;line-height:1.6;color:var(--muted)}
+.glabel{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-right:3px}
+.glist{font-style:italic;color:var(--text);opacity:.72}
 details{font-size:13px}
 summary{cursor:pointer;color:var(--muted);min-height:24px}
 summary:hover{color:var(--text)}
