@@ -1,5 +1,5 @@
 import { AXES, AXES_BY_GROUP } from './lexicon.js';
-import { vectorize, vectorFromAxes, topK, senseMixFromHits, applySenseTags, dominantSense, senseLabel } from './vectorize.js';
+import { vectorize, vectorFromAxes, topK, senseMixFromHits, applySenseTags, dominantSense, senseLabel, axesWithSenses } from './vectorize.js';
 
 // El corpus no viaja dentro del script: se pide al servidor. new URL(...)
 // lo resuelve relativo a este modulo, asi la app funciona montada en / o
@@ -58,6 +58,12 @@ let PASSAGES = [];
 let selectedAxes = {};
 let lastResults = [];
 let lastQuery = null;
+// SELECCION MANUAL DE SENTIDO, por eje: que sentidos participan de la consulta.
+// Por defecto (recien declarado) trae TODOS los sentidos del eje, que es la
+// forma de decir "sin diferenciar sentidos" (ver computeManualSenseMix()).
+// No vive en localStorage: es un ajuste fino de la sesion en curso, no del
+// indice ni del corpus.
+let senseSelections = {};
 
 /* ------------------------------------------------ INDEXADO + localStorage --- */
 
@@ -116,13 +122,39 @@ const setStatus = (t) => { $('#status').textContent = t; };
 
 function runQuery(qv, label, hits) {
   lastQuery = { vector: qv, label, hits: hits || [] };
-  // MEZCLA DE SENTIDOS DE LA CONSULTA. Sale de sus propios hits, asi que vale
-  // igual para busqueda libre, FAQ y definiciones sin escribir nada aparte.
-  // Si la consulta no eligio ningun sentido (por ejemplo, la busqueda por
-  // categorias, que no tiene texto), se pasa null y topK ordena como siempre.
-  const mix = senseMixFromHits(hits || []);
+  recomputeSenseMixAndResults();
+}
+
+/* MEZCLA DE SENTIDOS DE LA CONSULTA, en dos capas:
+ *  1. automatica -> sale de los hits (vale igual para busqueda libre, FAQ y
+ *     definiciones sin escribir nada aparte).
+ *  2. manual -> los subchips de sentido en #qvec. Solo pisa un eje cuando el
+ *     usuario desmarco al menos un sentido; con todos marcados (el estado por
+ *     defecto) el eje ni siquiera entra en el mix, que es la forma de decir
+ *     "sin diferenciar sentidos" y deja el ordenamiento identico al de antes
+ *     de esta capa.
+ * La manual pisa a la automatica eje por eje: si el usuario ya toco los
+ * subchips de un eje, esa eleccion manda por sobre lo que haya escrito.
+ */
+function computeManualSenseMix() {
+  const out = {};
+  axesWithSenses().forEach((axDef) => {
+    const sel = senseSelections[axDef.id];
+    if (!sel || sel.size === axDef.senses.length) return; // sin tocar, o todos marcados: neutral
+    const share = 1 / sel.size;
+    out[axDef.id] = {};
+    axDef.senses.forEach((s) => { if (sel.has(s.id)) out[axDef.id][s.id] = share; });
+  });
+  return out;
+}
+
+function recomputeSenseMixAndResults() {
+  if (!lastQuery) return;
+  const auto = senseMixFromHits(lastQuery.hits || []);
+  const manual = computeManualSenseMix();
+  const mix = { ...auto, ...manual };
   lastQuery.senseMix = Object.keys(mix).length ? mix : null;
-  lastResults = topK(qv, PASSAGES, 8, { senseMix: lastQuery.senseMix });
+  lastResults = topK(lastQuery.vector, PASSAGES, 8, { senseMix: lastQuery.senseMix });
   renderResults();
   renderQueryVector();
 }
@@ -330,6 +362,7 @@ function clearAxes() {
 function resetToStart() {
   lastQuery = null;
   lastResults = [];
+  senseSelections = {};
   markActive(null);
   clearAxChips();
   renderSidebarHint();
@@ -353,10 +386,65 @@ function renderSidebarHint() {
   box.append(el('p', 'muted', 'Acá vas a ver en qué ejes se proyecta tu pregunta y qué términos los activaron.'));
 }
 
+// EJES ACTIVOS CON SENTIDO en la consulta actual: solo los que la consulta
+// esta tocando de veras (vector>0), para no llenar el hero con subchips de
+// ejes que no vienen al caso.
+function activeSenseAxes() {
+  if (!lastQuery || !lastQuery.vector) return [];
+  return axesWithSenses().filter((axDef) => {
+    const i = AXES.findIndex((a) => a.id === axDef.id);
+    return i >= 0 && lastQuery.vector[i] > 0;
+  });
+}
+
+// Estado por defecto de un eje la primera vez que aparece: TODOS sus sentidos
+// marcados. Se inicializa perezosamente, al renderizar, para no tener que
+// conocer de antemano cada eje con sentido.
+function ensureSenseSelection(axDef) {
+  if (!senseSelections[axDef.id]) senseSelections[axDef.id] = new Set(axDef.senses.map((s) => s.id));
+  return senseSelections[axDef.id];
+}
+
+// SUBCHIPS DE SENTIDO, arriba del todo en #qvec. Mismo mecanismo que las
+// categorias del sidebar (seleccion multiple, on/off al click), pero acotado
+// a los sentidos DENTRO de un eje: nunca se puede dejar un eje sin ningun
+// sentido marcado, porque eso lo sacaria de la consulta sin que el usuario lo
+// haya pedido.
+function renderSenseChipsBlock() {
+  const axes = activeSenseAxes();
+  if (!axes.length) return null;
+  const wrap = el('div', 'sensesel');
+  axes.forEach((axDef) => {
+    const sel = ensureSenseSelection(axDef);
+    const row = el('div', 'sensel-row');
+    row.append(el('span', 'sensel-label', `Sentido de ${axDef.label}:`));
+    axDef.senses.forEach((s) => {
+      const b = el('button', 'sensel-chip' + (sel.has(s.id) ? ' on' : ''), s.label);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(sel.has(s.id)));
+      b.onclick = () => {
+        if (sel.has(s.id)) {
+          if (sel.size <= 1) return; // no se puede desmarcar el ultimo sentido
+          sel.delete(s.id);
+        } else {
+          sel.add(s.id);
+        }
+        recomputeSenseMixAndResults();
+      };
+      row.append(b);
+    });
+    wrap.append(row);
+  });
+  return wrap;
+}
+
 function renderQueryVector() {
   const box = $('#qvec');
   box.innerHTML = '';
   if (!lastQuery) { renderSidebarHint(); return; }
+  // Subchips de sentido: van arriba de todo en el hero.
+  const senseBlock = renderSenseChipsBlock();
+  if (senseBlock) box.append(senseBlock);
   if ('tagNote' in lastQuery) {
     box.append(el('h3', null, 'Cita directa por tag'));
     box.append(el('p', 'qlabel', lastQuery.label));
@@ -370,7 +458,7 @@ function renderQueryVector() {
     return;
   }
   const pairs = lastQuery.vector.map((v, i) => ({ v, ax: AXES[i] })).filter((p) => p.v > 0).sort((a, b) => b.v - a.v);
-  if (!pairs.length) { renderSidebarHint(); return; }
+  if (!pairs.length) { if (!senseBlock) renderSidebarHint(); return; }
   box.append(el('h3', null, 'Vector de la consulta'));
   box.append(el('p', 'qlabel', lastQuery.label));
   const max = pairs[0].v;
@@ -421,153 +509,3 @@ function renderResults() {
             : 'No toca todos los ejes de la consulta: el puntaje se reduce';
         top.append(cov);
       }
-      const score = el('span', 'score', r.score.toFixed(3));
-      // si la capa de sentidos movio el puntaje, la ficha lo dice: el pasaje
-      // no bajo por el coseno sino porque usa el eje en otra acepcion
-      if (r.senseFactor != null && r.senseFactor < 0.999) {
-        score.classList.add('sensedown');
-        score.title = `La consulta pide otra acepción de un eje: puntaje al ${(r.senseFactor * 100).toFixed(0)}%`;
-      }
-      top.append(score);
-    }
-    card.append(top);
-
-    card.append(el('p', 'text', p.esOnly.length > 320 ? p.esOnly.slice(0, 320) + '…' : p.esOnly));
-
-    // por que gano: contribucion por eje al producto escalar (no aplica a
-    // resultados citados directamente por tag: no hay coseno que explicar)
-    const contrib = r.tagged ? [] : p.vector.map((v, j) => ({ j, c: v * lastQuery.vector[j] })).filter((x) => x.c > 0).sort((a, b) => b.c - a.c).slice(0, 4);
-    if (contrib.length) {
-      const why = el('div', 'why');
-      why.append(el('span', 'muted', 'Aporte al puntaje'));
-      const max = contrib[0].c;
-      // el porcentaje se calcula sobre el coseno, no sobre el puntaje final:
-      // el factor de cobertura escala el total y desbalancearia los aportes
-      contrib.forEach((c) => why.append(barRow(AXES[c.j].label, c.c, max, ((c.c / r.cos) * 100).toFixed(0) + '%')));
-      card.append(why);
-    }
-
-    /* SENTIDO. En que acepcion usa el pasaje los ejes polisemicos.
-     * Se muestra solo para los ejes que la consulta activo: mostrar todos
-     * llenaria la ficha de informacion que nadie pidio.
-     * Cuando el reparto esta partido (menos del 70% en el sentido dominante) se
-     * marca como mezcla y se muestra el porcentaje, porque ahi el pasaje esta
-     * usando de veras los dos sentidos: es el caso de 7.g-7.i con ergon.
-     */
-    const senseChips = [];
-    for (const axisId of Object.keys(p.senses || {})) {
-      const j = AXES.findIndex((a) => a.id === axisId);
-      if (j < 0 || !(lastQuery.vector[j] > 0)) continue;
-      const dom = dominantSense(p.senses, axisId);
-      if (!dom) continue;
-      const pinned = (p.sensesPinned || []).includes(axisId);
-      const mixed = dom.share < 0.7;
-      const chip = el('span', 'sensechip' + (pinned ? ' pinned' : '') + (mixed ? ' mixed' : ''));
-      chip.textContent = `${AXES[j].label} · ${senseLabel(axisId, dom.sense)}`
-        + (mixed ? ` ${Math.round(dom.share * 100)}%` : '');
-      chip.title = pinned
-        ? 'Sentido fijado a mano con un tag del texto fuente'
-        : mixed
-          ? 'El pasaje usa mas de un sentido de este eje: '
-            + Object.entries(p.senses[axisId])
-              .sort((a, b) => b[1] - a[1])
-              .map(([s, v]) => senseLabel(axisId, s) + ' ' + Math.round(v * 100) + '%')
-              .join(' · ')
-          : 'Sentido en que el pasaje usa este eje, deducido de sus lemas';
-      senseChips.push(chip);
-    }
-    if (senseChips.length) {
-      const sb = el('div', 'senses');
-      sb.append(el('span', 'muted', 'Sentido'));
-      senseChips.forEach((c) => sb.append(c));
-      card.append(sb);
-    }
-
-    if (p.glosses.length) {
-      const g = el('div', 'gloss');
-      p.glosses.slice(0, 8).forEach((x) => g.append(el('span', 'gtag', x)));
-      card.append(g);
-    }
-
-    if (p.greekParallel) {
-      const det = el('details');
-      det.append(el('summary', null, 'Griego original'));
-      det.append(el('p', 'grtext', p.greekParallel));
-      card.append(det);
-    }
-
-    // ACORDEON DEL CAPITULO COMPLETO.
-    // Se arma con el campo `es`, NO con `esOnly`: `es` lleva las glosas griegas
-    // intercaladas entre guiones, que es como el estudiante se familiariza con
-    // los terminos sin salir del castellano. `esOnly` es solo para el indice.
-    // El contenido se arma recien al abrirlo: hay 8 tarjetas en pantalla y el
-    // capitulo 7 tiene 11 pasajes, no tiene sentido construir 88 parrafos que
-    // nadie va a mirar.
-    const chap = PASSAGES.filter((x) => x.chapter === p.chapter);
-    if (chap.length) {
-      const cd = el('details', 'chap');
-      const rango = chap[0].bekker + (chap.length > 1 ? ' – ' + chap[chap.length - 1].bekker : '');
-      cd.append(el('summary', null, `Capítulo ${p.chapter} completo · ${chap.length} pasajes · ${rango}`));
-      const body = el('div', 'chapbody');
-      cd.append(body);
-      cd.addEventListener('toggle', () => {
-        if (!cd.open || body.dataset.done) return;
-        body.dataset.done = '1';
-        chap.forEach((c) => {
-          const here = c.id === p.id;
-          const par = el('div', 'cpar' + (here ? ' here' : ''));
-          const cm = el('div', 'cmeta');
-          cm.append(el('span', 'cbek', c.bekker || ''));
-          cm.append(el('span', 'cid', c.id));
-          if (here) cm.append(el('span', 'chere', 'este pasaje'));
-          par.append(cm);
-          par.append(el('p', 'ctext', c.es));
-          body.append(par);
-        });
-        // el griego del capitulo, anidado un nivel mas adentro
-        const gd = el('details', 'grk');
-        gd.append(el('summary', null, 'Texto griego del capítulo'));
-        chap.forEach((c) => {
-          if (!c.greekParallel) return;
-          const gp = el('p', 'grtext' + (c.id === p.id ? ' here' : ''));
-          gp.textContent = c.greekParallel;
-          gd.append(gp);
-        });
-        body.append(gd);
-        // el capitulo 7 no entra en pantalla: se lleva el resaltado a la vista
-        // sin mover el scroll de la pagina entera
-        const mark = body.querySelector('.cpar.here');
-        if (mark) body.scrollTop = Math.max(0, mark.offsetTop - body.offsetTop - 12);
-      });
-      card.append(cd);
-    }
-
-    box.append(card);
-  });
-}
-
-/* ------------------------------------------------------------------ INIT -- */
-
-function init() {
-  loadIndex();
-  renderAxisChips();
-  renderFaq();
-  renderDefs();
-  // el recuento sale del arreglo, no de un numero escrito a mano en el HTML
-  $('.sbhint').textContent = `Las ${AXES.length} dimensiones del espacio, agrupadas en siete familias. Seleccioná una o varias para consultar desde los ejes, sin escribir texto.`;
-  // Los menus desplegables del header ya no existen: Preguntas, Definiciones
-  // y busqueda libre son bloques de la sidebar, y de plegarlos se ocupa
-  // js/panels.js, que es comun a todas las secciones.
-  $('#go').onclick = searchText;
-  $('#q').addEventListener('keydown', (e) => { if (e.key === 'Enter') searchText(); });
-  $('#rebuild').onclick = () => { localStorage.removeItem(STORE_KEY); const ms = buildIndexNow(); setStatus(`Índice reconstruido en ${ms.toFixed(0)} ms`); if (lastQuery) runQuery(lastQuery.vector, lastQuery.label, lastQuery.hits); };
-  $('#clearax').onclick = clearAxes;
-
-  syncAxCount();
-  resetToStart();
-  const cov = PASSAGES.filter((p) => p.vector.some((x) => x)).length;
-  $('#stats').textContent = `${PASSAGES.length} pasajes · ${AXES.length} dimensiones · ${cov} vectorizados`;
-}
-
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-else init();
