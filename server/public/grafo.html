@@ -182,18 +182,6 @@ body.embed #hd { padding-left: 14px; }
 }
 #controls button:hover { background: var(--soft); color: var(--text); }
 
-#legend {
-  position: absolute; bottom: 18px; left: 18px; z-index: 8;
-  background: var(--canvas); border: 1px solid var(--border); border-radius: 10px;
-  padding: 11px 13px; font-size: 11.5px; color: var(--muted);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
-  max-width: 340px;
-}
-.lg { display: flex; align-items: center; gap: 7px; }
-.lg i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; }
-.lg i.sq { border-radius: 3px; }
-#legend .lg-note { grid-column: 1 / -1; color: var(--faint); font-size: 11px; padding-top: 3px; border-top: 1px solid var(--border); margin-top: 2px; }
-
 #status {
   position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
   font-size: 12px; color: var(--faint); z-index: 7; white-space: nowrap;
@@ -208,14 +196,28 @@ body.embed #hd { padding-left: 14px; }
 #hint.hidden { opacity: 0; }
 
 /* ---------------------------------------------------------------- PANEL -- */
+/* Ficha del nodo seleccionado. A diferencia de un cajon lateral clasico,
+   asoma desde ARRIBA en una porcion chica (para no tapar el grafo) y el
+   usuario la extiende a su tamano completo con el tirador de abajo. Se
+   repliega sola a la porcion chica cada vez que se abre un nodo nuevo. */
 #panel {
-  position: absolute; top: 0; right: 0; bottom: 0; width: 372px;
-  background: var(--canvas); border-left: 1px solid var(--border);
-  transform: translateX(100%); transition: transform .22s ease;
-  z-index: 30; display: flex; flex-direction: column;
-  box-shadow: -4px 0 18px rgba(0,0,0,.07);
+  position: absolute; top: 0; right: 18px; width: 372px; max-width: calc(100% - 36px);
+  max-height: 38%;
+  background: var(--canvas); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 14px 14px;
+  transform: translateY(-100%);
+  transition: transform .22s ease, max-height .22s ease;
+  z-index: 30; display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,.14);
 }
-#panel.open { transform: translateX(0); }
+#panel.open { transform: translateY(0); }
+#panel.full { max-height: calc(100% - 40px); }
+.p-handle {
+  flex: none; border: none; border-top: 1px solid var(--border);
+  background: var(--soft); color: var(--muted); font: inherit; font-size: 12px;
+  padding: 7px 0; cursor: pointer; text-align: center;
+}
+.p-handle:hover { background: var(--surface); color: var(--text); }
 .p-hd { display: flex; align-items: flex-start; gap: 10px; padding: 16px 16px 0; }
 .p-hd-main { flex: 1; min-width: 0; }
 .p-kind {
@@ -285,9 +287,11 @@ body.embed #hd { padding-left: 14px; }
 #help.open { display: flex; }
 .help-card {
   background: var(--canvas); border-radius: 12px; padding: 22px 26px;
-  max-width: 460px; box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  max-width: 480px; max-height: 86vh; overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
 }
 .help-card h3 { margin: 0 0 14px; font-size: 16px; }
+.help-card h3:not(:first-child) { margin-top: 20px; }
 .help-card table { border-collapse: collapse; font-size: 13px; width: 100%; }
 .help-card td { padding: 4px 0; vertical-align: top; }
 .help-card td:first-child { width: 130px; }
@@ -297,13 +301,29 @@ body.embed #hd { padding-left: 14px; }
 }
 .help-card .close { margin-top: 16px; }
 
+/* Simbolos: se mudaron aca desde un recuadro flotante sobre el lienzo, que
+   tapaba grafo y ademas repetia informacion que solo hace falta consultar
+   una vez. */
+.legend-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px;
+  font-size: 11.5px; color: var(--muted); margin-bottom: 10px;
+}
+.lg { display: flex; align-items: center; gap: 7px; }
+.lg i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid; flex: none; }
+.lg i.sq { border-radius: 3px; }
+.lg-note { color: var(--faint); font-size: 11px; margin: 0 0 4px; }
+
 @media (max-width: 900px) {
   .brand .sub { display: none; }
-  #legend { display: none; }
   #crumbs { max-width: calc(100% - 28px); }
   #search { width: 150px; }
-  #panel { width: 100%; top: auto; height: 62%; border-left: none; border-top: 1px solid var(--border); transform: translateY(100%); }
+  #panel {
+    width: 100%; max-width: 100%; top: auto; right: 0; bottom: 0; height: 62%; max-height: 62%;
+    border-left: none; border-right: none; border-top: 1px solid var(--border); border-radius: 14px 14px 0 0;
+    transform: translateY(100%);
+  }
   #panel.open { transform: translateY(0); }
+  #panel.full { height: 92%; max-height: 92%; }
 }
 </style>
 </head>
@@ -354,18 +374,6 @@ body.embed #hd { padding-left: 14px; }
     <button id="zoom-fit" title="Ajustar a la vista (F)">⊙</button>
   </div>
 
-  <div id="legend">
-    <div class="lg"><i style="background:#E5F2FC;border-color:#2783DE"></i> Concepto</div>
-    <div class="lg"><i class="sq" style="background:#E5F2FC;border-color:#2783DE"></i> Pregunta</div>
-    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#B8B5B0"></i> Afirmación</div>
-    <div class="lg"><i style="background:#EDF7F1;border-color:#46A171"></i> Componente</div>
-    <div class="lg"><i class="sq" style="background:#FBF1E8;border-color:#D5803B"></i> Aporía</div>
-    <div class="lg"><i style="background:#F9F8F7;border-color:#D5803B"></i> Bien rival</div>
-    <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#7D7A75"></i> Premisa</div>
-    <div class="lg"><i class="sq" style="background:#EDF7F1;border-color:#46A171"></i> Conclusión</div>
-    <div class="lg-note">Línea llena: jerarquía · verde punteada: inferencia · naranja: oposición</div>
-  </div>
-
   <aside id="panel">
     <div class="p-hd">
       <div class="p-hd-main">
@@ -377,10 +385,23 @@ body.embed #hd { padding-left: 14px; }
     </div>
     <div class="p-meta" id="p-meta"></div>
     <div class="p-body" id="p-body"></div>
+    <button id="p-handle" class="p-handle" type="button" title="Ver la ficha completa">⌄ Ver completo</button>
   </aside>
 
   <div id="help">
     <div class="help-card">
+      <h3>Símbolos</h3>
+      <div class="legend-grid">
+        <div class="lg"><i style="background:#E5F2FC;border-color:#2783DE"></i> Concepto</div>
+        <div class="lg"><i class="sq" style="background:#E5F2FC;border-color:#2783DE"></i> Pregunta</div>
+        <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#B8B5B0"></i> Afirmación</div>
+        <div class="lg"><i style="background:#EDF7F1;border-color:#46A171"></i> Componente</div>
+        <div class="lg"><i class="sq" style="background:#FBF1E8;border-color:#D5803B"></i> Aporía</div>
+        <div class="lg"><i style="background:#F9F8F7;border-color:#D5803B"></i> Bien rival</div>
+        <div class="lg"><i class="sq" style="background:#FFFFFF;border-color:#7D7A75"></i> Premisa</div>
+        <div class="lg"><i class="sq" style="background:#EDF7F1;border-color:#46A171"></i> Conclusión</div>
+      </div>
+      <p class="lg-note">Línea llena: jerarquía · verde punteada: inferencia · naranja: oposición</p>
       <h3>Cómo navegar</h3>
       <table>
         <tr><td><kbd>click</kbd></td><td>Desplegar / contraer un nodo y abrir su ficha</td></tr>
@@ -1017,7 +1038,7 @@ function commit({ animated = true } = {}) {
 
 /* ═══════════════════════════════════════════════════════════════════════════
    7. VIEWPORT: PAN Y ZOOM
-   ════════════════════════════════════════════��══════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 function applyView() {
   VP.setAttribute('transform', `translate(${ST.view.x},${ST.view.y}) scale(${ST.view.k})`);
@@ -1234,8 +1255,20 @@ function countSub(n) {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 const panel = document.getElementById('panel');
+const panelHandle = document.getElementById('p-handle');
+
+// El tirador expande/contrae la ficha. Se resetea a "chica" cada vez que se
+// abre un nodo nuevo (ver openPanel), asi el usuario siempre arranca viendo
+// el grafo casi entero y decide el si quiere mas detalle.
+function setPanelFull(full) {
+  panel.classList.toggle('full', full);
+  panelHandle.textContent = full ? '⌃ Contraer' : '⌄ Ver completo';
+  panelHandle.title = full ? 'Volver al tamaño reducido' : 'Ver la ficha completa';
+}
+panelHandle.onclick = () => setPanelFull(!panel.classList.contains('full'));
 
 function openPanel(n) {
+  setPanelFull(false);
   document.getElementById('p-kind').textContent = KIND_LABEL[n.kind] || n.kind;
   document.getElementById('p-title').textContent = n.label;
   document.getElementById('p-greek').textContent = n.greek || '';
@@ -1345,9 +1378,9 @@ function openPanel(n) {
   if (n.eje) {
     const a = document.createElement('a');
     a.className = 'p-btn primary';
-    a.href = 'index.html#eje=' + n.eje;
+    a.href = 'busquedas.html#eje=' + n.eje;
     a.textContent = 'Ver pasajes del eje «' + n.eje + '»';
-    a.title = 'Abre la app principal filtrando por este eje del vectorizador';
+    a.title = 'Abre Búsquedas filtrando por este eje del vectorizador';
     sa.appendChild(a);
   }
 
@@ -1358,6 +1391,7 @@ function openPanel(n) {
 
 function closePanel() {
   panel.classList.remove('open');
+  setPanelFull(false);
   ST.sel = null;
   applyMarks();
   renderCrumbs();
