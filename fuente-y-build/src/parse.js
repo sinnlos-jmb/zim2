@@ -1,35 +1,13 @@
 // parse.js - convierte el .txt de la traduccion en unidades estructuradas.
-//
-// Estructura del archivo fuente:
-//   <n>          encabezado de capitulo
-//   ----         regla decorativa
-//   <bloque ES>  1..n lineas, cada una un parrafo de la traduccion
-//   <bloque GR>  1..n lineas, el griego original paralelo
-//
-// Cada bloque ES se aparea con el bloque GR inmediatamente siguiente.
-
 import { greekRatio, hasGreek } from './normalize.js';
 
 const NL = String.fromCharCode(10);
 const RULE = /^[\u2550\u2500\s]+$/;
 const CHAPTER = /^\s*(\d{1,2})\s*$/;
-// Centinela de tags: una linea JSON pegada justo antes del parrafo que
-// describe. NO es contenido de la traduccion: se saca del stream de lineas
-// y su carga (`tags`) se ata al proximo parrafo que se empuje a `buf`.
-// Formato: { "parrafo_nro": N, "tags": [ { "rol": ..., ... }, ... ] }
-// `tags` es opcional: un renglon puede solo numerar el parrafo (tagueo
-// parcial) sin describir ningun rol todavia.
 const TAG_LINE = /^\{\s*"parrafo_nro"\s*:/;
-// Un solo token, escaneado en ORDEN: pagina Bekker o numero de linea.
-// Tomarlos con dos regex independientes producia referencias inventadas
-// (p.ej. "1098b30") en los pasajes que cruzan un cambio de pagina, porque la
-// linea salia de una pagina y el numero de pagina de la siguiente.
-// Los corchetes editoriales de Bywater ([prakticais], [makarizomen]) no
-// interfieren porque el token exige digitos.
 const BEKKER_TOKEN = /(1[01]\d{2}[ab])|\[(\d{1,2})\]/g;
 const CPL_FALLBACK = 60;
 
-// 1099a -> 1099b -> 1100a
 function advancePage(p) {
   const n = Number(p.slice(0, 4));
   return p[4] === 'a' ? String(n) + 'b' : String(n + 1) + 'a';
@@ -50,11 +28,7 @@ function buildMarkers(stream) {
     if (!page) continue;
     const n = Number(m[2]);
     const last = out[out.length - 1];
-    // "1097b [1]": el [1] repite el marcador de pagina recien emitido.
     if (last && n === 1 && last.line === 1 && m.index - last.off <= 8) continue;
-    // Los numeros de linea solo crecen dentro de una pagina. Si retroceden,
-    // en el fuente falta el marcador de pagina. Se repara y se avisa, para
-    // que un marcador perdido no arrastre el error por todo un capitulo.
     if (last && last.page === page && n <= last.line) {
       const from = page;
       page = advancePage(page);
@@ -68,8 +42,6 @@ function buildMarkers(stream) {
   return { markers: out, warnings };
 }
 
-// Los marcadores van de cinco en cinco, asi que la distancia entre dos da
-// una escala de caracteres por linea Bekker. Se usa la mediana.
 function charsPerLine(markers) {
   const s = [];
   for (let i = 1; i < markers.length; i++) {
@@ -83,8 +55,6 @@ function charsPerLine(markers) {
   return s[Math.floor(s.length / 2)];
 }
 
-// Referencia en un punto del stream: ULTIMO marcador en o antes del punto,
-// mas las lineas transcurridas desde ahi. Nunca un marcador posterior.
 function refAt(markers, cpl, off) {
   let lo = 0;
   let hi = markers.length - 1;
@@ -114,9 +84,13 @@ export function parseSource(raw) {
   let chapter = null;
   let buf = [];
   let bufTags = [];
-  // centinela pendiente: tag ya leido que todavia no encontro su parrafo
   let pendingTag = null;
   let pendingTagLine = -1;
+  // tag vigente del bloque actual: una vez asignada a la primera linea de
+  // un parrafo con punto aparte (varias lineas sin renglon en blanco entre
+  // ellas), se sigue aplicando a las lineas siguientes del MISMO bloque que
+  // no traigan su propio tag. Se resetea al vaciar el bloque (flush).
+  let blockTag = null;
 
   const flush = () => {
     if (!buf.length) return;
@@ -129,6 +103,7 @@ export function parseSource(raw) {
     });
     buf = [];
     bufTags = [];
+    blockTag = null;
   };
 
   lines.forEach((line, i) => {
@@ -148,15 +123,18 @@ export function parseSource(raw) {
         tagWarnings.push('linea ' + (i + 1) + ' parece un tag pero no es JSON valido: ' + e.message);
         pendingTag = null;
       }
-      return; // el centinela nunca entra al cuerpo de la traduccion
+      return;
     }
     if (RULE.test(t)) { flush(); return; }
     const ch = t.match(CHAPTER);
     if (ch) { flush(); chapter = Number(ch[1]); return; }
     if (chapter === null) return;
     buf.push(t);
-    bufTags.push(pendingTag);
-    pendingTag = null;
+    if (pendingTag) {
+      blockTag = pendingTag;
+      pendingTag = null;
+    }
+    bufTags.push(blockTag);
   });
   if (pendingTag) {
     tagWarnings.push(
@@ -166,8 +144,6 @@ export function parseSource(raw) {
   }
   flush();
 
-  // Stream griego en orden de documento, con offsets por bloque y por linea.
-  // El cursor avanza sobre este stream, no sobre cada bloque por separado.
   let stream = '';
   const grPos = new Map();
   for (const g of blocks) {
@@ -197,8 +173,6 @@ export function parseSource(raw) {
     const aligned = Boolean(gr) && gr.lines.length === b.lines.length;
     const pos = gr ? grPos.get(gr) : null;
 
-    // Si el griego no viene linea a linea, se reparte el tramo del bloque
-    // en proporcion al largo de cada parrafo castellano.
     const esLens = b.lines.map((l) => l.length);
     const esTotal = esLens.reduce((a, c) => a + c, 0) || 1;
     let acc = 0;
@@ -256,7 +230,7 @@ export function spanishOnly(esLine) {
   return esLine
     .replace(/\([^()]*\)/g, ' ')
     .replace(/\s+/g, ' ')
-    .replace(/\s+([,.;:!?\u00bb])/g, '$1')   // "insuficiente , pues" -> "insuficiente, pues"
+    .replace(/\s+([,.;:!?\u00bb])/g, '$1')
     .replace(/([\u00ab\u00bf\u00a1])\s+/g, '$1')
     .trim();
 }
