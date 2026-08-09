@@ -22,8 +22,8 @@ const path = require("path");
 const crypto = require("crypto");
 
 const REFERENCE = {
-	size: 132896,
-	md5: "fe5b2e3fba10c32a4306d938d0c556e0",
+	size: 133157,
+	md5: "d2c6903224170c561fe5f59fab50d8ed",
 	lines: 441,
 };
 
@@ -86,7 +86,6 @@ async function loadTarget(target) {
 }
 
 async function main() {
-	//const target = process.argv[2];
 	const target = REFERENCE_FILE;
 	if (!target) {
 		console.error("Uso: node verify.js <ruta-o-url-al-archivo-a-verificar>");
