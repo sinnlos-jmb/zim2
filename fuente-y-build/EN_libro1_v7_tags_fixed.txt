@@ -131,4 +131,67 @@ Los que introdujeron esta doctrina (δόξαν) no pusieron ideas en las cosas e
 
 { "parrafo_nro": 15 }
 Además, como el bien (ἀγαθὸν) se dice de tantos modos como el ser (τῷ ὄντι) —pues se dice en la categoría de sustancia (τῷ τί), como Dios y el entendimiento (νοῦς); y en la de cualidad las virtudes (ἀρεταί), y en la de cantidad (ποσῷ) la medida adecuada (τὸ μέτριον), y en la de relación lo útil (χρήσιμον), y en la de tiempo la oportunidad (καιρός), y en la de lugar la residencia (δίαιτα), etc.—, es claro que no habrá ninguna noción común universal (καθόλου) y una (ἕν); porque no se predicaría en todas las categorías, sino sólo en una.
-Por otra parte, como de las cosas que son según una sola idea hay una sola ciencia (ἐπιστήμη), también habría una ciencia de todos los bienes (ἀγαθῶν); sin embargo, hay muchas, incluso de los que caen bajo una sola categoría; así, la ciencia de la oportunidad, en la guerra es la estrategia, en la enfermedad la medicina (ἰατρική); y la de lo mesurado (μετρίου), en el alimento es la
+Por otra parte, como de las cosas que son según una sola idea hay una sola ciencia (ἐπιστήμη), también habría una ciencia de todos los bienes (ἀγαθῶν); sin embargo, hay muchas, incluso de los que caen bajo una sola categoría; así, la ciencia de la oportunidad, en la guerra es la estrategia, en la enfermedad la medicina (ἰατρική); y la de lo mesurado (μετρίου), en el alimento es la medicina, en los esfuerzos la gimnasia.
+
+ἔτι δ᾽ ἐπεὶ τἀγαθὸν ἰσαχῶς λέγεται τῷ ὄντι (καὶ γὰρ ἐν τῷ τί λέγεται, οἷον ὁ θεὸς καὶ [25] ὁ νοῦς, καὶ ἐν τῷ ποιῷ αἱ ἀρεταί, καὶ ἐν τῷ ποσῷ τὸ μέτριον, καὶ ἐν τῷ πρός τι τὸ χρήσιμον, καὶ ἐν χρόνῳ καιρός, καὶ ἐν τόπῳ δίαιτα καὶ ἕτερα τοιαῦτα), δῆλον ὡς οὐκ ἂν εἴη κοινόν τι καθόλου καὶ ἕν· οὐ γὰρ ἂν ἐλέγετ᾽ ἐν πάσαις ταῖς κατηγορίαις, ἀλλ᾽ ἐν μιᾷ μόνῃ. 
+ἔτι δ᾽ ἐπεὶ τῶν [30] κατὰ μίαν ἰδέαν μία καὶ ἐπιστήμη, καὶ τῶν ἀγαθῶν ἁπάντων ἦν ἂν μία τις ἐπιστήμη· νῦν δ᾽ εἰσὶ πολλαὶ καὶ τῶν ὑπὸ μίαν κατηγορίαν, οἷον καιροῦ, ἐν πολέμῳ μὲν γὰρ στρατηγικὴ ἐν νόσῳ δ᾽ ἰατρική, καὶ τοῦ μετρίου ἐν τροφῇ μὲν ἰατρικὴ ἐν πόνοις δὲ γυμναστική.
+
+
+{ "parrafo_nro": 16 }
+Podría preguntarse también qué quieren decir con «cada cosa en sí misma» (αὐτοέκαστον); si la definición (λόγος) de «hombre en sí mismo» y de «hombre» es una y la misma, a saber, la del hombre; pues en cuanto hombre, en nada se distinguirán; y si es así, tampoco en cuanto bien. Ni tampoco por ser eterno (ἀίδιον) será más bien, puesto que tampoco  es más blanco lo que dura mucho tiempo que lo que dura un solo día.
+
+ἀπορήσειε δ᾽ ἄν τις τί [35] ποτε καὶ βούλονται λέγειν αὐτοέκαστον, εἴπερ ἔν τε αὐτοανθρώπῳ 1096b [1] καὶ ἐν ἀνθρώπῳ εἷς καὶ ὁ αὐτὸς λόγος ἐστὶν ὁ τοῦ ἀνθρώπου. ᾗ γὰρ ἄνθρωπος, οὐδὲν διοίσουσιν· εἰ δ᾽ οὕτως, οὐδ᾽ ᾗ ἀγαθόν. ἀλλὰ μὴν οὐδὲ τῷ ἀίδιον εἶναι μᾶλλον ἀγαθὸν ἔσται, εἴπερ μηδὲ λευκότερον τὸ πολυχρόνιον τοῦ [5] ἐφημέρου.
+
+
+{ "parrafo_nro": 17 }
+Los pitagóricos tratan, al parecer, esta cuestión con más verosimilitud al colocar lo uno (τὸ ἕν) en la serie de los bienes, y Espeusipo parece seguirlos. Pero dejemos esto para otra discusión.
+
+πιθανώτερον δ᾽ ἐοίκασιν οἱ Πυθαγόρειοι λέγειν περὶ αὐτοῦ, τιθέντες ἐν τῇ τῶν ἀγαθῶν συστοιχίᾳ τὸ ἕν· οἷς δὴ καὶ Σπεύσιππος ἐπακολουθῆσαι δοκεῖ. Ἀλλὰ περὶ μὲν τούτων ἄλλος ἔστω λόγος·
+
+
+{ "parrafo_nro": 18, "tags": [{"eje": "arete"}] }
+A propósito de lo dicho se suscita (ὑποφαίνεται) una duda, porque no se han referido estas palabras a todos los bienes, sino que se dicen según una sola especie (καθ᾽ ἓν εἶδος): los que se buscan y aman por sí mismos, mientras que los bienes que los producen o los defienden de algún modo o impiden sus contrarios se dicen por referencia a éstos (διὰ ταῦτα) y de otra manera.
+Es evidente, pues, que los bienes (ἀγαθά) pueden decirse de dos modos: unos por sí mismos  (καθ᾽ αὑτά), y los otros por éstos (διὰ ταῦτα). Separando, pues, de los bienes útiles (ὠφελíμων) los que son bienes por sí mismos, consideremos si éstos se dicen según una sola idea (κατὰ μίαν ἰδέαν). Pero ¿qué bienes se han de considerar por sí? ¿Todos aquellos que buscamos incluso aislados, como el pensar (φρονεῖν) y el ver y algunos placeres (ἡδοναί) y honores (τιμαί)? Todos éstos, en efecto, aunque los busquemos en vista de otra cosa, podrían considerarse, sin embargo, como bienes (ἀγαθῶν) por sí mismos; ¿o no se ha de considerar como bien en sí nada más que la idea (τῆς ἰδέας)? En este caso, la especie (εἶδος) sería inútil (μάταιον). Si, por otra parte, aquéllos son bienes por sí mismos, forzosamente resplandecerá en todos ellos la misma noción del bien, como la de la blancura en la nieve y en el albayalde. Pero las nociones de honor, prudencia (φρονεῖν) y placer son otras y diferentes precisamente en tanto que bienes; por consiguiente, no es el bien (ἀγαθὸν) algo común (κοινόν τι) según una sola idea.
+
+τοῖς δὲ λεχθεῖσιν ἀμφισβήτησίς τις ὑποφαίνεται διὰ τὸ μὴ περὶ παντὸς ἀγαθοῦ τοὺς λόγους [10] εἰρῆσθαι, λέγεσθαι δὲ καθ᾽ ἓν εἶδος τὰ καθ᾽ αὑτὰ διωκόμενα καὶ ἀγαπώμενα, τὰ δὲ ποιητικὰ τούτων ἢ φυλακτικά πως ἢ τῶν ἐναντίων κωλυτικὰ διὰ ταῦτα λέγεσθαι καὶ τρόπον ἄλλον.
+δῆλον οὖν ὅτι διττῶς λέγοιτ᾽ ἂν τἀγαθά, καὶ τὰ μὲν καθ᾽ αὑτά, θάτερα δὲ διὰ ταῦτα. χωρίσαντες [15] οὖν ἀπὸ τῶν ὠφελίμων τὰ καθ᾽ αὑτὰ σκεψώμεθα εἰ λέγεται κατὰ μίαν ἰδέαν. καθ᾽ αὑτὰ δὲ ποῖα θείη τις ἄν; ἢ ὅσα καὶ μονούμενα διώκεται, οἷον τὸ φρονεῖν καὶ ὁρᾶν καὶ ἡδοναί τινες καὶ τιμαί; ταῦτα γὰρ εἰ καὶ δι᾽ ἄλλο τι διώκομεν, ὅμως τῶν καθ᾽ αὑτὰ ἀγαθῶν θείη τις ἄν. ἢ οὐδ᾽ [20] ἄλλο οὐδὲν πλὴν τῆς ἰδέας; ὥστε μάταιον ἔσται τὸ εἶδος. εἰ δὲ καὶ ταῦτ᾽ ἐστὶ τῶν καθ᾽ αὑτά, τὸν τἀγαθοῦ λόγον ἐν ἅπασιν αὐτοῖς τὸν αὐτὸν ἐμφαίνεσθαι δεήσει, καθάπερ ἐν χιόνι καὶ ψιμυθίῳ τὸν τῆς λευκότητος. τιμῆς δὲ καὶ φρονήσεως καὶ ἡδονῆς ἕτεροι καὶ διαφέροντες οἱ λόγοι ταύτῃ [25] ᾗ ἀγαθά. οὐκ ἔστιν ἄρα τὸ ἀγαθὸν κοινόν τι κατὰ μίαν ἰδέαν.
+
+
+{ "parrafo_nro": 19 }
+¿Cómo se dice entonces? Porque no se parece a las cosas que son homónimas por azar (ἀπὸ τύχης). ¿Acaso por proceder de uno solo o por concurrir todos al mismo fin (πρὸς ἓν ἅπαντα συντελεῖν), o tal vez por analogía? Como la vista en el cuerpo, la inteligencia en el alma (ἐν ψυχῇ νοῦς), y así sucesivamente.
+Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuestión sería más propio (οἰκειότερον) de otra disciplina filosófica.
+
+
+Ἀλλὰ πῶς δὴ λέγεται; οὐ γὰρ ἔοικε τοῖς γε ἀπὸ τύχης ὁμωνύμοις. ἀλλ᾽ ἆρά γε τῷ ἀφ᾽ ἑνὸς εἶναι ἢ πρὸς ἓν ἅπαντα συντελεῖν, ἢ μᾶλλον κατ᾽ ἀναλογίαν; ὡς γὰρ ἐν σώματι ὄψις, ἐν ψυχῇ νοῦς, καὶ ἄλλο δὴ ἐν ἄλλῳ. [30] 
+ἀλλ᾽ ἴσως ταῦτα μὲν ἀφετέον τὸ νῦν· ἐξακριβοῦν γὰρ ὑπὲρ αὐτῶν ἄλλης ἂν εἴη φιλοσοφίας οἰκειότερον.
+
+
+{ "parrafo_nro": 20 }
+Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole.
+
+ὁμοίως δὲ καὶ περὶ τῆς ἰδέας· εἰ γὰρ καὶ ἔστιν ἕν τι τὸ κοινῇ κατηγορούμενον ἀγαθὸν ἢ χωριστὸν αὐτό τι καθ᾽ αὑτό, δῆλον ὡς οὐκ ἂν εἴη πρακτὸν οὐδὲ κτητὸν ἀνθρώπῳ· νῦν δὲ τοιοῦτόν τι [35] ζητεῖται.
+
+
+{ "parrafo_nro": 21 }
+Acaso podría pensar alguien que sería muy útil conocerlo (γνωρίζειν αὐτὸ) para alcanzar los bienes (ἀγαθῶν) que se pueden adquirir y realizar, porque teniendo este modelo conoceremos (εἰσόμεθα) también mejor nuestros bienes (ἡμῖν ἀγαθά), y conociéndolos los lograremos.
+Este razonamiento (λόγος) ofrece, sin duda, cierta verosimilitud; pero parece discordar de las ciencias: todas, en efecto, aspiran (ἐφιέμεναι) a algún bien (ἀγαθοῦ) y buscando lo que les falta, dejan de lado el conocimiento (γνῶσιν) del bien mismo. Y en verdad no es razonable (οὐκ εὔλογον) que todos los técnicos desconozcan una ayuda tan importante y ni siquiera la busquen. Y además no puede comprenderse (ἄπορον) qué provecho sacará para su arte (τέχνην) el tejedor o el carpintero de conocer (εἰδὼς) el bien en sí, o cómo podrá ser mejor médico o mejor general el que haya contemplado (τεθεαμένος) esta idea. Es evidente que el médico ni siquiera considera así la salud (ἰατρός), sino la salud del hombre, y probablemente más aún la de este hombre, ya que cura a cada individuo.
+Y baste esto como con lo dicho sobre estas cosas.
+
+τάχα δέ τῳ δόξειεν ἂν βέλτιον εἶναι γνωρίζειν αὐτὸ 1097a [1] πρὸς τὰ κτητὰ καὶ πρακτὰ τῶν ἀγαθῶν· οἷον γὰρ παράδειγμα τοῦτ᾽ ἔχοντες μᾶλλον εἰσόμεθα καὶ τὰ ἡμῖν ἀγαθά, κἂν εἰδῶμεν, ἐπιτευξόμεθα αὐτῶν.
+πιθανότητα μὲν οὖν τινα ἔχει ὁ λόγος, ἔοικε δὲ ταῖς ἐπιστήμαις διαφωνεῖν· [5] πᾶσαι γὰρ ἀγαθοῦ τινὸς ἐφιέμεναι καὶ τὸ ἐνδεὲς ἐπιζητοῦσαι παραλείπουσι τὴν γνῶσιν αὐτοῦ. καίτοι βοήθημα τηλικοῦτον τοὺς τεχνίτας ἅπαντας ἀγνοεῖν καὶ μηδ᾽ ἐπιζητεῖν οὐκ εὔλογον. ἄπορον δὲ καὶ τί ὠφεληθήσεται ὑφάντης ἢ τέκτων πρὸς τὴν αὑτοῦ τέχνην εἰδὼς τὸ αὐτὸ τοῦτο ἀγαθόν, [10] ἢ πῶς ἰατρικώτερος ἢ στρατηγικώτερος ἔσται ὁ τὴν ἰδέαν αὐτὴν τεθεαμένος. φαίνεται μὲν γὰρ οὐδὲ τὴν ὑγίειαν οὕτως ἐπισκοπεῖν ὁ ἰατρός, ἀλλὰ τὴν ἀνθρώπου, μᾶλλον δ᾽ ἴσως τὴν τοῦδε· καθ᾽ ἕκαστον γὰρ ἰατρεύει. 
+καὶ περὶ μὲν τούτων ἐπὶ τοσοῦτον εἰρήσθω.
+
+
+
+
+ 
+
+7
+──────────────────────────────────────────────────────────
+
+{ "parrafo_nro": 22, "tags": [{"rol": "define", "eje": "agathon", "nota": "definición finalista reforzada por el ergon", "peso": 0.7}] }
+Volvamos de nuevo al bien que buscamos (ζητούμενον ἀγαθόν) para preguntarnos qué es. Porque parece que es distinto en cada actividad (πράξει) y en cada arte (τέχνῃ); en efecto, es uno en la medicina, otro en la estrategia, y así en las demás. Pero ¿qué es el bien de cada una (ἑκάστης τἀγαθόν)? ¿No es aquello en vista de lo cual se hacen las demás cosas? En la medicina es la salud; en la estrategia, la victoria (νίκη); en la arquitectura, la casa; en otros casos otras cosas, y en toda acción (πράξει) y decisión (προαιρέσει) es el fin (τέλος), pues todos hacen las demás cosas en vista de él. De modo que si hay algún fin (τέλος) de todos los actos (πρακτῶν ἁπάντων), éste será el bien realizable (πρακτὸν ἀγαθόν), y éstos si hay varios.
+Nuestro razonamiento, después de muchos rodeos, vuelve al mismo punto; pero intentemos aclarar más esto. Puesto que parece que los fines (τέλη) son varios y algunos de éstos los elegimos (αἱρούμεθά) por otros, como la riqueza (πλοῦτον), las flautas y en general los instrumentos (ὄργανα), es evidente que no todos son perfectos (τέλεια), pero lo mejor (ἄριστον) parece ser algo perfecto (τέλειόν); de suerte que si sólo hay un bien perfecto (μόνον τέλειον), ése será el que buscamos, y si hay varios, el más perfecto (τελειότατον) de ellos.
+
+[15] Πάλιν δ᾽ ἐπανέλθωμεν ἐπὶ τὸ ζητούμενον ἀγαθόν, τί ποτ᾽ ἂν εἴη. φαίνεται μὲν γὰρ ἄλλο ἐν ἄλλῃ πράξει καὶ τέχνῃ· ἄλλο γὰρ ἐν ἰατρικῇ καὶ στρατηγικῇ καὶ ταῖς λοιπαῖς ὁμοίως. τί οὖν ἑκάστης τἀγαθόν; ἢ οὗ χάριν τὰ λοιπὰ πράττεται; τοῦτο δ᾽ ἐν ἰατρικῇ μὲν ὑγίεια, ἐν στρατηγικῇ [20] δὲ νίκη, ἐν οἰκοδομικῇ δ᾽ οἰκία, ἐν ἄλλῳ δ᾽ ἄλλο, ἐν ἁπάσῃ δὲ πράξει καὶ προαιρέσει τὸ τέλος· τούτου γὰρ ἕνεκα τὰ λοιπὰ πράττουσι πάντες. ὥστ᾽ εἴ τι τῶν πρακτῶν ἁπάντων ἐστὶ τέλος, τοῦτ᾽ ἂν εἴη τὸ πρακτὸν ἀγαθόν, εἰ δὲ πλείω, ταῦτα.
+Μεταβαίνων δὴ ὁ λόγος εἰς ταὐτὸν ἀφῖκται· τοῦτο [25] δ᾽ ἔτι μᾶλλον διασαφῆσαι πειρατέον. ἐπεὶ δὲ πλείω φαίνεται τὰ τέλη, τούτων δ᾽ αἱρούμεθά τινα δι᾽ ἕτερον, οἷον πλοῦτον αὐλοὺς καὶ ὅλως τὰ ὄργανα, δῆλον ὡς οὐκ ἔστι πάντα τέλεια· τὸ δ᾽ ἄριστον τέλειόν τι φαίνεται. ὥστ᾽ εἰ μέν ἐστιν ἕν τι μόνον τέλειον, τοῦτ᾽ ἂν εἴη τὸ ζητούμενον, [30] εἰ δὲ πλείω, τὸ τελειότατον τούτων.
