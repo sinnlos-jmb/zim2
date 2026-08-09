@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-05T04:42:47.456Z",
+ "builtAt": "2026-08-09T10:34:55.400Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -91,7 +91,11 @@
    "parrafoNros": [
     3
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "energeia"
+    }
+   ]
   },
   {
    "id": "EN.I.2.b",
@@ -152,7 +156,11 @@
    "parrafoNros": [
     6
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.3.b",
@@ -281,7 +289,11 @@
    "parrafoNros": [
     9
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.4.c",
@@ -303,8 +315,14 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    9
+   ],
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.4.d",
@@ -331,8 +349,30 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    9,
+    9,
+    9,
+    9,
+    9
+   ],
+   "tags": [
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.5.a",
@@ -394,7 +434,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    10
+   ],
    "tags": []
   },
   {
@@ -552,7 +594,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    15
+   ],
    "tags": []
   },
   {
@@ -599,7 +643,11 @@
    "parrafoNros": [
     18
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.6.g",
@@ -630,8 +678,14 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    18
+   ],
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.6.h",
@@ -662,6 +716,7 @@
    "translationStatus": "draft",
    "parrafoNros": [
     19,
+    19,
     20,
     21
    ],
@@ -691,7 +746,10 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    21,
+    21
+   ],
    "tags": []
   },
   {
@@ -754,8 +812,17 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    22
+   ],
+   "tags": [
+    {
+     "rol": "define",
+     "eje": "agathon",
+     "nota": "definición finalista reforzada por el ergon",
+     "peso": 0.7
+    }
+   ]
   },
   {
    "id": "EN.I.7.c",
@@ -821,8 +888,23 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    23
+   ],
+   "tags": [
+    {
+     "rol": "define",
+     "eje": "teleios",
+     "peso": 0.8
+    },
+    {
+     "rol": "afirma",
+     "eje1": "teleios",
+     "eje2": "eudaimonia",
+     "tipo": "es_propiedad_de",
+     "peso": 0.8
+    }
+   ]
   },
   {
    "id": "EN.I.7.e",
@@ -894,8 +976,36 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    24,
+    24
+   ],
+   "tags": [
+    {
+     "rol": "define",
+     "eje": "autarkeia",
+     "peso": 0.8
+    },
+    {
+     "rol": "afirma",
+     "eje1": "autarkeia",
+     "eje2": "eudaimonia",
+     "tipo": "es_propiedad_de",
+     "peso": 0.8
+    },
+    {
+     "rol": "define",
+     "eje": "autarkeia",
+     "peso": 0.8
+    },
+    {
+     "rol": "afirma",
+     "eje1": "autarkeia",
+     "eje2": "eudaimonia",
+     "tipo": "es_propiedad_de",
+     "peso": 0.8
+    }
+   ]
   },
   {
    "id": "EN.I.7.g",
@@ -985,6 +1095,7 @@
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
+    26,
     26
    ],
    "tags": []
@@ -1023,6 +1134,7 @@
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
+    27,
     27
    ],
    "tags": [
@@ -1031,6 +1143,32 @@
      "eje": "ergon",
      "pregunta": "cuál es el ergon del ser humano?",
      "peso": 0.9
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.3
+    },
+    {
+     "rol": "faq",
+     "eje": "ergon",
+     "pregunta": "cuál es el ergon del ser humano?",
+     "peso": 0.9
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.3
     }
    ]
   },
@@ -1082,7 +1220,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    28
+   ],
    "tags": []
   },
   {
@@ -1110,7 +1250,10 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    28,
+    28
+   ],
    "tags": []
   },
   {
@@ -1180,6 +1323,16 @@
      "eje": "eudaimonia",
      "pregunta": "cuáles son los requisitos de la felicidad?",
      "peso": 0.9
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.3
     }
    ]
   },
@@ -1205,8 +1358,33 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    30
+   ],
+   "tags": [
+    {
+     "rol": "faq",
+     "eje": "agathon",
+     "pregunta": "cuáles son las tres clases de bienes?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "cuáles son los requisitos de la felicidad?",
+     "peso": 0.9
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.3
+    }
+   ]
   },
   {
    "id": "EN.I.8.d",
@@ -1263,7 +1441,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    31
+   ],
    "tags": []
   },
   {
@@ -1288,7 +1468,11 @@
    "parrafoNros": [
     32
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.8.g",
@@ -1321,8 +1505,14 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    32
+   ],
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.8.h",
@@ -1352,8 +1542,26 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    32,
+    32,
+    32,
+    32
+   ],
+   "tags": [
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    },
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.8.i",
@@ -1377,9 +1585,16 @@
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
+    33,
     33
    ],
    "tags": [
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "cuáles son los requisitos de la felicidad?",
+     "peso": 0.8
+    },
     {
      "rol": "faq",
      "eje": "eudaimonia",
@@ -1446,6 +1661,7 @@
    "translationStatus": "draft",
    "parrafoNros": [
     35,
+    35,
     36
    ],
    "tags": [
@@ -1475,8 +1691,17 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    36
+   ],
+   "tags": [
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "cuáles son los requisitos de la felicidad?",
+     "peso": 0.9
+    }
+   ]
   },
   {
    "id": "EN.I.10.a",
@@ -1563,6 +1788,7 @@
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
+    38,
     38
    ],
    "tags": []
@@ -1590,7 +1816,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    38
+   ],
    "tags": []
   },
   {
@@ -1613,7 +1841,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    38
+   ],
    "tags": []
   },
   {
@@ -1675,7 +1905,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    39
+   ],
    "tags": []
   },
   {
@@ -1700,7 +1932,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    39
+   ],
    "tags": []
   },
   {
@@ -1808,7 +2042,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    42
+   ],
    "tags": []
   },
   {
@@ -1874,8 +2110,31 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    43,
+    43,
+    43
+   ],
+   "tags": [
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "es la felicidad elogiable?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "es la felicidad elogiable?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje": "eudaimonia",
+     "pregunta": "es la felicidad elogiable?",
+     "peso": 0.9
+    }
+   ]
   },
   {
    "id": "EN.I.12.c",
@@ -1930,7 +2189,9 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
+   "parrafoNros": [
+    44
+   ],
    "tags": []
   },
   {
@@ -1997,8 +2258,25 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    45
+   ],
+   "tags": [
+    {
+     "rol": "faq",
+     "eje1": "eudaimonia",
+     "eje2": "arete",
+     "pregunta": "por qué es importante estudiar las virtudes para comprender mejor qué es la felicidad?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje1": "eudaimonia",
+     "eje2": "politike",
+     "pregunta": "por qué es importante estudiar las virtudes para comprender mejor qué es la felicidad?",
+     "peso": 0.9
+    }
+   ]
   },
   {
    "id": "EN.I.13.c",
@@ -2105,8 +2383,17 @@
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "tags": []
+   "parrafoNros": [
+    48
+   ],
+   "tags": [
+    {
+     "rol": "faq",
+     "eje": "psyche",
+     "pregunta": "cuáles son las partes del alma?",
+     "peso": 0.9
+    }
+   ]
   },
   {
    "id": "EN.I.13.f",
@@ -2181,6 +2468,8 @@
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
+    50,
+    50,
     50
    ],
    "tags": []
@@ -2220,6 +2509,16 @@
      "eje2": "arete",
      "pregunta": "cuáles son los dos tipos de virtud?",
      "peso": 0.9
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.5
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.5
     }
    ]
   }
