@@ -122,8 +122,17 @@ export const AXES = [
     senses: [
       {
         id: 'etica', label: 'virtud ética (del carácter)', greek: 'ἠθική',
-        gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί'],
-        es: ['valentía', 'justicia', 'justo'],
+        // Formas adjetivas de σώφρων/ἀνδρεῖος y "valiente"/"templado" sumadas
+        // tras revisar 13.g (parrafo 50): el eje daba 0 pese a nombrar
+        // sophrosyne/andreia, porque solo tenia las formas sustantivas
+        // (σωφροσύνη, ἀνδρείαν) y el stem no une adjetivo con sustantivo.
+        // Medido contra los 72 pasajes: solo mueven 12.b, 13.g y 13.h, sin
+        // ninguna regresion. ἐγκρατοῦς/"continente" queda afuera a proposito:
+        // en 13.f y 13.g es ejemplo de la estructura del alma, no la virtud
+        // en discusion, y es un concepto aristotelico distinto (la
+        // continencia, libro VII) que todavia no se midio.
+        gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί', 'ἀνδρείου', 'ἀνδρεῖον', 'σώφρονος', 'σώφρων'],
+        es: ['valentía', 'justicia', 'justo', 'valiente', 'templado'],
         aliases: ['virtud moral', 'virtudes del caracter', 'excelencia moral', 'excelencia etica'],
       },
       {
