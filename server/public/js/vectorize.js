@@ -115,6 +115,74 @@ export function vectorize(spanish, glosses = [], opts = {}) {
   return { vector: l2(vec), raw: vec, hits };
 }
 
+// vectorFromAxes(selectedAxes) - construye el vector de una consulta por
+// CATEGORIAS (los chips del sidebar en ui.js#searchAxes), sin pasar por
+// ningun texto. `selectedAxes` es el mapa { [axisId]: 1, ... } que junta el
+// click de los chips. Cada eje elegido entra con peso 1 antes de normalizar:
+// elegir varios ejes reparte la norma entre ellos, igual que reparte los
+// terminos una consulta de texto con varias palabras.
+export function vectorFromAxes(selectedAxes) {
+  const vec = new Array(DIM).fill(0);
+  for (const axisId of Object.keys(selectedAxes || {})) {
+    const i = AXES.findIndex((a) => a.id === axisId);
+    if (i >= 0) vec[i] = 1;
+  }
+  return { vector: l2(vec), raw: vec, hits: [] };
+}
+
+// topK(queryVector, passages, k, opts) - ordena los pasajes por similitud de
+// coseno con la consulta (los vectores ya estan normalizados L2, asi que el
+// coseno crudo es el producto punto). Dos correcciones se aplican sobre ese
+// coseno, ambas ya documentadas en el HTML de resultados (ui.js#renderResults):
+//   - COBERTURA: si la consulta activa mas de un eje, un pasaje que solo
+//     toca una fraccion de esos ejes ve su puntaje reducido en la misma
+//     proporcion (hitAxes / axisCount). Si toca uno solo de varios, se lo
+//     relega al final de la lista (demoted) en vez de competir por posicion
+//     con los que responden a la consulta entera.
+//   - SENTIDO: si `opts.senseMix` trae una mezcla de sentidos por eje (la de
+//     la consulta), un pasaje cuyo sentido dominante en ese eje no coincide
+//     ve su puntaje escalado por la porcion de esa mezcla que si coincide.
+export function topK(queryVector, passages, k = 8, opts = {}) {
+  const senseMix = opts.senseMix || null;
+  const activeAxes = [];
+  queryVector.forEach((v, i) => { if (v > 0) activeAxes.push(i); });
+  const axisCount = activeAxes.length;
+
+  const scored = passages.map((p) => {
+    let cos = 0;
+    let hitAxes = 0;
+    for (const i of activeAxes) {
+      const pv = p.vector[i] || 0;
+      if (pv > 0) hitAxes += 1;
+      cos += pv * queryVector[i];
+    }
+    const coverage = axisCount > 1 ? hitAxes / axisCount : 1;
+    const demoted = axisCount > 1 && hitAxes <= 1;
+
+    let senseFactor = 1;
+    if (senseMix) {
+      for (const i of activeAxes) {
+        const axisId = AXES[i].id;
+        const qMix = senseMix[axisId];
+        if (!qMix) continue;
+        const dom = dominantSense(p.senses, axisId);
+        if (!dom) continue;
+        const agree = qMix[dom.sense] || 0;
+        senseFactor = Math.min(senseFactor, agree);
+      }
+    }
+
+    return { passage: p, cos, axisCount, hitAxes, demoted, senseFactor, score: cos * coverage * senseFactor };
+  }).filter((r) => r.cos > 0);
+
+  scored.sort((a, b) => {
+    if (a.demoted !== b.demoted) return a.demoted ? 1 : -1;
+    return b.score - a.score;
+  });
+
+  return scored.slice(0, k);
+}
+
 export function senseMixFromHits(hits = []) {
   const byAxis = new Map();
   for (const h of hits) {
