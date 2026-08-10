@@ -41,7 +41,7 @@
 export const AXES = [
   {
     id: 'telos', label: 'Fin', greek: 'τέλος',
-    gr: ['τέλος', 'τέλη', 'ἐφίεσθαι', 'προαίρεσις', 'πρακτῶν', 'ἕνεκα'],
+    gr: ['τέλος', 'τέλη', 'ἐφίεσθαι', 'προαίρεσις', 'ἕνεκα'],
     es: [['fin', 0.5], ['fines', 0.5], 'tender', 'tienden', ['aquello a que', 0.6], 'en vista de', 'subordinada', 'subordinan'],
   },
   {
@@ -137,8 +137,15 @@ export const AXES = [
       },
       {
         id: 'dianoetica', label: 'virtud dianoética (del intelecto)', greek: 'διανοητική',
-        gr: ['διανοητικαί'],
-        es: ['dianoetica'],
+        // φρόνησις/σοφία/σύνεσις y sus castellanos VINIERON de logos: nombran
+        // virtudes del intelecto, no la facultad. Estaban solo como aliases
+        // (lado consulta), asi que 13.h --el parrafo que dice que la
+        // sabiduria, la inteligencia y la prudencia son dianoeticas-- no
+        // llegaba a este sentido por si solo y hubo que tagearlo a mano.
+        // A mirar: 4.b (parrafo 18) los nombra en una lista doxografica de
+        // bienes candidatos; ahi el sentido activa sin discutir la virtud.
+        gr: ['διανοητικαί', 'φρόνησις', 'σοφία', 'σύνεσις'],
+        es: ['dianoetica', 'prudencia', 'sabiduría'],
         aliases: ['techne', 'phronesis', 'sophia', 'episteme', 'nous'],
       },
     ],
@@ -169,8 +176,24 @@ export const AXES = [
       {
         id: 'acto', label: 'estar-en-acto', greek: 'ἐνέργεια',
         gr: ['ἐνέργεια', 'ἐνεργεῖν', 'ἐνέργειαι'],
-        es: ['actividad', 'actividades', 'en acto', 'ejercicio'],
-        aliases: ['acto', 'actualidad', 'estar en acto', 'estar en obra', 'being at work'],
+        // 'en acto' SALIO de es: con las stopwords fuera colapsa al unigrama
+        // 'acto', y las unicas cuatro ocurrencias castellanas de "acto/actos"
+        // en el libro son 1.c, 7.a y 7.c ("el fin de nuestros actos",
+        // πρακτῶν: lo realizable, con τέλος en la misma glosa) y 7.e ("hay
+        // que tomarla en acto", κατ᾽ ἐνέργειαν). O sea 3 de 4 le daban el
+        // sentido 'acto' a pasajes cuyo tema es la accion, invirtiendo el
+        // sentido dominante. La cuarta, la legitima, ya entra por la glosa.
+        // Efecto lateral bueno: el alias 'acto' estaba MUERTO, porque
+        // 'en acto' ocupaba la clave es|acto y la guarda DUPLICATE_TERMS lo
+        // descartaba en silencio. Ahora revive del lado de la consulta.
+        //
+        // 'ejercicio' bajo a aliases: sus dos unicas ocurrencias estan en
+        // 9.b (parrafo 34), "por algun otro ejercicio", "cierto aprendizaje
+        // o ejercicio", que es la ADQUISICION de la eudaimonia (hexis) y no
+        // el estar-en-acto. Ojo: hexis no lo caza, porque 'ejercitar' stemea
+        // ejercit y 'ejercicio' stemea ejercici.
+        es: ['actividad', 'actividades'],
+        aliases: ['acto', 'actualidad', 'estar en acto', 'estar en obra', 'ejercicio', 'being at work'],
       },
       {
         id: 'accion', label: 'acción, praxis', greek: 'πρᾶξις', weight: 0.4,
@@ -187,9 +210,77 @@ export const AXES = [
     es: ['alma', 'cuerpo', 'irracional', 'apetitivo', 'nutritivo', 'vegetativo', 'partes del alma'],
   },
   {
+    // LOGOS: eje con dos sentidos, declarados abajo en `senses`.
+    //   razon     -> la facultad racional: κατὰ λόγον, μετὰ λόγου, τὸ λόγον ἔχον
+    //   argumento -> el razonamiento del tratado: οἱ λόγοι, μαρτυρεῖ τῷ λόγῳ
+    //
+    // El eje "Razón" era en realidad dos ejes solapados, igual que lo era
+    // "Actividad" antes de separar acto de accion. Medido sobre los 72
+    // pasajes: 5 parrafos usan el argumento (6, 9, 21, 30, 38) y 5 la
+    // facultad (7, 26, 27, 37, 49/50). Casi la mitad del eje no hablaba de
+    // la razon como potencia del alma sino del hilo argumental del libro.
+    //
+    // Las formas van por grForms (igualdad exacta) y no por gr (raiz): el
+    // stem λογ- no distingue el λόγον que se TIENE del λόγος que se
+    // ARGUMENTA, y el caso gramatical los separa casi sin ruido, igual que
+    // la oposicion ἔργον / ἔργα en ergon.
+    //   acusativo/genitivo (λόγον, λόγου) -> facultad
+    //   nominativo/plural/dativo (λόγος, λόγοι, λόγοις, λόγῳ) -> argumento
+    //
+    // OJO con 6.d (parrafo 16): ahi λόγος es la DEFINICION ("la definicion
+    // de hombre en si mismo"), un tercer uso que cae en 'argumento' por la
+    // regla de caso. Es el pasaje a mirar si el sentido queda raro; su tema
+    // real es la polemica con Platon (eje idea).
+    //
+    // SALIERON DEL EJE:
+    //   'λόγον ἔχον' : termino muerto. Frase de dos tokens, y la glosa
+    //                  indexada dice solo (λόγον); ἔχοντος vive en el griego
+    //                  paralelo, que no se indexa. Nunca matcheo.
+    //   'racional'   : df 0. La unica forma que aparece en el libro es
+    //                  'irracional' (13.f-13.g), que es de psyche. Sobrevive
+    //                  como alias 'parte racional', del lado de la consulta.
+    //   φρόνησις, σοφία, σύνεσις, 'prudencia', 'sabiduría' -> arete/dianoetica.
+    //                  Nombran VIRTUDES, no la facultad. Estando aca, un
+    //                  pasaje que las nombraba puntuaba logos y nunca
+    //                  arete/dianoetica: por eso 13.h necesito tag manual.
+    //   ἀλήθειαν, ὀρθῶς -> akribeia. En los pasajes medidos son metodo
+    //                  ("mostrar la verdad a grandes rasgos", "juzgar
+    //                  rectamente"), nunca la facultad. Mismo caso que καλῶς.
+    //
+    // 'razon' baja de 0.45 a 0.3: es un detector de modismos de la
+    // traduccion ("con razon" 1.a, "por esta razon" 4.b, "muchas razones"
+    // 6.a), el mismo tic que 'vida' en bios. El peso se corre al griego.
     id: 'logos', label: 'Razón', greek: 'λόγος',
-    gr: ['λόγος', 'λόγον ἔχον', 'νοῦς', 'φρόνησις', 'σοφία', 'σύνεσις', 'ἀλήθειαν', 'ὀρθῶς'],
-    es: [['razon', 0.45], 'racional', 'entendimiento', 'prudencia', 'sabiduría', 'inteligencia', 'obedecer a la razon'],
+    aliases: ['logos'],
+    gr: ['νοῦς'],
+    // 'razon' se declara en el EJE y no dentro de un sentido. esStem() corta
+    // el sufijo -amiento, asi que esTokens('razonamiento') devuelve ['razon']:
+    // el castellano NO puede separar la facultad del argumento. Declarado
+    // aca el termino enciende el eje sin votar por ningun sentido
+    // (senseMixFromHits saltea los hits sin sense) y la acepcion queda en
+    // manos de las formas griegas, que si son inequivocas.
+    // Si viviera dentro de un sentido, el OTRO sentido perderia su termino
+    // castellano en silencio: la guarda DUPLICATE_TERMS de buildIndex usa un
+    // solo Set por eje, compartido por todos sus sentidos.
+    es: [['razon', 0.3]],
+    senses: [
+      {
+        id: 'razon', label: 'la razón (facultad)', greek: 'λόγον ἔχον',
+        grForms: ['λόγον', 'λόγου'],
+        es: ['entendimiento', 'inteligencia', 'obedecer a la razon'],
+        aliases: ['facultad racional', 'parte racional', 'lo que tiene razon'],
+      },
+      {
+        id: 'argumento', label: 'el razonamiento, el discurso', greek: 'λόγοι', weight: 0.4,
+        grForms: ['λόγος', 'λόγοι', 'λόγοις', 'λόγῳ'],
+        // 'nuestro razonamiento' tokeniza como el bigrama ['nuestr','razon'],
+        // asi que sobrevive al colapso de -amiento y marca exactamente los
+        // pasajes donde λόγος es el hilo del tratado: "de acuerdo con nuestro
+        // razonamiento" (8.a) y "apoya nuestro razonamiento" (10.h).
+        es: ['nuestro razonamiento'],
+        aliases: ['argumento', 'discurso', 'definicion'],
+      },
+    ],
   },
   {
     // HEXIS: el lado de la POSESION en el contraste tener/ejercer del libro I
@@ -244,9 +335,9 @@ export const AXES = [
   },
   {
     id: 'akribeia', label: 'Método', greek: 'ἀκρίβεια',
-    gr: ['ἀκρίβειαν', 'μέθοδος', 'ὕλην', 'ὑποτυπῶσαι', 'ἐπαγωγῇ', 'ἐπισκεπτέον'],
+    gr: ['ἀκρίβειαν', 'μέθοδος', 'ὕλην', 'ὑποτυπῶσαι', 'ἐπαγωγῇ', 'ἐπισκεπτέον', 'ἀλήθειαν'],
     // kalos adverbial ("delimitar bien", "juzgar bien") es METODO, no lo noble.
-    grForms: [['καλῶς', 0.6]],
+    grForms: [['καλῶς', 0.6], ['ὀρθῶς', 0.6]],
     es: ['exactitud', 'rigor', 'metodo', 'bosquejo', 'materia', 'precision', 'contentarse', 'grandes rasgos', 'investigacion'],
   },
   {
