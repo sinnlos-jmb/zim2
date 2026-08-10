@@ -115,6 +115,124 @@ export function vectorize(spanish, glosses = [], opts = {}) {
   return { vector: l2(vec), raw: vec, hits };
 }
 
+// vectorFromAxes(selectedAxes) - construye el vector de una consulta por
+// CATEGORIAS (los chips del sidebar en ui.js#searchAxes), sin pasar por
+// ningun texto. `selectedAxes` es el mapa { [axisId]: 1, ... } que junta el
+// click de los chips. Cada eje elegido entra con peso 1 antes de normalizar:
+// elegir varios ejes reparte la norma entre ellos, igual que reparte los
+// terminos una consulta de texto con varias palabras.
+export function vectorFromAxes(selectedAxes) {
+  const vec = new Array(DIM).fill(0);
+  for (const axisId of Object.keys(selectedAxes || {})) {
+    const i = AXES.findIndex((a) => a.id === axisId);
+    if (i >= 0) vec[i] = 1;
+  }
+  return { vector: l2(vec), raw: vec, hits: [] };
+}
+
+/* ----------------------------------------------- ACUERDO DE ACEPCION -------
+ * Un desacuerdo total de sentido NO anula el pasaje: lo relega. Con factor 0
+ * todos los pasajes en desacuerdo quedaban en 0.000 y perdian entre si
+ * cualquier orden (el coseno dejaba de contar y mandaba el orden del corpus).
+ * Con piso, el pasaje se va al fondo pero el fondo sigue ordenado por coseno.
+ */
+const SENSE_FLOOR = 0.15;
+// Por debajo de este acuerdo el pasaje se relega al final, igual que el que
+// toca un solo eje de una consulta de varios.
+const SENSE_DEMOTE = 0.25;
+
+/* senseAgreement(qMix, pMix) - que parte de lo que el pasaje hace con este eje
+ * cae en las acepciones que pide la consulta. 1 = todo, 0 = nada. Devuelve
+ * null cuando no hay con que comparar, y entonces el eje queda neutral.
+ *
+ * El mix de la consulta se normaliza por su MAXIMO, no por su suma: asi la
+ * acepcion mas pedida pesa 1 y pedir TODAS las acepciones de un eje vuelve a
+ * ser neutral. Normalizando por la suma, pedir dos de dos repartia 0.5 a cada
+ * una y castigaba al pasaje por una eleccion que en realidad no filtraba nada:
+ * de ahi salian los puntajes de 0.1.
+ *
+ * Del lado del pasaje se usa la MEZCLA ENTERA y no solo el sentido dominante:
+ * un pasaje 60/40 que usa la acepcion pedida en un 40% vale 0.4, no 0. Mirando
+ * solo el dominante, 51/49 y 100/0 puntuaban igual y el 49% restante se perdia.
+ */
+function senseAgreement(qMix, pMix) {
+  if (!qMix || !pMix) return null;
+  let qMax = 0;
+  for (const v of Object.values(qMix)) if (v > qMax) qMax = v;
+  if (!qMax) return null;
+  let total = 0;
+  let agree = 0;
+  for (const [sense, share] of Object.entries(pMix)) {
+    total += share;
+    agree += share * ((qMix[sense] || 0) / qMax);
+  }
+  if (!total) return null;
+  return agree / total;
+}
+
+// topK(queryVector, passages, k, opts) - ordena los pasajes por similitud de
+// coseno con la consulta (los vectores ya estan normalizados L2, asi que el
+// coseno crudo es el producto punto). Dos correcciones se aplican sobre ese
+// coseno, ambas ya documentadas en el HTML de resultados (ui.js#renderResults):
+//   - COBERTURA: si la consulta activa mas de un eje, un pasaje que solo
+//     toca una fraccion de esos ejes ve su puntaje reducido en la misma
+//     proporcion (hitAxes / axisCount). Si toca uno solo de varios, se lo
+//     relega al final de la lista (demoted) en vez de competir por posicion
+//     con los que responden a la consulta entera.
+//   - SENTIDO: si `opts.senseMix` trae una mezcla de sentidos por eje (la de
+//     la consulta), cada eje aporta que parte de la mezcla del pasaje cae en
+//     las acepciones pedidas (senseAgreement), y el puntaje se escala por el
+//     PROMEDIO de esos acuerdos. Antes se tomaba el minimo entre ejes y solo
+//     se miraba el sentido dominante del pasaje: con dos ejes polisemicos en
+//     la consulta, un solo eje en desacuerdo anulaba el aporte del otro y la
+//     lista entera quedaba en 0.000. El promedio reduce en proporcion, igual
+//     que hace la cobertura con los ejes que el pasaje no toca.
+export function topK(queryVector, passages, k = 8, opts = {}) {
+  const senseMix = opts.senseMix || null;
+  const activeAxes = [];
+  queryVector.forEach((v, i) => { if (v > 0) activeAxes.push(i); });
+  const axisCount = activeAxes.length;
+
+  const scored = passages.map((p) => {
+    let cos = 0;
+    let hitAxes = 0;
+    for (const i of activeAxes) {
+      const pv = p.vector[i] || 0;
+      if (pv > 0) hitAxes += 1;
+      cos += pv * queryVector[i];
+    }
+    const coverage = axisCount > 1 ? hitAxes / axisCount : 1;
+    const axisDemoted = axisCount > 1 && hitAxes <= 1;
+
+    let senseFactor = 1;
+    let senseDemoted = false;
+    if (senseMix) {
+      const acuerdos = [];
+      for (const i of activeAxes) {
+        const axisId = AXES[i].id;
+        const a = senseAgreement(senseMix[axisId], p.senses && p.senses[axisId]);
+        if (a != null) acuerdos.push(a);
+      }
+      if (acuerdos.length) {
+        const medio = acuerdos.reduce((s, x) => s + x, 0) / acuerdos.length;
+        senseDemoted = medio < SENSE_DEMOTE;
+        senseFactor = SENSE_FLOOR + (1 - SENSE_FLOOR) * medio;
+      }
+    }
+
+    const demoted = axisDemoted || senseDemoted;
+
+    return { passage: p, cos, axisCount, hitAxes, demoted, axisDemoted, senseDemoted, senseFactor, score: cos * coverage * senseFactor };
+  }).filter((r) => r.cos > 0);
+
+  scored.sort((a, b) => {
+    if (a.demoted !== b.demoted) return a.demoted ? 1 : -1;
+    return b.score - a.score;
+  });
+
+  return scored.slice(0, k);
+}
+
 export function senseMixFromHits(hits = []) {
   const byAxis = new Map();
   for (const h of hits) {
