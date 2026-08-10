@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-09T10:34:55.400Z",
+ "builtAt": "2026-08-10T21:29:51.449Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -2436,6 +2436,13 @@
      "eje": "psyche",
      "pregunta": "cuál es la característica de la parte irracional del alma?",
      "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje1": "psyche",
+     "eje2": "arete",
+     "pregunta": "qué muestran el continente y el incontinente sobre la virtud?",
+     "peso": 0.9
     }
    ]
   },
@@ -2472,7 +2479,29 @@
     50,
     50
    ],
-   "tags": []
+   "tags": [
+    {
+     "rol": "faq",
+     "eje1": "psyche",
+     "eje2": "arete",
+     "pregunta": "qué muestran el continente y el incontinente sobre la virtud?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje1": "psyche",
+     "eje2": "arete",
+     "pregunta": "qué muestran el continente y el incontinente sobre la virtud?",
+     "peso": 0.9
+    },
+    {
+     "rol": "faq",
+     "eje1": "psyche",
+     "eje2": "arete",
+     "pregunta": "qué muestran el continente y el incontinente sobre la virtud?",
+     "peso": 0.9
+    }
+   ]
   },
   {
    "id": "EN.I.13.h",
