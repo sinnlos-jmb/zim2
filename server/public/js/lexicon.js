@@ -47,14 +47,14 @@ export const AXES = [
   {
     // AGATHON: los bienes, en plural y enumerables. NO el bien supremo (ver ariston).
     id: 'agathon', label: 'Bienes', greek: 'ἀγαθόν',
-    gr: ['ἀγαθόν', 'τἀγαθόν', 'ἀγαθά', 'ἀγαθῶν', 'ἀγαθοὺς', 'εὖ', ['βέλτιον', 0.4]],
-    es: [['bien', 0.2], ['bienes', 0.35], ['bueno', 0.3], ['buenas', 0.3]],
+    gr: ['ἀγαθόν', 'τἀγαθόν', 'εὖ', ['βέλτιον', 0.4]],
+    es: [['bien', 0.2], ['bueno', 0.3]],
   },
   {
     // ARISTON: el fin unico y superlativo. Se apoya en el griego; el castellano
     // "mejor" es comparativo corriente en 30/70 pasajes y quedaria fuera.
     id: 'ariston', label: 'Bien supremo', greek: 'ἄριστον',
-    gr: ['ἄριστον', 'ἀρίστην', 'ἀρίσταις', 'ἀρίστων', 'βέλτιστον', 'ἀκρότατον', 'κυριώτατα'],
+    gr: ['ἄριστον', 'ἀρίσταις', 'βέλτιστον', 'ἀκρότατον', 'κυριώτατα'],
     // OJO: nada de "mejor" suelto. Es comparativo corriente en 30/70 pasajes.
     // Tampoco "lo mejor de todo": colapsa al unigrama "mejor" al quitar stopwords.
     // Las cuatro expresiones castellanas de abajo tienen df 0: la traduccion
@@ -66,7 +66,7 @@ export const AXES = [
     id: 'eudaimonia', label: 'Felicidad', greek: 'εὐδαιμονία',
     aliases: ['eudaimonia', 'buena vida', 'vida feliz', 'florecimiento'],
     gr: ['εὐδαιμονία', 'εὐδαιμονεῖν', 'εὐδαιμονίζομεν', 'εὐπραξία', 'ἄθλιος', ['μακαρίους', 0.5]],
-    es: ['felicidad', 'feliz', 'felices', 'dichoso', 'vivir bien', 'obrar bien', 'desdichado', 'venturoso'],
+    es: ['felicidad', 'feliz', 'dichoso', 'vivir bien', 'obrar bien', 'desdichado', 'venturoso'],
   },
   {
     // ERGON: eje con dos sentidos, declarados abajo en `senses`.
@@ -91,14 +91,14 @@ export const AXES = [
       {
         id: 'funcion', label: 'función propia', greek: 'ἔργον',
         // ἀργόν ("inactivo") con peso menor: es el reverso del argumento en 7.h
-        grForms: ['ἔργον', 'ἔργου', 'ἔργῳ', ['ἀργόν', 0.5], ['ἀργὸν', 0.5]],
+        grForms: ['ἔργον', 'ἔργου', 'ἔργῳ', ['ἀργόν', 0.5]],
         es: [['funcion', 0.6], 'función propia', 'tarea', 'oficio', 'propio del hombre'],
         aliases: ['funcion caracteristica', 'funcion del hombre', 'para que sirve el hombre'],
       },
       {
         id: 'obra', label: 'obra, hecho realizado', greek: 'ἔργα',
         grForms: ['ἔργα', 'ἔργων', 'ἔργοις'],
-        es: [['obra', 0.5], ['obras', 0.5], 'hechos realizados'],
+        es: [['obra', 0.5], 'hechos realizados'],
         aliases: ['obra realizada', 'hechos y obras', 'las obras del hombre'],
       },
     ],
@@ -116,9 +116,9 @@ export const AXES = [
     // 72 pasajes no se sabe si moverla arrastraria menciones del titulo.
     // Queda como estaba, a la espera de esa medicion.
     id: 'arete', label: 'Virtud', greek: 'ἀρετή',
-    aliases: ['arete', 'excelencia'],
-    gr: ['ἀρετή', 'ἀρεταί', 'σπουδαῖον'],
-    es: ['virtud', 'virtudes', 'excelencia', 'esforzado', 'etica'],
+    aliases: ['arete'],
+    gr: ['ἀρετή', 'σπουδαῖον'],
+    es: ['virtud', 'excelencia', 'esforzado', 'etica'],
     senses: [
       {
         id: 'etica', label: 'virtud ética (del carácter)', greek: 'ἠθική',
@@ -131,7 +131,7 @@ export const AXES = [
         // en 13.f y 13.g es ejemplo de la estructura del alma, no la virtud
         // en discusion, y es un concepto aristotelico distinto (la
         // continencia, libro VII) que todavia no se midio.
-        gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί', 'ἀνδρείου', 'ἀνδρεῖον', 'σώφρονος', 'σώφρων'],
+        gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί', 'ἀνδρείου', 'σώφρονος', 'σώφρων'],
         es: ['valentía', 'justicia', 'justo', 'valiente', 'templado'],
         // continente/incontinente entran SOLO como alias, coherente con
         // la nota de arriba: siguen fuera del indice del corpus (no son
@@ -180,7 +180,7 @@ export const AXES = [
     senses: [
       {
         id: 'acto', label: 'estar-en-acto', greek: 'ἐνέργεια',
-        gr: ['ἐνέργεια', 'ἐνεργεῖν', 'ἐνέργειαι'],
+        gr: ['ἐνέργεια'],
         // 'en acto' SALIO de es: con las stopwords fuera colapsa al unigrama
         // 'acto', y las unicas cuatro ocurrencias castellanas de "acto/actos"
         // en el libro son 1.c, 7.a y 7.c ("el fin de nuestros actos",
@@ -203,7 +203,7 @@ export const AXES = [
       {
         id: 'accion', label: 'acción, praxis', greek: 'πρᾶξις', weight: 0.4,
         gr: ['πρᾶξις', 'πράξεις', 'πράττειν', 'πρακτῶν'],
-        es: ['accion', 'acciones'],
+        es: ['accion'],
         // Las tres frases nuevas son alias de CONSULTA: la pregunta libre
         // "las cosas que se pueden hacer" no devolvia nada porque ninguno
         // de sus tokens [cosa, pueden, hacer] estaba en el lexico. Hacen
@@ -307,11 +307,11 @@ export const AXES = [
     // entra por castellano. Se listan igual para cuando haya mas glosas.
     gr: ['ἕξιν', 'ἕξει', 'ἕξεων', 'ἔθος', 'ἔθη', 'ἔθεσιν', 'κτῆσις', 'κτήσει', 'καθεύδειν', 'καθεύδοντι'],
     es: [
-      'habito', 'habitos', 'costumbre', 'acostumbrar', 'disposicion', 'disposiciones', 'ejercitar',
+      'habito', 'costumbre', 'acostumbrar', 'disposicion', 'disposiciones', 'ejercitar',
       // posesion inerte. Pesos bajos en los genericos: "poseer" e "inactivo"
       // aparecen tambien en 7.g y 10.c/10.i, donde el tema es otro.
       'dormido', 'durmiendo', 'duerme', 'sueno',
-      ['poseer', 0.5], ['posee', 0.5], ['posesion', 0.5], ['inactivo', 0.5],
+      ['poseer', 0.5], ['posesion', 0.5], ['inactivo', 0.5],
       // 'sin ejercitar' SALIO: con 'sin' fuera por stopword colapsa al
       // unigrama 'ejercit', que ya ocupa 'ejercitar', y la guarda
       // DUPLICATE_TERMS la descartaba en silencio: era un termino muerto.
@@ -330,13 +330,13 @@ export const AXES = [
   {
     id: 'time', label: 'Honor', greek: 'τιμή',
     aliases: ['prestigio', 'fama', 'recibir honores'],
-    gr: ['τιμήν', 'τιμίων', 'τίμιόν', 'ἐπαινετῶν', 'ἐπαινοῦμεν', 'ἐπαίνων'],
-    es: ['honor', 'honra', 'elogio', 'elogiable', 'reputacion', 'estima', 'alabanza', 'encomio'],
+    gr: ['τιμήν', 'τιμίων', 'ἐπαινετῶν', 'ἐπαινοῦμεν', 'ἐπαίνων'],
+    es: ['honor', 'honra', 'elogio', 'reputacion', 'estima', 'alabanza', 'encomio'],
   },
   {
     id: 'ploutos', label: 'Riqueza', greek: 'πλοῦτος',
     gr: ['πλοῦτος', 'χρήσιμον', 'ὄργανα', 'χρηματιστής'],
-    es: ['riqueza', 'riquezas', 'rico', 'ricos', 'dinero', 'util', 'utilidad', 'instrumento', 'negocio', 'lucro'],
+    es: ['riqueza', 'rico', 'dinero', 'util', 'instrumento', 'negocio', 'lucro'],
   },
   {
     id: 'tyche', label: 'Fortuna', greek: 'τύχη',
@@ -351,7 +351,7 @@ export const AXES = [
     gr: ['αὔταρκες', 'αὐταρκείας', 'αἱρετὸν', 'αἱρούμεθα'],
     // 'autosuficiencia' no es lo mismo que 'autosuficiente' para el stemmer
     // castellano: da 'autosuficienci' y no entraba por ninguna puerta.
-    aliases: ['autosuficiencia', 'autarkeia', 'autosuficientes'],
+    aliases: ['autosuficiencia', 'autarkeia'],
     es: ['autosuficiente', 'autarquia', 'por si mismo', 'elegible', 'deseable', 'no necesita nada'],
   },
   {
@@ -368,7 +368,7 @@ export const AXES = [
     // οἱ πολλοί va por grForms (igualdad exacta) y no por gr (stem): el stem
     // πολλ- captura toda la familia de πολύς. Con 'πολλὰ' / 'πολλῶν' ('grandes
     // y numerosos', 1100b22 y 1101a12) el eje se activaba sin doxografia alguna.
-    grForms: ['πολλοί', 'πολλοὶ'],
+    grForms: ['πολλοί'],
     // 'parece a todos' se retiro: colapsaba al unigrama 'parec' y disparaba en
     // 32/70 pasajes, midiendo un tic de la traduccion y no la doxografia.
     es: ['opinion', 'opiniones', 'los mas', 'la mayoria', 'vulgo', 'se dice', 'sabios', 'antiguos'],
@@ -378,13 +378,13 @@ export const AXES = [
     // techne y los oficios estan aca solo porque el libro I los usa como
     // escalones del argumento arquitectonico. Es su lugar provisorio.
     gr: ['πολιτικὸν', 'ἀρχιτεκτονικῶν', 'νομοθέτης', 'νόμῳ', 'ἐπιστημῶν', 'τέχνη', 'δύναμιν'],
-    es: ['politica', 'ciudad', 'legislador', 'ciencia', 'ciencias', 'arte', 'artes', 'arquitectonica', 'rectora', 'estrategia', 'medicina'],
+    es: ['politica', 'ciudad', 'legislador', 'ciencia', 'arte', 'arquitectonica', 'rectora', 'estrategia', 'medicina'],
   },
   {
     id: 'akroates', label: 'Oyente', greek: 'ἀκροατής',
     aliases: ['estudiante', 'alumno', 'capaz de aprender'],
     gr: ['ἀκροατής', 'νέος', 'ἄπειρος', 'παιδεία', 'μανθάνειν', 'γνῶσις'],
-    es: ['joven', 'jovenes', 'oyente', 'inexperto', 'educacion', 'educado', 'aprender', 'ensenanza', 'pasiones', 'discipulo'],
+    es: ['joven', 'oyente', 'inexperto', 'educacion', 'educado', 'aprender', 'ensenanza', 'pasiones', 'discipulo'],
   },
   {
     id: 'idea', label: 'Idea platónica', greek: 'ἰδέα',
@@ -394,7 +394,7 @@ export const AXES = [
     // ἁπλῶς retirado: es el adverbio "en sentido absoluto", no tiene
     // relacion con Platon. Falso amigo, como φυτόν/φύσις y ἔθνος/ἔθος.
     gr: ['ἰδέα', 'εἶδος', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι'],
-    es: ['idea', 'ideas', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
+    es: ['idea', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
   },
   {
     // BIOS: la vida BIOGRAFICA. El genero de vida que uno elige y el tramo que
@@ -406,7 +406,7 @@ export const AXES = [
     id: 'bios', label: 'Curso de vida', greek: 'βίος',
     gr: ['βίον', 'βίου', 'βίῳ', 'χρόνος'],
     aliases: ['cuanto dura la vida', 'a lo largo de la vida', 'que vida elegir', 'tipo de vida'],
-    es: ['vida entera', 'vida completa', 'golondrina', 'un solo dia', ['tiempo', 0.5], 'mudanza', 'vicisitudes', 'genero de vida', 'generos de vida'],
+    es: ['vida entera', 'vida completa', 'golondrina', 'un solo dia', ['tiempo', 0.5], 'mudanza', 'vicisitudes', 'genero de vida'],
   },
   {
     // ZOE: el VIVIR como actividad, no como biografia. Es el termino del
@@ -415,25 +415,25 @@ export const AXES = [
     id: 'zoe', label: 'El vivir', greek: 'ζωή',
     gr: ['ζῆν', 'ζωή', 'ζωήν', 'ζωῆς', 'εὐζωία'],
     aliases: ['estar vivo', 'la vida humana', 'vida vegetativa'],
-    es: [['vivir', 0.5], ['viviente', 0.5], ['vivientes', 0.5], ['vive', 0.5], ['viven', 0.5], 'vivir bien', 'plantas', 'animales'],
+    es: [['vivir', 0.5], ['viviente', 0.5], ['vive', 0.5], ['viven', 0.5], 'vivir bien', 'plantas', 'animales'],
   },
   {
     // KALON: lo noble. Formas EXACTAS para no arrastrar el adverbio kalos
     // (que va a metodo) ni la belleza fisica de los atletas en 8.e.
     id: 'kalon', label: 'Lo noble', greek: 'καλόν',
-    grForms: ['καλόν', 'καλὸν', 'καλά', 'καλὰ', 'καλῶν', 'καλαί', 'καλαὶ', 'καλαῖς', 'καλὴ', 'κάλλιον', 'κάλλιστα', 'κάλλιστον'],
-    es: ['noble', 'nobles', 'hermoso', 'hermosa', 'hermosas', 'bello', 'bella', 'belleza', 'hechos nobles'],
+    grForms: ['καλόν', 'καλά', 'καλῶν', 'καλαί', 'καλαῖς', 'καλὴ', 'κάλλιον', 'κάλλιστα', 'κάλλιστον'],
+    es: ['noble', 'hermoso', 'bello', 'belleza', 'hechos nobles'],
   },
   {
     // THEION: lo divino en la praxis. Formas EXACTAS: la raiz "the-" arrastraria
     // theoria/theorein, que en el libro I significa casi siempre "examinar".
     id: 'theion', label: 'Lo divino', greek: 'θεῖον',
     grForms: [
-      'θεῖον', 'θεῖόν', 'θείαν', 'θείων', 'θειότερον', 'θειότερόν', 'θειοτάτων',
-      'θεός', 'θεοὺς', 'θεούς', 'θεῶν', 'θεῷ',
+      'θεῖον', 'θείαν', 'θείων', 'θειότερον', 'θειοτάτων',
+      'θεός', 'θεοὺς', 'θεῶν', 'θεῷ',
       ['μακάριον', 0.5], ['μακαρίους', 0.5], ['μακαρίζομεν', 0.5], ['μακαρίζει', 0.5],
     ],
-    es: ['divino', 'divina', 'dios', 'dioses', 'bienaventurado', 'don de los dioses', 'providencia'],
+    es: ['divino', 'dios', 'bienaventurado', 'don de los dioses', 'providencia'],
   },
   {
     // ARKHE: en el libro I es sobre todo el punto de partida del RAZONAMIENTO
@@ -446,8 +446,8 @@ export const AXES = [
     // Tampoco entra "comienzo": en 9.b es temporal ("lo que dijimos al
     // comienzo"), una referencia interna al tratado, no el concepto.
     id: 'arkhe', label: 'Principio', greek: 'ἀρχή',
-    gr: ['ἀρχή', 'ἀρχὴ', 'ἀρχῆς', 'ἀρχῇ', 'ἀρχήν', 'ἀρχὴν', 'ἀρχάς', 'ἀρχὰς', 'ἀρχῶν'],
-    es: ['principio', 'principios', 'punto de partida'],
+    gr: ['ἀρχή', 'ἀρχάς', 'ἀρχῶν'],
+    es: ['principio', 'punto de partida'],
   },
   {
     // TELEIOS: lo completo o acabado. Concepto propio, no un matiz de la
@@ -458,7 +458,7 @@ export const AXES = [
     id: 'teleios', label: 'Lo completo', greek: 'τέλειος',
     gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότατον', 'τελειότερον', 'τελειοῦται'],
     aliases: ['teleios', 'fin perfecto', 'fin acabado'],
-    es: ['perfecto', 'perfecta', 'perfectos', 'perfectas', ['completo', 0.5], ['acabado', 0.5], ['cabal', 0.5], ['pleno', 0.5]],
+    es: ['perfecto', ['completo', 0.5], ['acabado', 0.5], ['cabal', 0.5], ['pleno', 0.5]],
   },
 ];
 
