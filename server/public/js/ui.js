@@ -38,7 +38,12 @@ function collectTagged(rol) {
       if (!byKey.has(key)) byKey.set(key, { key, tags: [], passageIds: [] });
       const entry = byKey.get(key);
       entry.tags.push(t);
-      entry.passageIds.push(p.id);
+      // Un pasaje puede llevar VARIOS tags con la misma pregunta: el
+      // chunker fusiona parrafos cortos del mismo capitulo y acumula sus
+      // tags (prev.tags en build-corpus.mjs). Sin este control, showTagged
+      // encuentra el mismo pasaje una vez por tag y la respuesta repite la
+      // cita. Los tags SI se acumulan todos: de ahi salen rta y nota.
+      if (!entry.passageIds.includes(p.id)) entry.passageIds.push(p.id);
     });
   });
   return [...byKey.values()].sort((a, b) => a.key.localeCompare(b.key, 'es'));
@@ -595,8 +600,11 @@ function renderResults() {
       if (r.axisCount > 1) {
         const cov = el('span', 'cov', `${r.hitAxes}/${r.axisCount} ejes`);
         if (r.hitAxes === r.axisCount) cov.classList.add('full');
-        if (r.demoted) cov.classList.add('weak');
-        cov.title = r.demoted
+        // r.demoted es axisDemoted || senseDemoted. Este chip habla SOLO
+        // de cobertura de ejes: si mira demoted, un pasaje relegado por la
+        // acepcion aparece como si tocara un solo eje.
+        if (r.axisDemoted) cov.classList.add('weak');
+        cov.title = r.axisDemoted
           ? 'Toca un solo eje de una consulta de varios: relegado al final'
           : r.hitAxes === r.axisCount
             ? 'Toca todos los ejes de la consulta'
@@ -608,7 +616,8 @@ function renderResults() {
       // no bajo por el coseno sino porque usa el eje en otra acepcion
       if (r.senseFactor != null && r.senseFactor < 0.999) {
         score.classList.add('sensedown');
-        score.title = `La consulta pide otra acepción de un eje: puntaje al ${(r.senseFactor * 100).toFixed(0)}%`;
+        score.title = `La consulta pide otra acepción de un eje: puntaje al ${(r.senseFactor * 100).toFixed(0)}%`
+          + (r.senseDemoted ? ' · relegado al final de la lista' : '');
       }
       top.append(score);
     }
