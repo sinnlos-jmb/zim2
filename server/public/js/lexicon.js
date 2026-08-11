@@ -133,7 +133,12 @@ export const AXES = [
         // continencia, libro VII) que todavia no se midio.
         gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί', 'ἀνδρείου', 'ἀνδρεῖον', 'σώφρονος', 'σώφρων'],
         es: ['valentía', 'justicia', 'justo', 'valiente', 'templado'],
-        aliases: ['virtud moral', 'virtudes del caracter', 'excelencia moral', 'excelencia etica'],
+        // continente/incontinente entran SOLO como alias, coherente con
+        // la nota de arriba: siguen fuera del indice del corpus (no son
+        // la virtud en discusion en 13.f/13.g) pero ya no son invisibles
+        // para la busqueda libre, que hasta ahora no devolvia NADA y
+        // dejaba el tema colgado del unico tag manual de 13.f.
+        aliases: ['virtud moral', 'virtudes del caracter', 'excelencia moral', 'excelencia etica', 'continente', 'incontinente', 'continencia', 'el continente y el incontinente'],
       },
       {
         id: 'dianoetica', label: 'virtud dianoética (del intelecto)', greek: 'διανοητική',
@@ -199,7 +204,15 @@ export const AXES = [
         id: 'accion', label: 'acción, praxis', greek: 'πρᾶξις', weight: 0.4,
         gr: ['πρᾶξις', 'πράξεις', 'πράττειν', 'πρακτῶν'],
         es: ['accion', 'acciones'],
-        aliases: ['praxis', 'accion humana', 'conducta'],
+        // Las tres frases nuevas son alias de CONSULTA: la pregunta libre
+        // "las cosas que se pueden hacer" no devolvia nada porque ninguno
+        // de sus tokens [cosa, pueden, hacer] estaba en el lexico. Hacen
+        // falta las dos formas: 'pueden' no stemea igual que 'puede', asi
+        // que "lo que se puede hacer" da [pued, hacer] y la otra
+        // [cosa, pueden, hacer]. Del lado del corpus el concepto ya entra
+        // por la glosa πρακτῶν, que esta en este mismo sentido: los
+        // pasajes son 1094a19 y 1097a15.
+        aliases: ['praxis', 'accion humana', 'conducta', 'lo que se puede hacer', 'las cosas que se pueden hacer', 'lo realizable'],
       },
     ],
   },
@@ -297,8 +310,16 @@ export const AXES = [
       'habito', 'habitos', 'costumbre', 'acostumbrar', 'disposicion', 'disposiciones', 'ejercitar',
       // posesion inerte. Pesos bajos en los genericos: "poseer" e "inactivo"
       // aparecen tambien en 7.g y 10.c/10.i, donde el tema es otro.
-      'dormido', 'durmiendo', 'duerme', 'sueno', 'sin ejercitar',
+      'dormido', 'durmiendo', 'duerme', 'sueno',
       ['poseer', 0.5], ['posee', 0.5], ['posesion', 0.5], ['inactivo', 0.5],
+      // 'sin ejercitar' SALIO: con 'sin' fuera por stopword colapsa al
+      // unigrama 'ejercit', que ya ocupa 'ejercitar', y la guarda
+      // DUPLICATE_TERMS la descartaba en silencio: era un termino muerto.
+      // 'ejercicio' ocupa su lugar con peso bajo. Stemea 'ejercici', que
+      // es un slot libre, y rescata 9.b (parrafo 34), "cierto aprendizaje
+      // o ejercicio": la ADQUISICION de la eudaimonia, que quedo huerfana
+      // cuando 'ejercicio' bajo de energeia/acto a sus aliases.
+      ['ejercicio', 0.5],
     ],
   },
   {
