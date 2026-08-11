@@ -16,7 +16,7 @@
    grilla del body no cambia y la sidebar sigue calzando abajo. */
 #topbar{
   grid-area:hd; display:flex; align-items:center; gap:12px;
-  padding:0 14px 0 10px; background:var(--nav);
+  padding:0 14px 0 10px; background:var(--soft);
   border-bottom:1px solid var(--border);
 }
 #sbtoggle{
@@ -143,7 +143,40 @@ body.no-sb{grid-template-columns:minmax(0,1fr);grid-template-areas:"hd" "mn" "ft
 body.no-sb #sb,body.no-sb #scrim{display:none}
 .wide{max-width:940px;margin:0 auto}
 
-.hero{padding:38px 0 30px;border-bottom:1px solid var(--border)}
+.hero {
+padding: 38px 5px 5px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Capa del fondo con transparencia */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Tu imagen de fondo */
+  background-image: url(../img/bk.jpg);
+  background-size: cover;
+  background-position: center;
+  
+  /* Control de transparencia (Ajusta este valor entre 0.1 y 0.9) */
+  opacity: 0.2; 
+  
+  /* Pone el fondo por detrás del texto */
+  z-index: 0; 
+}
+
+/* Aseguramos que todo el contenido del hero quede por encima del fondo */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
 .hero .kicker{
   font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
   color:var(--blue);margin:0 0 12px;
@@ -153,7 +186,7 @@ body.no-sb #sb,body.no-sb #scrim{display:none}
 .hero .lead2{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:64ch}
 .hero .grk{font-family:"Times New Roman",Georgia,serif;font-size:17px}
 
-.figures{display:flex;flex-wrap:wrap;gap:26px;padding:20px 0 26px;border-bottom:1px solid var(--border)}
+.figures{display:flex;flex-wrap:wrap;gap:26px;padding:40px 0 15px}
 .fig b{display:block;font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .fig span{font-size:12px;color:var(--muted)}
 
