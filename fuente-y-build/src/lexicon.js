@@ -264,18 +264,26 @@ export const AXES = [
     // traduccion ("con razon" 1.a, "por esta razon" 4.b, "muchas razones"
     // 6.a), el mismo tic que 'vida' en bios. El peso se corre al griego.
     id: 'logos', label: 'Razón', greek: 'λόγος',
-    aliases: ['logos'],
+    aliases: ['logos', ['razon', 0.3]],
     gr: ['νοῦς'],
-    // 'razon' se declara en el EJE y no dentro de un sentido. esStem() corta
-    // el sufijo -amiento, asi que esTokens('razonamiento') devuelve ['razon']:
-    // el castellano NO puede separar la facultad del argumento. Declarado
-    // aca el termino enciende el eje sin votar por ningun sentido
-    // (senseMixFromHits saltea los hits sin sense) y la acepcion queda en
-    // manos de las formas griegas, que si son inequivocas.
+    // 'razon' vive en los ALIAS del eje y ya no en 'es'. buildIndex solo
+    // carga ax.aliases con withAliases=true, o sea en INDEX_Q (la consulta)
+    // y nunca en INDEX (los pasajes): se lo puede seguir escribiendo en el
+    // buscador, pero deja de entrar en el vector de cada pasaje.
+    // Estaba en 'es' con peso 0.3 y era un detector de modismos de la
+    // traduccion ("con razon" 1.a, "por esta razon" 4.b, "muchas razones"
+    // 6.a). Con 0.3 le ganaba a 'nuestro razonamiento' (0.5 * 0.4 = 0.2), el
+    // termino preciso del sentido. Y como no vota ningun sentido, esos
+    // pasajes quedaban sin mezcla en el eje: senseAgreement devuelve null,
+    // no entra en el promedio y senseFactor queda en 1. Eran inmunes al
+    // filtro de acepcion justo los que entraban por un modismo.
+    // Sigue sin sentido asignado a proposito: esStem() corta el sufijo
+    // -amiento, asi que esTokens('razonamiento') devuelve ['razon'] y el
+    // castellano no puede separar la facultad del argumento. Esa distincion
+    // queda en manos de las formas griegas, que si son inequivocas.
     // Si viviera dentro de un sentido, el OTRO sentido perderia su termino
     // castellano en silencio: la guarda DUPLICATE_TERMS de buildIndex usa un
     // solo Set por eje, compartido por todos sus sentidos.
-    es: [['razon', 0.3]],
     senses: [
       {
         id: 'razon', label: 'la razón (facultad)', greek: 'λόγον ἔχον',
