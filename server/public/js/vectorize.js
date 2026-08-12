@@ -280,13 +280,34 @@ export function applySenseTags(mix, tags = []) {
   const out = { ...(mix || {}) };
   const pinned = [];
   const porEje = new Map();
-  // ejes fijados a mano como "sin sentido": un tag { eje } SIN 'sentido' anula
-  // la mezcla de ese eje (queda vacia), para los falsos positivos/negativos de
-  // la heuristica que no ameritan elegir un sentido puntual.
+  // ejes fijados a mano como "sin sentido": SOLO anula la mezcla de un eje el
+  // tag que lo pide con todas las letras, { "eje": "arete", "sentido":
+  // "ninguno" }.
+  //
+  // Antes alcanzaba con un tag { eje } SIN 'sentido' para vaciarla, y esa es
+  // tambien la forma de los tags de ROL y de RELEVANCIA ({ rol: "faq", eje:
+  // "ergon" }): el campo 'eje' significaba dos cosas distintas segun viniera o
+  // no acompanado de 'sentido', y un tag que solo queria colgar una pregunta
+  // borraba lo que el motor habia deducido bien. Medido con
+  // build/auditar-sentidos.mjs sobre los 72 pasajes: 9 mezclas correctas
+  // borradas sin que nadie lo pidiera.
+  //   2.a  energeia  {accion: 1}
+  //   3.a  arete     {etica: 1}   (delta, dikaia, andreia en el pasaje)
+  //   4.d  arete     {etica: 1}
+  //   6.g  arete     {dianoetica: 1}
+  //   7.g  ergon     {funcion: 0.90, obra: 0.10}
+  //   7.i  ergon     {funcion: 0.90, obra: 0.10}
+  //   8.f  arete     {etica: 1}
+  //   8.g  arete     {etica: 1}
+  //   8.h  arete     {etica: 1}
+  // Un tag sin 'sentido' ahora se ignora aca y sigue viviendo para lo suyo
+  // (rol, relevancia, preguntas): no dice nada sobre la acepcion.
+  const NEUTRO = new Set(['ninguno', 'neutral', 'sin_sentido']);
   const neutralEjes = new Set();
   for (const t of tags || []) {
     if (!t || !t.eje) continue;
-    if (!t.sentido) { neutralEjes.add(t.eje); continue; }
+    if (!t.sentido) continue;
+    if (NEUTRO.has(String(t.sentido).toLowerCase())) { neutralEjes.add(t.eje); continue; }
     if (!porEje.has(t.eje)) porEje.set(t.eje, new Map());
     const m = porEje.get(t.eje);
     const w = t.peso_sentido == null ? 1 : t.peso_sentido;

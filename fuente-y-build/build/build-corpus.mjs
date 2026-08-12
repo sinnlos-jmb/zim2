@@ -5,7 +5,7 @@ import { parseSource, spanishOnly } from '../src/parse.js';
 import { grStem, grSurfaceForms, grStrip } from '../src/normalize.js';
 import { AXES } from '../src/lexicon.js';
 
-const SRC = process.argv[2] || '/data/en1/app/EN_libro1_v7_tags_fixed.txt';
+const SRC = process.argv[2] || 'fuente-y-build/EN_libro1_v7_tags_fixed.txt';
 const OUT = '/data/en1/app/data';
 fs.mkdirSync(OUT, { recursive: true });
 

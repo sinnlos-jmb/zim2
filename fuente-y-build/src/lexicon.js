@@ -110,15 +110,23 @@ export const AXES = [
     // Cuando el parrafo habla de la virtud en general sin distinguir tipo, no
     // se tagea ningun sentido: el eje queda neutral, igual que
     // carpintero/zapatero en ergon.
-    // 'etica' (palabra suelta) se deja SIN mover a un sentido: coincide con
-    // el stem del titulo del tratado ("Etica Nicomaquea") ademas del
-    // adjetivo "etica/eticas" referido a la virtud, y sin medirlo contra los
-    // 72 pasajes no se sabe si moverla arrastraria menciones del titulo.
-    // Queda como estaba, a la espera de esa medicion.
+    // 'etica' (palabra suelta) BAJO al sentido 'etica'. El comentario viejo la
+    // dejaba arriba "a la espera de esa medicion", por miedo a que el stem
+    // etic- arrastrara el titulo del tratado ("Etica Nicomaquea") ademas del
+    // adjetivo referido a la virtud. La medicion existe: sobre los 72 pasajes
+    // el termino prende en UNO solo, 13.h ("las virtudes eticas y
+    // dianoeticas"), que es justamente el pasaje donde el adjetivo elige
+    // sentido. El titulo no aparece nunca en el texto indexado.
+    // Efecto medido en 13.h: la mezcla pasa de {dianoetica 0.66 / etica 0.34}
+    // a {dianoetica 0.59 / etica 0.41}, mas cerca del 50/50 tagueado a mano.
+    // OJO si algun dia se lo quiere en los dos lados: la guarda
+    // DUPLICATE_TERMS de buildIndex usa un solo Set por eje, compartido por
+    // todos sus sentidos, y ax.es se carga ANTES que los sentidos. Dejarlo
+    // arriba y agregarlo abajo no lo duplica: mata la copia del sentido.
     id: 'arete', label: 'Virtud', greek: 'ἀρετή',
     aliases: ['arete'],
     gr: ['ἀρετή', 'σπουδαῖον'],
-    es: ['virtud', 'excelencia', 'esforzado', 'etica'],
+    es: ['virtud', 'excelencia', 'esforzado'],
     senses: [
       {
         id: 'etica', label: 'virtud ética (del carácter)', greek: 'ἠθική',
@@ -132,7 +140,7 @@ export const AXES = [
         // en discusion, y es un concepto aristotelico distinto (la
         // continencia, libro VII) que todavia no se midio.
         gr: ['ἀνδρείαν', 'δίκαια', 'σωφροσύνη', 'ἠθικαί', 'ἀνδρείου', 'σώφρονος', 'σώφρων'],
-        es: ['valentía', 'justicia', 'justo', 'valiente', 'templado'],
+        es: ['valentía', 'justicia', 'justo', 'valiente', 'templado', 'etica'],
         // continente/incontinente entran SOLO como alias, coherente con
         // la nota de arriba: siguen fuera del indice del corpus (no son
         // la virtud en discusion en 13.f/13.g) pero ya no son invisibles
