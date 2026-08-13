@@ -90,7 +90,7 @@ export function parseSource(raw) {
   // un parrafo con punto aparte (varias lineas sin renglon en blanco entre
   // ellas), se sigue aplicando a las lineas siguientes del MISMO bloque que
   // no traigan su propio tag. Se resetea al vaciar el bloque (flush).
-
+  let blockTag = null;
 
   const flush = () => {
     if (!buf.length) return;
@@ -103,6 +103,7 @@ export function parseSource(raw) {
     });
     buf = [];
     bufTags = [];
+    blockTag = null;
   };
 
   lines.forEach((line, i) => {
@@ -129,12 +130,11 @@ export function parseSource(raw) {
     if (ch) { flush(); chapter = Number(ch[1]); return; }
     if (chapter === null) return;
     buf.push(t);
-    let lineTag = null;
     if (pendingTag) {
-      lineTag = pendingTag;
+      blockTag = pendingTag;
       pendingTag = null;
     }
-    bufTags.push(lineTag);
+    bufTags.push(blockTag);
   });
   if (pendingTag) {
     tagWarnings.push(

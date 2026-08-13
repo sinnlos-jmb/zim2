@@ -74,6 +74,36 @@ function splitLong(u) {
   }));
 }
 
+/* dedupeTags - un tag no aporta nada dos veces en el mismo pasaje.
+ *
+ * parse.js deja el tag del parrafo vigente en TODAS las lineas fisicas del
+ * bloque, y eso esta bien: un parrafo puede repartirse en dos pasajes finales
+ * y los dos tienen que quedar tagueados (EN.I.8.b y EN.I.8.c salen del parrafo
+ * 30 y los dos necesitan el split de arete). El problema aparece cuando esas
+ * lineas se vuelven a fusionar en un mismo pasaje: ahi el tag se repite una vez
+ * por linea. Se compara por clave canonica, con las claves ordenadas, para que
+ * el orden en que se escribio el tag en el .txt no cuente como diferencia.
+ */
+const canonTag = (v) => {
+  if (Array.isArray(v)) return '[' + v.map(canonTag).join(',') + ']';
+  if (v && typeof v === 'object') {
+    return '{' + Object.keys(v).sort().map((k) => JSON.stringify(k) + ':' + canonTag(v[k])).join(',') + '}';
+  }
+  return JSON.stringify(v);
+};
+
+function dedupeTags(tags) {
+  const vistos = new Set();
+  const out = [];
+  for (const t of tags || []) {
+    const k = canonTag(t);
+    if (vistos.has(k)) continue;
+    vistos.add(k);
+    out.push(t);
+  }
+  return out;
+}
+
 // 1. dividir largos
 let work = units.flatMap(splitLong);
 
@@ -87,8 +117,11 @@ for (const u of work) {
     prev.greekParallel = [prev.greekParallel, u.greekParallel].filter(Boolean).join(' ') || null;
     prev.mergedCount = (prev.mergedCount || 1) + 1;
     // dos parrafos con tags propios pueden terminar en la misma unidad final:
-    // se acumulan todos, no se pisan.
-    prev.tags = [...(prev.tags || []), ...(u.tags || [])];
+    // se acumulan todos, no se pisan, pero se deduplican: parse.js deja el
+    // tag del parrafo vigente en cada linea fisica del bloque, asi que al
+    // volver a fusionar esas lineas aca el mismo tag entraba una vez por
+    // linea (hasta x5 en EN.I.4.d).
+    prev.tags = dedupeTags([...(prev.tags || []), ...(u.tags || [])]);
     prev.parrafoNros = [...(prev.parrafoNros || (prev.parrafoNro != null ? [prev.parrafoNro] : [])), ...(u.parrafoNro != null ? [u.parrafoNro] : [])];
   } else {
     merged.push({ ...u });
