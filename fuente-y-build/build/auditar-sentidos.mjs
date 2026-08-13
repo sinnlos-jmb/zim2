@@ -165,25 +165,41 @@ for (const p of ps) {
 if (!nTags) console.log('  todavia no hay tags que fijen acepcion.');
 else console.log('  --> ' + nTags + ' tags: ' + nCoin + ' coinciden, ' + nDisc + ' discrepan, ' + nMudo + ' sobre ejes mudos');
 
-/* ---------------------------------------------------- 5. COLATERAL ----------- */
+/* ---------------------------------------------------- 5. ANULACIONES --------- */
 linea('=');
-console.log('5. TAGS QUE ANULAN UNA ACEPCION SIN PEDIRLO');
-console.log('   applySenseTags trata CUALQUIER tag { eje } sin \'sentido\' como una orden');
-console.log('   de vaciar la mezcla de ese eje. Un tag de rol "faq", que solo queria');
-console.log('   colgar una pregunta, borra de paso lo que el motor habia deducido.');
+console.log('5. ANULACIONES EXPLICITAS DE ACEPCION (revisar si son intencionales)');
+console.log('   Desde el parche 6, applySenseTags solo vacia la mezcla de un eje si el tag');
+console.log('   declara un sentido neutro (ninguno, neutral o sin_sentido). Un tag de eje');
+console.log('   sin sentido, por ejemplo un tag de rol como faq, ya no anula nada: queda inerte.');
 linea();
-let colateral = 0;
+const NEUTRO_IDS = new Set(['ninguno', 'neutral', 'sin_sentido']);
+let anuladas = 0;
+for (const p of ps) {
+  for (const t of p.tags || []) {
+    if (!t || !t.eje || !t.sentido) continue;
+    if (!NEUTRO_IDS.has(String(t.sentido).toLowerCase())) continue;
+    if (!POLI_IDS.includes(t.eje)) continue;
+    const habia = p.base && p.base[t.eje];
+    anuladas++;
+    console.log('  ' + p.id.padEnd(10) + 'rol ' + (t.rol || '-').padEnd(8) + ' sobre ' + t.eje.padEnd(10) +
+      (habia ? 'ANULA a proposito ' + JSON.stringify(habia) : 'el motor no habia deducido nada'));
+  }
+}
+if (!anuladas) console.log('  ninguna.');
+
+console.log();
+console.log('  tags de eje sin sentido sobre ejes polisemicos (inertes, no fijan ni anulan nada):');
+let inertes = 0;
 for (const p of ps) {
   for (const t of p.tags || []) {
     if (!t || !t.eje || t.sentido) continue;
     if (!POLI_IDS.includes(t.eje)) continue;
-    const habia = p.base && p.base[t.eje];
-    colateral++;
-    console.log('  ' + p.id.padEnd(10) + 'rol "' + (t.rol || '-') + '" sobre ' + t.eje.padEnd(10) +
-      (habia ? 'BORRA ' + JSON.stringify(habia) : 'el motor no habia deducido nada'));
+    inertes++;
+    console.log('    ' + p.id.padEnd(10) + 'rol ' + (t.rol || '-').padEnd(8) + ' sobre ' + t.eje.padEnd(10) +
+      '(revisar si le falta el campo sentido)');
   }
 }
-if (!colateral) console.log('  ninguno.');
+if (!inertes) console.log('    ninguno.');
 
 /* ---------------------------------------------------- 6. DETALLE ------------- */
 const detalle = todos ? POLI_IDS : (typeof ejeDetalle === 'string' ? [ejeDetalle] : []);
