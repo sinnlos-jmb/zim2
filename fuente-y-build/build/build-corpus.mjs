@@ -1,13 +1,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { parseSource, spanishOnly } from '../src/parse.js';
 import { grStem, grSurfaceForms, grStrip } from '../src/normalize.js';
 import { AXES } from '../src/lexicon.js';
+import { syncEngine } from './sync-engine.mjs';
 
-const SRC = process.argv[2] || 'fuente-y-build/EN_libro1_v7_tags_fixed.txt';
-const OUT = '/data/en1/app/data';
+// Todo se resuelve desde la ubicacion de ESTE archivo, no desde el cwd:
+// build/ -> fuente-y-build/ -> raiz del repo. Asi el script se puede correr
+// desde cualquier carpeta y siempre escribe donde el servidor lee de veras.
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const SRC = process.argv[2] || path.join(ROOT, 'fuente-y-build', 'EN_libro1_v7_tags_fixed.txt');
+const OUT = path.join(ROOT, 'server', 'public', 'data');
 fs.mkdirSync(OUT, { recursive: true });
+console.log('fuente :', SRC);
+console.log('salida :', OUT);
+
 
 const raw = fs.readFileSync(SRC, 'utf8');
 const units = parseSource(raw);
@@ -142,6 +151,7 @@ const glossary = [...lemmas.values()]
   })
   .sort((a, b) => b.total - a.total || b.passageCount - a.passageCount);
 
+
 /* ---------------------------------------------------- SALIDA ----------------- */
 fs.writeFileSync(path.join(OUT, 'corpus.json'), JSON.stringify({ version: 1, source: 'EN libro I', builtAt: new Date().toISOString(), passages }, null, 1));
 fs.writeFileSync(path.join(OUT, 'glossary.json'), JSON.stringify({ version: 1, lemmas: glossary }, null, 1));
@@ -226,3 +236,8 @@ for (const g of glossary.slice(0, 25)) {
   const fl = g.forms.map((f) => `${f.form}\u00d7${f.n}`).join(', ');
   console.log(`  ${g.canonical.padEnd(16)}${String(g.total).padStart(3)}${String(g.passageCount).padStart(5)}  ${fl}`);
 }
+
+console.log('\n=== SINCRONIZACION DEL MOTOR ===');
+const sync = syncEngine(ROOT);
+console.log('copiados:', sync.copiados.length ? sync.copiados.join(', ') : '(ninguno)');
+console.log('iguales :', sync.iguales.length);
