@@ -142,28 +142,61 @@ for (const ax of POLI_IDS) {
 
 /* ---------------------------------------------------- 4. TAGS ---------------- */
 linea('=');
-console.log('4. TAGS MANUALES CONTRA EL MOTOR');
+console.log('4. TAGS MANUALES CONTRA EL MOTOR (por mezcla declarada)');
+console.log('   Los tags de un mismo eje en un pasaje forman UNA mezcla, no veredictos');
+console.log('   sueltos: asi los aplica applySenseTags. Se compara la mezcla declarada');
+console.log('   contra la que dedujo el motor, no tag por tag.');
 linea();
-let nTags = 0, nCoin = 0, nDisc = 0, nMudo = 0;
+const NEUTRO4 = new Set(['ninguno', 'neutral', 'sin_sentido']);
+const fmtMix = (m) => Object.entries(m).sort((a, b) => b[1] - a[1])
+  .map(([k, v]) => k + ' ' + (v * 100).toFixed(0) + '%').join(' / ');
+let nMez = 0, nCoin = 0, nDisc = 0, nMudo = 0, nEmp = 0, nDup = 0;
 for (const p of ps) {
-  const tags = (p.tags || []).filter((t) => t && t.sentido);
-  if (!tags.length) continue;
-  const vistos = new Set();
-  for (const t of tags) {
-    const clave = t.eje + '=' + t.sentido;
-    if (vistos.has(clave)) { console.log('  ' + p.id.padEnd(10) + clave.padEnd(24) + 'tag DUPLICADO en el mismo pasaje'); continue; }
-    vistos.add(clave);
-    nTags++;
-    const auto = p.base && p.base[t.eje];
-    if (!auto) { nMudo++; console.log('  ' + p.id.padEnd(10) + clave.padEnd(24) + 'el motor no deduce nada (el tag es la unica fuente)'); continue; }
-    const share = auto[t.sentido] || 0;
-    const dom = Object.entries(auto).sort((a, b) => b[1] - a[1])[0][0];
-    if (dom === t.sentido) { nCoin++; console.log('  ' + p.id.padEnd(10) + clave.padEnd(24) + 'coincide (' + (share * 100).toFixed(0) + '%)'); }
-    else { nDisc++; console.log('  ' + p.id.padEnd(10) + clave.padEnd(24) + 'DISCREPA: el motor dice ' + dom + ' ' + JSON.stringify(auto)); }
+  const declarado = new Map();
+  for (const t of p.tags || []) {
+    if (!t || !t.eje || !t.sentido) continue;
+    if (NEUTRO4.has(String(t.sentido).toLowerCase())) continue;
+    if (!declarado.has(t.eje)) declarado.set(t.eje, new Map());
+    const m = declarado.get(t.eje);
+    if (m.has(t.sentido)) {
+      nDup++;
+      console.log('  ' + p.id.padEnd(10) + t.eje.padEnd(10) + 'tag DUPLICADO: ' + t.sentido);
+    }
+    const w = t.peso_sentido == null ? 1 : t.peso_sentido;
+    m.set(t.sentido, (m.get(t.sentido) || 0) + w);
+  }
+  for (const [eje, m] of declarado) {
+    let total = 0;
+    for (const v of m.values()) total += v;
+    const dec = {};
+    for (const [s, v] of m) dec[s] = total ? v / total : 0;
+    nMez++;
+    const etiq = '  ' + p.id.padEnd(10) + eje.padEnd(10) + 'declara ' + fmtMix(dec).padEnd(30);
+    const auto = p.base && p.base[eje];
+    if (!auto || !Object.keys(auto).length) {
+      nMudo++;
+      console.log(etiq + 'el motor no deduce nada (el tag es la unica fuente)');
+      continue;
+    }
+    const ordDec = Object.entries(dec).sort((a, b) => b[1] - a[1]);
+    const empate = ordDec.length > 1 && Math.abs(ordDec[0][1] - ordDec[1][1]) < 1e-9;
+    const domAuto = Object.entries(auto).sort((a, b) => b[1] - a[1])[0][0];
+    if (empate) {
+      nEmp++;
+      console.log(etiq + 'motor ' + fmtMix(auto).padEnd(30) + 'empate deliberado (sin dominante)');
+    } else if (ordDec[0][0] === domAuto) {
+      nCoin++;
+      console.log(etiq + 'motor ' + fmtMix(auto).padEnd(30) + 'coinciden en ' + domAuto);
+    } else {
+      nDisc++;
+      console.log(etiq + 'motor ' + fmtMix(auto).padEnd(30) + 'DISCREPA: el motor dice ' + domAuto);
+    }
   }
 }
-if (!nTags) console.log('  todavia no hay tags que fijen acepcion.');
-else console.log('  --> ' + nTags + ' tags: ' + nCoin + ' coinciden, ' + nDisc + ' discrepan, ' + nMudo + ' sobre ejes mudos');
+if (!nMez) console.log('  todavia no hay tags que fijen acepcion.');
+else console.log('  --> ' + nMez + ' mezclas: ' + nCoin + ' coinciden en el dominante, ' +
+  nDisc + ' discrepan, ' + nEmp + ' empates deliberados, ' + nMudo + ' sobre ejes mudos' +
+  (nDup ? ' (' + nDup + ' tags duplicados)' : ''));
 
 /* ---------------------------------------------------- 5. ANULACIONES --------- */
 linea('=');
