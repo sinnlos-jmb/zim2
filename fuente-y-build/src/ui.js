@@ -19,7 +19,7 @@ const CORPUS = await fetch(new URL('../data/corpus.json', import.meta.url)).then
 // dimensiones y el coseno compara vectores incompatibles.
 // v10: capa de sentidos (ergon: obra/funcion, energeia: acto/accion) y limpieza
 // de lemas de esos dos ejes. Los vectores cambiaron, el indice viejo no sirve.
-const STORE_KEY = 'en1:index:v14';
+const STORE_KEY = 'en1:index:v15';
 
 // Preguntas y definiciones del menu del header: a diferencia de una version
 // anterior con preguntas escritas a mano, estas surgen del centinela

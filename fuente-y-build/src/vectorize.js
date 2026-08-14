@@ -1,6 +1,22 @@
 // vectorize.js - texto -> vector de 24 dimensiones.
 import { esTokens, grTokens, esStem, grStem, grSurfaceForms, grStrip } from './normalize.js';
 
+const GW_W = 0.4;   // peso del canal de expresiones. Medido: es el mayor peso que no
+                    // altera ningun eje dominante de los 72 pasajes del libro I.
+// Canal "gw": expresiones griegas literales, enumeradas una por una en el lexico
+// (campo grExpr, en el eje o en un sentido). grKeep borra los acentos TONALES pero
+// CONSERVA los espiritus, y no estemea ni filtra stopwords. Eso distingue dos pares
+// minimos que los otros canales no pueden ver:
+//    hen "uno" (dasia)        vs  en "en" (psili, y es stopword)
+//    hauto reflexivo (dasia)  vs  auto "eso mismo" (psili)
+// y mantiene separadas ti esti de ti estin, que el stemmer unifica en "esti".
+// Por eso la whitelist tiene que ser enumerada: un detector automatico de
+// expresiones romperia los 36 colapsos utiles que hoy funcionan bien.
+const TONAL = /[\u0300\u0301\u0342\u0345\u0303\u0304\u0306\u0308]/g;
+const APOS_G = /[\u1FBD\u1FBF\u1FFE\u2019\u02BC']/g;
+const GR_ANY = /[\u0370-\u03FF\u1F00-\u1FFF]+/g;
+const grKeep = (w) => String(w).normalize('NFD').replace(TONAL, '').replace(APOS_G, '').normalize('NFC').toLowerCase().replace(/\u03c2/g, '\u03c3');
+const grExprTokens = (text) => (String(text).match(GR_ANY) || []).map(grKeep).filter(Boolean);
 const grExactTokens = (text) => grSurfaceForms(text).map(grStrip).filter((t) => t.length >= 2);
 import { AXES, DEFAULT_WEIGHTS } from './lexicon.js';
 
@@ -13,6 +29,7 @@ function buildIndex(withAliases = false) {
   const esUni = new Map(), esPhr = new Map();
   const grUni = new Map(), grPhr = new Map();
   const gxUni = new Map(), gxPhr = new Map();
+  const gwUni = new Map(), gwPhr = new Map();
   COLLAPSED.length = 0;
   DUPLICATE_TERMS.length = 0;
 
@@ -49,17 +66,19 @@ function buildIndex(withAliases = false) {
     load(ax.es, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
     load(ax.gr, grTokens, grUni, grPhr, DEFAULT_WEIGHTS.gr, 'gr');
     load(ax.grForms, grExactTokens, gxUni, gxPhr, DEFAULT_WEIGHTS.grForms, 'gx');
+    load(ax.grExpr, grExprTokens, gwUni, gwPhr, GW_W, 'gw');
     for (const sn of ax.senses || []) {
       const sw = sn.weight == null ? 1 : sn.weight;
       load(sn.es, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
       load(sn.gr, grTokens, grUni, grPhr, DEFAULT_WEIGHTS.gr, 'gr', sn.id, sw);
       load(sn.grForms, grExactTokens, gxUni, gxPhr, DEFAULT_WEIGHTS.grForms, 'gx', sn.id, sw);
+      load(sn.grExpr, grExprTokens, gwUni, gwPhr, GW_W, 'gw', sn.id, sw);
       if (withAliases) load(sn.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es', sn.id, sw);
     }
     if (withAliases) load(ax.aliases, esTokens, esUni, esPhr, DEFAULT_WEIGHTS.es, 'es');
   });
 
-  return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr };
+  return { esUni, esPhr, grUni, grPhr, gxUni, gxPhr, gwUni, gwPhr };
 }
 
 export const INDEX = buildIndex(false);
@@ -112,6 +131,7 @@ export function vectorize(spanish, glosses = [], opts = {}) {
   accumulate(esTokens(spanish), IX.esUni, IX.esPhr, 'es', vec, hits);
   accumulate(grTokens(greek), IX.grUni, IX.grPhr, 'gr', vec, hits);
   accumulate(grExactTokens(greek), IX.gxUni, IX.gxPhr, 'gr', vec, hits);
+  accumulate(grExprTokens(greek), IX.gwUni, IX.gwPhr, 'gw', vec, hits);
   return { vector: l2(vec), raw: vec, hits };
 }
 

@@ -54,7 +54,7 @@
    },
    "arkhe/-": {
     "es": 2,
-    "gr": 3,
+    "gr": 4,
     "gx": 0
    },
    "autarkeia/-": {
@@ -113,7 +113,17 @@
     "gx": 0
    },
    "idea/-": {
-    "es": 7,
+    "es": 3,
+    "gr": 1,
+    "gx": 0
+   },
+   "idea/categorial": {
+    "es": 2,
+    "gr": 2,
+    "gx": 0
+   },
+   "idea/separada": {
+    "es": 2,
     "gr": 5,
     "gx": 0
    },
@@ -154,7 +164,12 @@
    },
    "teleios/-": {
     "es": 5,
-    "gr": 6,
+    "gr": 5,
+    "gx": 0
+   },
+   "teleios/absoluto": {
+    "es": 0,
+    "gr": 1,
     "gx": 0
    },
    "telos/-": {
@@ -392,7 +407,11 @@
     "idea": 0.755929,
     "bios": 0.377964
    },
-   "sentidos": {},
+   "sentidos": {
+    "idea": {
+     "categorial": 1
+    }
+   },
    "fijados": []
   },
   "EN.I.11.b": {
@@ -424,14 +443,15 @@
   },
   "EN.I.12.b": {
    "vector": {
-    "agathon": 0.290041,
-    "ariston": 0.103546,
-    "eudaimonia": 0.294751,
-    "ergon": 0.155319,
-    "arete": 0.605388,
-    "energeia": 0.062127,
-    "time": 0.307837,
-    "theion": 0.573615
+    "agathon": 0.289793,
+    "ariston": 0.103457,
+    "eudaimonia": 0.294498,
+    "ergon": 0.155186,
+    "arete": 0.60487,
+    "energeia": 0.062074,
+    "hexis": 0.041383,
+    "time": 0.307573,
+    "theion": 0.573124
    },
    "sentidos": {
     "arete": {
@@ -532,6 +552,9 @@
     "teleios": 0.069647
    },
    "sentidos": {
+    "idea": {
+     "categorial": 1
+    },
     "logos": {
      "argumento": 0.444444,
      "razon": 0.555556
@@ -554,6 +577,9 @@
    "sentidos": {
     "energeia": {
      "acto": 1
+    },
+    "idea": {
+     "categorial": 1
     }
    },
    "fijados": []
@@ -613,14 +639,14 @@
   },
   "EN.I.2.a": {
    "vector": {
-    "telos": 0.532842,
-    "agathon": 0.375124,
-    "ariston": 0.288557,
-    "energeia": 0.115423,
-    "tyche": 0.144278,
-    "autarkeia": 0.432835,
-    "politike": 0.432835,
-    "bios": 0.288557
+    "telos": 0.608136,
+    "agathon": 0.351903,
+    "ariston": 0.270695,
+    "energeia": 0.108278,
+    "tyche": 0.135347,
+    "autarkeia": 0.406042,
+    "politike": 0.406042,
+    "bios": 0.270695
    },
    "sentidos": {
     "energeia": {
@@ -700,23 +726,27 @@
   },
   "EN.I.4.a": {
    "vector": {
-    "telos": 0.27715,
-    "agathon": 0.506521,
-    "ariston": 0.254978,
-    "eudaimonia": 0.558703,
-    "energeia": 0.088688,
-    "hedone": 0.22172,
-    "time": 0.16629,
-    "ploutos": 0.093851,
-    "tyche": 0.05543,
-    "endoxa": 0.353992,
-    "politike": 0.16629,
-    "akroates": 0.11086,
-    "zoe": 0.16629
+    "telos": 0.276878,
+    "agathon": 0.506023,
+    "ariston": 0.254727,
+    "eudaimonia": 0.558154,
+    "energeia": 0.088601,
+    "hedone": 0.221502,
+    "time": 0.166127,
+    "ploutos": 0.093759,
+    "tyche": 0.055376,
+    "endoxa": 0.353644,
+    "politike": 0.166127,
+    "akroates": 0.110751,
+    "idea": 0.0443,
+    "zoe": 0.166127
    },
    "sentidos": {
     "energeia": {
      "accion": 1
+    },
+    "idea": {
+     "separada": 1
     }
    },
    "fijados": []
@@ -743,13 +773,13 @@
   },
   "EN.I.4.d": {
    "vector": {
-    "agathon": 0.048995,
-    "arete": 0.122489,
-    "hexis": 0.367466,
-    "akribeia": 0.146986,
-    "politike": 0.367466,
-    "kalon": 0.452369,
-    "arkhe": 0.697346
+    "agathon": 0.041384,
+    "arete": 0.10346,
+    "hexis": 0.310379,
+    "akribeia": 0.124152,
+    "politike": 0.310379,
+    "kalon": 0.382092,
+    "arkhe": 0.795931
    },
    "sentidos": {
     "arete": {
@@ -802,43 +832,57 @@
   },
   "EN.I.5.d": {
    "vector": {
-    "telos": 0.475517,
-    "agathon": 0.28531,
-    "ploutos": 0.832155
+    "telos": 0.544191,
+    "agathon": 0.272096,
+    "ploutos": 0.793612
    },
    "sentidos": {},
    "fijados": []
   },
   "EN.I.6.a": {
    "vector": {
-    "tyche": 0.229416,
-    "akribeia": 0.688247,
-    "idea": 0.688247
+    "tyche": 0.169031,
+    "akribeia": 0.507093,
+    "idea": 0.845154
    },
-   "sentidos": {},
+   "sentidos": {
+    "idea": {
+     "categorial": 0.4,
+     "separada": 0.6
+    }
+   },
    "fijados": []
   },
   "EN.I.6.b": {
    "vector": {
-    "agathon": 0.328163,
-    "endoxa": 0.367723,
-    "idea": 0.870108
+    "agathon": 0.279376,
+    "endoxa": 0.313055,
+    "idea": 0.907714
    },
-   "sentidos": {},
+   "sentidos": {
+    "idea": {
+     "categorial": 0.52882,
+     "separada": 0.47118
+    }
+   },
    "fijados": []
   },
   "EN.I.6.c": {
    "vector": {
-    "agathon": 0.327733,
-    "arete": 0.409667,
-    "logos": 0.409667,
-    "ploutos": 0.409667,
-    "endoxa": 0.231209,
-    "idea": 0.546222,
-    "bios": 0.136556,
-    "theion": 0.136556
+    "agathon": 0.288954,
+    "arete": 0.361192,
+    "logos": 0.361192,
+    "ploutos": 0.361192,
+    "endoxa": 0.203851,
+    "idea": 0.674226,
+    "bios": 0.120397,
+    "theion": 0.120397
    },
    "sentidos": {
+    "idea": {
+     "categorial": 0.857143,
+     "separada": 0.142857
+    },
     "logos": {
      "razon": 1
     }
@@ -851,17 +895,24 @@
     "politike": 0.933907,
     "idea": 0.137506
    },
-   "sentidos": {},
+   "sentidos": {
+    "idea": {
+     "separada": 1
+    }
+   },
    "fijados": []
   },
   "EN.I.6.e": {
    "vector": {
-    "agathon": 0.333264,
-    "logos": 0.317604,
-    "idea": 0.397005,
-    "bios": 0.794009
+    "agathon": 0.188724,
+    "logos": 0.179856,
+    "idea": 0.854317,
+    "bios": 0.449641
    },
    "sentidos": {
+    "idea": {
+     "separada": 1
+    },
     "logos": {
      "argumento": 1
     }
@@ -870,45 +921,57 @@
   },
   "EN.I.6.f": {
    "vector": {
-    "agathon": 0.289875,
-    "eudaimonia": 0.428012,
-    "idea": 0.856024
+    "agathon": 0.222098,
+    "eudaimonia": 0.327936,
+    "idea": 0.918221
    },
-   "sentidos": {},
+   "sentidos": {
+    "idea": {
+     "separada": 1
+    }
+   },
    "fijados": []
   },
   "EN.I.6.g": {
    "vector": {
-    "telos": 0.078507,
-    "agathon": 0.43322,
-    "arete": 0.078507,
-    "hedone": 0.314026,
-    "time": 0.132923,
-    "ploutos": 0.078507,
-    "idea": 0.823134
+    "telos": 0.074605,
+    "agathon": 0.411688,
+    "arete": 0.074605,
+    "hedone": 0.298419,
+    "time": 0.126317,
+    "ploutos": 0.074605,
+    "idea": 0.841906
    },
    "sentidos": {
     "arete": {
      "dianoetica": 1
+    },
+    "idea": {
+     "categorial": 0.265842,
+     "separada": 0.734158
     }
    },
    "fijados": []
   },
   "EN.I.6.h": {
    "vector": {
-    "telos": 0.218874,
-    "agathon": 0.462453,
-    "energeia": 0.08755,
-    "psyche": 0.437749,
-    "logos": 0.328312,
-    "ploutos": 0.109437,
-    "tyche": 0.328312,
-    "endoxa": 0.109437,
-    "idea": 0.547186
+    "telos": 0.173777,
+    "agathon": 0.367169,
+    "energeia": 0.069511,
+    "psyche": 0.347554,
+    "logos": 0.260666,
+    "ploutos": 0.086889,
+    "tyche": 0.260666,
+    "endoxa": 0.086889,
+    "idea": 0.747242
    },
    "sentidos": {
     "energeia": {
      "accion": 1
+    },
+    "idea": {
+     "categorial": 0.116279,
+     "separada": 0.883721
     },
     "logos": {
      "razon": 1
@@ -928,6 +991,9 @@
     "idea": 0.191701
    },
    "sentidos": {
+    "idea": {
+     "separada": 1
+    },
     "logos": {
      "argumento": 1
     }
@@ -964,16 +1030,24 @@
    "sentidos": {
     "logos": {
      "argumento": 1
+    },
+    "teleios": {
+     "absoluto": 1
     }
    },
    "fijados": []
   },
   "EN.I.7.c": {
    "vector": {
-    "autarkeia": 0.331442,
-    "teleios": 0.943475
+    "autarkeia": 0.264466,
+    "teleios": 0.964395
    },
-   "sentidos": {},
+   "sentidos": {
+    "teleios": {
+     "absoluto": 0.5,
+     "relativo": 0.5
+    }
+   },
    "fijados": []
   },
   "EN.I.7.d": {
@@ -1063,6 +1137,9 @@
      "funcion": 0.687053,
      "obra": 0.312947
     },
+    "idea": {
+     "categorial": 1
+    },
     "logos": {
      "razon": 1
     }
@@ -1100,6 +1177,9 @@
     },
     "logos": {
      "razon": 1
+    },
+    "teleios": {
+     "absoluto": 1
     }
    },
    "fijados": [
@@ -1224,10 +1304,11 @@
   },
   "EN.I.8.e": {
    "vector": {
-    "agathon": 0.191663,
-    "akribeia": 0.383326,
-    "bios": 0.638877,
-    "kalon": 0.638877
+    "agathon": 0.185695,
+    "hedone": 0.247594,
+    "akribeia": 0.371391,
+    "bios": 0.618984,
+    "kalon": 0.618984
    },
    "sentidos": {},
    "fijados": []
@@ -1247,14 +1328,14 @@
   },
   "EN.I.8.g": {
    "vector": {
-    "agathon": 0.057362,
-    "arete": 0.676819,
-    "energeia": 0.220752,
-    "hedone": 0.581215,
-    "tyche": 0.095603,
-    "autarkeia": 0.095603,
-    "endoxa": 0.095603,
-    "kalon": 0.353077
+    "agathon": 0.054823,
+    "arete": 0.646865,
+    "energeia": 0.210982,
+    "hedone": 0.628591,
+    "tyche": 0.091372,
+    "autarkeia": 0.091372,
+    "endoxa": 0.091372,
+    "kalon": 0.337452
    },
    "sentidos": {
     "arete": {
@@ -1285,6 +1366,9 @@
     },
     "energeia": {
      "acto": 1
+    },
+    "idea": {
+     "separada": 1
     }
    },
    "fijados": []
@@ -1343,6 +1427,9 @@
     "energeia": {
      "accion": 0.117647,
      "acto": 0.882353
+    },
+    "idea": {
+     "categorial": 1
     }
    },
    "fijados": []
@@ -1407,14 +1494,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.8.g",
-     "score": 0.676819,
-     "cos": 0.676819,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.13.g",
      "score": 0.6733,
      "cos": 0.6733,
@@ -1426,6 +1505,14 @@
      "id": "EN.I.13.e",
      "score": 0.658323,
      "cos": 0.658323,
+     "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.8.g",
+     "score": 0.646865,
+     "cos": 0.646865,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -1468,14 +1555,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.8.g",
-     "score": 0.676819,
-     "cos": 0.676819,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.13.g",
      "score": 0.6733,
      "cos": 0.6733,
@@ -1492,6 +1571,14 @@
      "ejes": "1/1"
     },
     {
+     "id": "EN.I.8.g",
+     "score": 0.646865,
+     "cos": 0.646865,
+     "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
      "id": "EN.I.10.e",
      "score": 0.636331,
      "cos": 0.636331,
@@ -1501,8 +1588,8 @@
     },
     {
      "id": "EN.I.12.b",
-     "score": 0.605388,
-     "cos": 0.605388,
+     "score": 0.60487,
+     "cos": 0.60487,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -1585,9 +1672,9 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.c",
-     "score": 0.409667,
-     "cos": 0.409667,
+     "id": "EN.I.9.c",
+     "score": 0.392339,
+     "cos": 0.392339,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -1622,14 +1709,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.8.g",
-     "score": 0.676819,
-     "cos": 0.676819,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.13.g",
      "score": 0.6733,
      "cos": 0.6733,
@@ -1646,6 +1725,14 @@
      "ejes": "1/1"
     },
     {
+     "id": "EN.I.8.g",
+     "score": 0.646865,
+     "cos": 0.646865,
+     "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
      "id": "EN.I.10.e",
      "score": 0.636331,
      "cos": 0.636331,
@@ -1655,8 +1742,8 @@
     },
     {
      "id": "EN.I.12.b",
-     "score": 0.605388,
-     "cos": 0.605388,
+     "score": 0.60487,
+     "cos": 0.60487,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -1739,9 +1826,9 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.c",
-     "score": 0.409667,
-     "cos": 0.409667,
+     "id": "EN.I.9.c",
+     "score": 0.392339,
+     "cos": 0.392339,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -1816,8 +1903,8 @@
     },
     {
      "id": "EN.I.12.b",
-     "score": 0.155319,
-     "cos": 0.155319,
+     "score": 0.155186,
+     "cos": 0.155186,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2061,8 +2148,8 @@
    "top": [
     {
      "id": "EN.I.8.g",
-     "score": 0.220752,
-     "cos": 0.220752,
+     "score": 0.210982,
+     "cos": 0.210982,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2101,25 +2188,25 @@
     },
     {
      "id": "EN.I.2.a",
-     "score": 0.115423,
-     "cos": 0.115423,
+     "score": 0.108278,
+     "cos": 0.108278,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
      "id": "EN.I.4.a",
-     "score": 0.088688,
-     "cos": 0.088688,
+     "score": 0.088601,
+     "cos": 0.088601,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.h",
-     "score": 0.08755,
-     "cos": 0.08755,
-     "sf": 1,
+     "id": "EN.I.7.g",
+     "score": 0.078389,
+     "cos": 0.148526,
+     "sf": 0.527778,
      "relegado": false,
      "ejes": "1/1"
     }
@@ -2212,17 +2299,17 @@
    ],
    "top": [
     {
-     "id": "EN.I.6.e",
-     "score": 0.317604,
-     "cos": 0.317604,
+     "id": "EN.I.10.d",
+     "score": 0.193548,
+     "cos": 0.193548,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.d",
-     "score": 0.193548,
-     "cos": 0.193548,
+     "id": "EN.I.6.e",
+     "score": 0.179856,
+     "cos": 0.179856,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2288,17 +2375,17 @@
    ],
    "top": [
     {
-     "id": "EN.I.6.e",
-     "score": 0.317604,
-     "cos": 0.317604,
+     "id": "EN.I.10.d",
+     "score": 0.193548,
+     "cos": 0.193548,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.d",
-     "score": 0.193548,
-     "cos": 0.193548,
+     "id": "EN.I.6.e",
+     "score": 0.179856,
+     "cos": 0.179856,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2373,8 +2460,8 @@
     },
     {
      "id": "EN.I.6.c",
-     "score": 0.409667,
-     "cos": 0.409667,
+     "score": 0.361192,
+     "cos": 0.361192,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2397,8 +2484,8 @@
     },
     {
      "id": "EN.I.6.h",
-     "score": 0.328312,
-     "cos": 0.328312,
+     "score": 0.260666,
+     "cos": 0.260666,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2445,8 +2532,8 @@
     },
     {
      "id": "EN.I.6.c",
-     "score": 0.409667,
-     "cos": 0.409667,
+     "score": 0.361192,
+     "cos": 0.361192,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2469,16 +2556,8 @@
     },
     {
      "id": "EN.I.6.h",
-     "score": 0.328312,
-     "cos": 0.328312,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
-     "id": "EN.I.6.e",
-     "score": 0.317604,
-     "cos": 0.317604,
+     "score": 0.260666,
+     "cos": 0.260666,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2495,6 +2574,14 @@
      "id": "EN.I.7.i",
      "score": 0.206451,
      "cos": 0.206451,
+     "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.7.h",
+     "score": 0.195221,
+     "cos": 0.195221,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2565,8 +2652,8 @@
     },
     {
      "id": "EN.I.4.a",
-     "score": 0.558703,
-     "cos": 0.558703,
+     "score": 0.558154,
+     "cos": 0.558154,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2588,14 +2675,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.2.a",
-     "score": 0.288557,
-     "cos": 0.288557,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.9.a",
      "score": 0.28302,
      "cos": 0.28302,
@@ -2612,9 +2691,17 @@
      "ejes": "1/1"
     },
     {
+     "id": "EN.I.2.a",
+     "score": 0.270695,
+     "cos": 0.270695,
+     "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
      "id": "EN.I.4.a",
-     "score": 0.254978,
-     "cos": 0.254978,
+     "score": 0.254727,
+     "cos": 0.254727,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2692,17 +2779,17 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.h",
-     "score": 0.437749,
-     "cos": 0.437749,
+     "id": "EN.I.8.b",
+     "score": 0.34829,
+     "cos": 0.34829,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.8.b",
-     "score": 0.34829,
-     "cos": 0.34829,
+     "id": "EN.I.6.h",
+     "score": 0.347554,
+     "cos": 0.347554,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2828,16 +2915,16 @@
     },
     {
      "id": "EN.I.6.g",
-     "score": 0.316041,
-     "cos": 0.316041,
+     "score": 0.300333,
+     "cos": 0.300333,
      "sf": 1,
      "relegado": false,
      "ejes": "2/2"
     },
     {
      "id": "EN.I.4.a",
-     "score": 0.274364,
-     "cos": 0.274364,
+     "score": 0.274095,
+     "cos": 0.274095,
      "sf": 1,
      "relegado": false,
      "ejes": "2/2"
@@ -2852,8 +2939,8 @@
     },
     {
      "id": "EN.I.8.g",
-     "score": 0.205491,
-     "cos": 0.410981,
+     "score": 0.22224,
+     "cos": 0.444481,
      "sf": 1,
      "relegado": true,
      "ejes": "1/2"

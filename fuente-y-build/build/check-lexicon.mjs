@@ -56,7 +56,7 @@ if (col.length === 0) {
 
 const counts = new Map()
 const bump = (key, canal) => {
-	if (!counts.has(key)) counts.set(key, { es: 0, gr: 0, gx: 0 })
+	if (!counts.has(key)) counts.set(key, { es: 0, gr: 0, gx: 0, gw: 0 })
 	counts.get(key)[canal] += 1
 }
 
@@ -67,6 +67,8 @@ const maps = [
 	['gr', V.INDEX.grPhr],
 	['gx', V.INDEX.gxUni],
 	['gx', V.INDEX.gxPhr],
+	['gw', V.INDEX.gwUni],
+	['gw', V.INDEX.gwPhr],
 ]
 
 for (const [canal, map] of maps) {
@@ -78,24 +80,24 @@ for (const [canal, map] of maps) {
 }
 
 console.log('\n=== TERMINOS EN EL INDICE DEL CORPUS (sin aliases) ===')
-console.log('eje / sentido                        es   gr   gx')
+console.log('eje / sentido                        es   gr   gx   gw')
 
 let vacios = 0
 for (const ax of AXES) {
-	const base = counts.get(ax.id + '\u0000' + '') || { es: 0, gr: 0, gx: 0 }
+	const base = counts.get(ax.id + '\u0000' + '') || { es: 0, gr: 0, gx: 0, gw: 0 }
 	const senses = ax.senses || []
 	const marca = senses.length ? ' (neutro)' : ''
 	console.log(
-		`${(ax.id + marca).padEnd(34)} ${String(base.es).padStart(4)} ${String(base.gr).padStart(4)} ${String(base.gx).padStart(4)}`,
+		`${(ax.id + marca).padEnd(34)} ${String(base.es).padStart(4)} ${String(base.gr).padStart(4)} ${String(base.gx).padStart(4)} ${String(base.gw).padStart(4)}`,
 	)
 	for (const sn of senses) {
-		const c = counts.get(ax.id + '\u0000' + sn.id) || { es: 0, gr: 0, gx: 0 }
-		const total = c.es + c.gr + c.gx
+		const c = counts.get(ax.id + '\u0000' + sn.id) || { es: 0, gr: 0, gx: 0, gw: 0 }
+		const total = c.es + c.gr + c.gx + c.gw
 		const w = sn.weight == null ? 1 : sn.weight
 		const aviso = total === 0 ? '   <-- VACIO' : ''
 		if (total === 0) vacios += 1
 		console.log(
-			`  = ${(sn.id + ' (w ' + w + ')').padEnd(30)} ${String(c.es).padStart(4)} ${String(c.gr).padStart(4)} ${String(c.gx).padStart(4)}${aviso}`,
+			`  = ${(sn.id + ' (w ' + w + ')').padEnd(30)} ${String(c.es).padStart(4)} ${String(c.gr).padStart(4)} ${String(c.gx).padStart(4)} ${String(c.gw).padStart(4)}${aviso}`,
 		)
 	}
 }
