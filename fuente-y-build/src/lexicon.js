@@ -409,7 +409,7 @@ export const AXES = [
     aliases: ['idea platonica', 'formas platonicas', 'idea del bien', 'bien separado'],
     // ἁπλῶς retirado: es el adverbio "en sentido absoluto", no tiene
     // relacion con Platon. Falso amigo, como φυτόν/φύσις y ἔθνος/ἔθος.
-    gr: ['ἰδέα', 'εἶδος', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι'],
+    gr: ['ἰδέα', 'εἶδος', 'εἴδη', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι', 'χωριστόν', 'αὐτοέκαστον'],
     es: ['idea', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
   },
   {
@@ -462,7 +462,7 @@ export const AXES = [
     // Tampoco entra "comienzo": en 9.b es temporal ("lo que dijimos al
     // comienzo"), una referencia interna al tratado, no el concepto.
     id: 'arkhe', label: 'Principio', greek: 'ἀρχή',
-    gr: ['ἀρχή', 'ἀρχάς', 'ἀρχῶν'],
+    gr: ['ἀρχή', 'ἀρχάς', 'ἀρχῶν', 'διότι'],
     es: ['principio', 'punto de partida'],
   },
   {
