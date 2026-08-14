@@ -224,6 +224,13 @@ for (const [rol, n] of Object.entries(tagRoles)) console.log(`  rol "${rol}" \u0
  * silencio, porque el tag es JSON libre y nadie lo valida antes.
  */
 const SENSES_BY_AXIS = new Map(AXES.map((a) => [a.id, (a.senses || []).map((s) => s.id)]));
+
+/* Mismo vocabulario que applySenseTags en vectorize.js. Un tag neutro no
+ * elige acepcion: deja el eje sin mezcla y lo fija como dominante. No es
+ * un sentido invalido, es la manera de decir "el eje aplica aca, pero sin
+ * ninguna de sus acepciones". Caso tipico: 13.d, donde koinon significa
+ * compartido por todos los vivientes y no predicado en comun. */
+const NEUTRO = new Set(['ninguno', 'neutral', 'sin_sentido']);
 const senseCounts = {};
 const senseErrors = [];
 for (const p of passages) {
@@ -234,6 +241,7 @@ for (const p of passages) {
     if (!t.eje) { senseErrors.push(`${p.id}: tag con "sentido" pero sin "eje"`); continue; }
     if (!SENSES_BY_AXIS.has(t.eje)) { senseErrors.push(`${p.id}: el eje "${t.eje}" no existe en el lexico`); continue; }
     const validos = SENSES_BY_AXIS.get(t.eje);
+    if (NEUTRO.has(t.sentido)) continue;   // neutro: no hay acepcion que verificar
     if (!validos.length) senseErrors.push(`${p.id}: el eje "${t.eje}" todavia no declara sentidos en lexicon.js`);
     else if (!validos.includes(t.sentido)) senseErrors.push(`${p.id}: "${t.sentido}" no es un sentido de "${t.eje}" (validos: ${validos.join(', ')})`);
   }
