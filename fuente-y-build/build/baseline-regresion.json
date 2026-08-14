@@ -20,177 +20,224 @@
    "agathon/-": {
     "es": 2,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "akribeia/-": {
     "es": 9,
     "gr": 7,
-    "gx": 2
+    "gx": 2,
+    "gw": 0
    },
    "akroates/-": {
     "es": 9,
     "gr": 6,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "arete/-": {
     "es": 3,
     "gr": 2,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "arete/dianoetica": {
     "es": 3,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "arete/etica": {
     "es": 6,
     "gr": 7,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "ariston/-": {
     "es": 6,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "arkhe/-": {
     "es": 2,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "autarkeia/-": {
     "es": 5,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "bios/-": {
     "es": 8,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "endoxa/-": {
     "es": 7,
     "gr": 4,
-    "gx": 1
+    "gx": 1,
+    "gw": 0
    },
    "energeia/accion": {
     "es": 1,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "energeia/acto": {
     "es": 2,
     "gr": 1,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "ergon/-": {
     "es": 2,
     "gr": 0,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "ergon/funcion": {
     "es": 5,
     "gr": 0,
-    "gx": 4
+    "gx": 4,
+    "gw": 0
    },
    "ergon/obra": {
     "es": 2,
     "gr": 0,
-    "gx": 3
+    "gx": 3,
+    "gw": 0
    },
    "eudaimonia/-": {
     "es": 7,
     "gr": 6,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "hedone/-": {
     "es": 10,
     "gr": 3,
-    "gx": 0
+    "gx": 0,
+    "gw": 2
    },
    "hexis/-": {
     "es": 14,
     "gr": 10,
-    "gx": 0
+    "gx": 0,
+    "gw": 1
    },
    "idea/-": {
     "es": 5,
     "gr": 1,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "idea/categorial": {
     "es": 1,
     "gr": 2,
-    "gx": 0
+    "gx": 0,
+    "gw": 3
    },
    "idea/separada": {
     "es": 1,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 3
    },
    "kalon/-": {
     "es": 5,
     "gr": 0,
-    "gx": 9
+    "gx": 9,
+    "gw": 0
    },
    "logos/-": {
     "es": 0,
     "gr": 1,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "logos/argumento": {
     "es": 1,
     "gr": 0,
-    "gx": 4
+    "gx": 4,
+    "gw": 0
    },
    "logos/razon": {
     "es": 3,
     "gr": 0,
-    "gx": 2
+    "gx": 2,
+    "gw": 0
    },
    "ploutos/-": {
     "es": 7,
     "gr": 4,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "politike/-": {
     "es": 9,
     "gr": 7,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "psyche/-": {
     "es": 7,
     "gr": 6,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "teleios/-": {
     "es": 5,
     "gr": 6,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
+   },
+   "teleios/absoluto": {
+    "es": 0,
+    "gr": 0,
+    "gx": 0,
+    "gw": 1
+   },
+   "teleios/relativo": {
+    "es": 0,
+    "gr": 0,
+    "gx": 0,
+    "gw": 1
    },
    "telos/-": {
     "es": 7,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 2
    },
    "theion/-": {
     "es": 5,
     "gr": 0,
-    "gx": 13
+    "gx": 13,
+    "gw": 0
    },
    "time/-": {
     "es": 7,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "tyche/-": {
     "es": 10,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    },
    "zoe/-": {
     "es": 7,
     "gr": 5,
-    "gx": 0
+    "gx": 0,
+    "gw": 0
    }
   }
  },
