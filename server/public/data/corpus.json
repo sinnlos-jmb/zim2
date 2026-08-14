@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-14T13:51:39.448Z",
+ "builtAt": "2026-08-14T14:22:43.079Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -679,8 +679,8 @@
    "id": "EN.I.6.h",
    "chapter": 6,
    "bekker": "1096b26",
-   "words": 164,
-   "es": "¿Cómo se dice entonces? Porque no se parece a las cosas que son homónimas por azar (ἀπὸ τύχης). ¿Acaso por proceder de uno solo o por concurrir todos al mismo fin (πρὸς ἓν ἅπαντα συντελεῖν), o tal vez por analogía? Como la vista en el cuerpo, la inteligencia en el alma (ἐν ψυχῇ νοῦς), y así sucesivamente. Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuestión sería más propio (οἰκειότερον) de otra disciplina filosófica. Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole. Acaso podría pensar alguien que sería muy útil conocerlo (γνωρίζειν αὐτὸ) para alcanzar los bienes (ἀγαθῶν) que se pueden adquirir y realizar, porque teniendo este modelo conoceremos (εἰσόμεθα) también mejor nuestros bienes (ἡμῖν ἀγαθά), y conociéndolos los lograremos.",
+   "words": 166,
+   "es": "¿Cómo se dice entonces? Porque no se parece a las cosas que son homónimas por azar (ἀπὸ τύχης). ¿Acaso por proceder de uno solo o por concurrir todos al mismo fin (πρὸς ἓν ἅπαντα συντελεῖν), o tal vez por analogía? Como la vista en el cuerpo, la inteligencia en el alma (ἐν ψυχῇ νοῦς), y así sucesivamente. Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuestión sería más propio (οἰκειότερον) de otra disciplina filosófica. Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común (κοινῇ κατηγορούμενον) como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole. Acaso podría pensar alguien que sería muy útil conocerlo (γνωρίζειν αὐτὸ) para alcanzar los bienes (ἀγαθῶν) que se pueden adquirir y realizar, porque teniendo este modelo conoceremos (εἰσόμεθα) también mejor nuestros bienes (ἡμῖν ἀγαθά), y conociéndolos los lograremos.",
    "esOnly": "¿Cómo se dice entonces? Porque no se parece a las cosas que son homónimas por azar. ¿Acaso por proceder de uno solo o por concurrir todos al mismo fin, o tal vez por analogía? Como la vista en el cuerpo, la inteligencia en el alma, y así sucesivamente. Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuestión sería más propio de otra disciplina filosófica. Y lo mismo acerca de la idea, pues si lo que se predica en común como bien fuera algo uno, o algo separado que existiera por sí mismo, el hombre no podría realizarlo ni adquirirlo; y buscamos algo de esta índole. Acaso podría pensar alguien que sería muy útil conocerlo para alcanzar los bienes que se pueden adquirir y realizar, porque teniendo este modelo conoceremos también mejor nuestros bienes, y conociéndolos los lograremos.",
    "glosses": [
     "ἀπὸ τύχης",
@@ -688,6 +688,7 @@
     "ἐν ψυχῇ νοῦς",
     "οἰκειότερον",
     "ἰδέας",
+    "κοινῇ κατηγορούμενον",
     "χωριστὸν",
     "καθ᾽ αὑτό",
     "πρακτὸν",
@@ -698,7 +699,7 @@
     "ἡμῖν ἀγαθά"
    ],
    "greekParallel": "Ἀλλὰ πῶς δὴ λέγεται; οὐ γὰρ ἔοικε τοῖς γε ἀπὸ τύχης ὁμωνύμοις. ἀλλ᾽ ἆρά γε τῷ ἀφ᾽ ἑνὸς εἶναι ἢ πρὸς ἓν ἅπαντα συντελεῖν, ἢ μᾶλλον κατ᾽ ἀναλογίαν; ὡς γὰρ ἐν σώματι ὄψις, ἐν ψυχῇ νοῦς, καὶ ἄλλο δὴ ἐν ἄλλῳ. [30] ἀλλ᾽ ἴσως ταῦτα μὲν ἀφετέον τὸ νῦν· ἐξακριβοῦν γὰρ ὑπὲρ αὐτῶν ἄλλης ἂν εἴη φιλοσοφίας οἰκειότερον. ὁμοίως δὲ καὶ περὶ τῆς ἰδέας· εἰ γὰρ καὶ ἔστιν ἕν τι τὸ κοινῇ κατηγορούμενον ἀγαθὸν ἢ χωριστὸν αὐτό τι καθ᾽ αὑτό, δῆλον ὡς οὐκ ἂν εἴη πρακτὸν οὐδὲ κτητὸν ἀνθρώπῳ· νῦν δὲ τοιοῦτόν τι [35] ζητεῖται. τάχα δέ τῳ δόξειεν ἂν βέλτιον εἶναι γνωρίζειν αὐτὸ 1097a [1] πρὸς τὰ κτητὰ καὶ πρακτὰ τῶν ἀγαθῶν· οἷον γὰρ παράδειγμα τοῦτ᾽ ἔχοντες μᾶλλον εἰσόμεθα καὶ τὰ ἡμῖν ἀγαθά, κἂν εἰδῶμεν, ἐπιτευξόμεθα αὐτῶν.",
-   "textHash": "3c65fa00cba5",
+   "textHash": "dff941287ff0",
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",

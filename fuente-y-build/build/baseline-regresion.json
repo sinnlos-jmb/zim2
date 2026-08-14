@@ -997,22 +997,23 @@
   },
   "EN.I.6.h": {
    "vector": {
-    "telos": 0.173777,
-    "agathon": 0.367169,
-    "energeia": 0.069511,
-    "psyche": 0.347554,
-    "logos": 0.260666,
-    "ploutos": 0.086889,
-    "tyche": 0.260666,
-    "endoxa": 0.086889,
-    "idea": 0.747242
+    "telos": 0.153008,
+    "agathon": 0.323286,
+    "energeia": 0.061203,
+    "psyche": 0.306016,
+    "logos": 0.229512,
+    "ploutos": 0.076504,
+    "tyche": 0.229512,
+    "endoxa": 0.076504,
+    "idea": 0.810942
    },
    "sentidos": {
     "energeia": {
      "accion": 1
     },
     "idea": {
-     "separada": 1
+     "categorial": 0.232558,
+     "separada": 0.767442
     },
     "logos": {
      "razon": 1
@@ -2510,8 +2511,8 @@
     },
     {
      "id": "EN.I.6.h",
-     "score": 0.260666,
-     "cos": 0.260666,
+     "score": 0.229512,
+     "cos": 0.229512,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2581,17 +2582,17 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.h",
-     "score": 0.260666,
-     "cos": 0.260666,
+     "id": "EN.I.13.d",
+     "score": 0.250731,
+     "cos": 0.250731,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.13.d",
-     "score": 0.250731,
-     "cos": 0.250731,
+     "id": "EN.I.6.h",
+     "score": 0.229512,
+     "cos": 0.229512,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
@@ -2813,17 +2814,17 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.6.h",
-     "score": 0.347554,
-     "cos": 0.347554,
+     "id": "EN.I.13.a",
+     "score": 0.328815,
+     "cos": 0.328815,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.13.a",
-     "score": 0.328815,
-     "cos": 0.328815,
+     "id": "EN.I.7.i",
+     "score": 0.324945,
+     "cos": 0.324945,
      "sf": 1,
      "relegado": false,
      "ejes": "1/1"

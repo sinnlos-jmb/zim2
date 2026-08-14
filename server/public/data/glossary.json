@@ -1019,6 +1019,37 @@
    "passageCount": 4
   },
   {
+   "stem": "κοιν",
+   "canonical": "κοινή",
+   "total": 4,
+   "formCount": 4,
+   "forms": [
+    {
+     "form": "κοινή",
+     "n": 1
+    },
+    {
+     "form": "κοινόν",
+     "n": 1
+    },
+    {
+     "form": "κοινῇ",
+     "n": 1
+    },
+    {
+     "form": "κοινῷ",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.b",
+    "EN.I.6.g",
+    "EN.I.6.h",
+    "EN.I.13.d"
+   ],
+   "passageCount": 4
+  },
+  {
    "stem": "εργω",
    "canonical": "ἔργων",
    "total": 4,
@@ -1422,32 +1453,6 @@
     "EN.I.6.a",
     "EN.I.6.c",
     "EN.I.11.a"
-   ],
-   "passageCount": 3
-  },
-  {
-   "stem": "κοιν",
-   "canonical": "κοινή",
-   "total": 3,
-   "formCount": 3,
-   "forms": [
-    {
-     "form": "κοινή",
-     "n": 1
-    },
-    {
-     "form": "κοινόν",
-     "n": 1
-    },
-    {
-     "form": "κοινῷ",
-     "n": 1
-    }
-   ],
-   "passages": [
-    "EN.I.6.b",
-    "EN.I.6.g",
-    "EN.I.13.d"
    ],
    "passageCount": 3
   },
@@ -4343,6 +4348,22 @@
    "forms": [
     {
      "form": "οἰκειότερον",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.h"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "κατηγορουμεν",
+   "canonical": "κατηγορούμενον",
+   "total": 1,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "κατηγορούμενον",
      "n": 1
     }
    ],

@@ -168,7 +168,7 @@ Pero acaso debemos dejar esto por ahora, porque dar cuenta exacta de esta cuesti
 
 
 { "parrafo_nro": 20 }
-Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole.
+Y lo mismo acerca de la idea (ἰδέας), pues si lo que se predica en común (κοινῇ κατηγορούμενον) como bien fuera algo uno, o algo separado (χωριστὸν) que existiera por sí mismo (καθ᾽ αὑτό), el hombre no podría realizarlo (πρακτὸν) ni adquirirlo; y buscamos (ζητεῖται) algo de esta índole.
 
 ὁμοίως δὲ καὶ περὶ τῆς ἰδέας· εἰ γὰρ καὶ ἔστιν ἕν τι τὸ κοινῇ κατηγορούμενον ἀγαθὸν ἢ χωριστὸν αὐτό τι καθ᾽ αὑτό, δῆλον ὡς οὐκ ἂν εἴη πρακτὸν οὐδὲ κτητὸν ἀνθρώπῳ· νῦν δὲ τοιοῦτόν τι [35] ζητεῖται.
 
