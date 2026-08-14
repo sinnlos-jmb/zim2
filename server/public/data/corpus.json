@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-14T14:22:43.079Z",
+ "builtAt": "2026-08-14T15:17:11.968Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -775,6 +775,16 @@
      "eje": "agathon",
      "nota": "definición finalista reforzada por el ergon",
      "peso": 0.7
+    },
+    {
+     "eje": "teleios",
+     "sentido": "absoluto",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "teleios",
+     "sentido": "relativo",
+     "peso_sentido": 0.3
     }
    ]
   },
@@ -810,6 +820,16 @@
      "eje": "agathon",
      "nota": "definición finalista reforzada por el ergon",
      "peso": 0.7
+    },
+    {
+     "eje": "teleios",
+     "sentido": "absoluto",
+     "peso_sentido": 0.7
+    },
+    {
+     "eje": "teleios",
+     "sentido": "relativo",
+     "peso_sentido": 0.3
     }
    ]
   },

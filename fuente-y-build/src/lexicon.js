@@ -505,6 +505,12 @@ export const AXES = [
         grExpr: ['καθ᾽ αὑτὸ διωκτόν'],
       },
       {
+        id: 'integro',
+        label: 'completo en extensión (vida o virtud entera)',
+        greek: 'τέλειος',
+        grExpr: ['ἐν βίῳ τελείῳ', 'βίου τελείου', 'τέλειον βίον', 'ἀρετῆς τελείας', 'ἀρετὴν τελείαν', 'ἀρίστην καὶ τελειοτάτην'],
+      },
+      {
         id: 'relativo',
         label: 'más completo que otro',
         greek: 'τελειότερον',
