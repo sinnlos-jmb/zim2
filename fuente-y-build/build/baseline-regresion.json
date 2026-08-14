@@ -113,17 +113,17 @@
     "gx": 0
    },
    "idea/-": {
-    "es": 3,
+    "es": 5,
     "gr": 1,
     "gx": 0
    },
    "idea/categorial": {
-    "es": 2,
+    "es": 1,
     "gr": 2,
     "gx": 0
    },
    "idea/separada": {
-    "es": 2,
+    "es": 1,
     "gr": 5,
     "gx": 0
    },
@@ -164,12 +164,7 @@
    },
    "teleios/-": {
     "es": 5,
-    "gr": 5,
-    "gx": 0
-   },
-   "teleios/absoluto": {
-    "es": 0,
-    "gr": 1,
+    "gr": 6,
     "gx": 0
    },
    "telos/-": {
@@ -577,9 +572,6 @@
    "sentidos": {
     "energeia": {
      "acto": 1
-    },
-    "idea": {
-     "categorial": 1
     }
    },
    "fijados": []
@@ -861,8 +853,8 @@
    },
    "sentidos": {
     "idea": {
-     "categorial": 0.52882,
-     "separada": 0.47118
+     "categorial": 0.467617,
+     "separada": 0.532383
     }
    },
    "fijados": []
@@ -880,8 +872,8 @@
    },
    "sentidos": {
     "idea": {
-     "categorial": 0.857143,
-     "separada": 0.142857
+     "categorial": 0.826087,
+     "separada": 0.173913
     },
     "logos": {
      "razon": 1
@@ -947,8 +939,8 @@
      "dianoetica": 1
     },
     "idea": {
-     "categorial": 0.265842,
-     "separada": 0.734158
+     "categorial": 0.19446,
+     "separada": 0.80554
     }
    },
    "fijados": []
@@ -970,8 +962,7 @@
      "accion": 1
     },
     "idea": {
-     "categorial": 0.116279,
-     "separada": 0.883721
+     "separada": 1
     },
     "logos": {
      "razon": 1
@@ -1030,9 +1021,6 @@
    "sentidos": {
     "logos": {
      "argumento": 1
-    },
-    "teleios": {
-     "absoluto": 1
     }
    },
    "fijados": []
@@ -1137,9 +1125,6 @@
      "funcion": 0.687053,
      "obra": 0.312947
     },
-    "idea": {
-     "categorial": 1
-    },
     "logos": {
      "razon": 1
     }
@@ -1177,9 +1162,6 @@
     },
     "logos": {
      "razon": 1
-    },
-    "teleios": {
-     "absoluto": 1
     }
    },
    "fijados": [
@@ -1366,9 +1348,6 @@
     },
     "energeia": {
      "acto": 1
-    },
-    "idea": {
-     "separada": 1
     }
    },
    "fijados": []
@@ -1427,9 +1406,6 @@
     "energeia": {
      "accion": 0.117647,
      "acto": 0.882353
-    },
-    "idea": {
-     "categorial": 1
     }
    },
    "fijados": []

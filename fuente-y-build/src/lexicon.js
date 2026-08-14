@@ -413,7 +413,7 @@ export const AXES = [
     // ἁπλῶς retirado: es el adverbio "en sentido absoluto", no tiene
     // relacion con Platon. Falso amigo, como φυτόν/φύσις y ἔθνος/ἔθος.
     gr: ['Πυθαγόρειοι'],
-    es: ['platon', 'pitagoricos', 'amigos la verdad'],
+    es: ['platon', 'pitagoricos', 'amigos la verdad', 'separado', 'en comun'],
     senses: [
       {
         id: 'separada',
@@ -421,7 +421,7 @@ export const AXES = [
         greek: 'χωριστόν',
         gr: ['ἰδέα', 'εἶδος', 'εἴδη', 'χωριστόν', 'αὐτοέκαστον'],
         grExpr: ['καθ᾽ αὑτό', 'καθ᾽ αὑτά', 'ἕν'],
-        es: ['idea', 'separado', 'en si'],
+        es: ['idea', 'en si'],
       },
       {
         id: 'categorial',
@@ -429,7 +429,7 @@ export const AXES = [
         greek: 'καθόλου',
         gr: ['καθόλου', 'κοινόν'],
         grExpr: ['τί ἐστι', 'πρός τι', 'τῷ τι'],
-        es: ['universal', 'en comun'],
+        es: ['universal'],
       },
     ],
   },
@@ -493,7 +493,7 @@ export const AXES = [
     // vida'. Una forma griega POR STEM: teleion/teleios/teleion(gen. pl.)/
     // teleiotaton/teleioteron/teleioutai cubren los siete stems distintos.
     id: 'teleios', label: 'Lo completo', greek: 'τέλειος',
-    gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότερον', 'τελειοῦται'],
+    gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότερον', 'τελειοῦται', 'τελειότατον'],
     aliases: ['teleios', 'fin perfecto', 'fin acabado'],
     es: ['perfecto', ['completo', 0.5], ['acabado', 0.5], ['cabal', 0.5], ['pleno', 0.5]],
     senses: [
@@ -501,7 +501,7 @@ export const AXES = [
         id: 'absoluto',
         label: 'completo en sentido absoluto',
         greek: 'τελειότατον',
-        gr: ['τελειότατον'],
+        gr: [],
         grExpr: ['καθ᾽ αὑτὸ διωκτόν'],
       },
       {

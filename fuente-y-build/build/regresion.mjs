@@ -123,12 +123,13 @@ function conteoTerminos() {
     ['es', INDEX.esUni], ['es', INDEX.esPhr],
     ['gr', INDEX.grUni], ['gr', INDEX.grPhr],
     ['gx', INDEX.gxUni], ['gx', INDEX.gxPhr],
+    ['gw', INDEX.gwUni], ['gw', INDEX.gwPhr],
   ];
   for (const [canal, map] of maps) {
     for (const entries of map.values()) {
       for (const e of entries) {
         const k = ((AXES[e.axis] || {}).id || ('?' + e.axis)) + '/' + (e.sense || '-');
-        if (!c[k]) c[k] = { es: 0, gr: 0, gx: 0 };
+        if (!c[k]) c[k] = { es: 0, gr: 0, gx: 0, gw: 0 };
         c[k][canal] += 1;
       }
     }
