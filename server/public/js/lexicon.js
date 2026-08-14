@@ -43,6 +43,7 @@ export const AXES = [
     id: 'telos', label: 'Fin', greek: 'τέλος',
     gr: ['τέλος', 'τέλη', 'ἐφίεσθαι', 'προαίρεσις', 'ἕνεκα'],
     es: [['fin', 0.5], ['fines', 0.5], 'tender', 'tienden', ['aquello a que', 0.6], 'en vista de', 'subordinada', 'subordinan'],
+    grExpr: ['δι᾽ αὑτό', 'δι᾽ αὑτά'],
   },
   {
     // AGATHON: los bienes, en plural y enumerables. NO el bien supremo (ver ariston).
@@ -322,6 +323,7 @@ export const AXES = [
     // el griego esta solo en el texto paralelo, que no se indexa; ahi el eje
     // entra por castellano. Se listan igual para cuando haya mas glosas.
     gr: ['ἕξιν', 'ἕξει', 'ἕξεων', 'ἔθος', 'ἔθη', 'ἔθεσιν', 'κτῆσις', 'κτήσει', 'καθεύδειν', 'καθεύδοντι'],
+    grExpr: ['πρός τι πῶς ἔχειν'],
     es: [
       'habito', 'costumbre', 'acostumbrar', 'disposicion', 'disposiciones', 'ejercitar',
       // posesion inerte. Pesos bajos en los genericos: "poseer" e "inactivo"
@@ -342,6 +344,7 @@ export const AXES = [
     id: 'hedone', label: 'Placer', greek: 'ἡδονή',
     gr: ['ἡδονήν', 'ἀπόλαυσις', 'ἀπολαυστικός'],
     es: ['placer', 'placeres', 'deleite', 'goce', 'gozar', 'gozan', 'vida de goce', 'sensual', 'bestias', 'vulgar'],
+    grExpr: ['καθ᾽ αὑτὸν ἡδύς', 'καθ᾽ αὑτὰς ἡδεῖαι'],
   },
   {
     id: 'time', label: 'Honor', greek: 'τιμή',
@@ -409,8 +412,26 @@ export const AXES = [
     aliases: ['idea platonica', 'formas platonicas', 'idea del bien', 'bien separado'],
     // ἁπλῶς retirado: es el adverbio "en sentido absoluto", no tiene
     // relacion con Platon. Falso amigo, como φυτόν/φύσις y ἔθνος/ἔθος.
-    gr: ['ἰδέα', 'εἶδος', 'καθόλου', 'κοινόν', 'Πυθαγόρειοι'],
-    es: ['idea', 'universal', 'en comun', 'separado', 'platon', 'pitagoricos', 'en si', 'amigos la verdad'],
+    gr: ['Πυθαγόρειοι'],
+    es: ['platon', 'pitagoricos', 'amigos la verdad', 'separado', 'en comun'],
+    senses: [
+      {
+        id: 'separada',
+        label: 'el bien separado (en sí)',
+        greek: 'χωριστόν',
+        gr: ['ἰδέα', 'εἶδος', 'εἴδη', 'χωριστόν', 'αὐτοέκαστον'],
+        grExpr: ['καθ᾽ αὑτό', 'καθ᾽ αὑτά', 'ἕν'],
+        es: ['idea', 'en si'],
+      },
+      {
+        id: 'categorial',
+        label: 'el bien dicho en muchas categorías',
+        greek: 'καθόλου',
+        gr: ['καθόλου', 'κοινόν'],
+        grExpr: ['τί ἐστι', 'πρός τι', 'τῷ τι'],
+        es: ['universal'],
+      },
+    ],
   },
   {
     // BIOS: la vida BIOGRAFICA. El genero de vida que uno elige y el tramo que
@@ -462,7 +483,7 @@ export const AXES = [
     // Tampoco entra "comienzo": en 9.b es temporal ("lo que dijimos al
     // comienzo"), una referencia interna al tratado, no el concepto.
     id: 'arkhe', label: 'Principio', greek: 'ἀρχή',
-    gr: ['ἀρχή', 'ἀρχάς', 'ἀρχῶν'],
+    gr: ['ἀρχή', 'ἀρχάς', 'ἀρχῶν', 'διότι'],
     es: ['principio', 'punto de partida'],
   },
   {
@@ -472,9 +493,24 @@ export const AXES = [
     // vida'. Una forma griega POR STEM: teleion/teleios/teleion(gen. pl.)/
     // teleiotaton/teleioteron/teleioutai cubren los siete stems distintos.
     id: 'teleios', label: 'Lo completo', greek: 'τέλειος',
-    gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότατον', 'τελειότερον', 'τελειοῦται'],
+    gr: ['τέλειον', 'τέλειος', 'τελείων', 'τελειότερον', 'τελειοῦται', 'τελειότατον'],
     aliases: ['teleios', 'fin perfecto', 'fin acabado'],
     es: ['perfecto', ['completo', 0.5], ['acabado', 0.5], ['cabal', 0.5], ['pleno', 0.5]],
+    senses: [
+      {
+        id: 'absoluto',
+        label: 'completo en sentido absoluto',
+        greek: 'τελειότατον',
+        gr: [],
+        grExpr: ['καθ᾽ αὑτὸ διωκτόν'],
+      },
+      {
+        id: 'relativo',
+        label: 'más completo que otro',
+        greek: 'τελειότερον',
+        grExpr: ['δι᾽ ἄλλο'],
+      },
+    ],
   },
 ];
 

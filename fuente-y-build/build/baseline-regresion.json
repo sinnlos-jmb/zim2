@@ -594,15 +594,15 @@
     "teleios": 0.069647
    },
    "sentidos": {
-    "idea": {
-     "categorial": 1
-    },
+    "idea": {},
     "logos": {
      "argumento": 0.444444,
      "razon": 0.555556
     }
    },
-   "fijados": []
+   "fijados": [
+    "idea"
+   ]
   },
   "EN.I.13.e": {
    "vector": {
@@ -619,9 +619,12 @@
    "sentidos": {
     "energeia": {
      "acto": 1
-    }
+    },
+    "idea": {}
    },
-   "fijados": []
+   "fijados": [
+    "idea"
+   ]
   },
   "EN.I.13.f": {
    "vector": {
