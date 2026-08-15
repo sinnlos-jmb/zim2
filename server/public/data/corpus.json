@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-15T06:48:25.024Z",
+ "builtAt": "2026-08-15T10:01:53.134Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -531,7 +531,13 @@
    "parrafoNros": [
     14
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "idea",
+     "sentido": "categorial",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.6.c",
@@ -709,7 +715,13 @@
     20,
     21
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "idea",
+     "sentido": "separada",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.6.i",
@@ -739,7 +751,13 @@
     21,
     21
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "idea",
+     "sentido": "separada",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.7.a",
@@ -1757,7 +1775,18 @@
     38,
     38
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.5
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.5
+    }
+   ]
   },
   {
    "id": "EN.I.10.d",
@@ -1785,7 +1814,18 @@
    "parrafoNros": [
     38
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.5
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.5
+    }
+   ]
   },
   {
    "id": "EN.I.10.e",
@@ -1810,7 +1850,18 @@
    "parrafoNros": [
     38
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 0.5
+    },
+    {
+     "eje": "arete",
+     "sentido": "dianoetica",
+     "peso_sentido": 0.5
+    }
+   ]
   },
   {
    "id": "EN.I.10.f",
@@ -1849,6 +1900,11 @@
      "eje": "teleios",
      "sentido": "integro",
      "peso_sentido": 1
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 1
     }
    ]
   },
@@ -1885,6 +1941,11 @@
      "eje": "teleios",
      "sentido": "integro",
      "peso_sentido": 1
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
+     "peso_sentido": 1
     }
    ]
   },
@@ -1917,6 +1978,11 @@
     {
      "eje": "teleios",
      "sentido": "integro",
+     "peso_sentido": 1
+    },
+    {
+     "eje": "arete",
+     "sentido": "etica",
      "peso_sentido": 1
     }
    ]

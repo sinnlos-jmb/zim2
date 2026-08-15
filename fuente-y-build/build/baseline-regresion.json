@@ -207,13 +207,13 @@
     "es": 0,
     "gr": 0,
     "gx": 0,
-    "gw": 6
+    "gw": 5
    },
    "teleios/relativo": {
     "es": 0,
     "gr": 0,
     "gx": 0,
-    "gw": 1
+    "gw": 2
    },
    "telos/-": {
     "es": 7,
@@ -335,6 +335,10 @@
     "theion": 0.089046
    },
    "sentidos": {
+    "arete": {
+     "dianoetica": 0.5,
+     "etica": 0.5
+    },
     "energeia": {
      "acto": 1
     },
@@ -342,7 +346,9 @@
      "razon": 1
     }
    },
-   "fijados": []
+   "fijados": [
+    "arete"
+   ]
   },
   "EN.I.10.d": {
    "vector": {
@@ -356,6 +362,10 @@
     "theion": 0.322581
    },
    "sentidos": {
+    "arete": {
+     "dianoetica": 0.5,
+     "etica": 0.5
+    },
     "energeia": {
      "acto": 1
     },
@@ -366,7 +376,9 @@
      "argumento": 1
     }
    },
-   "fijados": []
+   "fijados": [
+    "arete"
+   ]
   },
   "EN.I.10.e": {
    "vector": {
@@ -376,8 +388,15 @@
     "tyche": 0.21211,
     "bios": 0.636331
    },
-   "sentidos": {},
-   "fijados": []
+   "sentidos": {
+    "arete": {
+     "dianoetica": 0.5,
+     "etica": 0.5
+    }
+   },
+   "fijados": [
+    "arete"
+   ]
   },
   "EN.I.10.f": {
    "vector": {
@@ -392,6 +411,9 @@
     "theion": 0.201008
    },
    "sentidos": {
+    "arete": {
+     "etica": 1
+    },
     "energeia": {
      "acto": 1
     },
@@ -400,6 +422,7 @@
     }
    },
    "fijados": [
+    "arete",
     "teleios"
    ]
   },
@@ -417,6 +440,9 @@
     "theion": 0.148192
    },
    "sentidos": {
+    "arete": {
+     "etica": 1
+    },
     "energeia": {
      "accion": 0.210526,
      "acto": 0.789474
@@ -429,6 +455,7 @@
     }
    },
    "fijados": [
+    "arete",
     "teleios"
    ]
   },
@@ -442,11 +469,15 @@
     "teleios": 0.394606
    },
    "sentidos": {
+    "arete": {
+     "etica": 1
+    },
     "teleios": {
      "integro": 1
     }
    },
    "fijados": [
+    "arete",
     "teleios"
    ]
   },
@@ -932,11 +963,12 @@
    },
    "sentidos": {
     "idea": {
-     "categorial": 0.467617,
-     "separada": 0.532383
+     "categorial": 1
     }
    },
-   "fijados": []
+   "fijados": [
+    "idea"
+   ]
   },
   "EN.I.6.c": {
    "vector": {
@@ -1041,14 +1073,15 @@
      "accion": 1
     },
     "idea": {
-     "categorial": 0.232558,
-     "separada": 0.767442
+     "separada": 1
     },
     "logos": {
      "razon": 1
     }
    },
-   "fijados": []
+   "fijados": [
+    "idea"
+   ]
   },
   "EN.I.6.i": {
    "vector": {
@@ -1069,7 +1102,9 @@
      "argumento": 1
     }
    },
-   "fijados": []
+   "fijados": [
+    "idea"
+   ]
   },
   "EN.I.7.a": {
    "vector": {
@@ -1256,7 +1291,8 @@
      "razon": 1
     },
     "teleios": {
-     "integro": 1
+     "integro": 0.5,
+     "relativo": 0.5
     }
    },
    "fijados": [
@@ -1653,14 +1689,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.e",
-     "score": 0.636331,
-     "cos": 0.636331,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.12.b",
      "score": 0.60487,
      "cos": 0.60487,
@@ -1673,6 +1701,14 @@
      "score": 0.550816,
      "cos": 0.550816,
      "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.13.h",
+     "score": 0.548674,
+     "cos": 0.954215,
+     "sf": 0.575,
      "relegado": false,
      "ejes": "1/1"
     }
@@ -1714,14 +1750,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.e",
-     "score": 0.636331,
-     "cos": 0.636331,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.13.h",
      "score": 0.548674,
      "cos": 0.954215,
@@ -1742,6 +1770,14 @@
      "score": 0.518577,
      "cos": 0.518577,
      "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.10.e",
+     "score": 0.365891,
+     "cos": 0.636331,
+     "sf": 0.575,
      "relegado": false,
      "ejes": "1/1"
     },
@@ -1807,14 +1843,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.e",
-     "score": 0.636331,
-     "cos": 0.636331,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.12.b",
      "score": 0.60487,
      "cos": 0.60487,
@@ -1827,6 +1855,14 @@
      "score": 0.550816,
      "cos": 0.550816,
      "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.13.h",
+     "score": 0.548674,
+     "cos": 0.954215,
+     "sf": 0.575,
      "relegado": false,
      "ejes": "1/1"
     }
@@ -1868,14 +1904,6 @@
      "ejes": "1/1"
     },
     {
-     "id": "EN.I.10.e",
-     "score": 0.636331,
-     "cos": 0.636331,
-     "sf": 1,
-     "relegado": false,
-     "ejes": "1/1"
-    },
-    {
      "id": "EN.I.13.h",
      "score": 0.548674,
      "cos": 0.954215,
@@ -1896,6 +1924,14 @@
      "score": 0.518577,
      "cos": 0.518577,
      "sf": 1,
+     "relegado": false,
+     "ejes": "1/1"
+    },
+    {
+     "id": "EN.I.10.e",
+     "score": 0.365891,
+     "cos": 0.636331,
+     "sf": 0.575,
      "relegado": false,
      "ejes": "1/1"
     },
