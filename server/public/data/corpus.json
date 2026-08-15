@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-14T15:17:11.968Z",
+ "builtAt": "2026-08-15T06:48:25.024Z",
  "passages": [
   {
    "id": "EN.I.1.a",
@@ -1844,7 +1844,13 @@
    "parrafoNros": [
     39
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "teleios",
+     "sentido": "integro",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.10.g",
@@ -1874,7 +1880,13 @@
    "parrafoNros": [
     39
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "teleios",
+     "sentido": "integro",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.10.h",
@@ -1901,7 +1913,13 @@
    "parrafoNros": [
     39
    ],
-   "tags": []
+   "tags": [
+    {
+     "eje": "teleios",
+     "sentido": "integro",
+     "peso_sentido": 1
+    }
+   ]
   },
   {
    "id": "EN.I.10.i",
