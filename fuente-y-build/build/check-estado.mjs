@@ -138,6 +138,33 @@ if (C == null) { fila(null, 'corpus.json: no se pudo leer'); } else {
   fila(null, 'corpus.json builtAt', String(C.builtAt || '?'));
 }
 
+/* ------------------------------- 5b. parrafos -> pasajes ------------------ */
+console.log('');
+console.log('=== 5b. PARRAFOS Y PASAJES (donde caen los tags) ===');
+if (C == null) { fila(null, "corpus.json: no se pudo leer"); } else {
+  const porParrafo = new Map();
+  for (const p of C.passages) {
+    for (const n of (p.parrafoNros || [])) {
+      if (!porParrafo.has(n)) porParrafo.set(n, []);
+      if (porParrafo.get(n).indexOf(p.id) < 0) porParrafo.get(n).push(p.id);
+    }
+  }
+  const idx = {};
+  for (const p of C.passages) idx[p.id] = p;
+  const compartidos = [...porParrafo.entries()].filter(([, ids]) => ids.length > 1)
+    .sort((a, b) => a[0] - b[0]);
+  fila(null, "parrafos numerados en el corpus", String(porParrafo.size));
+  fila(null, "parrafos que alimentan mas de un pasaje", String(compartidos.length));
+  for (const [n, ids] of compartidos) {
+    const conTag = ids.filter((id) => ((idx[id] || {}).tags || []).length);
+    console.log("     parrafo " + String(n).padStart(3) + " -> " + ids.join(", ") +
+      (conTag.length ? "   [TAGUEADO: el tag cae en los " + ids.length + "]" : ""));
+  }
+  const sinParrafo = C.passages.filter((p) => !(p.parrafoNros || []).length);
+  fila(sinParrafo.length === 0, "todos los pasajes tienen parrafo asignado",
+    sinParrafo.length ? sinParrafo.length + ": " + sinParrafo.slice(0, 8).map((p) => p.id).join(" ") : "");
+}
+
 /* ---------------------------------------- 6. baseline --------------------- */
 console.log('');
 console.log('=== 6. BASELINE ===');

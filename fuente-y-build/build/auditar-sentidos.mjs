@@ -109,12 +109,18 @@ console.log('  total pasaje-x-eje sin acepcion utilizable: ' + totalInm);
 linea('=');
 console.log('2. TERMINOS QUE PRENDEN UN EJE POLISEMICO SIN VOTAR ACEPCION');
 console.log('   (viven al nivel del eje; moverlos a un sentido cierra el agujero)');
+console.log('   Solo se listan pasajes donde el eje sigue ABIERTO: los que ya');
+console.log('   cerro un tag manual no cuentan (antes si, y la seccion exageraba).');
 linea();
 const culp = new Map();
+const cerradosPorTag = new Set();
 for (const p of ps) {
   for (const h of p.hits) {
     const ax = AXID(h);
     if (!POLI_IDS.includes(ax) || h.sense) continue;
+    // el eje solo esta ABIERTO si no quedo acepcion utilizable en el pasaje
+    const abierto = !(p.mix && p.mix[ax] && Object.keys(p.mix[ax]).length);
+    if (!abierto) { cerradosPorTag.add(ax + " <- " + h.token); continue; }
     const k = ax + '\u0000' + h.token + '\u0000' + h.lang;
     if (!culp.has(k)) culp.set(k, new Set());
     culp.get(k).add(p.id);
@@ -125,6 +131,12 @@ if (!culp.size) console.log('  ninguno. Todos los terminos declaran acepcion.');
   const [ax, tok, lang] = k.split('\u0000');
   console.log('  ' + String(set.size).padStart(3) + ' pasajes  ' + ax.padEnd(11) + '<- "' + tok + '" (' + lang + ')');
 });
+
+if (cerradosPorTag.size) {
+  console.log('');
+  console.log('  ' + cerradosPorTag.size + ' combinacion(es) eje<-termino quedaron fuera de la lista:');
+  console.log('  un tag manual ya fija la acepcion en todos los pasajes que tocan.');
+}
 
 /* ---------------------------------------------------- 3. A TAGUEAR ----------- */
 linea('=');

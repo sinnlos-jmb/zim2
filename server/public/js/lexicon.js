@@ -363,6 +363,15 @@ export const AXES = [
     es: ['fortuna', 'azar', 'suerte', 'externos', 'bienes exteriores', 'amigos', 'salud', 'linaje', 'hijos', 'infortunio'],
   },
   {
+    /* IMPRECISION CONOCIDA (fase 2): decidido a proposito, no tocar.
+       El colapso "no necesita nada" (stem necesit) prende autarkeia en 4
+       pasajes: 7.f es acierto; 8.g, 8.i y 10.c son falsos positivos.
+       El colapso "se dice" (stem dice) prende endoxa en 9 pasajes: aciertan
+       6.b, 6.c, 8.a y 8.b; fallan 6.h, 7.h, 8.f, 8.h y 10.a.
+       Los dos son ejes PLANOS (sin senses), asi que el tag de sentido neutro
+       no puede corregirlos: no hay mezcla de acepciones que anular. Angostar
+       o borrar la frase en el lexico se lleva puestos tambien los aciertos.
+       Se acepta el ruido y se documenta aca. Revisar recien en el libro II. */
     id: 'autarkeia', label: 'Autarquía', greek: 'αὐτάρκεια',
     // TELEIOS SALIO DE ACA. La autarkeia es una CONSECUENCIA de la teleiotes
     // (1097b6-8), no un sinonimo: teniendo ambos terminos en un solo eje,

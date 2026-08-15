@@ -39,6 +39,11 @@ const args = process.argv.slice(2);
 const guardar = args.includes('--guardar');
 const detalle = args.includes('--detalle');
 const rutaArg = args.find((a) => a.endsWith('.json') && a.indexOf('baseline') < 0);
+// --libro N (o --libro=N): elige contra que baseline se compara. El libro 1
+// conserva el nombre historico para no invalidar lo ya guardado.
+const iLibro = args.findIndex((a) => a === '--libro' || a.startsWith('--libro='));
+const LIBRO = iLibro < 0 ? 1
+  : Number((args[iLibro].split('=')[1] || args[iLibro + 1] || '1')) || 1;
 
 const CANDIDATOS = [
   rutaArg,
@@ -58,7 +63,10 @@ if (!SRC) {
 
 // fileURLToPath y NO new URL(...).pathname: en Windows pathname devuelve
 // /C:/Users/... y fs lo lee como C:\C:\Users\..., que no existe.
-const BASELINE = fileURLToPath(new URL('./baseline-regresion.json', import.meta.url));
+const NOMBRE_BASELINE = LIBRO === 1
+  ? './baseline-regresion.json'
+  : './baseline-regresion-libro' + LIBRO + '.json';
+const BASELINE = fileURLToPath(new URL(NOMBRE_BASELINE, import.meta.url));
 
 /* ---------------------------------------------------- CONSULTAS -------------- */
 /* Juego fijo. Cubre los cuatro ejes polisemicos por sus dos acepciones, las
@@ -204,6 +212,7 @@ const actual = snapshot();
 console.log('REGRESION DEL MOTOR');
 console.log('corpus : ' + SRC);
 console.log('motor  : ' + AXES.length + ' ejes, DIM ' + DIM + ', ' + PASSAGES.length + ' pasajes, ' + CONSULTAS.length + ' consultas');
+console.log('libro  : ' + LIBRO);
 console.log('baseline: ' + BASELINE);
 
 if (guardar) {
