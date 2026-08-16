@@ -37,38 +37,39 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.2.a",
-    "EN.I.2.b",
-    "EN.I.3.a",
-    "EN.I.4.a",
-    "EN.I.5.a",
-    "EN.I.5.b",
-    "EN.I.5.d",
-    "EN.I.6.b",
-    "EN.I.6.c",
-    "EN.I.6.d",
-    "EN.I.6.g",
-    "EN.I.6.h",
-    "EN.I.7.a",
-    "EN.I.7.e",
-    "EN.I.7.f",
-    "EN.I.7.g",
-    "EN.I.7.j",
-    "EN.I.8.b",
-    "EN.I.8.d",
-    "EN.I.8.h",
-    "EN.I.8.i",
-    "EN.I.9.b",
-    "EN.I.10.a",
-    "EN.I.10.g",
-    "EN.I.12.b",
-    "EN.I.12.c",
-    "EN.I.12.d",
-    "EN.I.13.b",
-    "EN.I.13.c"
+    "EN.I.1.p1a",
+    "EN.I.2.p3a",
+    "EN.I.2.p4a",
+    "EN.I.3.p6a",
+    "EN.I.4.p8a",
+    "EN.I.4.p8b",
+    "EN.I.5.p10a",
+    "EN.I.5.p10b",
+    "EN.I.5.p12a",
+    "EN.I.6.p14a",
+    "EN.I.6.p15a",
+    "EN.I.6.p18a",
+    "EN.I.6.p18b",
+    "EN.I.6.p21a",
+    "EN.I.7.p22a",
+    "EN.I.7.p22b",
+    "EN.I.7.p24a",
+    "EN.I.7.p24b",
+    "EN.I.7.p25a",
+    "EN.I.7.p28a",
+    "EN.I.8.p30a",
+    "EN.I.8.p31a",
+    "EN.I.8.p32b",
+    "EN.I.8.p33a",
+    "EN.I.9.p36a",
+    "EN.I.10.p37a",
+    "EN.I.10.p39b",
+    "EN.I.12.p43a",
+    "EN.I.12.p44a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a"
    ],
-   "passageCount": 30
+   "passageCount": 31
   },
   {
    "stem": "αρετ",
@@ -106,29 +107,28 @@
     }
    ],
    "passages": [
-    "EN.I.5.b",
-    "EN.I.5.c",
-    "EN.I.6.c",
-    "EN.I.7.i",
-    "EN.I.8.c",
-    "EN.I.8.d",
-    "EN.I.8.f",
-    "EN.I.8.g",
-    "EN.I.8.i",
-    "EN.I.9.b",
-    "EN.I.9.c",
-    "EN.I.10.c",
-    "EN.I.10.d",
-    "EN.I.10.e",
-    "EN.I.10.i",
-    "EN.I.12.b",
-    "EN.I.12.d",
-    "EN.I.13.a",
-    "EN.I.13.c",
-    "EN.I.13.e",
-    "EN.I.13.h"
+    "EN.I.5.p10b",
+    "EN.I.5.p11a",
+    "EN.I.6.p15a",
+    "EN.I.7.p27a",
+    "EN.I.8.p30b",
+    "EN.I.8.p31a",
+    "EN.I.8.p32a",
+    "EN.I.8.p32b",
+    "EN.I.8.p33a",
+    "EN.I.9.p35a",
+    "EN.I.9.p36a",
+    "EN.I.10.p38b",
+    "EN.I.10.p40a",
+    "EN.I.12.p43a",
+    "EN.I.12.p44a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a",
+    "EN.I.13.p48a",
+    "EN.I.13.p48b",
+    "EN.I.13.p51a"
    ],
-   "passageCount": 21
+   "passageCount": 20
   },
   {
    "stem": "ευδαιμονι",
@@ -154,24 +154,25 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.5.a",
-    "EN.I.7.d",
-    "EN.I.7.f",
-    "EN.I.7.g",
-    "EN.I.8.h",
-    "EN.I.8.i",
-    "EN.I.10.a",
-    "EN.I.10.c",
-    "EN.I.10.h",
-    "EN.I.10.i",
-    "EN.I.12.a",
-    "EN.I.12.b",
-    "EN.I.12.d",
-    "EN.I.13.a",
-    "EN.I.13.c"
+    "EN.I.4.p8a",
+    "EN.I.5.p10a",
+    "EN.I.7.p23a",
+    "EN.I.7.p24b",
+    "EN.I.7.p25a",
+    "EN.I.8.p32b",
+    "EN.I.8.p33a",
+    "EN.I.10.p37a",
+    "EN.I.10.p38a",
+    "EN.I.10.p38b",
+    "EN.I.10.p39b",
+    "EN.I.10.p40a",
+    "EN.I.12.p43a",
+    "EN.I.12.p43b",
+    "EN.I.12.p44a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a"
    ],
-   "passageCount": 16
+   "passageCount": 17
   },
   {
    "stem": "ενεργει",
@@ -213,23 +214,22 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.1.b",
-    "EN.I.7.h",
-    "EN.I.7.i",
-    "EN.I.8.b",
-    "EN.I.8.d",
-    "EN.I.9.b",
-    "EN.I.9.c",
-    "EN.I.10.a",
-    "EN.I.10.c",
-    "EN.I.10.d",
-    "EN.I.10.g",
-    "EN.I.13.a",
-    "EN.I.13.c",
-    "EN.I.13.e"
+    "EN.I.1.p1a",
+    "EN.I.1.p2a",
+    "EN.I.7.p26a",
+    "EN.I.7.p27a",
+    "EN.I.8.p30a",
+    "EN.I.8.p31a",
+    "EN.I.9.p35a",
+    "EN.I.9.p36a",
+    "EN.I.10.p37a",
+    "EN.I.10.p38b",
+    "EN.I.10.p39a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a",
+    "EN.I.13.p48a"
    ],
-   "passageCount": 15
+   "passageCount": 14
   },
   {
    "stem": "ψυχη",
@@ -251,15 +251,15 @@
     }
    ],
    "passages": [
-    "EN.I.6.h",
-    "EN.I.7.i",
-    "EN.I.8.b",
-    "EN.I.9.b",
-    "EN.I.13.a",
-    "EN.I.13.c",
-    "EN.I.13.d",
-    "EN.I.13.e",
-    "EN.I.13.f"
+    "EN.I.6.p19a",
+    "EN.I.7.p27a",
+    "EN.I.8.p30a",
+    "EN.I.9.p35a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a",
+    "EN.I.13.p48a",
+    "EN.I.13.p48b",
+    "EN.I.13.p49a"
    ],
    "passageCount": 9
   },
@@ -299,18 +299,19 @@
     }
    ],
    "passages": [
-    "EN.I.2.b",
-    "EN.I.3.a",
-    "EN.I.3.c",
-    "EN.I.4.a",
-    "EN.I.4.d",
-    "EN.I.7.e",
-    "EN.I.8.i",
-    "EN.I.9.b",
-    "EN.I.13.b",
-    "EN.I.13.c"
+    "EN.I.2.p4a",
+    "EN.I.2.p5a",
+    "EN.I.3.p6a",
+    "EN.I.3.p7a",
+    "EN.I.4.p8a",
+    "EN.I.4.p9b",
+    "EN.I.7.p24a",
+    "EN.I.8.p33a",
+    "EN.I.9.p36a",
+    "EN.I.13.p45a",
+    "EN.I.13.p46a"
    ],
-   "passageCount": 10
+   "passageCount": 11
   },
   {
    "stem": "τελει",
@@ -344,15 +345,15 @@
     }
    ],
    "passages": [
-    "EN.I.7.b",
-    "EN.I.7.c",
-    "EN.I.7.e",
-    "EN.I.7.f",
-    "EN.I.7.i",
-    "EN.I.9.c",
-    "EN.I.10.h",
-    "EN.I.10.i",
-    "EN.I.13.a"
+    "EN.I.7.p22b",
+    "EN.I.7.p23a",
+    "EN.I.7.p24a",
+    "EN.I.7.p24b",
+    "EN.I.7.p27a",
+    "EN.I.9.p36a",
+    "EN.I.10.p39b",
+    "EN.I.10.p40a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 9
   },
@@ -376,18 +377,19 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.4.a",
-    "EN.I.7.b",
-    "EN.I.7.g",
-    "EN.I.7.i",
-    "EN.I.8.d",
-    "EN.I.8.h",
-    "EN.I.9.a",
-    "EN.I.9.b",
-    "EN.I.12.b"
+    "EN.I.2.p3a",
+    "EN.I.4.p8b",
+    "EN.I.7.p22b",
+    "EN.I.7.p25a",
+    "EN.I.7.p27a",
+    "EN.I.8.p31a",
+    "EN.I.8.p32b",
+    "EN.I.9.p34a",
+    "EN.I.9.p35a",
+    "EN.I.9.p36a",
+    "EN.I.12.p43b"
    ],
-   "passageCount": 10
+   "passageCount": 11
   },
   {
    "stem": "τελο",
@@ -401,18 +403,19 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.5.a",
-    "EN.I.7.a",
-    "EN.I.7.f",
-    "EN.I.8.b",
-    "EN.I.9.a",
-    "EN.I.9.b",
-    "EN.I.10.a",
-    "EN.I.10.c",
-    "EN.I.10.i"
+    "EN.I.2.p3a",
+    "EN.I.5.p10b",
+    "EN.I.7.p22a",
+    "EN.I.7.p22b",
+    "EN.I.7.p24b",
+    "EN.I.8.p30a",
+    "EN.I.9.p34a",
+    "EN.I.9.p36a",
+    "EN.I.10.p37a",
+    "EN.I.10.p38a",
+    "EN.I.10.p40a"
    ],
-   "passageCount": 10
+   "passageCount": 11
   },
   {
    "stem": "λογο",
@@ -434,16 +437,16 @@
     }
    ],
    "passages": [
-    "EN.I.3.c",
-    "EN.I.4.c",
-    "EN.I.6.e",
-    "EN.I.6.i",
-    "EN.I.7.h",
-    "EN.I.7.i",
-    "EN.I.10.b",
-    "EN.I.13.d",
-    "EN.I.13.f",
-    "EN.I.13.g"
+    "EN.I.3.p7b",
+    "EN.I.4.p9a",
+    "EN.I.6.p16a",
+    "EN.I.6.p21a",
+    "EN.I.7.p26a",
+    "EN.I.7.p27a",
+    "EN.I.10.p37b",
+    "EN.I.13.p47a",
+    "EN.I.13.p49a",
+    "EN.I.13.p50a"
    ],
    "passageCount": 10
   },
@@ -459,10 +462,10 @@
     }
    ],
    "passages": [
-    "EN.I.7.g",
-    "EN.I.7.h",
-    "EN.I.7.i",
-    "EN.I.7.k"
+    "EN.I.7.p25a",
+    "EN.I.7.p26a",
+    "EN.I.7.p27a",
+    "EN.I.7.p28a"
    ],
    "passageCount": 4
   },
@@ -478,14 +481,14 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.3.c",
-    "EN.I.5.a",
-    "EN.I.7.e",
-    "EN.I.7.f",
-    "EN.I.10.f",
-    "EN.I.10.i",
-    "EN.I.11.b"
+    "EN.I.2.p3a",
+    "EN.I.3.p7a",
+    "EN.I.5.p10a",
+    "EN.I.7.p24a",
+    "EN.I.7.p24b",
+    "EN.I.10.p39a",
+    "EN.I.10.p40a",
+    "EN.I.11.p42a"
    ],
    "passageCount": 8
   },
@@ -517,13 +520,13 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.5.a",
-    "EN.I.6.g",
-    "EN.I.7.d",
-    "EN.I.8.c",
-    "EN.I.8.g",
-    "EN.I.12.c"
+    "EN.I.4.p8b",
+    "EN.I.5.p10a",
+    "EN.I.6.p18b",
+    "EN.I.7.p23a",
+    "EN.I.8.p30b",
+    "EN.I.8.p32a",
+    "EN.I.12.p44a"
    ],
    "passageCount": 7
   },
@@ -543,12 +546,12 @@
     }
    ],
    "passages": [
-    "EN.I.4.d",
-    "EN.I.7.i",
-    "EN.I.7.l",
-    "EN.I.8.h",
-    "EN.I.9.b",
-    "EN.I.12.d"
+    "EN.I.4.p9b",
+    "EN.I.7.p27a",
+    "EN.I.7.p28b",
+    "EN.I.8.p32b",
+    "EN.I.9.p36a",
+    "EN.I.12.p44a"
    ],
    "passageCount": 6
   },
@@ -564,12 +567,12 @@
     }
    ],
    "passages": [
-    "EN.I.5.a",
-    "EN.I.5.c",
-    "EN.I.9.c",
-    "EN.I.10.b",
-    "EN.I.10.e",
-    "EN.I.13.e"
+    "EN.I.5.p10b",
+    "EN.I.5.p11a",
+    "EN.I.9.p36a",
+    "EN.I.10.p37b",
+    "EN.I.10.p38b",
+    "EN.I.13.p48a"
    ],
    "passageCount": 6
   },
@@ -589,12 +592,12 @@
     }
    ],
    "passages": [
-    "EN.I.8.i",
-    "EN.I.9.a",
-    "EN.I.10.d",
-    "EN.I.10.f",
-    "EN.I.10.i",
-    "EN.I.11.c"
+    "EN.I.8.p33a",
+    "EN.I.9.p34a",
+    "EN.I.10.p38b",
+    "EN.I.10.p39a",
+    "EN.I.10.p40a",
+    "EN.I.11.p42b"
    ],
    "passageCount": 6
   },
@@ -622,13 +625,34 @@
     }
    ],
    "passages": [
-    "EN.I.4.d",
-    "EN.I.7.l",
-    "EN.I.8.a",
-    "EN.I.12.d",
-    "EN.I.13.b"
+    "EN.I.4.p9b",
+    "EN.I.7.p28b",
+    "EN.I.8.p29a",
+    "EN.I.12.p44a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 5
+  },
+  {
+   "stem": "πραξει",
+   "canonical": "πράξεις",
+   "total": 6,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "πράξεις",
+     "n": 6
+    }
+   ],
+   "passages": [
+    "EN.I.7.p26a",
+    "EN.I.7.p27a",
+    "EN.I.8.p30a",
+    "EN.I.8.p32a",
+    "EN.I.8.p32b",
+    "EN.I.12.p43a"
+   ],
+   "passageCount": 6
   },
   {
    "stem": "πρακτ",
@@ -646,31 +670,35 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.4.a",
-    "EN.I.6.h",
-    "EN.I.7.a",
-    "EN.I.7.f"
+    "EN.I.2.p3a",
+    "EN.I.4.p8a",
+    "EN.I.6.p20a",
+    "EN.I.7.p22b",
+    "EN.I.7.p24b"
    ],
    "passageCount": 5
   },
   {
-   "stem": "πραξει",
-   "canonical": "πράξεις",
-   "total": 6,
-   "formCount": 1,
+   "stem": "γνωσι",
+   "canonical": "γνῶσις",
+   "total": 5,
+   "formCount": 2,
    "forms": [
     {
-     "form": "πράξεις",
-     "n": 6
+     "form": "γνῶσις",
+     "n": 3
+    },
+    {
+     "form": "γνῶσιν",
+     "n": 2
     }
    ],
    "passages": [
-    "EN.I.7.h",
-    "EN.I.7.i",
-    "EN.I.8.b",
-    "EN.I.8.g",
-    "EN.I.12.b"
+    "EN.I.3.p7a",
+    "EN.I.3.p7b",
+    "EN.I.4.p8a",
+    "EN.I.6.p21a",
+    "EN.I.13.p46a"
    ],
    "passageCount": 5
   },
@@ -690,33 +718,10 @@
     }
    ],
    "passages": [
-    "EN.I.1.b",
-    "EN.I.2.a",
-    "EN.I.6.d",
-    "EN.I.10.d"
-   ],
-   "passageCount": 4
-  },
-  {
-   "stem": "γνωσι",
-   "canonical": "γνῶσις",
-   "total": 5,
-   "formCount": 2,
-   "forms": [
-    {
-     "form": "γνῶσις",
-     "n": 3
-    },
-    {
-     "form": "γνῶσιν",
-     "n": 2
-    }
-   ],
-   "passages": [
-    "EN.I.3.c",
-    "EN.I.4.a",
-    "EN.I.6.i",
-    "EN.I.13.c"
+    "EN.I.1.p2a",
+    "EN.I.2.p3a",
+    "EN.I.6.p15a",
+    "EN.I.10.p38b"
    ],
    "passageCount": 4
   },
@@ -740,10 +745,10 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.5.a",
-    "EN.I.10.f",
-    "EN.I.10.h"
+    "EN.I.4.p8a",
+    "EN.I.5.p10a",
+    "EN.I.10.p39a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 4
   },
@@ -759,10 +764,10 @@
     }
    ],
    "passages": [
-    "EN.I.7.a",
-    "EN.I.8.d",
-    "EN.I.10.e",
-    "EN.I.10.g"
+    "EN.I.7.p22a",
+    "EN.I.8.p31a",
+    "EN.I.10.p38b",
+    "EN.I.10.p39a"
    ],
    "passageCount": 4
   },
@@ -786,10 +791,10 @@
     }
    ],
    "passages": [
-    "EN.I.8.e",
-    "EN.I.8.h",
-    "EN.I.9.b",
-    "EN.I.10.g"
+    "EN.I.8.p31a",
+    "EN.I.8.p32b",
+    "EN.I.9.p35a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 4
   },
@@ -805,9 +810,9 @@
     }
    ],
    "passages": [
-    "EN.I.1.b",
-    "EN.I.5.d",
-    "EN.I.7.b"
+    "EN.I.1.p2a",
+    "EN.I.5.p12a",
+    "EN.I.7.p22b"
    ],
    "passageCount": 3
   },
@@ -835,10 +840,10 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.1.b",
-    "EN.I.6.i",
-    "EN.I.7.a"
+    "EN.I.1.p1a",
+    "EN.I.1.p2a",
+    "EN.I.6.p21a",
+    "EN.I.7.p22a"
    ],
    "passageCount": 4
   },
@@ -854,10 +859,10 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.4.a",
-    "EN.I.6.i",
-    "EN.I.11.b"
+    "EN.I.1.p1a",
+    "EN.I.4.p8a",
+    "EN.I.6.p21a",
+    "EN.I.11.p42a"
    ],
    "passageCount": 4
   },
@@ -885,10 +890,10 @@
     }
    ],
    "passages": [
-    "EN.I.1.b",
-    "EN.I.5.d",
-    "EN.I.6.g",
-    "EN.I.8.g"
+    "EN.I.1.p2a",
+    "EN.I.5.p12a",
+    "EN.I.6.p18a",
+    "EN.I.8.p32b"
    ],
    "passageCount": 4
   },
@@ -904,10 +909,10 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.6.b",
-    "EN.I.7.e",
-    "EN.I.8.g"
+    "EN.I.3.p6a",
+    "EN.I.6.p14a",
+    "EN.I.7.p24a",
+    "EN.I.8.p32a"
    ],
    "passageCount": 4
   },
@@ -923,10 +928,10 @@
     }
    ],
    "passages": [
-    "EN.I.3.c",
-    "EN.I.8.g",
-    "EN.I.10.e",
-    "EN.I.13.e"
+    "EN.I.3.p7a",
+    "EN.I.8.p32b",
+    "EN.I.10.p38b",
+    "EN.I.13.p48a"
    ],
    "passageCount": 4
   },
@@ -942,10 +947,10 @@
     }
    ],
    "passages": [
-    "EN.I.3.c",
-    "EN.I.4.a",
-    "EN.I.7.h",
-    "EN.I.8.b"
+    "EN.I.3.p7b",
+    "EN.I.4.p8a",
+    "EN.I.7.p26a",
+    "EN.I.8.p30a"
    ],
    "passageCount": 4
   },
@@ -961,33 +966,10 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.8.b",
-    "EN.I.8.i",
-    "EN.I.10.g"
-   ],
-   "passageCount": 4
-  },
-  {
-   "stem": "τιμη",
-   "canonical": "τιμήν",
-   "total": 4,
-   "formCount": 2,
-   "forms": [
-    {
-     "form": "τιμήν",
-     "n": 2
-    },
-    {
-     "form": "τιμὴν",
-     "n": 2
-    }
-   ],
-   "passages": [
-    "EN.I.4.a",
-    "EN.I.5.a",
-    "EN.I.5.b",
-    "EN.I.7.d"
+    "EN.I.4.p8a",
+    "EN.I.8.p30a",
+    "EN.I.8.p33a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 4
   },
@@ -1011,10 +993,10 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.7.l",
-    "EN.I.12.d",
-    "EN.I.13.d"
+    "EN.I.4.p8b",
+    "EN.I.7.p28b",
+    "EN.I.12.p44a",
+    "EN.I.13.p48a"
    ],
    "passageCount": 4
   },
@@ -1042,10 +1024,37 @@
     }
    ],
    "passages": [
-    "EN.I.6.b",
-    "EN.I.6.g",
-    "EN.I.6.h",
-    "EN.I.13.d"
+    "EN.I.6.p14a",
+    "EN.I.6.p18b",
+    "EN.I.6.p20a",
+    "EN.I.13.p48a"
+   ],
+   "passageCount": 4
+  },
+  {
+   "stem": "ιδεα",
+   "canonical": "ἰδέας",
+   "total": 4,
+   "formCount": 3,
+   "forms": [
+    {
+     "form": "ἰδέας",
+     "n": 2
+    },
+    {
+     "form": "ἰδέα",
+     "n": 1
+    },
+    {
+     "form": "ἰδέαν",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.6.p14a",
+    "EN.I.6.p18a",
+    "EN.I.6.p18b",
+    "EN.I.6.p20a"
    ],
    "passageCount": 4
   },
@@ -1065,10 +1074,10 @@
     }
    ],
    "passages": [
-    "EN.I.7.g",
-    "EN.I.7.k",
-    "EN.I.10.d",
-    "EN.I.12.d"
+    "EN.I.7.p25a",
+    "EN.I.7.p28b",
+    "EN.I.10.p38b",
+    "EN.I.12.p44a"
    ],
    "passageCount": 4
   },
@@ -1092,10 +1101,10 @@
     }
    ],
    "passages": [
-    "EN.I.8.b",
-    "EN.I.10.e",
-    "EN.I.10.i",
-    "EN.I.11.c"
+    "EN.I.8.p30a",
+    "EN.I.10.p38b",
+    "EN.I.10.p40a",
+    "EN.I.11.p42b"
    ],
    "passageCount": 4
   },
@@ -1115,9 +1124,31 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.7.b",
-    "EN.I.7.d"
+    "EN.I.2.p3a",
+    "EN.I.7.p22b",
+    "EN.I.7.p23a"
+   ],
+   "passageCount": 3
+  },
+  {
+   "stem": "τιμη",
+   "canonical": "τιμήν",
+   "total": 4,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "τιμήν",
+     "n": 2
+    },
+    {
+     "form": "τιμὴν",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.4.p8b",
+    "EN.I.5.p10b",
+    "EN.I.7.p23a"
    ],
    "passageCount": 3
   },
@@ -1141,35 +1172,9 @@
     }
    ],
    "passages": [
-    "EN.I.5.b",
-    "EN.I.6.a",
-    "EN.I.7.i"
-   ],
-   "passageCount": 3
-  },
-  {
-   "stem": "ιδεα",
-   "canonical": "ἰδέας",
-   "total": 4,
-   "formCount": 3,
-   "forms": [
-    {
-     "form": "ἰδέας",
-     "n": 2
-    },
-    {
-     "form": "ἰδέα",
-     "n": 1
-    },
-    {
-     "form": "ἰδέαν",
-     "n": 1
-    }
-   ],
-   "passages": [
-    "EN.I.6.b",
-    "EN.I.6.g",
-    "EN.I.6.h"
+    "EN.I.5.p10b",
+    "EN.I.6.p13a",
+    "EN.I.7.p27a"
    ],
    "passageCount": 3
   },
@@ -1185,8 +1190,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.e",
-    "EN.I.7.f"
+    "EN.I.7.p24a",
+    "EN.I.7.p24b"
    ],
    "passageCount": 2
   },
@@ -1206,9 +1211,9 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.3.c",
-    "EN.I.7.g"
+    "EN.I.1.p1a",
+    "EN.I.3.p7a",
+    "EN.I.7.p25a"
    ],
    "passageCount": 3
   },
@@ -1228,9 +1233,9 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.4.a",
-    "EN.I.13.b"
+    "EN.I.1.p1a",
+    "EN.I.4.p8a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 3
   },
@@ -1246,31 +1251,9 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.7.h",
-    "EN.I.12.b"
-   ],
-   "passageCount": 3
-  },
-  {
-   "stem": "δυναμι",
-   "canonical": "δύναμιν",
-   "total": 3,
-   "formCount": 2,
-   "forms": [
-    {
-     "form": "δύναμιν",
-     "n": 2
-    },
-    {
-     "form": "δύναμις",
-     "n": 1
-    }
-   ],
-   "passages": [
-    "EN.I.1.b",
-    "EN.I.13.d",
-    "EN.I.13.e"
+    "EN.I.1.p1a",
+    "EN.I.7.p26a",
+    "EN.I.12.p43a"
    ],
    "passageCount": 3
   },
@@ -1286,9 +1269,9 @@
     }
    ],
    "passages": [
-    "EN.I.2.b",
-    "EN.I.8.b",
-    "EN.I.13.e"
+    "EN.I.2.p4a",
+    "EN.I.8.p30a",
+    "EN.I.13.p48a"
    ],
    "passageCount": 3
   },
@@ -1308,9 +1291,9 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.8.h",
-    "EN.I.8.i"
+    "EN.I.3.p6a",
+    "EN.I.8.p32b",
+    "EN.I.8.p33a"
    ],
    "passageCount": 3
   },
@@ -1330,9 +1313,9 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.8.f",
-    "EN.I.12.b"
+    "EN.I.3.p6a",
+    "EN.I.8.p32a",
+    "EN.I.12.p43a"
    ],
    "passageCount": 3
   },
@@ -1352,9 +1335,9 @@
     }
    ],
    "passages": [
-    "EN.I.3.b",
-    "EN.I.9.b",
-    "EN.I.13.f"
+    "EN.I.3.s1a",
+    "EN.I.9.p35a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 3
   },
@@ -1374,9 +1357,9 @@
     }
    ],
    "passages": [
-    "EN.I.4.c",
-    "EN.I.4.d",
-    "EN.I.7.l"
+    "EN.I.4.p9a",
+    "EN.I.4.p9b",
+    "EN.I.7.p28b"
    ],
    "passageCount": 3
   },
@@ -1392,9 +1375,9 @@
     }
    ],
    "passages": [
-    "EN.I.4.c",
-    "EN.I.6.h",
-    "EN.I.10.i"
+    "EN.I.4.p9a",
+    "EN.I.6.p21a",
+    "EN.I.10.p40a"
    ],
    "passageCount": 3
   },
@@ -1410,9 +1393,9 @@
     }
    ],
    "passages": [
-    "EN.I.4.c",
-    "EN.I.7.c",
-    "EN.I.11.c"
+    "EN.I.4.p9a",
+    "EN.I.7.p23a",
+    "EN.I.11.p42b"
    ],
    "passageCount": 3
   },
@@ -1432,9 +1415,9 @@
     }
    ],
    "passages": [
-    "EN.I.5.c",
-    "EN.I.10.c",
-    "EN.I.11.b"
+    "EN.I.5.p11a",
+    "EN.I.10.p38a",
+    "EN.I.11.p42a"
    ],
    "passageCount": 3
   },
@@ -1450,9 +1433,9 @@
     }
    ],
    "passages": [
-    "EN.I.6.a",
-    "EN.I.6.c",
-    "EN.I.11.a"
+    "EN.I.6.p13a",
+    "EN.I.6.p15a",
+    "EN.I.11.p41a"
    ],
    "passageCount": 3
   },
@@ -1472,9 +1455,9 @@
     }
    ],
    "passages": [
-    "EN.I.6.h",
-    "EN.I.9.a",
-    "EN.I.10.f"
+    "EN.I.6.p19a",
+    "EN.I.9.p34a",
+    "EN.I.10.p39a"
    ],
    "passageCount": 3
   },
@@ -1494,9 +1477,9 @@
     }
    ],
    "passages": [
-    "EN.I.7.g",
-    "EN.I.7.k",
-    "EN.I.10.i"
+    "EN.I.7.p25a",
+    "EN.I.7.p28a",
+    "EN.I.10.p40a"
    ],
    "passageCount": 3
   },
@@ -1512,9 +1495,9 @@
     }
    ],
    "passages": [
-    "EN.I.7.h",
-    "EN.I.9.b",
-    "EN.I.10.f"
+    "EN.I.7.p26a",
+    "EN.I.9.p35a",
+    "EN.I.10.p39a"
    ],
    "passageCount": 3
   },
@@ -1530,9 +1513,9 @@
     }
    ],
    "passages": [
-    "EN.I.7.h",
-    "EN.I.13.d",
-    "EN.I.13.f"
+    "EN.I.7.p26a",
+    "EN.I.13.p47a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 3
   },
@@ -1548,9 +1531,9 @@
     }
    ],
    "passages": [
-    "EN.I.8.b",
-    "EN.I.8.c",
-    "EN.I.8.i"
+    "EN.I.8.p30a",
+    "EN.I.8.p30b",
+    "EN.I.8.p33a"
    ],
    "passageCount": 3
   },
@@ -1566,9 +1549,9 @@
     }
    ],
    "passages": [
-    "EN.I.8.b",
-    "EN.I.10.d",
-    "EN.I.13.d"
+    "EN.I.8.p30a",
+    "EN.I.10.p38b",
+    "EN.I.13.p47a"
    ],
    "passageCount": 3
   },
@@ -1584,9 +1567,9 @@
     }
    ],
    "passages": [
-    "EN.I.8.e",
-    "EN.I.8.g",
-    "EN.I.10.c"
+    "EN.I.8.p31a",
+    "EN.I.8.p32a",
+    "EN.I.10.p38a"
    ],
    "passageCount": 3
   },
@@ -1602,9 +1585,9 @@
     }
    ],
    "passages": [
-    "EN.I.9.b",
-    "EN.I.12.b",
-    "EN.I.13.a"
+    "EN.I.9.p35a",
+    "EN.I.12.p43b",
+    "EN.I.13.p45a"
    ],
    "passageCount": 3
   },
@@ -1620,9 +1603,9 @@
     }
    ],
    "passages": [
-    "EN.I.10.b",
-    "EN.I.10.c",
-    "EN.I.10.h"
+    "EN.I.10.p37b",
+    "EN.I.10.p38a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 3
   },
@@ -1638,9 +1621,9 @@
     }
    ],
    "passages": [
-    "EN.I.10.e",
-    "EN.I.10.g",
-    "EN.I.11.a"
+    "EN.I.10.p38b",
+    "EN.I.10.p39b",
+    "EN.I.11.p41a"
    ],
    "passageCount": 3
   },
@@ -1660,9 +1643,9 @@
     }
    ],
    "passages": [
-    "EN.I.10.f",
-    "EN.I.12.b",
-    "EN.I.13.e"
+    "EN.I.10.p39a",
+    "EN.I.12.p43a",
+    "EN.I.13.p48b"
    ],
    "passageCount": 3
   },
@@ -1678,8 +1661,29 @@
     }
    ],
    "passages": [
-    "EN.I.1.b",
-    "EN.I.3.c"
+    "EN.I.1.p2a",
+    "EN.I.3.p7a"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "δυναμι",
+   "canonical": "δύναμιν",
+   "total": 3,
+   "formCount": 2,
+   "forms": [
+    {
+     "form": "δύναμιν",
+     "n": 2
+    },
+    {
+     "form": "δύναμις",
+     "n": 1
+    }
+   ],
+   "passages": [
+    "EN.I.1.p2a",
+    "EN.I.13.p48a"
    ],
    "passageCount": 2
   },
@@ -1699,8 +1703,8 @@
     }
    ],
    "passages": [
-    "EN.I.5.a",
-    "EN.I.13.f"
+    "EN.I.5.p10a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 2
   },
@@ -1720,25 +1724,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.a",
-    "EN.I.8.d"
-   ],
-   "passageCount": 2
-  },
-  {
-   "stem": "εχει",
-   "canonical": "ἔχειν",
-   "total": 3,
-   "formCount": 1,
-   "forms": [
-    {
-     "form": "ἔχειν",
-     "n": 3
-    }
-   ],
-   "passages": [
-    "EN.I.12.b",
-    "EN.I.13.g"
+    "EN.I.8.p29a",
+    "EN.I.8.p31a"
    ],
    "passageCount": 2
   },
@@ -1754,9 +1741,27 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32a",
+    "EN.I.8.p32b"
    ],
-   "passageCount": 1
+   "passageCount": 2
+  },
+  {
+   "stem": "εχει",
+   "canonical": "ἔχειν",
+   "total": 3,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ἔχειν",
+     "n": 3
+    }
+   ],
+   "passages": [
+    "EN.I.12.p43a",
+    "EN.I.13.p50a"
+   ],
+   "passageCount": 2
   },
   {
    "stem": "μεθοδο",
@@ -1770,8 +1775,8 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.2.b"
+    "EN.I.1.p1a",
+    "EN.I.2.p5a"
    ],
    "passageCount": 2
   },
@@ -1787,8 +1792,8 @@
     }
    ],
    "passages": [
-    "EN.I.1.a",
-    "EN.I.4.a"
+    "EN.I.1.p1a",
+    "EN.I.4.p8a"
    ],
    "passageCount": 2
   },
@@ -1808,8 +1813,8 @@
     }
    ],
    "passages": [
-    "EN.I.1.b",
-    "EN.I.2.b"
+    "EN.I.1.p2a",
+    "EN.I.2.p4a"
    ],
    "passageCount": 2
   },
@@ -1825,8 +1830,8 @@
     }
    ],
    "passages": [
-    "EN.I.2.a",
-    "EN.I.12.a"
+    "EN.I.2.p3a",
+    "EN.I.12.p43a"
    ],
    "passageCount": 2
   },
@@ -1846,8 +1851,8 @@
     }
    ],
    "passages": [
-    "EN.I.2.b",
-    "EN.I.7.f"
+    "EN.I.2.p4a",
+    "EN.I.7.p24b"
    ],
    "passageCount": 2
   },
@@ -1863,8 +1868,8 @@
     }
    ],
    "passages": [
-    "EN.I.2.b",
-    "EN.I.7.c"
+    "EN.I.2.p4a",
+    "EN.I.7.p23a"
    ],
    "passageCount": 2
   },
@@ -1884,8 +1889,8 @@
     }
    ],
    "passages": [
-    "EN.I.2.b",
-    "EN.I.12.b"
+    "EN.I.2.p4a",
+    "EN.I.12.p43b"
    ],
    "passageCount": 2
   },
@@ -1901,8 +1906,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.7.k"
+    "EN.I.3.p6a",
+    "EN.I.7.p28a"
    ],
    "passageCount": 2
   },
@@ -1918,8 +1923,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.7.k"
+    "EN.I.3.p6a",
+    "EN.I.7.p28a"
    ],
    "passageCount": 2
   },
@@ -1935,8 +1940,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.13.d"
+    "EN.I.3.p6a",
+    "EN.I.13.p47a"
    ],
    "passageCount": 2
   },
@@ -1956,8 +1961,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.13.b"
+    "EN.I.3.p6a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 2
   },
@@ -1973,8 +1978,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.7.b"
+    "EN.I.3.p6a",
+    "EN.I.7.p22b"
    ],
    "passageCount": 2
   },
@@ -1994,8 +1999,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.a",
-    "EN.I.12.b"
+    "EN.I.3.p6a",
+    "EN.I.12.p43a"
    ],
    "passageCount": 2
   },
@@ -2011,8 +2016,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.c",
-    "EN.I.8.h"
+    "EN.I.3.p7a",
+    "EN.I.8.p32b"
    ],
    "passageCount": 2
   },
@@ -2028,8 +2033,8 @@
     }
    ],
    "passages": [
-    "EN.I.3.c",
-    "EN.I.13.c"
+    "EN.I.3.p7b",
+    "EN.I.13.p46a"
    ],
    "passageCount": 2
   },
@@ -2045,8 +2050,8 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.5.a"
+    "EN.I.4.p8a",
+    "EN.I.5.p10b"
    ],
    "passageCount": 2
   },
@@ -2062,8 +2067,8 @@
     }
    ],
    "passages": [
-    "EN.I.4.a",
-    "EN.I.7.b"
+    "EN.I.4.p8b",
+    "EN.I.7.p22b"
    ],
    "passageCount": 2
   },
@@ -2079,8 +2084,8 @@
     }
    ],
    "passages": [
-    "EN.I.5.a",
-    "EN.I.13.b"
+    "EN.I.5.p10a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 2
   },
@@ -2100,8 +2105,8 @@
     }
    ],
    "passages": [
-    "EN.I.5.a",
-    "EN.I.7.h"
+    "EN.I.5.p10b",
+    "EN.I.7.p26a"
    ],
    "passageCount": 2
   },
@@ -2117,8 +2122,8 @@
     }
    ],
    "passages": [
-    "EN.I.5.a",
-    "EN.I.5.c"
+    "EN.I.5.p10b",
+    "EN.I.5.p11a"
    ],
    "passageCount": 2
   },
@@ -2134,8 +2139,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.a",
-    "EN.I.13.b"
+    "EN.I.6.p13a",
+    "EN.I.13.p45a"
    ],
    "passageCount": 2
   },
@@ -2151,8 +2156,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.b",
-    "EN.I.8.b"
+    "EN.I.6.p14a",
+    "EN.I.8.p30a"
    ],
    "passageCount": 2
   },
@@ -2168,8 +2173,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.c",
-    "EN.I.6.h"
+    "EN.I.6.p15a",
+    "EN.I.6.p19a"
    ],
    "passageCount": 2
   },
@@ -2189,8 +2194,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.c",
-    "EN.I.7.k"
+    "EN.I.6.p15a",
+    "EN.I.7.p28a"
    ],
    "passageCount": 2
   },
@@ -2210,8 +2215,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.d",
-    "EN.I.13.c"
+    "EN.I.6.p15a",
+    "EN.I.13.p46a"
    ],
    "passageCount": 2
   },
@@ -2227,8 +2232,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.f",
-    "EN.I.6.g"
+    "EN.I.6.p18a",
+    "EN.I.6.p18b"
    ],
    "passageCount": 2
   },
@@ -2248,8 +2253,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.g",
-    "EN.I.10.a"
+    "EN.I.6.p18b",
+    "EN.I.10.p37a"
    ],
    "passageCount": 2
   },
@@ -2269,8 +2274,8 @@
     }
    ],
    "passages": [
-    "EN.I.6.h",
-    "EN.I.7.a"
+    "EN.I.6.p19a",
+    "EN.I.7.p22b"
    ],
    "passageCount": 2
   },
@@ -2290,8 +2295,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.a",
-    "EN.I.13.c"
+    "EN.I.7.p22a",
+    "EN.I.13.p46a"
    ],
    "passageCount": 2
   },
@@ -2311,8 +2316,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.b",
-    "EN.I.7.i"
+    "EN.I.7.p22b",
+    "EN.I.7.p27a"
    ],
    "passageCount": 2
   },
@@ -2328,8 +2333,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.c",
-    "EN.I.7.f"
+    "EN.I.7.p23a",
+    "EN.I.7.p24b"
    ],
    "passageCount": 2
   },
@@ -2345,8 +2350,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.c",
-    "EN.I.13.f"
+    "EN.I.7.p23a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 2
   },
@@ -2366,8 +2371,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.g",
-    "EN.I.10.g"
+    "EN.I.7.p25a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 2
   },
@@ -2387,8 +2392,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.h",
-    "EN.I.13.e"
+    "EN.I.7.p26a",
+    "EN.I.13.p48b"
    ],
    "passageCount": 2
   },
@@ -2404,8 +2409,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.h",
-    "EN.I.7.i"
+    "EN.I.7.p26a",
+    "EN.I.7.p27a"
    ],
    "passageCount": 2
   },
@@ -2421,8 +2426,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.i",
-    "EN.I.13.f"
+    "EN.I.7.p27a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 2
   },
@@ -2438,8 +2443,8 @@
     }
    ],
    "passages": [
-    "EN.I.7.i",
-    "EN.I.8.e"
+    "EN.I.7.p27a",
+    "EN.I.8.p31a"
    ],
    "passageCount": 2
   },
@@ -2455,8 +2460,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.a",
-    "EN.I.8.b"
+    "EN.I.8.p29a",
+    "EN.I.8.p30a"
    ],
    "passageCount": 2
   },
@@ -2472,8 +2477,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.b",
-    "EN.I.8.e"
+    "EN.I.8.p30a",
+    "EN.I.8.p31a"
    ],
    "passageCount": 2
   },
@@ -2493,8 +2498,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.b",
-    "EN.I.10.a"
+    "EN.I.8.p30a",
+    "EN.I.10.p37a"
    ],
    "passageCount": 2
   },
@@ -2514,8 +2519,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.c",
-    "EN.I.13.h"
+    "EN.I.8.p30b",
+    "EN.I.13.p51a"
    ],
    "passageCount": 2
   },
@@ -2535,8 +2540,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.c",
-    "EN.I.13.h"
+    "EN.I.8.p30b",
+    "EN.I.13.p51a"
    ],
    "passageCount": 2
   },
@@ -2552,8 +2557,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.d",
-    "EN.I.13.h"
+    "EN.I.8.p31a",
+    "EN.I.13.p51a"
    ],
    "passageCount": 2
   },
@@ -2569,8 +2574,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.f",
-    "EN.I.12.d"
+    "EN.I.8.p32a",
+    "EN.I.12.p44a"
    ],
    "passageCount": 2
   },
@@ -2586,8 +2591,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.h",
-    "EN.I.10.d"
+    "EN.I.8.p32b",
+    "EN.I.10.p38b"
    ],
    "passageCount": 2
   },
@@ -2603,8 +2608,8 @@
     }
    ],
    "passages": [
-    "EN.I.8.h",
-    "EN.I.10.f"
+    "EN.I.8.p32b",
+    "EN.I.10.p39a"
    ],
    "passageCount": 2
   },
@@ -2624,8 +2629,8 @@
     }
    ],
    "passages": [
-    "EN.I.9.a",
-    "EN.I.13.f"
+    "EN.I.9.p34a",
+    "EN.I.13.p49a"
    ],
    "passageCount": 2
   },
@@ -2645,8 +2650,8 @@
     }
    ],
    "passages": [
-    "EN.I.9.a",
-    "EN.I.12.b"
+    "EN.I.9.p34a",
+    "EN.I.12.p43b"
    ],
    "passageCount": 2
   },
@@ -2666,8 +2671,8 @@
     }
    ],
    "passages": [
-    "EN.I.9.a",
-    "EN.I.12.d"
+    "EN.I.9.p34a",
+    "EN.I.12.p44a"
    ],
    "passageCount": 2
   },
@@ -2683,25 +2688,8 @@
     }
    ],
    "passages": [
-    "EN.I.10.b",
-    "EN.I.10.h"
-   ],
-   "passageCount": 2
-  },
-  {
-   "stem": "ζωησ",
-   "canonical": "ζωῆς",
-   "total": 2,
-   "formCount": 1,
-   "forms": [
-    {
-     "form": "ζωῆς",
-     "n": 2
-    }
-   ],
-   "passages": [
-    "EN.I.10.f",
-    "EN.I.10.g"
+    "EN.I.10.p37b",
+    "EN.I.10.p39b"
    ],
    "passageCount": 2
   },
@@ -2721,8 +2709,8 @@
     }
    ],
    "passages": [
-    "EN.I.10.f",
-    "EN.I.10.h"
+    "EN.I.10.p39a",
+    "EN.I.10.p39b"
    ],
    "passageCount": 2
   },
@@ -2742,8 +2730,8 @@
     }
    ],
    "passages": [
-    "EN.I.12.a",
-    "EN.I.13.h"
+    "EN.I.12.p43a",
+    "EN.I.13.p51a"
    ],
    "passageCount": 2
   },
@@ -2763,8 +2751,8 @@
     }
    ],
    "passages": [
-    "EN.I.12.a",
-    "EN.I.12.d"
+    "EN.I.12.p43a",
+    "EN.I.12.p44a"
    ],
    "passageCount": 2
   },
@@ -2780,8 +2768,8 @@
     }
    ],
    "passages": [
-    "EN.I.13.a",
-    "EN.I.13.c"
+    "EN.I.13.p45a",
+    "EN.I.13.p46a"
    ],
    "passageCount": 2
   },
@@ -2797,8 +2785,8 @@
     }
    ],
    "passages": [
-    "EN.I.13.c",
-    "EN.I.13.d"
+    "EN.I.13.p46a",
+    "EN.I.13.p47a"
    ],
    "passageCount": 2
   },
@@ -2818,8 +2806,8 @@
     }
    ],
    "passages": [
-    "EN.I.13.e",
-    "EN.I.13.f"
+    "EN.I.13.p48b",
+    "EN.I.13.p49a"
    ],
    "passageCount": 2
   },
@@ -2835,8 +2823,8 @@
     }
    ],
    "passages": [
-    "EN.I.13.f",
-    "EN.I.13.g"
+    "EN.I.13.p49a",
+    "EN.I.13.p50a"
    ],
    "passageCount": 2
   },
@@ -2852,7 +2840,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -2868,7 +2856,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.g"
+    "EN.I.6.p18b"
    ],
    "passageCount": 1
   },
@@ -2884,7 +2872,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.i"
+    "EN.I.7.p27a"
    ],
    "passageCount": 1
   },
@@ -2900,7 +2888,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32a"
    ],
    "passageCount": 1
   },
@@ -2916,7 +2904,23 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32b"
+   ],
+   "passageCount": 1
+  },
+  {
+   "stem": "ζωησ",
+   "canonical": "ζωῆς",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "ζωῆς",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -2936,7 +2940,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43a"
    ],
    "passageCount": 1
   },
@@ -2956,7 +2960,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -2976,7 +2980,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -2992,7 +2996,7 @@
     }
    ],
    "passages": [
-    "EN.I.1.a"
+    "EN.I.1.p1a"
    ],
    "passageCount": 1
   },
@@ -3008,7 +3012,7 @@
     }
    ],
    "passages": [
-    "EN.I.1.a"
+    "EN.I.1.p1a"
    ],
    "passageCount": 1
   },
@@ -3024,7 +3028,7 @@
     }
    ],
    "passages": [
-    "EN.I.1.b"
+    "EN.I.1.p2a"
    ],
    "passageCount": 1
   },
@@ -3040,7 +3044,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.a"
+    "EN.I.2.p3a"
    ],
    "passageCount": 1
   },
@@ -3056,7 +3060,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.a"
+    "EN.I.2.p3a"
    ],
    "passageCount": 1
   },
@@ -3072,7 +3076,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.a"
+    "EN.I.2.p3a"
    ],
    "passageCount": 1
   },
@@ -3088,7 +3092,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.b"
+    "EN.I.2.p4a"
    ],
    "passageCount": 1
   },
@@ -3104,7 +3108,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.b"
+    "EN.I.2.p4a"
    ],
    "passageCount": 1
   },
@@ -3120,7 +3124,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.b"
+    "EN.I.2.p4a"
    ],
    "passageCount": 1
   },
@@ -3136,7 +3140,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.b"
+    "EN.I.2.p4a"
    ],
    "passageCount": 1
   },
@@ -3152,7 +3156,7 @@
     }
    ],
    "passages": [
-    "EN.I.2.b"
+    "EN.I.2.p5a"
    ],
    "passageCount": 1
   },
@@ -3168,7 +3172,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -3184,7 +3188,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -3200,7 +3204,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -3216,7 +3220,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -3232,7 +3236,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.a"
+    "EN.I.3.p6a"
    ],
    "passageCount": 1
   },
@@ -3248,7 +3252,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.b"
+    "EN.I.3.s1a"
    ],
    "passageCount": 1
   },
@@ -3264,7 +3268,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.b"
+    "EN.I.3.s1a"
    ],
    "passageCount": 1
   },
@@ -3280,7 +3284,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.b"
+    "EN.I.3.s1a"
    ],
    "passageCount": 1
   },
@@ -3296,7 +3300,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.b"
+    "EN.I.3.s1a"
    ],
    "passageCount": 1
   },
@@ -3312,7 +3316,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.b"
+    "EN.I.3.s1a"
    ],
    "passageCount": 1
   },
@@ -3328,7 +3332,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7a"
    ],
    "passageCount": 1
   },
@@ -3344,7 +3348,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7a"
    ],
    "passageCount": 1
   },
@@ -3360,7 +3364,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7a"
    ],
    "passageCount": 1
   },
@@ -3376,7 +3380,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7a"
    ],
    "passageCount": 1
   },
@@ -3392,7 +3396,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3408,7 +3412,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3424,7 +3428,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3440,7 +3444,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3456,7 +3460,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3472,7 +3476,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.c"
+    "EN.I.3.p7b"
    ],
    "passageCount": 1
   },
@@ -3488,7 +3492,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8a"
    ],
    "passageCount": 1
   },
@@ -3504,7 +3508,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8a"
    ],
    "passageCount": 1
   },
@@ -3520,7 +3524,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8a"
    ],
    "passageCount": 1
   },
@@ -3536,7 +3540,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8a"
    ],
    "passageCount": 1
   },
@@ -3552,7 +3556,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8b"
    ],
    "passageCount": 1
   },
@@ -3568,7 +3572,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8b"
    ],
    "passageCount": 1
   },
@@ -3584,7 +3588,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.a"
+    "EN.I.4.p8b"
    ],
    "passageCount": 1
   },
@@ -3600,7 +3604,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.c"
+    "EN.I.4.p9a"
    ],
    "passageCount": 1
   },
@@ -3616,7 +3620,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.c"
+    "EN.I.4.p9a"
    ],
    "passageCount": 1
   },
@@ -3632,7 +3636,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3648,7 +3652,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3664,7 +3668,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3680,7 +3684,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3696,7 +3700,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3712,7 +3716,7 @@
     }
    ],
    "passages": [
-    "EN.I.4.d"
+    "EN.I.4.p9b"
    ],
    "passageCount": 1
   },
@@ -3728,7 +3732,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.a"
+    "EN.I.5.p10a"
    ],
    "passageCount": 1
   },
@@ -3744,7 +3748,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.a"
+    "EN.I.5.p10a"
    ],
    "passageCount": 1
   },
@@ -3760,7 +3764,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.a"
+    "EN.I.5.p10a"
    ],
    "passageCount": 1
   },
@@ -3776,7 +3780,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3792,7 +3796,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3808,7 +3812,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3824,7 +3828,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3840,7 +3844,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3856,7 +3860,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3872,7 +3876,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.b"
+    "EN.I.5.p10b"
    ],
    "passageCount": 1
   },
@@ -3888,7 +3892,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.c"
+    "EN.I.5.p11a"
    ],
    "passageCount": 1
   },
@@ -3904,7 +3908,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.c"
+    "EN.I.5.p11a"
    ],
    "passageCount": 1
   },
@@ -3920,7 +3924,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.c"
+    "EN.I.5.p11a"
    ],
    "passageCount": 1
   },
@@ -3936,7 +3940,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.c"
+    "EN.I.5.p11a"
    ],
    "passageCount": 1
   },
@@ -3952,7 +3956,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.d"
+    "EN.I.5.p12a"
    ],
    "passageCount": 1
   },
@@ -3968,7 +3972,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.d"
+    "EN.I.5.p12a"
    ],
    "passageCount": 1
   },
@@ -3984,7 +3988,7 @@
     }
    ],
    "passages": [
-    "EN.I.5.d"
+    "EN.I.5.p12a"
    ],
    "passageCount": 1
   },
@@ -4000,7 +4004,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.a"
+    "EN.I.6.p13a"
    ],
    "passageCount": 1
   },
@@ -4016,7 +4020,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.a"
+    "EN.I.6.p13a"
    ],
    "passageCount": 1
   },
@@ -4032,7 +4036,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.a"
+    "EN.I.6.p13a"
    ],
    "passageCount": 1
   },
@@ -4048,7 +4052,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.a"
+    "EN.I.6.p13a"
    ],
    "passageCount": 1
   },
@@ -4064,7 +4068,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.b"
+    "EN.I.6.p14a"
    ],
    "passageCount": 1
   },
@@ -4080,7 +4084,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.b"
+    "EN.I.6.p14a"
    ],
    "passageCount": 1
   },
@@ -4096,7 +4100,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.b"
+    "EN.I.6.p14a"
    ],
    "passageCount": 1
   },
@@ -4112,7 +4116,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.b"
+    "EN.I.6.p14a"
    ],
    "passageCount": 1
   },
@@ -4128,7 +4132,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.c"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4144,7 +4148,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.c"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4160,7 +4164,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.c"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4176,7 +4180,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.c"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4192,7 +4196,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.c"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4208,7 +4212,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.d"
+    "EN.I.6.p15a"
    ],
    "passageCount": 1
   },
@@ -4224,7 +4228,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.e"
+    "EN.I.6.p16a"
    ],
    "passageCount": 1
   },
@@ -4240,7 +4244,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.e"
+    "EN.I.6.p16a"
    ],
    "passageCount": 1
   },
@@ -4256,7 +4260,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.f"
+    "EN.I.6.p18a"
    ],
    "passageCount": 1
   },
@@ -4272,7 +4276,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.g"
+    "EN.I.6.p18a"
    ],
    "passageCount": 1
   },
@@ -4288,7 +4292,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.g"
+    "EN.I.6.p18a"
    ],
    "passageCount": 1
   },
@@ -4304,7 +4308,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.g"
+    "EN.I.6.p18a"
    ],
    "passageCount": 1
   },
@@ -4320,7 +4324,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.g"
+    "EN.I.6.p18b"
    ],
    "passageCount": 1
   },
@@ -4336,7 +4340,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p19a"
    ],
    "passageCount": 1
   },
@@ -4352,7 +4356,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p19a"
    ],
    "passageCount": 1
   },
@@ -4368,7 +4372,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p20a"
    ],
    "passageCount": 1
   },
@@ -4384,7 +4388,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p20a"
    ],
    "passageCount": 1
   },
@@ -4400,7 +4404,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p20a"
    ],
    "passageCount": 1
   },
@@ -4416,7 +4420,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4432,7 +4436,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.h"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4448,7 +4452,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4464,7 +4468,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4480,7 +4484,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4496,7 +4500,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4512,7 +4516,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4528,7 +4532,7 @@
     }
    ],
    "passages": [
-    "EN.I.6.i"
+    "EN.I.6.p21a"
    ],
    "passageCount": 1
   },
@@ -4544,7 +4548,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.a"
+    "EN.I.7.p22a"
    ],
    "passageCount": 1
   },
@@ -4560,7 +4564,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.a"
+    "EN.I.7.p22a"
    ],
    "passageCount": 1
   },
@@ -4576,7 +4580,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.a"
+    "EN.I.7.p22a"
    ],
    "passageCount": 1
   },
@@ -4592,7 +4596,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.a"
+    "EN.I.7.p22a"
    ],
    "passageCount": 1
   },
@@ -4608,7 +4612,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.b"
+    "EN.I.7.p22b"
    ],
    "passageCount": 1
   },
@@ -4624,7 +4628,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.c"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4640,7 +4644,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.c"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4656,7 +4660,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.d"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4672,7 +4676,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.d"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4688,7 +4692,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.d"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4704,7 +4708,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.d"
+    "EN.I.7.p23a"
    ],
    "passageCount": 1
   },
@@ -4720,7 +4724,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.e"
+    "EN.I.7.p24a"
    ],
    "passageCount": 1
   },
@@ -4736,7 +4740,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.e"
+    "EN.I.7.p24a"
    ],
    "passageCount": 1
   },
@@ -4752,7 +4756,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.e"
+    "EN.I.7.p24a"
    ],
    "passageCount": 1
   },
@@ -4768,7 +4772,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.e"
+    "EN.I.7.p24a"
    ],
    "passageCount": 1
   },
@@ -4784,7 +4788,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.e"
+    "EN.I.7.p24a"
    ],
    "passageCount": 1
   },
@@ -4800,7 +4804,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.f"
+    "EN.I.7.p24b"
    ],
    "passageCount": 1
   },
@@ -4816,7 +4820,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.f"
+    "EN.I.7.p24b"
    ],
    "passageCount": 1
   },
@@ -4832,7 +4836,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.f"
+    "EN.I.7.p24b"
    ],
    "passageCount": 1
   },
@@ -4848,7 +4852,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.f"
+    "EN.I.7.p24b"
    ],
    "passageCount": 1
   },
@@ -4864,7 +4868,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4880,7 +4884,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4896,7 +4900,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4912,7 +4916,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4928,7 +4932,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4944,7 +4948,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4960,7 +4964,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4976,7 +4980,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -4992,7 +4996,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.h"
+    "EN.I.7.p26a"
    ],
    "passageCount": 1
   },
@@ -5008,7 +5012,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.j"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5024,7 +5028,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.j"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5040,7 +5044,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.j"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5056,7 +5060,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5072,7 +5076,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5088,7 +5092,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5104,7 +5108,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5120,7 +5124,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28a"
    ],
    "passageCount": 1
   },
@@ -5136,7 +5140,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5152,7 +5156,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.k"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5168,7 +5172,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5184,7 +5188,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5200,7 +5204,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5216,7 +5220,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5232,7 +5236,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5248,7 +5252,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5264,7 +5268,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5280,7 +5284,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.l"
+    "EN.I.7.p28b"
    ],
    "passageCount": 1
   },
@@ -5296,7 +5300,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.a"
+    "EN.I.8.p29a"
    ],
    "passageCount": 1
   },
@@ -5312,7 +5316,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.a"
+    "EN.I.8.p29a"
    ],
    "passageCount": 1
   },
@@ -5328,7 +5332,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.a"
+    "EN.I.8.p29a"
    ],
    "passageCount": 1
   },
@@ -5344,7 +5348,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.b"
+    "EN.I.8.p30a"
    ],
    "passageCount": 1
   },
@@ -5360,7 +5364,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.b"
+    "EN.I.8.p30a"
    ],
    "passageCount": 1
   },
@@ -5376,7 +5380,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.b"
+    "EN.I.8.p30a"
    ],
    "passageCount": 1
   },
@@ -5392,7 +5396,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5408,7 +5412,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5424,7 +5428,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5440,7 +5444,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5456,7 +5460,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5472,7 +5476,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.c"
+    "EN.I.8.p30b"
    ],
    "passageCount": 1
   },
@@ -5488,7 +5492,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5504,7 +5508,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5520,7 +5524,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5536,7 +5540,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5552,7 +5556,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5568,7 +5572,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5584,7 +5588,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5600,7 +5604,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5616,7 +5620,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.d"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5632,7 +5636,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5648,7 +5652,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5664,7 +5668,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5680,7 +5684,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5696,7 +5700,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5712,7 +5716,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.e"
+    "EN.I.8.p31a"
    ],
    "passageCount": 1
   },
@@ -5728,7 +5732,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.f"
+    "EN.I.8.p32a"
    ],
    "passageCount": 1
   },
@@ -5744,7 +5748,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.f"
+    "EN.I.8.p32a"
    ],
    "passageCount": 1
   },
@@ -5760,7 +5764,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32a"
    ],
    "passageCount": 1
   },
@@ -5776,7 +5780,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32a"
    ],
    "passageCount": 1
   },
@@ -5792,7 +5796,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5808,7 +5812,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5824,7 +5828,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.g"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5840,7 +5844,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5856,7 +5860,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5872,7 +5876,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5888,7 +5892,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5904,7 +5908,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5920,7 +5924,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5936,7 +5940,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.h"
+    "EN.I.8.p32b"
    ],
    "passageCount": 1
   },
@@ -5952,7 +5956,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.i"
+    "EN.I.8.p33a"
    ],
    "passageCount": 1
   },
@@ -5968,7 +5972,7 @@
     }
    ],
    "passages": [
-    "EN.I.8.i"
+    "EN.I.8.p33a"
    ],
    "passageCount": 1
   },
@@ -5984,7 +5988,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6000,7 +6004,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6016,7 +6020,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6032,7 +6036,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6048,7 +6052,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6064,7 +6068,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.a"
+    "EN.I.9.p34a"
    ],
    "passageCount": 1
   },
@@ -6080,7 +6084,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.b"
+    "EN.I.9.p35a"
    ],
    "passageCount": 1
   },
@@ -6096,7 +6100,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.b"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6112,7 +6116,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.c"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6128,7 +6132,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.c"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6144,7 +6148,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.c"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6160,7 +6164,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.c"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6176,7 +6180,7 @@
     }
    ],
    "passages": [
-    "EN.I.9.c"
+    "EN.I.9.p36a"
    ],
    "passageCount": 1
   },
@@ -6192,7 +6196,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6208,7 +6212,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6224,7 +6228,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6240,7 +6244,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6256,7 +6260,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6272,7 +6276,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6288,7 +6292,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6304,7 +6308,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.a"
+    "EN.I.10.p37a"
    ],
    "passageCount": 1
   },
@@ -6320,7 +6324,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.b"
+    "EN.I.10.p37b"
    ],
    "passageCount": 1
   },
@@ -6336,7 +6340,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.b"
+    "EN.I.10.p37b"
    ],
    "passageCount": 1
   },
@@ -6352,7 +6356,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.b"
+    "EN.I.10.p37b"
    ],
    "passageCount": 1
   },
@@ -6368,7 +6372,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.b"
+    "EN.I.10.p37b"
    ],
    "passageCount": 1
   },
@@ -6384,7 +6388,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6400,7 +6404,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6416,7 +6420,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6432,7 +6436,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6448,7 +6452,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6464,7 +6468,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6480,7 +6484,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.c"
+    "EN.I.10.p38a"
    ],
    "passageCount": 1
   },
@@ -6496,7 +6500,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.d"
+    "EN.I.10.p38b"
    ],
    "passageCount": 1
   },
@@ -6512,7 +6516,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.d"
+    "EN.I.10.p38b"
    ],
    "passageCount": 1
   },
@@ -6528,7 +6532,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.d"
+    "EN.I.10.p38b"
    ],
    "passageCount": 1
   },
@@ -6544,7 +6548,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.e"
+    "EN.I.10.p38b"
    ],
    "passageCount": 1
   },
@@ -6560,7 +6564,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.e"
+    "EN.I.10.p38b"
    ],
    "passageCount": 1
   },
@@ -6576,7 +6580,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6592,7 +6596,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6608,7 +6612,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6624,7 +6628,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6640,7 +6644,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6656,7 +6660,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6672,7 +6676,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6688,7 +6692,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6704,7 +6708,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.f"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6720,7 +6724,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.g"
+    "EN.I.10.p39a"
    ],
    "passageCount": 1
   },
@@ -6736,7 +6740,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.g"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6752,7 +6756,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.g"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6768,7 +6772,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.g"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6784,7 +6788,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.h"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6800,7 +6804,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.h"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6816,7 +6820,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.h"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6832,7 +6836,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.h"
+    "EN.I.10.p39b"
    ],
    "passageCount": 1
   },
@@ -6848,7 +6852,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.i"
+    "EN.I.10.p40a"
    ],
    "passageCount": 1
   },
@@ -6864,7 +6868,7 @@
     }
    ],
    "passages": [
-    "EN.I.10.i"
+    "EN.I.10.p40a"
    ],
    "passageCount": 1
   },
@@ -6880,7 +6884,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.a"
+    "EN.I.11.p41a"
    ],
    "passageCount": 1
   },
@@ -6896,7 +6900,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.a"
+    "EN.I.11.p41a"
    ],
    "passageCount": 1
   },
@@ -6912,7 +6916,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.a"
+    "EN.I.11.p41a"
    ],
    "passageCount": 1
   },
@@ -6928,7 +6932,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.a"
+    "EN.I.11.p41a"
    ],
    "passageCount": 1
   },
@@ -6944,7 +6948,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.a"
+    "EN.I.11.p41a"
    ],
    "passageCount": 1
   },
@@ -6960,7 +6964,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.b"
+    "EN.I.11.p42a"
    ],
    "passageCount": 1
   },
@@ -6976,7 +6980,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.b"
+    "EN.I.11.p42a"
    ],
    "passageCount": 1
   },
@@ -6992,7 +6996,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.b"
+    "EN.I.11.p42a"
    ],
    "passageCount": 1
   },
@@ -7008,7 +7012,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.b"
+    "EN.I.11.p42a"
    ],
    "passageCount": 1
   },
@@ -7024,7 +7028,7 @@
     }
    ],
    "passages": [
-    "EN.I.11.c"
+    "EN.I.11.p42b"
    ],
    "passageCount": 1
   },
@@ -7040,7 +7044,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7056,7 +7060,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7072,7 +7076,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7088,7 +7092,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7104,7 +7108,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7120,7 +7124,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7136,7 +7140,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7152,7 +7156,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.b"
+    "EN.I.12.p43b"
    ],
    "passageCount": 1
   },
@@ -7168,7 +7172,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.c"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7184,7 +7188,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.c"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7200,7 +7204,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.d"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7216,7 +7220,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.d"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7232,7 +7236,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.d"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7248,7 +7252,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.d"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7264,7 +7268,7 @@
     }
    ],
    "passages": [
-    "EN.I.12.d"
+    "EN.I.12.p44a"
    ],
    "passageCount": 1
   },
@@ -7280,7 +7284,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.a"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7296,7 +7300,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.b"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7312,7 +7316,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.b"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7328,7 +7332,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.b"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7344,7 +7348,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.b"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7360,7 +7364,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.b"
+    "EN.I.13.p45a"
    ],
    "passageCount": 1
   },
@@ -7376,7 +7380,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.c"
+    "EN.I.13.p46a"
    ],
    "passageCount": 1
   },
@@ -7392,7 +7396,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.c"
+    "EN.I.13.p46a"
    ],
    "passageCount": 1
   },
@@ -7408,7 +7412,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.c"
+    "EN.I.13.p46a"
    ],
    "passageCount": 1
   },
@@ -7424,7 +7428,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.c"
+    "EN.I.13.p46a"
    ],
    "passageCount": 1
   },
@@ -7440,7 +7444,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p47a"
    ],
    "passageCount": 1
   },
@@ -7456,7 +7460,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p47a"
    ],
    "passageCount": 1
   },
@@ -7472,7 +7476,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p47a"
    ],
    "passageCount": 1
   },
@@ -7488,7 +7492,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p47a"
    ],
    "passageCount": 1
   },
@@ -7504,7 +7508,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p47a"
    ],
    "passageCount": 1
   },
@@ -7520,7 +7524,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p48a"
    ],
    "passageCount": 1
   },
@@ -7536,7 +7540,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.d"
+    "EN.I.13.p48a"
    ],
    "passageCount": 1
   },
@@ -7552,7 +7556,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48a"
    ],
    "passageCount": 1
   },
@@ -7568,7 +7572,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48a"
    ],
    "passageCount": 1
   },
@@ -7584,7 +7588,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48b"
    ],
    "passageCount": 1
   },
@@ -7600,7 +7604,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48b"
    ],
    "passageCount": 1
   },
@@ -7616,7 +7620,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48b"
    ],
    "passageCount": 1
   },
@@ -7632,7 +7636,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.e"
+    "EN.I.13.p48b"
    ],
    "passageCount": 1
   },
@@ -7648,7 +7652,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7664,7 +7668,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7680,7 +7684,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7696,7 +7700,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7712,7 +7716,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7728,7 +7732,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7744,7 +7748,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7760,7 +7764,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7776,7 +7780,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.f"
+    "EN.I.13.p49a"
    ],
    "passageCount": 1
   },
@@ -7792,7 +7796,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7808,7 +7812,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7824,7 +7828,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7840,7 +7844,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7856,7 +7860,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7872,7 +7876,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7888,7 +7892,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7904,7 +7908,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7920,7 +7924,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7936,7 +7940,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7952,7 +7956,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7968,7 +7972,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.g"
+    "EN.I.13.p50a"
    ],
    "passageCount": 1
   },
@@ -7984,7 +7988,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.h"
+    "EN.I.13.p51a"
    ],
    "passageCount": 1
   },
@@ -8000,7 +8004,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.h"
+    "EN.I.13.p51a"
    ],
    "passageCount": 1
   },
@@ -8016,7 +8020,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.h"
+    "EN.I.13.p51a"
    ],
    "passageCount": 1
   },
@@ -8032,7 +8036,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.h"
+    "EN.I.13.p51a"
    ],
    "passageCount": 1
   },
@@ -8048,7 +8052,7 @@
     }
    ],
    "passages": [
-    "EN.I.13.h"
+    "EN.I.13.p51a"
    ],
    "passageCount": 1
   }
