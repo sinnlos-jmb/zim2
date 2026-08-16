@@ -22,8 +22,8 @@
     paseos: '<circle cx="6" cy="17.5" r="2.6"/><circle cx="12" cy="5.5" r="2.6"/><circle cx="18.5" cy="15" r="2.6"/><path d="M7.6 15.4 10.7 7.9"/><path d="M13.6 7.4l3.6 5.4"/><path d="M8.6 17.1l7.3-1.6"/>',
     // dos figuras: comunidad
     comunidad: '<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 5.4a3.2 3.2 0 0 1 0 6"/><path d="M17.2 14.9c2 .5 3.4 2.2 3.8 4.6"/>',
-    // matraz: el laboratorio de inspeccion del corpus
-    lab: '<path d="M10 3v5.4L5.6 16.7A3 3 0 0 0 8.3 21h7.4a3 3 0 0 0 2.7-4.3L14 8.4V3"/><path d="M8.5 3h7"/><path d="M6.8 15h10.4"/>'
+    // matraz: el laboratorio, inspeccion del corpus
+    lab: '<path d="M9.5 3h5"/><path d="M10.5 3v6.3L5.6 17.9A2 2 0 0 0 7.3 21h9.4a2 2 0 0 0 1.7-3.1L13.5 9.3V3"/><path d="M8.1 14.6h7.8"/>'
   };
 
   var SECTIONS = [

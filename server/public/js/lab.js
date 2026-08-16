@@ -26,6 +26,11 @@ const CORPUS = await fetch(new URL('../data/corpus.json', import.meta.url)).then
 const $ = (s) => document.querySelector(s);
 const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
 
+/* parrafoNros llega con el numero repetido una vez por unidad de texto que
+ * aporto al pasaje: EN.I.4.d viene como [9,9,9,9,9]. Lo que importa siempre
+ * es el conjunto, no la cuenta. */
+const parsDe = (p) => [...new Set(p.parrafoNros || [])];
+
 /* --------------------------------------------------------- INDEXADO EN VIVO
  * El Lab NO usa el cache de localStorage de ui.js: revectoriza siempre, para
  * inspeccionar lo que el motor calcula HOY (72 pasajes tardan unos pocos ms).
@@ -44,14 +49,14 @@ const PASSAGES = CORPUS.passages.map((p) => {
  * mostrar, no esconder. */
 const PAR_MAP = new Map();
 PASSAGES.forEach((p) => {
-  (p.parrafoNros || []).forEach((n) => {
+  parsDe(p).forEach((n) => {
     if (!PAR_MAP.has(n)) PAR_MAP.set(n, { nro: n, chapter: p.chapter, passages: [] });
     const entry = PAR_MAP.get(n);
     if (!entry.passages.includes(p)) entry.passages.push(p);
   });
 });
 const PARAGRAPHS = [...PAR_MAP.values()].sort((a, b) => a.nro - b.nro);
-const ORPHANS = PASSAGES.filter((p) => !(p.parrafoNros || []).length);
+const ORPHANS = PASSAGES.filter((p) => !parsDe(p).length);
 
 let current = null; // { type: 'par', idx } | { type: 'orphan', id }
 
@@ -246,7 +251,7 @@ function renderParBody(par) {
   const tags = dedupeTags(par.passages.flatMap((p) => p.tags || []));
   const tb = el('section', 'tagbox');
   tb.append(el('h3', null, 'Tags visibles desde este párrafo (' + tags.length + ')'));
-  if (par.passages.some((p) => (p.parrafoNros || []).length > 1)) {
+  if (par.passages.some((p) => parsDe(p).length > 1)) {
     tb.append(el('p', 'muted', 'Ojo: al menos un pasaje fusiona varios párrafos; el corpus no distingue de cuál de ellos vino cada tag.'));
   }
   if (!tags.length) tb.append(el('p', 'muted', 'Ninguno.'));
@@ -295,7 +300,7 @@ function passageCard(p) {
   meta.append(el('span', 'bek', p.bekker || 'sin Bekker'));
   meta.append(el('span', 'muted', p.words + ' palabras'));
   top.append(meta);
-  const pars = p.parrafoNros || [];
+  const pars = parsDe(p);
   const badge = el('span', 'parbadge', pars.length ? '¶ ' + pars.join(' + ') : 'sin párrafo');
   if (!pars.length) badge.classList.add('none');
   else if (pars.length > 1) badge.classList.add('fused');
