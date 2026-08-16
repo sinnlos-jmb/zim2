@@ -92,6 +92,19 @@ export function parseSource(raw) {
   // no traigan su propio tag. Se resetea al vaciar el bloque (flush).
   let blockTag = null;
 
+  /* Identidad de parrafo.
+   *
+   * El chunker necesita saber de que parrafo salio cada linea para no armar
+   * nunca un pasaje a caballo de dos. "Un renglon en blanco" no alcanza como
+   * criterio: una linea de tag en medio de un bloque abre un parrafo nuevo sin
+   * que haya renglon en blanco (por eso bufTags es por linea y no por bloque).
+   * parSeq avanza en los dos casos, asi que dos lineas comparten parId si y
+   * solo si pertenecen al MISMO parrafo. Los numeros no son consecutivos ni
+   * significan nada: solo tienen que ser distintos y estables dentro de una
+   * corrida. El numero editorial sigue siendo parrafoNro, que puede faltar. */
+  let parSeq = 0;
+  let bufPars = [];
+
   const flush = () => {
     if (!buf.length) return;
     const text = buf.join(NL);
@@ -99,11 +112,14 @@ export function parseSource(raw) {
       chapter,
       lines: buf.slice(),
       tags: bufTags.slice(),
+      pars: bufPars.slice(),
       kind: greekRatio(text) > 0.6 ? 'gr' : 'es',
     });
     buf = [];
     bufTags = [];
+    bufPars = [];
     blockTag = null;
+    parSeq++;
   };
 
   lines.forEach((line, i) => {
@@ -131,10 +147,14 @@ export function parseSource(raw) {
     if (chapter === null) return;
     buf.push(t);
     if (pendingTag) {
+      // un tag que aparece en medio de un bloque empieza un parrafo nuevo
+      // aunque no haya renglon en blanco antes
+      if (buf.length > 1) parSeq++;
       blockTag = pendingTag;
       pendingTag = null;
     }
     bufTags.push(blockTag);
+    bufPars.push(parSeq);
   });
   if (pendingTag) {
     tagWarnings.push(
@@ -204,6 +224,7 @@ export function parseSource(raw) {
         aligned,
         glosses: extractGlosses(esLine),
         words: esLine.split(/\s+/).filter(Boolean).length,
+        parId: b.pars[j],
         parrafoNro: tagEntry ? tagEntry.parrafo_nro : null,
         tags: tagEntry && tagEntry.tags ? tagEntry.tags : [],
       });

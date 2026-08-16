@@ -26,64 +26,249 @@ if (units.tagWarnings && units.tagWarnings.length) {
 }
 
 const hash = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 12);
+const contarPalabras = (s) => s.split(/\s+/).filter(Boolean).length;
 
-/* ---------------------------------------------------- CHUNKER ---------------- */
-// Regla: unidad argumental de 80-200 palabras.
-//  - fusionar unidades cortas (<70) con la vecina del mismo capitulo
-//  - dividir unidades largas (>200) en conectores argumentales
+/* ---------------------------------------------------- CHUNKER ----------------
+ * REGLA: un pasaje NUNCA abarca mas de un parrafo.
+ *
+ * Antes el orden era partir-y-despues-fusionar. Las unidades que devuelve el
+ * parser son LINEAS fisicas, y el paso de fusion las volvia a pegar mirando
+ * solo el capitulo y el largo, asi que dos parrafos vecinos podian terminar en
+ * el mismo pasaje (20 de 51 parrafos estaban en esa situacion). Eso rompia dos
+ * cosas a la vez: un tag de parrafo caia sobre texto de otro parrafo, y el
+ * vector mezclaba dos unidades argumentales que podian tirar de ejes distintos.
+ *
+ * Ahora el orden es al reves:
+ *   1. armar el parrafo completo juntando sus lineas (parId, de parse.js)
+ *   2. si pasa de MAX_WORDS, partirlo en k fragmentos PAREJOS
+ * y no hay ninguna fusion entre parrafos. La relacion queda
+ * 1 parrafo -> N pasajes, nunca N parrafos -> 1 pasaje.
+ *
+ * El reparto es parejo a proposito. Con el corte codicioso de antes (acumular
+ * hasta pasar 200 y cortar) un parrafo de 250 palabras daba 200 + 50, y esa
+ * cola de 50 palabras es un pasaje con dos o tres hits donde la normalizacion
+ * L2 le da a cualquier termino suelto un peso que no le corresponde.
+ * Repartiendo, el mismo parrafo da 125 + 125.
+ *
+ * Los cortes caen siempre en limite de oracion, y entre dos limites cercanos se
+ * prefiere el punto sobre el punto y coma: en la traduccion el punto y coma
+ * suele separar miembros de una misma enumeracion, y cortar ahi parte un
+ * argumento por el medio. PUNTO_MAX_CHARS es la ventana de busqueda; el reporte
+ * imprime las distancias reales para poder ajustarla con datos y no a ojo.
+ */
 
-const CONNECTORS = [
-  'Ademas', 'Adem\u00e1s', 'Por otra parte', 'Pero como', 'Y si', 'Es evidente',
-  'Sin embargo', 'Por tanto', 'Por consiguiente', 'Asimismo', 'En efecto',
-  'Pero acaso', 'Pero tal vez', 'Acaso', 'Y as\u00ed', 'Ahora bien', 'Pero si',
-  'De igual modo', 'Del mismo modo', 'Por lo dem\u00e1s', 'Y puesto que', 'Puesto que',
-];
+const MAX_WORDS = 200;       // techo de un pasaje: arriba de esto el parrafo se parte
+const MIN_WORDS = 70;        // debajo de esto un pasaje es corto (se reporta, no se fusiona)
+const PUNTO_MAX_CHARS = 50;  // ventana para mover un corte de un ';' al '.' mas cercano
 
-function splitLong(u) {
-  if (u.words <= 200) return [u];
-  // cortar en limites de oracion cercanos a conectores
-  const sentences = u.es.match(/[^.;]+[.;]+\s*/g) || [u.es];
-  const parts = [];
-  let cur = '';
-  let curWords = 0;
-  for (const s of sentences) {
-    const w = s.split(/\s+/).filter(Boolean).length;
-    const startsConnector = CONNECTORS.some((c) => s.trimStart().startsWith(c));
-    if (cur && curWords >= 80 && (startsConnector || curWords + w > 200)) {
-      parts.push(cur.trim());
-      cur = s;
-      curWords = w;
-    } else {
-      cur += s;
-      curWords += w;
-    }
+/* Abreviaturas que terminan en punto sin terminar la oracion. Sin esto el
+ * tokenizador corta en "cf." o "p. ej." y genera fronteras fantasma. */
+const ABREVIATURAS = new Set([
+  'cf', 'p', 'ej', 'vs', 'etc', 'ss', 'sig', 'sigs', 'ibid', 'ib', 'op', 'cit',
+  'nro', 'num', 'aprox', 'trad', 'ed', 'vol', 'cap', 'fr', 'v', 'vv',
+]);
+
+const ultimoSigno = (s) => {
+  const t = s.trimEnd();
+  const c = t[t.length - 1];
+  return c === '.' || c === ';' ? c : '';
+};
+
+function esFalsoLimite(texto) {
+  const t = texto.trimEnd();
+  if (!t.endsWith('.')) return false;
+  const m = t.slice(0, -1).match(/(\p{L}+)$/u);
+  if (!m) return false;
+  return m[1].length === 1 || ABREVIATURAS.has(m[1].toLowerCase());
+}
+
+/* Trocea en oraciones SIN perder un solo caracter: la concatenacion de los
+ * trozos es identica al texto original. La version anterior usaba
+ * text.match(...) a secas y se comia todo lo que viniera despues del ultimo
+ * punto, que es texto que desaparecia del corpus al partir un parrafo largo. */
+function oraciones(texto, falsos) {
+  const re = /[^.;]+[.;]+\s*/g;
+  const crudas = [];
+  let last = 0;
+  let m;
+  while ((m = re.exec(texto)) !== null) {
+    if (m.index > last) crudas.push(texto.slice(last, m.index));
+    crudas.push(m[0]);
+    last = re.lastIndex;
   }
-  if (cur.trim()) parts.push(cur.trim());
-  if (parts.length < 2) return [u];
-  return parts.map((text, i) => ({
-    ...u,
-    es: text,
-    words: text.split(/\s+/).filter(Boolean).length,
+  if (last < texto.length) crudas.push(texto.slice(last));
+
+  const out = [];
+  for (const s of crudas) {
+    const prev = out[out.length - 1];
+    if (prev && esFalsoLimite(prev.texto)) {
+      if (falsos) falsos.push(prev.texto.trim().slice(-28));
+      prev.texto += s;
+      prev.words = contarPalabras(prev.texto);
+      prev.term = ultimoSigno(prev.texto);
+      continue;
+    }
+    out.push({ texto: s, words: contarPalabras(s), term: ultimoSigno(s) });
+  }
+  return out;
+}
+
+/* 1. armar los parrafos: las unidades del parser son lineas, y todas las lineas
+ *    con el mismo parId son el mismo parrafo del .txt. */
+function armarParrafos(us) {
+  const orden = [];
+  const porId = new Map();
+  for (const u of us) {
+    let p = porId.get(u.parId);
+    if (!p) {
+      p = { ...u, es: '', greekParallel: null, tags: [], lineas: 0 };
+      porId.set(u.parId, p);
+      orden.push(p);
+    }
+    p.es = p.es ? p.es + ' ' + u.es : u.es;
+    p.lineas += 1;
+    if (u.greekParallel) {
+      p.greekParallel = p.greekParallel ? p.greekParallel + ' ' + u.greekParallel : u.greekParallel;
+    }
+    // parse.js repite el tag del parrafo en cada linea fisica del bloque: al
+    // juntarlas hay que deduplicar o el mismo tag entra una vez por linea.
+    p.tags = dedupeTags([...(p.tags || []), ...(u.tags || [])]);
+    if (p.parrafoNro == null && u.parrafoNro != null) p.parrafoNro = u.parrafoNro;
+  }
+  for (const p of orden) p.words = contarPalabras(p.es);
+  return orden;
+}
+
+/* Estadistica de los cortes, para poder calibrar PUNTO_MAX_CHARS con datos. */
+const cortes = { total: 0, enPunto: 0, movidos: 0, enPuntoYComa: 0, distancias: [] };
+const sinPartir = [];
+const avisosFragmento = [];
+
+/* 2. partir el parrafo largo en k fragmentos parejos. */
+function cortarParrafo(p) {
+  if (p.words <= MAX_WORDS) return [p];
+  const sents = oraciones(p.es, null);
+  if (sents.length < 2) {
+    sinPartir.push(`parrafo ${p.parrafoNro != null ? p.parrafoNro : '(sin numero)'}: ${p.words} palabras en una sola oracion, no hay donde cortar`);
+    return [p];
+  }
+
+  const k = Math.ceil(p.words / MAX_WORDS);
+  const objetivo = p.words / k;
+  // cumW[b] / cumC[b] = palabras / caracteres acumulados ANTES de la oracion b,
+  // es decir el peso del corte que va justo delante de la oracion b.
+  const cumW = [0];
+  const cumC = [0];
+  for (const s of sents) {
+    cumW.push(cumW[cumW.length - 1] + s.words);
+    cumC.push(cumC[cumC.length - 1] + s.texto.length);
+  }
+
+  // elegir k-1 fronteras: la mas cercana al reparto ideal, en orden
+  const elegidos = [];
+  for (let j = 1; j < k; j++) {
+    const ideal = objetivo * j;
+    const desde = elegidos.length ? elegidos[elegidos.length - 1] + 1 : 1;
+    const hasta = sents.length - (k - j);   // hay que dejar lugar para los que faltan
+    let mejor = -1;
+    let mejorD = Infinity;
+    for (let b = desde; b <= hasta; b++) {
+      const d = Math.abs(cumW[b] - ideal);
+      if (d < mejorD) { mejorD = d; mejor = b; }
+    }
+    if (mejor < 0) break;
+    elegidos.push(mejor);
+  }
+  if (!elegidos.length) return [p];
+
+  const palabrasDe = (cs) => {
+    const bordes = [0, ...cs, sents.length];
+    let max = 0;
+    for (let i = 1; i < bordes.length; i++) max = Math.max(max, cumW[bordes[i]] - cumW[bordes[i - 1]]);
+    return max;
+  };
+
+  // preferir el punto sobre el punto y coma dentro de la ventana
+  for (let i = 0; i < elegidos.length; i++) {
+    cortes.total += 1;
+    const b = elegidos[i];
+    if (sents[b - 1].term === '.') { cortes.enPunto += 1; continue; }
+    const limIzq = i > 0 ? elegidos[i - 1] : 0;
+    const limDer = i < elegidos.length - 1 ? elegidos[i + 1] : sents.length;
+    let alt = -1;
+    let altD = Infinity;
+    for (let c = limIzq + 1; c < limDer; c++) {
+      if (sents[c - 1].term !== '.') continue;
+      const d = Math.abs(cumC[c] - cumC[b]);
+      if (d < altD) { altD = d; alt = c; }
+    }
+    cortes.distancias.push(altD === Infinity ? null : Math.round(altD));
+    if (alt > 0 && altD <= PUNTO_MAX_CHARS) {
+      const prueba = elegidos.slice();
+      prueba[i] = alt;
+      // mover el corte no puede dejar un fragmento por encima del techo
+      if (palabrasDe(prueba) <= MAX_WORDS) {
+        elegidos[i] = alt;
+        cortes.movidos += 1;
+        continue;
+      }
+    }
+    cortes.enPuntoYComa += 1;
+  }
+
+  const bordes = [0, ...elegidos, sents.length];
+  const textos = [];
+  for (let i = 1; i < bordes.length; i++) {
+    textos.push(sents.slice(bordes[i - 1], bordes[i]).map((s) => s.texto).join('').trim());
+  }
+
+  return textos.map((texto, i) => ({
+    ...p,
+    es: texto,
+    words: contarPalabras(texto),
     splitIndex: i,
-    splitOf: parts.length,
-    greekParallel: i === 0 ? u.greekParallel : null,
-    // el tag describe el parrafo ORIGINAL completo: se conserva solo en el
-    // primer fragmento para no hacer aparecer el mismo tag 2-3 veces.
-    tags: i === 0 ? u.tags : [],
-    parrafoNro: i === 0 ? u.parrafoNro : null,
+    splitOf: textos.length,
+    greekParallel: i === 0 ? p.greekParallel : null,
+    // el numero de parrafo describe al parrafo entero: lo heredan TODOS los
+    // fragmentos. Antes se lo quedaba el primero y los demas salian huerfanos
+    // (era el origen de EN.I.3.b y EN.I.10.b sin parrafo asignado).
+    parrafoNro: p.parrafoNro,
+    tags: tagsDelFragmento(p, i, textos.length),
   }));
 }
 
-/* dedupeTags - un tag no aporta nada dos veces en el mismo pasaje.
+/* Reparto de tags entre los fragmentos de un mismo parrafo.
  *
- * parse.js deja el tag del parrafo vigente en TODAS las lineas fisicas del
- * bloque, y eso esta bien: un parrafo puede repartirse en dos pasajes finales
- * y los dos tienen que quedar tagueados (EN.I.8.b y EN.I.8.c salen del parrafo
- * 30 y los dos necesitan el split de arete). El problema aparece cuando esas
- * lineas se vuelven a fusionar en un mismo pasaje: ahi el tag se repite una vez
- * por linea. Se compara por clave canonica, con las claves ordenadas, para que
- * el orden en que se escribio el tag en el .txt no cuente como diferencia.
- */
+ * Un tag que solo fija una acepcion ({"eje":"arete","sentido":"etica"}) dice
+ * como usa el parrafo ese eje: vale para todo el parrafo y va a todos los
+ * fragmentos. Un tag con "rol" (faq, define) apunta a una afirmacion puntual:
+ * va a un solo fragmento, el primero salvo que el .txt diga otra cosa con
+ *   {"rol": "faq", "fragmento": 2, ...}
+ * Sin esta distincion, o se pierden los sentidos en los fragmentos 2 y 3, o la
+ * misma FAQ aparece tres veces en los resultados. */
+function tagsDelFragmento(p, i, total) {
+  const out = [];
+  for (const t of p.tags || []) {
+    if (!t || !t.rol) { out.push(t); continue; }
+    let destino = 0;
+    if (t.fragmento != null) {
+      const f = Number(t.fragmento);
+      if (!Number.isInteger(f) || f < 1 || f > total) {
+        if (i === 0) {
+          avisosFragmento.push(
+            `parrafo ${p.parrafoNro}: "fragmento": ${t.fragmento} fuera de rango, el parrafo se parte en ${total} (se usa el primero)`,
+          );
+        }
+      } else destino = f - 1;
+    }
+    if (i === destino) out.push(t);
+  }
+  return out;
+}
+
+/* dedupeTags - un tag no aporta nada dos veces en el mismo pasaje. Se compara
+ * por clave canonica, con las claves ordenadas, para que el orden en que se
+ * escribio el tag en el .txt no cuente como diferencia. */
 const canonTag = (v) => {
   if (Array.isArray(v)) return '[' + v.map(canonTag).join(',') + ']';
   if (v && typeof v === 'object') {
@@ -104,33 +289,12 @@ function dedupeTags(tags) {
   return out;
 }
 
-// 1. dividir largos
-let work = units.flatMap(splitLong);
-
-// 2. fusionar cortos con el vecino del mismo capitulo
-const merged = [];
-for (const u of work) {
-  const prev = merged[merged.length - 1];
-  if (prev && u.words < 70 && prev.chapter === u.chapter && prev.words + u.words <= 230) {
-    prev.es = prev.es + ' ' + u.es;
-    prev.words = prev.es.split(/\s+/).filter(Boolean).length;
-    prev.greekParallel = [prev.greekParallel, u.greekParallel].filter(Boolean).join(' ') || null;
-    prev.mergedCount = (prev.mergedCount || 1) + 1;
-    // dos parrafos con tags propios pueden terminar en la misma unidad final:
-    // se acumulan todos, no se pisan, pero se deduplican: parse.js deja el
-    // tag del parrafo vigente en cada linea fisica del bloque, asi que al
-    // volver a fusionar esas lineas aca el mismo tag entraba una vez por
-    // linea (hasta x5 en EN.I.4.d).
-    prev.tags = dedupeTags([...(prev.tags || []), ...(u.tags || [])]);
-    prev.parrafoNros = [...(prev.parrafoNros || (prev.parrafoNro != null ? [prev.parrafoNro] : [])), ...(u.parrafoNro != null ? [u.parrafoNro] : [])];
-  } else {
-    merged.push({ ...u });
-  }
-}
+const parrafos = armarParrafos(units);
+const finales = parrafos.flatMap(cortarParrafo);
 
 /* ---------------------------------------------------- IDs + GLOSAS ----------- */
 const byChapter = {};
-const passages = merged.map((u) => {
+const passages = finales.map((u) => {
   byChapter[u.chapter] = (byChapter[u.chapter] || 0) + 1;
   const letter = String.fromCharCode(96 + byChapter[u.chapter]);
   const glosses = (u.es.match(/\(([^()]*)\)/g) || [])
@@ -149,7 +313,12 @@ const passages = merged.map((u) => {
     vectorizedFrom: null,
     vector: null,
     translationStatus: 'draft',
-    parrafoNros: u.parrafoNros || (u.parrafoNro != null ? [u.parrafoNro] : []),
+    // parrafoNros sigue siendo un arreglo por compatibilidad con la UI, pero
+    // desde la regla nueva tiene 0 o 1 elemento, nunca mas.
+    parrafoNros: u.parrafoNro != null ? [u.parrafoNro] : [],
+    parId: u.parId,
+    fragIndex: u.splitIndex || 0,
+    fragTotal: u.splitOf || 1,
     tags: u.tags || [],
   };
 });
@@ -192,25 +361,76 @@ fs.writeFileSync(path.join(OUT, 'glossary.json'), JSON.stringify({ version: 1, l
 /* ---------------------------------------------------- REPORTE ---------------- */
 const w = passages.map((p) => p.words).sort((a, b) => a - b);
 const pct = (q) => w[Math.floor((w.length - 1) * q)];
+const partidos = parrafos.filter((p) => p.words > MAX_WORDS).length;
 console.log('=== CHUNKING ===');
-console.log('unidades crudas del parser :', units.length);
-console.log('tras dividir/fusionar      :', passages.length);
+console.log('lineas del parser          :', units.length);
+console.log('parrafos                   :', parrafos.length);
+console.log('  partidos en fragmentos   :', partidos);
+console.log('pasajes                    :', passages.length);
 console.log(`palabras: min ${w[0]} | p25 ${pct(0.25)} | mediana ${pct(0.5)} | p75 ${pct(0.75)} | max ${w[w.length - 1]}`);
-console.log('fuera de rango 70-230      :', passages.filter((p) => p.words < 70 || p.words > 230).length);
 console.log('sin referencia Bekker      :', passages.filter((p) => !p.bekker).length);
 console.log('con griego paralelo        :', passages.filter((p) => p.greekParallel).length);
 
+// La invariante de la regla. Si esto deja de dar 0, algo volvio a pegar dos
+// parrafos en un pasaje y los tags de ese pasaje ya no son atribuibles.
+const solapados = passages.filter((p) => p.parrafoNros.length > 1);
+console.log('pasajes con 2+ parrafos    :', solapados.length, solapados.length ? '  !! LA REGLA SE ROMPIO' : '  (ok: un pasaje nunca abarca dos parrafos)');
+solapados.forEach((p) => console.log('     ! ' + p.id + ' -> parrafos ' + p.parrafoNros.join(', ')));
+
+const cortos = passages.filter((p) => p.words < MIN_WORDS);
+console.log(`pasajes cortos (<${MIN_WORDS} pal.)   :`, cortos.length, '  (son parrafos cortos del original: ya no se fusionan con el vecino)');
+if (cortos.length) {
+  console.log('  ' + cortos.map((p) => `${p.id}:${p.words}`).join('  '));
+  console.log('  ojo: con pocos terminos, la normalizacion L2 le da mucho peso a cada hit suelto.');
+}
+const largos = passages.filter((p) => p.words > MAX_WORDS);
+if (largos.length) console.log(`pasajes sobre el techo (>${MAX_WORDS}):`, largos.map((p) => `${p.id}:${p.words}`).join('  '));
+sinPartir.forEach((s) => console.log('  ! ' + s));
+
+const sinNumero = parrafos.filter((p) => p.parrafoNro == null);
+if (sinNumero.length) {
+  console.log('parrafos sin parrafo_nro   :', sinNumero.length, ' (no se pueden taguear hasta numerarlos en el .txt)');
+  sinNumero.forEach((p) => console.log(`     cap ${p.chapter} | ${p.words} pal. | ${p.es.slice(0, 60)}...`));
+}
+
+/* ------------------------------------------------ CORTES DE PARRAFOS --------
+ * Los numeros que siguen existen para calibrar PUNTO_MAX_CHARS con datos en
+ * vez de a ojo: si casi ningun corte encuentra un punto en la ventana, la
+ * ventana es muy chica; si todos lo encuentran holgadamente, se puede achicar.
+ */
+console.log('\n=== CORTES ===');
+console.log('cortes hechos              :', cortes.total);
+console.log('  ya caian en punto        :', cortes.enPunto);
+console.log(`  movidos al punto (<=${PUNTO_MAX_CHARS}c) :`, cortes.movidos);
+console.log('  quedaron en punto y coma :', cortes.enPuntoYComa);
+const ds = cortes.distancias.filter((d) => d != null).sort((a, b) => a - b);
+if (ds.length) {
+  console.log('distancia en caracteres al punto mas cercano, para los cortes que no caian en punto:');
+  console.log('  ' + ds.join(', '));
+  for (const v of [30, 50, 80, 120, 200]) {
+    console.log(`  ventana ${String(v).padStart(3)} : ${ds.filter((d) => d <= v).length}/${ds.length} cortes irian a un punto`);
+  }
+}
+const huerfanos = cortes.distancias.filter((d) => d == null).length;
+if (huerfanos) console.log('cortes sin ningun punto disponible en su tramo :', huerfanos);
+
+const falsos = [];
+for (const p of parrafos) oraciones(p.es, falsos);
+console.log('falsos limites de oracion  :', falsos.length, ' (abreviaturas: el punto no termina la frase)');
+if (falsos.length) console.log('  ' + [...new Set(falsos)].join(' | '));
+
 const tagRoles = {};
-let taggedParagraphs = 0;
+const numerados = new Set();
 for (const p of passages) {
-  if (p.parrafoNros && p.parrafoNros.length) taggedParagraphs += p.parrafoNros.length;
+  for (const n of p.parrafoNros) numerados.add(n);
   // un tag que solo fija un sentido no tiene rol: no debe contar como rol vacio
   for (const t of p.tags) { if (!t || !t.rol) continue; tagRoles[t.rol] = (tagRoles[t.rol] || 0) + 1; }
 }
 console.log('\n=== TAGS ===');
-console.log('parrafos numerados (tags)  :', taggedParagraphs);
+console.log('parrafos numerados         :', numerados.size);
 console.log('pasajes con algun rol      :', passages.filter((p) => p.tags.length).length);
 for (const [rol, n] of Object.entries(tagRoles)) console.log(`  rol "${rol}" \u00d7 ${n}`);
+avisosFragmento.forEach((a) => console.log('  ! ' + a));
 
 /* ------------------------------------------- SENTIDOS FIJADOS A MANO --------
  * Un tag con la forma
