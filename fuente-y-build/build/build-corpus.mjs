@@ -17,6 +17,18 @@ fs.mkdirSync(OUT, { recursive: true });
 console.log('fuente :', SRC);
 console.log('salida :', OUT);
 
+/* El corpus que esta por ser pisado, leido ANTES de escribir el nuevo. Es la
+ * unica ventana en la que los dos existen a la vez, y sin el no hay manera de
+ * saber que id viejo corresponde a que id nuevo. Ver === MAPA DE IDS === al
+ * final del reporte. */
+let corpusPrevio = null;
+try {
+  const fPrev = path.join(OUT, 'corpus.json');
+  if (fs.existsSync(fPrev)) corpusPrevio = JSON.parse(fs.readFileSync(fPrev, 'utf8'));
+} catch (e) {
+  console.log('  ! no se pudo leer el corpus anterior:', e.message);
+}
+
 
 const raw = fs.readFileSync(SRC, 'utf8');
 const units = parseSource(raw);
@@ -292,16 +304,73 @@ function dedupeTags(tags) {
 const parrafos = armarParrafos(units);
 const finales = parrafos.flatMap(cortarParrafo);
 
-/* ---------------------------------------------------- IDs + GLOSAS ----------- */
-const byChapter = {};
+/* ---------------------------------------------------- IDs --------------------
+ * Un id se lee "capitulo, parrafo, fragmento": EN.I.13.p48a es el primer
+ * fragmento del parrafo 48, dentro del capitulo 13.
+ *
+ * Antes el id era EN.I.<cap>.<letra> con la letra corrida por capitulo, o sea
+ * que el nombre de un pasaje dependia de cuantos pasajes hubiera ANTES en el
+ * mismo capitulo. Bastaba que un parrafo se partiera distinto para que todos
+ * los pasajes siguientes se renombraran en cadena, y con ellos el baseline de
+ * regresion, los tags que citan un pasaje y cualquier nota que lo mencione.
+ * Cada ajuste del chunker costaba una renumeracion completa.
+ *
+ * Ahora el id cuelga del parrafo_nro del .txt, que es un dato de la fuente y
+ * no del algoritmo. Partir un parrafo en dos solo toca a los pasajes de ESE
+ * parrafo: p48a pasa a ser p48a + p48b y ningun otro id se mueve. El precio es
+ * que el id ya no indica el orden dentro del capitulo; para eso estan el orden
+ * del arreglo y el propio numero de parrafo.
+ *
+ * La letra va siempre, incluso cuando el parrafo no se parte. Asi "p48a"
+ * significa lo mismo hoy (parrafo entero) que despues de una particion futura
+ * (primer fragmento) y el id sobrevive al cambio. Si arrancara sin letra,
+ * partir el parrafo obligaria a decidir si el pasaje viejo es el nuevo primero
+ * o si desaparece, que es justo el problema que este esquema viene a evitar.
+ *
+ * Parrafos sin numerar en el .txt: no tienen de donde colgar, asi que reciben
+ * una clave s1, s2... corrida por capitulo, y el reporte los lista aparte. Esa
+ * clave NO es estable: si se agrega un parrafo sin numerar antes, se corre.
+ * Un parrafo sin numero tampoco se puede taguear ni citar; conviene numerarlo.
+ */
+
+// 0 -> a, 25 -> z, 26 -> aa. Un parrafo no llega ni de lejos a 26 fragmentos
+// (serian 5200 palabras), pero un id no puede colisionar en silencio.
+function letra(n) {
+  let s = '';
+  let x = n + 1;
+  while (x > 0) {
+    s = String.fromCharCode(97 + ((x - 1) % 26)) + s;
+    x = Math.floor((x - 1) / 26);
+  }
+  return s;
+}
+
+const claveDeParId = new Map();
+const sinNumeroPorCap = {};
+for (const p of parrafos) {
+  if (p.parrafoNro != null) {
+    claveDeParId.set(p.parId, 'p' + p.parrafoNro);
+  } else {
+    sinNumeroPorCap[p.chapter] = (sinNumeroPorCap[p.chapter] || 0) + 1;
+    claveDeParId.set(p.parId, 's' + sinNumeroPorCap[p.chapter]);
+  }
+}
+
+/* ---------------------------------------------------- GLOSAS ----------------- */
+// La letra se cuenta por clave completa (capitulo + parrafo), no por parId: si
+// dos parId compartieran parrafo_nro, sus fragmentos siguen la misma serie de
+// letras en vez de pisarse.
+const seqPorClave = new Map();
 const passages = finales.map((u) => {
-  byChapter[u.chapter] = (byChapter[u.chapter] || 0) + 1;
-  const letter = String.fromCharCode(96 + byChapter[u.chapter]);
+  const clave = claveDeParId.get(u.parId) || 'x';
+  const base = `EN.I.${u.chapter}.${clave}`;
+  const n = seqPorClave.get(base) || 0;
+  seqPorClave.set(base, n + 1);
   const glosses = (u.es.match(/\(([^()]*)\)/g) || [])
     .map((g) => g.slice(1, -1).trim())
     .filter((g) => /[\u0370-\u03FF\u1F00-\u1FFF]/.test(g));
   return {
-    id: `EN.I.${u.chapter}.${letter}`,
+    id: `${base}${letra(n)}`,
     chapter: u.chapter,
     bekker: u.bekker,
     words: u.words,
@@ -371,6 +440,17 @@ console.log(`palabras: min ${w[0]} | p25 ${pct(0.25)} | mediana ${pct(0.5)} | p7
 console.log('sin referencia Bekker      :', passages.filter((p) => !p.bekker).length);
 console.log('con griego paralelo        :', passages.filter((p) => p.greekParallel).length);
 
+// Un id repetido rompe el baseline, el Lab y cualquier cita. Nunca deberia
+// pasar con la clave por parrafo, pero es barato verificarlo.
+const vistosId = new Set();
+const dupIds = [];
+for (const p of passages) {
+  if (vistosId.has(p.id)) dupIds.push(p.id);
+  vistosId.add(p.id);
+}
+console.log('formato de id              : EN.I.<cap>.p<parrafo><letra>  ej.', passages.length ? passages[0].id : '-');
+console.log('ids duplicados             :', dupIds.length, dupIds.length ? '  !! ' + [...new Set(dupIds)].join(' ') : '  (ok)');
+
 // La invariante de la regla. Si esto deja de dar 0, algo volvio a pegar dos
 // parrafos en un pasaje y los tags de ese pasaje ya no son atribuibles.
 const solapados = passages.filter((p) => p.parrafoNros.length > 1);
@@ -390,6 +470,7 @@ sinPartir.forEach((s) => console.log('  ! ' + s));
 const sinNumero = parrafos.filter((p) => p.parrafoNro == null);
 if (sinNumero.length) {
   console.log('parrafos sin parrafo_nro   :', sinNumero.length, ' (no se pueden taguear hasta numerarlos en el .txt)');
+  console.log('  sus pasajes usan la clave s<n> por capitulo, que se corre si se agrega otro sin numerar antes.');
   sinNumero.forEach((p) => console.log(`     cap ${p.chapter} | ${p.words} pal. | ${p.es.slice(0, 60)}...`));
 }
 
@@ -448,8 +529,8 @@ const SENSES_BY_AXIS = new Map(AXES.map((a) => [a.id, (a.senses || []).map((s) =
 /* Mismo vocabulario que applySenseTags en vectorize.js. Un tag neutro no
  * elige acepcion: deja el eje sin mezcla y lo fija como dominante. No es
  * un sentido invalido, es la manera de decir "el eje aplica aca, pero sin
- * ninguna de sus acepciones". Caso tipico: 13.d, donde koinon significa
- * compartido por todos los vivientes y no predicado en comun. */
+ * ninguna de sus acepciones". Caso tipico: el parrafo 48, donde koinon
+ * significa compartido por todos los vivientes y no predicado en comun. */
 const NEUTRO = new Set(['ninguno', 'neutral', 'sin_sentido']);
 const senseCounts = {};
 const senseErrors = [];
@@ -496,6 +577,65 @@ console.log('  ' + 'lema'.padEnd(16) + 'tot  pas  formas');
 for (const g of glossary.slice(0, 25)) {
   const fl = g.forms.map((f) => `${f.form}\u00d7${f.n}`).join(', ');
   console.log(`  ${g.canonical.padEnd(16)}${String(g.total).padStart(3)}${String(g.passageCount).padStart(5)}  ${fl}`);
+}
+
+/* ------------------------------------------------------ MAPA DE IDS ---------
+ * Que pasaje viejo se convirtio en cual. El puente es el numero de parrafo:
+ * es el unico dato que sobrevive intacto a un recorte distinto del texto.
+ *
+ * Como los dos chunkings parten el mismo parrafo en distinta cantidad de
+ * pedazos, el mapa no siempre es 1 a 1. Cuando un id viejo cae en varios
+ * nuevos, se marca en cual ARRANCA su texto: ese suele ser el heredero
+ * natural de una cita puntual.
+ *
+ * Se imprime en pantalla y no se guarda en ningun archivo a proposito: la
+ * segunda corrida compararia el corpus nuevo contra si mismo y el mapa daria
+ * la identidad, pisando el unico util. Copialo cuando lo veas.
+ */
+console.log('\n=== MAPA DE IDS (viejo -> nuevo) ===');
+if (!corpusPrevio || !Array.isArray(corpusPrevio.passages) || !corpusPrevio.passages.length) {
+  console.log('  no habia corpus anterior en disco: nada que mapear.');
+} else {
+  const viejos = corpusPrevio.passages;
+  const porPar = new Map();
+  for (const p of passages) {
+    for (const n of p.parrafoNros) {
+      if (!porPar.has(n)) porPar.set(n, []);
+      porPar.get(n).push(p);
+    }
+  }
+  const norm = (s) => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const usados = new Set();
+  let iguales = 0;
+  let unicos = 0;
+  let varios = 0;
+  let perdidos = 0;
+  for (const v of viejos) {
+    const pars = [...new Set(v.parrafoNros || [])];
+    const cand = [];
+    for (const n of pars) for (const p of porPar.get(n) || []) if (!cand.includes(p)) cand.push(p);
+    cand.forEach((p) => usados.add(p.id));
+    if (!cand.length) {
+      perdidos += 1;
+      console.log(`  ${String(v.id).padEnd(14)} -> (sin equivalente)   parrafos ${pars.join(', ') || '-'}`);
+      continue;
+    }
+    const ini = norm(v.es).slice(0, 40);
+    const arranca = ini ? cand.find((p) => norm(p.es).includes(ini)) : null;
+    let nota = '';
+    if (cand.length === 1) {
+      unicos += 1;
+      if (cand[0].textHash === v.textHash) { iguales += 1; nota = '   (texto identico)'; }
+    } else {
+      varios += 1;
+      nota = arranca ? `   (arranca en ${arranca.id})` : '   (no se pudo ubicar el arranque)';
+    }
+    console.log(`  ${String(v.id).padEnd(14)} -> ${cand.map((p) => p.id).join(' ')}${nota}`);
+  }
+  const nuevos = passages.filter((p) => !usados.has(p.id));
+  console.log(`  ${viejos.length} ids viejos: ${unicos} con un unico equivalente (${iguales} con el texto intacto) | ${varios} repartidos en varios | ${perdidos} sin equivalente`);
+  if (nuevos.length) console.log(`  pasajes nuevos sin origen viejo (${nuevos.length}): ` + nuevos.map((p) => p.id).join(' '));
+  console.log('  hay que rehacer con esto: el baseline (regresion.mjs --guardar), cualquier tag que cite un id y las notas del proyecto.');
 }
 
 console.log('\n=== SINCRONIZACION DEL MOTOR ===');
