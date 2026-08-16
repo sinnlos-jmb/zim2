@@ -21,7 +21,9 @@
     // grafo: nodos y aristas, los paseos
     paseos: '<circle cx="6" cy="17.5" r="2.6"/><circle cx="12" cy="5.5" r="2.6"/><circle cx="18.5" cy="15" r="2.6"/><path d="M7.6 15.4 10.7 7.9"/><path d="M13.6 7.4l3.6 5.4"/><path d="M8.6 17.1l7.3-1.6"/>',
     // dos figuras: comunidad
-    comunidad: '<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 5.4a3.2 3.2 0 0 1 0 6"/><path d="M17.2 14.9c2 .5 3.4 2.2 3.8 4.6"/>'
+    comunidad: '<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 5.4a3.2 3.2 0 0 1 0 6"/><path d="M17.2 14.9c2 .5 3.4 2.2 3.8 4.6"/>',
+    // matraz: el laboratorio de inspeccion del corpus
+    lab: '<path d="M10 3v5.4L5.6 16.7A3 3 0 0 0 8.3 21h7.4a3 3 0 0 0 2.7-4.3L14 8.4V3"/><path d="M8.5 3h7"/><path d="M6.8 15h10.4"/>'
   };
 
   var SECTIONS = [
@@ -29,7 +31,8 @@
     { id: 'busquedas', href: 'busquedas.html', label: 'Búsquedas', title: 'Búsquedas: preguntar al texto por ejes semánticos' },
     { id: 'ia', href: 'ia.html', label: 'IA', title: 'IA: lectura asistida (en preparación)', wip: true },
     { id: 'paseos', href: 'paseos.html', label: 'Paseos', title: 'Paseos: recorrer el texto como un grafo' },
-    { id: 'comunidad', href: 'comunidad.html', label: 'Comunidad', title: 'Comunidad: leer y anotar entre varios (en preparación)', wip: true }
+    { id: 'comunidad', href: 'comunidad.html', label: 'Comunidad', title: 'Comunidad: leer y anotar entre varios (en preparación)', wip: true },
+    { id: 'lab', href: 'lab.html', label: 'Lab', title: 'Lab: inspección del corpus párrafo por párrafo (solo lectura)' }
   ];
 
   var SVG_NS = 'http://www.w3.org/2000/svg';
