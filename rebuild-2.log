@@ -1,0 +1,173 @@
+fuente : C:\Users\vorgr\Documents\IFK\codex\aristotle_opus2\fuente-y-build\EN_libro1_v7_tags_fixed.txt
+salida : C:\Users\vorgr\Documents\IFK\codex\aristotle_opus2\server\public\data
+=== CHUNKING ===
+lineas del parser          : 97
+parrafos                   : 51
+  partidos en fragmentos   : 18
+pasajes                    : 69
+palabras: min 19 | p25 102 | mediana 120 | p75 161 | max 199
+sin referencia Bekker      : 0
+con griego paralelo        : 51
+formato de id              : EN.I.<cap>.p<parrafo><letra>  ej. EN.I.1.p1a
+ids duplicados             : 0   (ok)
+pasajes con 2+ parrafos    : 0   (ok: un pasaje nunca abarca dos parrafos)
+pasajes cortos (<70 pal.)   : 4   (son parrafos cortos del original: ya no se fusionan con el vecino)
+  EN.I.2.p5a:19  EN.I.6.p17a:32  EN.I.6.p20a:49  EN.I.8.p29a:51
+  ojo: con pocos terminos, la normalizacion L2 le da mucho peso a cada hit suelto.
+
+=== CORTES ===
+cortes hechos              : 18
+  ya caian en punto        : 16
+  movidos al punto (<=50c) : 0
+  quedaron en punto y coma : 2
+distancia en caracteres al punto mas cercano, para los cortes que no caian en punto:
+  150, 183
+  ventana  30 : 0/2 cortes irian a un punto
+  ventana  50 : 0/2 cortes irian a un punto
+  ventana  80 : 0/2 cortes irian a un punto
+  ventana 120 : 0/2 cortes irian a un punto
+  ventana 200 : 2/2 cortes irian a un punto
+falsos limites de oracion  : 1  (abreviaturas: el punto no termina la frase)
+  la residencia (δίαιτα), etc.
+
+=== TAGS ===
+parrafos numerados         : 51
+pasajes con algun rol      : 36
+  rol "define" × 7
+  rol "afirma" × 5
+  rol "faq" × 14
+
+=== SENTIDOS FIJADOS A MANO ===
+  arete = dianoetica × 7
+  arete = etica × 9
+  idea = categorial × 1
+  idea = ninguno × 2
+  idea = separada × 1
+  teleios = absoluto × 2
+  teleios = integro × 2
+  teleios = relativo × 2
+
+=== POR CAPITULO ===
+  cap  1 :  2 pasajes  1094a1 -> 1094a7
+  cap  2 :  3 pasajes  1094a19 -> 1094b11
+  cap  3 :  4 pasajes  1094b12 -> 1094b28
+  cap  4 :  4 pasajes  1095a13 -> 1095a29
+  cap  5 :  4 pasajes  1095b14 -> 1096a4
+  cap  6 : 10 pasajes  1096a11 -> 1096b35
+  cap  7 : 11 pasajes  1097a15 -> 1098a21
+  cap  8 :  7 pasajes  1098b9 -> 1099a31
+  cap  9 :  3 pasajes  1099b9 -> 1099b29
+  cap 10 :  7 pasajes  1100a10 -> 1101a14
+  cap 11 :  3 pasajes  1101a22 -> 1101a28
+  cap 12 :  3 pasajes  1101b10 -> 1101b28
+  cap 13 :  8 pasajes  1102a5 -> 1103a4
+
+=== GLOSARIO ===
+lemas unicos      : 453
+con >1 forma      : 68
+en >=3 pasajes    : 63
+
+top 25 por frecuencia:
+  lema            tot  pas  formas
+  ἀγαθὸν           37   31  ἀγαθὸν×12, ἀγαθόν×9, ἀγαθῶν×7, ἀγαθά×4, ἀγαθὰ×2, ἀγαθοὺς×2, ἀγαθαί×1
+  ἀρετὴν           30   21  ἀρετὴν×12, ἀρετὴ×6, ἀρετῆς×5, ἀρετήν×4, ἀρετῇ×1, ἀρεταί×1, ἀρετὰς×1
+  εὐδαιμονίαν      22   17  εὐδαιμονίαν×11, εὐδαιμονίας×6, εὐδαιμονία×4, εὐδαιμονίᾳ×1
+  ἐνεργείας        19   15  ἐνεργείας×4, ἐνέργειαν×4, ἐνέργεια×4, ἐνέργειαι×3, ἐνεργείᾳ×1, ἐνέργειάν×1, ἐνέργειά×1, ἐνεργεῖν×1
+  ψυχῆς            17   10  ψυχῆς×15, ψυχῇ×1, ψυχὴν×1
+  πολιτικῆς        13   11  πολιτικῆς×4, πολιτικὴ×3, πολιτικὸν×2, πολιτική×1, πολιτικὴν×1, πολιτικῶν×1, πολιτικῷ×1
+  τέλειον          13    9  τέλειον×6, τελείῳ×2, τελείαν×2, τέλεια×1, τέλειόν×1, τελείας×1
+  ἄριστον          12   11  ἄριστον×8, ἀρίστην×3, ἀρίστων×1
+  τέλος            11   11  τέλος×11
+  λόγον            10   10  λόγον×7, λόγος×2, λόγοι×1
+  ἔργον            10    5  ἔργον×10
+  βίον              9    8  βίον×9
+  ἡδονὴν            8    7  ἡδονὴν×3, ἡδονῆς×2, ἡδονήν×1, ἡδοναί×1, ἡδονῇ×1
+  καλῶς             7    6  καλῶς×4, καλῶν×3
+  βίου              7    6  βίου×7
+  μακάριον          7    6  μακάριον×4, μακαρίους×3
+  ἀρχή              7    5  ἀρχή×4, ἀρχὴ×1, ἀρχὴν×1, ἀρχῆς×1
+  πράξεις           6    6  πράξεις×6
+  πρακτῶν           6    5  πρακτῶν×4, πρακτὸν×2
+  γνῶσις            5    5  γνῶσις×3, γνῶσιν×2
+  ἐπιστημῶν         5    4  ἐπιστημῶν×4, ἐπιστήμη×1
+  πολλοὶ            5    4  πολλοὶ×3, πολλὰ×1, πολλῶν×1
+  πράξει            5    4  πράξει×5
+  κάλλιστον         5    4  κάλλιστον×2, κάλλιστα×2, κάλλιστοι×1
+  τέλη              5    3  τέλη×5
+
+=== MAPA DE IDS (viejo -> nuevo) ===
+  EN.I.1.p1a     -> EN.I.1.p1a   (texto identico)
+  EN.I.1.p2a     -> EN.I.1.p2a   (texto identico)
+  EN.I.2.p3a     -> EN.I.2.p3a   (texto identico)
+  EN.I.2.p4a     -> EN.I.2.p4a   (texto identico)
+  EN.I.2.p5a     -> EN.I.2.p5a   (texto identico)
+  EN.I.3.p6a     -> EN.I.3.p6a EN.I.3.p6b   (arranca en EN.I.3.p6a)
+  EN.I.3.s1a     -> (sin equivalente)   parrafos -
+  EN.I.3.p7a     -> EN.I.3.p7a EN.I.3.p7b   (arranca en EN.I.3.p7a)
+  EN.I.3.p7b     -> EN.I.3.p7a EN.I.3.p7b   (arranca en EN.I.3.p7b)
+  EN.I.4.p8a     -> EN.I.4.p8a EN.I.4.p8b   (arranca en EN.I.4.p8a)
+  EN.I.4.p8b     -> EN.I.4.p8a EN.I.4.p8b   (arranca en EN.I.4.p8b)
+  EN.I.4.p9a     -> EN.I.4.p9a EN.I.4.p9b   (arranca en EN.I.4.p9a)
+  EN.I.4.p9b     -> EN.I.4.p9a EN.I.4.p9b   (arranca en EN.I.4.p9b)
+  EN.I.5.p10a    -> EN.I.5.p10a EN.I.5.p10b   (arranca en EN.I.5.p10a)
+  EN.I.5.p10b    -> EN.I.5.p10a EN.I.5.p10b   (arranca en EN.I.5.p10b)
+  EN.I.5.p11a    -> EN.I.5.p11a   (texto identico)
+  EN.I.5.p12a    -> EN.I.5.p12a   (texto identico)
+  EN.I.6.p13a    -> EN.I.6.p13a   (texto identico)
+  EN.I.6.p14a    -> EN.I.6.p14a   (texto identico)
+  EN.I.6.p15a    -> EN.I.6.p15a   (texto identico)
+  EN.I.6.p16a    -> EN.I.6.p16a   (texto identico)
+  EN.I.6.p17a    -> EN.I.6.p17a   (texto identico)
+  EN.I.6.p18a    -> EN.I.6.p18a EN.I.6.p18b   (arranca en EN.I.6.p18a)
+  EN.I.6.p18b    -> EN.I.6.p18a EN.I.6.p18b   (arranca en EN.I.6.p18b)
+  EN.I.6.p19a    -> EN.I.6.p19a   (texto identico)
+  EN.I.6.p20a    -> EN.I.6.p20a   (texto identico)
+  EN.I.6.p21a    -> EN.I.6.p21a   (texto identico)
+  EN.I.7.p22a    -> EN.I.7.p22a EN.I.7.p22b   (arranca en EN.I.7.p22a)
+  EN.I.7.p22b    -> EN.I.7.p22a EN.I.7.p22b   (arranca en EN.I.7.p22b)
+  EN.I.7.p23a    -> EN.I.7.p23a   (texto identico)
+  EN.I.7.p24a    -> EN.I.7.p24a EN.I.7.p24b   (arranca en EN.I.7.p24a)
+  EN.I.7.p24b    -> EN.I.7.p24a EN.I.7.p24b   (arranca en EN.I.7.p24b)
+  EN.I.7.p25a    -> EN.I.7.p25a   (texto identico)
+  EN.I.7.p26a    -> EN.I.7.p26a   (texto identico)
+  EN.I.7.p27a    -> EN.I.7.p27a EN.I.7.p27b   (arranca en EN.I.7.p27a)
+  EN.I.7.p27b    -> EN.I.7.p27a EN.I.7.p27b   (arranca en EN.I.7.p27b)
+  EN.I.7.p28a    -> EN.I.7.p28a EN.I.7.p28b   (arranca en EN.I.7.p28a)
+  EN.I.7.p28b    -> EN.I.7.p28a EN.I.7.p28b   (arranca en EN.I.7.p28b)
+  EN.I.8.p29a    -> EN.I.8.p29a   (texto identico)
+  EN.I.8.p30a    -> EN.I.8.p30a EN.I.8.p30b   (arranca en EN.I.8.p30a)
+  EN.I.8.p30b    -> EN.I.8.p30a EN.I.8.p30b   (arranca en EN.I.8.p30b)
+  EN.I.8.p31a    -> EN.I.8.p31a   (texto identico)
+  EN.I.8.p32a    -> EN.I.8.p32a EN.I.8.p32b   (arranca en EN.I.8.p32a)
+  EN.I.8.p32b    -> EN.I.8.p32a EN.I.8.p32b   (arranca en EN.I.8.p32b)
+  EN.I.8.p33a    -> EN.I.8.p33a   (texto identico)
+  EN.I.9.p34a    -> EN.I.9.p34a   (texto identico)
+  EN.I.9.p35a    -> EN.I.9.p35a   (texto identico)
+  EN.I.9.p36a    -> EN.I.9.p36a   (texto identico)
+  EN.I.10.p37a   -> EN.I.10.p37a EN.I.10.p37b   (arranca en EN.I.10.p37a)
+  EN.I.10.p37b   -> EN.I.10.p37a EN.I.10.p37b   (arranca en EN.I.10.p37b)
+  EN.I.10.p38a   -> EN.I.10.p38a EN.I.10.p38b   (arranca en EN.I.10.p38a)
+  EN.I.10.p38b   -> EN.I.10.p38a EN.I.10.p38b   (arranca en EN.I.10.p38b)
+  EN.I.10.p39a   -> EN.I.10.p39a EN.I.10.p39b   (arranca en EN.I.10.p39a)
+  EN.I.10.p39b   -> EN.I.10.p39a EN.I.10.p39b   (arranca en EN.I.10.p39b)
+  EN.I.10.p40a   -> EN.I.10.p40a   (texto identico)
+  EN.I.11.p41a   -> EN.I.11.p41a   (texto identico)
+  EN.I.11.p42a   -> EN.I.11.p42a EN.I.11.p42b   (arranca en EN.I.11.p42a)
+  EN.I.11.p42b   -> EN.I.11.p42a EN.I.11.p42b   (arranca en EN.I.11.p42b)
+  EN.I.12.p43a   -> EN.I.12.p43a EN.I.12.p43b   (arranca en EN.I.12.p43a)
+  EN.I.12.p43b   -> EN.I.12.p43a EN.I.12.p43b   (arranca en EN.I.12.p43b)
+  EN.I.12.p44a   -> EN.I.12.p44a   (texto identico)
+  EN.I.13.p45a   -> EN.I.13.p45a   (texto identico)
+  EN.I.13.p46a   -> EN.I.13.p46a   (texto identico)
+  EN.I.13.p47a   -> EN.I.13.p47a   (texto identico)
+  EN.I.13.p48a   -> EN.I.13.p48a EN.I.13.p48b   (arranca en EN.I.13.p48a)
+  EN.I.13.p48b   -> EN.I.13.p48a EN.I.13.p48b   (arranca en EN.I.13.p48b)
+  EN.I.13.p49a   -> EN.I.13.p49a   (texto identico)
+  EN.I.13.p50a   -> EN.I.13.p50a   (texto identico)
+  EN.I.13.p51a   -> EN.I.13.p51a   (texto identico)
+  69 ids viejos: 33 con un unico equivalente (33 con el texto intacto) | 35 repartidos en varios | 1 sin equivalente
+  hay que rehacer con esto: el baseline (regresion.mjs --guardar), cualquier tag que cite un id y las notas del proyecto.
+
+=== SINCRONIZACION DEL MOTOR ===
+copiados: (ninguno)
+iguales : 10

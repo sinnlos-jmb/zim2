@@ -1,7 +1,7 @@
 {
  "version": 1,
  "source": "EN libro I",
- "builtAt": "2026-08-16T17:51:38.940Z",
+ "builtAt": "2026-08-16T18:39:13.809Z",
  "passages": [
   {
    "id": "EN.I.1.p1a",
@@ -181,7 +181,7 @@
     "ἀγαθὰ",
     "ἀνδρείαν"
    ],
-   "greekParallel": null,
+   "greekParallel": "Λέγοιτο δ᾽ ἂν ἱκανῶς, εἰ κατὰ τὴν ὑποκειμένην ὕλην διασαφηθείη· τὸ γὰρ ἀκριβὲς οὐχ ὁμοίως ἐν ἅπασι τοῖς λόγοις ἐπιζητητέον, ὥσπερ οὐδ᾽ ἐν τοῖς δημιουργουμένοις. τὰ δὲ καλὰ καὶ τὰ δίκαια, [15] περὶ ὧν ἡ πολιτικὴ σκοπεῖται, πολλὴν ἔχει διαφορὰν καὶ πλάνην, ὥστε δοκεῖν νόμῳ μόνον εἶναι, φύσει δὲ μή. τοιαύτην δέ τινα πλάνην ἔχει καὶ τἀγαθὰ διὰ τὸ πολλοῖς συμβαίνειν βλάβας ἀπ᾽ αὐτῶν· ἤδη γάρ τινες ἀπώλοντο διὰ πλοῦτον, ἕτεροι δὲ δι᾽ ἀνδρείαν. ἀγαπητὸν οὖν περὶ τοιούτων [20] καὶ ἐκ τοιούτων λέγοντας παχυλῶς καὶ τύπῳ τἀληθὲς ἐνδείκνυσθαι, καὶ περὶ τῶν ὡς ἐπὶ τὸ πολὺ καὶ ἐκ τοιούτων λέγοντας τοιαῦτα καὶ συμπεραίνεσθαι. τὸν αὐτὸν δὴ τρόπον καὶ ἀποδέχεσθαι χρεὼν ἕκαστα τῶν λεγομένων· πεπαιδευμένου γάρ ἐστιν ἐπὶ τοσοῦτον τἀκριβὲς ἐπιζητεῖν καθ᾽ ἕκαστον [25] γένος, ἐφ᾽ ὅσον ἡ τοῦ πράγματος φύσις ἐπιδέχεται· παραπλήσιον γὰρ φαίνεται μαθηματικοῦ τε πιθανολογοῦντος ἀποδέχεσθαι καὶ ῥητορικὸν ἀποδείξεις ἀπαιτεῖν.",
    "textHash": "8f515088050a",
    "vectorizedFrom": null,
    "vector": null,
@@ -191,7 +191,7 @@
    ],
    "parId": 10,
    "fragIndex": 0,
-   "fragTotal": 1,
+   "fragTotal": 2,
    "tags": [
     {
      "eje": "arete"
@@ -199,7 +199,7 @@
    ]
   },
   {
-   "id": "EN.I.3.s1a",
+   "id": "EN.I.3.p6b",
    "chapter": 3,
    "bekker": "1094b12",
    "words": 108,
@@ -211,16 +211,22 @@
     "πράγματος φύσις",
     "ἀποδείξεις"
    ],
-   "greekParallel": "Λέγοιτο δ᾽ ἂν ἱκανῶς, εἰ κατὰ τὴν ὑποκειμένην ὕλην διασαφηθείη· τὸ γὰρ ἀκριβὲς οὐχ ὁμοίως ἐν ἅπασι τοῖς λόγοις ἐπιζητητέον, ὥσπερ οὐδ᾽ ἐν τοῖς δημιουργουμένοις. τὰ δὲ καλὰ καὶ τὰ δίκαια, [15] περὶ ὧν ἡ πολιτικὴ σκοπεῖται, πολλὴν ἔχει διαφορὰν καὶ πλάνην, ὥστε δοκεῖν νόμῳ μόνον εἶναι, φύσει δὲ μή. τοιαύτην δέ τινα πλάνην ἔχει καὶ τἀγαθὰ διὰ τὸ πολλοῖς συμβαίνειν βλάβας ἀπ᾽ αὐτῶν· ἤδη γάρ τινες ἀπώλοντο διὰ πλοῦτον, ἕτεροι δὲ δι᾽ ἀνδρείαν.\nἀγαπητὸν οὖν περὶ τοιούτων [20] καὶ ἐκ τοιούτων λέγοντας παχυλῶς καὶ τύπῳ τἀληθὲς ἐνδείκνυσθαι, καὶ περὶ τῶν ὡς ἐπὶ τὸ πολὺ καὶ ἐκ τοιούτων λέγοντας τοιαῦτα καὶ συμπεραίνεσθαι. τὸν αὐτὸν δὴ τρόπον καὶ ἀποδέχεσθαι χρεὼν ἕκαστα τῶν λεγομένων· πεπαιδευμένου γάρ ἐστιν ἐπὶ τοσοῦτον τἀκριβὲς ἐπιζητεῖν καθ᾽ ἕκαστον [25] γένος, ἐφ᾽ ὅσον ἡ τοῦ πράγματος φύσις ἐπιδέχεται· παραπλήσιον γὰρ φαίνεται μαθηματικοῦ τε πιθανολογοῦντος ἀποδέχεσθαι καὶ ῥητορικὸν ἀποδείξεις ἀπαιτεῖν.",
+   "greekParallel": null,
    "textHash": "07feb57a48c5",
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
-   "parrafoNros": [],
-   "parId": 11,
-   "fragIndex": 0,
-   "fragTotal": 1,
-   "tags": []
+   "parrafoNros": [
+    6
+   ],
+   "parId": 10,
+   "fragIndex": 1,
+   "fragTotal": 2,
+   "tags": [
+    {
+     "eje": "arete"
+    }
+   ]
   },
   {
    "id": "EN.I.3.p7a",
@@ -247,7 +253,7 @@
    "parrafoNros": [
     7
    ],
-   "parId": 13,
+   "parId": 12,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": []
@@ -277,7 +283,7 @@
    "parrafoNros": [
     7
    ],
-   "parId": 13,
+   "parId": 12,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -313,7 +319,7 @@
    "parrafoNros": [
     8
    ],
-   "parId": 15,
+   "parId": 14,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -357,7 +363,7 @@
    "parrafoNros": [
     8
    ],
-   "parId": 15,
+   "parId": 14,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -385,7 +391,7 @@
    "parrafoNros": [
     9
    ],
-   "parId": 17,
+   "parId": 16,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -422,7 +428,7 @@
    "parrafoNros": [
     9
    ],
-   "parId": 17,
+   "parId": 16,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -459,7 +465,7 @@
    "parrafoNros": [
     10
    ],
-   "parId": 19,
+   "parId": 18,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": []
@@ -497,7 +503,7 @@
    "parrafoNros": [
     10
    ],
-   "parId": 19,
+   "parId": 18,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -527,7 +533,7 @@
    "parrafoNros": [
     11
    ],
-   "parId": 21,
+   "parId": 20,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -555,7 +561,7 @@
    "parrafoNros": [
     12
    ],
-   "parId": 23,
+   "parId": 22,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -583,7 +589,7 @@
    "parrafoNros": [
     13
    ],
-   "parId": 25,
+   "parId": 24,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -615,7 +621,7 @@
    "parrafoNros": [
     14
    ],
-   "parId": 27,
+   "parId": 26,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -659,7 +665,7 @@
    "parrafoNros": [
     15
    ],
-   "parId": 29,
+   "parId": 28,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -684,7 +690,7 @@
    "parrafoNros": [
     16
    ],
-   "parId": 31,
+   "parId": 30,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -707,7 +713,7 @@
    "parrafoNros": [
     17
    ],
-   "parId": 33,
+   "parId": 32,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -737,7 +743,7 @@
    "parrafoNros": [
     18
    ],
-   "parId": 35,
+   "parId": 34,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -773,7 +779,7 @@
    "parrafoNros": [
     18
    ],
-   "parId": 35,
+   "parId": 34,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -803,7 +809,7 @@
    "parrafoNros": [
     19
    ],
-   "parId": 37,
+   "parId": 36,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -831,7 +837,7 @@
    "parrafoNros": [
     20
    ],
-   "parId": 39,
+   "parId": 38,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -867,7 +873,7 @@
    "parrafoNros": [
     21
    ],
-   "parId": 41,
+   "parId": 40,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -903,7 +909,7 @@
    "parrafoNros": [
     22
    ],
-   "parId": 43,
+   "parId": 42,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -954,7 +960,7 @@
    "parrafoNros": [
     22
    ],
-   "parId": 43,
+   "parId": 42,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -1005,7 +1011,7 @@
    "parrafoNros": [
     23
    ],
-   "parId": 45,
+   "parId": 44,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -1049,7 +1055,7 @@
    "parrafoNros": [
     24
    ],
-   "parId": 47,
+   "parId": 46,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -1099,7 +1105,7 @@
    "parrafoNros": [
     24
    ],
-   "parId": 47,
+   "parId": 46,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -1132,7 +1138,7 @@
    "parrafoNros": [
     25
    ],
-   "parId": 49,
+   "parId": 48,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -1197,7 +1203,7 @@
    "parrafoNros": [
     26
    ],
-   "parId": 51,
+   "parId": 50,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -1206,9 +1212,9 @@
    "id": "EN.I.7.p27a",
    "chapter": 7,
    "bekker": "1098a7",
-   "words": 194,
-   "es": "Y si la función propia (ἔργον) del hombre es una actividad del alma (ψυχῆς ἐνέργεια) según la razón (κατὰ λόγον) o no desprovista de razón, y por otra parte decimos que esta función (ἔργον) es especificamente propia del hombre y del hombre virtuoso (σπουδαίου), como el tocar la cítara es propio de un citarista y de un buen citarista, y así en todas las cosas, añadiéndose a la obra (ἔργον) la excelencia de la virtud (ἀρετὴν) —pues es propio del citarista tocar la cítara, y del buen citarista tocarla bien—, siendo esto así, decimos que la función (ἔργον) del hombre es una cierta vida (ζωήν τινα), y ésta una actividad del alma (ψυχῆς ἐνέργειαν) y acciones razonables (πράξεις μετὰ λόγου), y la del hombre virtuoso (σπουδαίου) estas mismas cosas bien y noblemente (εὖ καὶ καλῶς), y cada una se realiza bien (εὖ) según la virtud adecuada (οἰκείαν ἀρετὴν), y, si esto es así, el bien humano es una actividad del alma (ψυχῆς ἐνέργεια) conforme a la virtud (κατ᾽ ἀρετήν), y si las virtudes son varias, conforme a la mejor y más perfecta (ἀρίστην καὶ τελειοτάτην), y además en una vida entera (ἐν βίῳ τελείῳ).",
-   "esOnly": "Y si la función propia del hombre es una actividad del alma según la razón o no desprovista de razón, y por otra parte decimos que esta función es especificamente propia del hombre y del hombre virtuoso, como el tocar la cítara es propio de un citarista y de un buen citarista, y así en todas las cosas, añadiéndose a la obra la excelencia de la virtud —pues es propio del citarista tocar la cítara, y del buen citarista tocarla bien—, siendo esto así, decimos que la función del hombre es una cierta vida, y ésta una actividad del alma y acciones razonables, y la del hombre virtuoso estas mismas cosas bien y noblemente, y cada una se realiza bien según la virtud adecuada, y, si esto es así, el bien humano es una actividad del alma conforme a la virtud, y si las virtudes son varias, conforme a la mejor y más perfecta, y además en una vida entera.",
+   "words": 90,
+   "es": "Y si la función propia (ἔργον) del hombre es una actividad del alma (ψυχῆς ἐνέργεια) según la razón (κατὰ λόγον) o no desprovista de razón, y por otra parte decimos que esta función (ἔργον) es especificamente propia del hombre y del hombre virtuoso (σπουδαίου), como el tocar la cítara es propio de un citarista y de un buen citarista, y así en todas las cosas, añadiéndose a la obra (ἔργον) la excelencia de la virtud (ἀρετὴν) —pues es propio del citarista tocar la cítara, y del buen citarista tocarla bien—.",
+   "esOnly": "Y si la función propia del hombre es una actividad del alma según la razón o no desprovista de razón, y por otra parte decimos que esta función es especificamente propia del hombre y del hombre virtuoso, como el tocar la cítara es propio de un citarista y de un buen citarista, y así en todas las cosas, añadiéndose a la obra la excelencia de la virtud —pues es propio del citarista tocar la cítara, y del buen citarista tocarla bien—.",
    "glosses": [
     "ἔργον",
     "ψυχῆς ἐνέργεια",
@@ -1216,29 +1222,17 @@
     "ἔργον",
     "σπουδαίου",
     "ἔργον",
-    "ἀρετὴν",
-    "ἔργον",
-    "ζωήν τινα",
-    "ψυχῆς ἐνέργειαν",
-    "πράξεις μετὰ λόγου",
-    "σπουδαίου",
-    "εὖ καὶ καλῶς",
-    "εὖ",
-    "οἰκείαν ἀρετὴν",
-    "ψυχῆς ἐνέργεια",
-    "κατ᾽ ἀρετήν",
-    "ἀρίστην καὶ τελειοτάτην",
-    "ἐν βίῳ τελείῳ"
+    "ἀρετὴν"
    ],
    "greekParallel": "εἰ δ᾽ ἐστὶν ἔργον ἀνθρώπου ψυχῆς ἐνέργεια κατὰ λόγον ἢ μὴ ἄνευ λόγου, τὸ δ᾽ αὐτό φαμεν ἔργον εἶναι τῷ γένει τοῦδε καὶ τοῦδε σπουδαίου, ὥσπερ κιθαριστοῦ καὶ σπουδαίου [10] κιθαριστοῦ, καὶ ἁπλῶς δὴ τοῦτ᾽ ἐπὶ πάντων, προστιθεμένης τῆς κατὰ τὴν ἀρετὴν ὑπεροχῆς πρὸς τὸ ἔργον· —κιθαριστοῦ μὲν γὰρ κιθαρίζειν, σπουδαίου δὲ τὸ εὖ—· εἰ δ᾽ οὕτως, [ἀνθρώπου δὲ τίθεμεν ἔργον ζωήν τινα, ταύτην δὲ ψυχῆς ἐνέργειαν καὶ πράξεις μετὰ λόγου, σπουδαίου δ᾽ ἀνδρὸς εὖ ταῦτα καὶ [15] καλῶς, ἕκαστον δ᾽ εὖ κατὰ τὴν οἰκείαν ἀρετὴν ἀποτελεῖται· εἰ δ᾽ οὕτω,] τὸ ἀνθρώπινον ἀγαθὸν ψυχῆς ἐνέργεια γίνεται κατ᾽ ἀρετήν, εἰ δὲ πλείους αἱ ἀρεταί, κατὰ τὴν ἀρίστην καὶ τελειοτάτην. Ἔτι δ᾽ ἐν βίῳ τελείῳ. μία γὰρ χελιδὼν ἔαρ οὐ ποιεῖ, οὐδὲ μία ἡμέρα· οὕτω δὲ οὐδὲ μακάριον καὶ εὐδαίμονα [20] μία ἡμέρα οὐδ᾽ ὀλίγος χρόνος.",
-   "textHash": "b5e60ea8ec59",
+   "textHash": "782342e606c6",
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
     27
    ],
-   "parId": 53,
+   "parId": 52,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -1264,19 +1258,32 @@
    "id": "EN.I.7.p27b",
    "chapter": 7,
    "bekker": "1098a7",
-   "words": 24,
-   "es": "Porque una golondrina no hace verano, ni un solo día, y así tampoco hace bienaventurado y feliz un solo día o un poco tiempo.",
-   "esOnly": "Porque una golondrina no hace verano, ni un solo día, y así tampoco hace bienaventurado y feliz un solo día o un poco tiempo.",
-   "glosses": [],
+   "words": 129,
+   "es": "Y siendo esto así, decimos que la función (ἔργον) del hombre es una cierta vida (ζωήν τινα), y ésta una actividad del alma (ψυχῆς ἐνέργειαν) y acciones razonables (πράξεις μετὰ λόγου), y la del hombre virtuoso (σπουδαίου) estas mismas cosas bien y noblemente (εὖ καὶ καλῶς), y cada una se realiza bien (εὖ) según la virtud adecuada (οἰκείαν ἀρετὴν), y, si esto es así, el bien humano es una actividad del alma (ψυχῆς ἐνέργεια) conforme a la virtud (κατ᾽ ἀρετήν), y si las virtudes son varias, conforme a la mejor y más perfecta (ἀρίστην καὶ τελειοτάτην), y además en una vida entera (ἐν βίῳ τελείῳ). Porque una golondrina no hace verano, ni un solo día, y así tampoco hace bienaventurado y feliz un solo día o un poco tiempo.",
+   "esOnly": "Y siendo esto así, decimos que la función del hombre es una cierta vida, y ésta una actividad del alma y acciones razonables, y la del hombre virtuoso estas mismas cosas bien y noblemente, y cada una se realiza bien según la virtud adecuada, y, si esto es así, el bien humano es una actividad del alma conforme a la virtud, y si las virtudes son varias, conforme a la mejor y más perfecta, y además en una vida entera. Porque una golondrina no hace verano, ni un solo día, y así tampoco hace bienaventurado y feliz un solo día o un poco tiempo.",
+   "glosses": [
+    "ἔργον",
+    "ζωήν τινα",
+    "ψυχῆς ἐνέργειαν",
+    "πράξεις μετὰ λόγου",
+    "σπουδαίου",
+    "εὖ καὶ καλῶς",
+    "εὖ",
+    "οἰκείαν ἀρετὴν",
+    "ψυχῆς ἐνέργεια",
+    "κατ᾽ ἀρετήν",
+    "ἀρίστην καὶ τελειοτάτην",
+    "ἐν βίῳ τελείῳ"
+   ],
    "greekParallel": null,
-   "textHash": "622c118eda76",
+   "textHash": "b128dcd2e9e3",
    "vectorizedFrom": null,
    "vector": null,
    "translationStatus": "draft",
    "parrafoNros": [
     27
    ],
-   "parId": 53,
+   "parId": 52,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -1322,7 +1329,7 @@
    "parrafoNros": [
     28
    ],
-   "parId": 55,
+   "parId": 54,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": []
@@ -1357,7 +1364,7 @@
    "parrafoNros": [
     28
    ],
-   "parId": 55,
+   "parId": 54,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -1383,7 +1390,7 @@
    "parrafoNros": [
     29
    ],
-   "parId": 57,
+   "parId": 56,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -1420,7 +1427,7 @@
    "parrafoNros": [
     30
    ],
-   "parId": 59,
+   "parId": 58,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -1473,7 +1480,7 @@
    "parrafoNros": [
     30
    ],
-   "parId": 59,
+   "parId": 58,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -1528,7 +1535,7 @@
    "parrafoNros": [
     31
    ],
-   "parId": 61,
+   "parId": 60,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -1565,7 +1572,7 @@
    "parrafoNros": [
     32
    ],
-   "parId": 63,
+   "parId": 62,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -1612,7 +1619,7 @@
    "parrafoNros": [
     32
    ],
-   "parId": 63,
+   "parId": 62,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -1645,7 +1652,7 @@
    "parrafoNros": [
     33
    ],
-   "parId": 65,
+   "parId": 64,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -1684,7 +1691,7 @@
    "parrafoNros": [
     34
    ],
-   "parId": 67,
+   "parId": 66,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -1714,7 +1721,7 @@
    "parrafoNros": [
     35
    ],
-   "parId": 69,
+   "parId": 68,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -1745,7 +1752,7 @@
    "parrafoNros": [
     36
    ],
-   "parId": 71,
+   "parId": 70,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -1787,7 +1794,7 @@
    "parrafoNros": [
     37
    ],
-   "parId": 73,
+   "parId": 72,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": []
@@ -1816,7 +1823,7 @@
    "parrafoNros": [
     37
    ],
-   "parId": 73,
+   "parId": 72,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -1849,7 +1856,7 @@
    "parrafoNros": [
     38
    ],
-   "parId": 75,
+   "parId": 74,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -1900,7 +1907,7 @@
    "parrafoNros": [
     38
    ],
-   "parId": 75,
+   "parId": 74,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -1952,7 +1959,7 @@
    "parrafoNros": [
     39
    ],
-   "parId": 77,
+   "parId": 76,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -2000,7 +2007,7 @@
    "parrafoNros": [
     39
    ],
-   "parId": 77,
+   "parId": 76,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -2043,7 +2050,7 @@
    "parrafoNros": [
     40
    ],
-   "parId": 79,
+   "parId": 78,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -2081,7 +2088,7 @@
    "parrafoNros": [
     41
    ],
-   "parId": 81,
+   "parId": 80,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -2108,7 +2115,7 @@
    "parrafoNros": [
     42
    ],
-   "parId": 83,
+   "parId": 82,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": []
@@ -2133,7 +2140,7 @@
    "parrafoNros": [
     42
    ],
-   "parId": 83,
+   "parId": 82,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -2167,7 +2174,7 @@
    "parrafoNros": [
     43
    ],
-   "parId": 85,
+   "parId": 84,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -2207,7 +2214,7 @@
    "parrafoNros": [
     43
    ],
-   "parId": 85,
+   "parId": 84,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": []
@@ -2249,7 +2256,7 @@
    "parrafoNros": [
     44
    ],
-   "parId": 87,
+   "parId": 86,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -2287,7 +2294,7 @@
    "parrafoNros": [
     45
    ],
-   "parId": 89,
+   "parId": 88,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -2342,7 +2349,7 @@
    "parrafoNros": [
     46
    ],
-   "parId": 91,
+   "parId": 90,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -2370,7 +2377,7 @@
    "parrafoNros": [
     47
    ],
-   "parId": 93,
+   "parId": 92,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": []
@@ -2405,7 +2412,7 @@
    "parrafoNros": [
     48
    ],
-   "parId": 95,
+   "parId": 94,
    "fragIndex": 0,
    "fragTotal": 2,
    "tags": [
@@ -2447,7 +2454,7 @@
    "parrafoNros": [
     48
    ],
-   "parId": 95,
+   "parId": 94,
    "fragIndex": 1,
    "fragTotal": 2,
    "tags": [
@@ -2493,7 +2500,7 @@
    "parrafoNros": [
     49
    ],
-   "parId": 97,
+   "parId": 96,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -2543,7 +2550,7 @@
    "parrafoNros": [
     50
    ],
-   "parId": 99,
+   "parId": 98,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [
@@ -2584,7 +2591,7 @@
    "parrafoNros": [
     51
    ],
-   "parId": 101,
+   "parId": 100,
    "fragIndex": 0,
    "fragTotal": 1,
    "tags": [

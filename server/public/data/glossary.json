@@ -111,6 +111,7 @@
     "EN.I.5.p11a",
     "EN.I.6.p15a",
     "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p30b",
     "EN.I.8.p31a",
     "EN.I.8.p32a",
@@ -128,7 +129,7 @@
     "EN.I.13.p48b",
     "EN.I.13.p51a"
    ],
-   "passageCount": 20
+   "passageCount": 21
   },
   {
    "stem": "ευδαιμονι",
@@ -218,6 +219,7 @@
     "EN.I.1.p2a",
     "EN.I.7.p26a",
     "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p30a",
     "EN.I.8.p31a",
     "EN.I.9.p35a",
@@ -229,7 +231,7 @@
     "EN.I.13.p46a",
     "EN.I.13.p48a"
    ],
-   "passageCount": 14
+   "passageCount": 15
   },
   {
    "stem": "ψυχη",
@@ -253,6 +255,7 @@
    "passages": [
     "EN.I.6.p19a",
     "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p30a",
     "EN.I.9.p35a",
     "EN.I.13.p45a",
@@ -261,7 +264,7 @@
     "EN.I.13.p48b",
     "EN.I.13.p49a"
    ],
-   "passageCount": 9
+   "passageCount": 10
   },
   {
    "stem": "πολιτικ",
@@ -349,7 +352,7 @@
     "EN.I.7.p23a",
     "EN.I.7.p24a",
     "EN.I.7.p24b",
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.9.p36a",
     "EN.I.10.p39b",
     "EN.I.10.p40a",
@@ -381,7 +384,7 @@
     "EN.I.4.p8b",
     "EN.I.7.p22b",
     "EN.I.7.p25a",
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p31a",
     "EN.I.8.p32b",
     "EN.I.9.p34a",
@@ -465,9 +468,10 @@
     "EN.I.7.p25a",
     "EN.I.7.p26a",
     "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.7.p28a"
    ],
-   "passageCount": 4
+   "passageCount": 5
   },
   {
    "stem": "βιον",
@@ -547,7 +551,7 @@
    ],
    "passages": [
     "EN.I.4.p9b",
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.7.p28b",
     "EN.I.8.p32b",
     "EN.I.9.p36a",
@@ -646,7 +650,7 @@
    ],
    "passages": [
     "EN.I.7.p26a",
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p30a",
     "EN.I.8.p32a",
     "EN.I.8.p32b",
@@ -1174,7 +1178,7 @@
    "passages": [
     "EN.I.5.p10b",
     "EN.I.6.p13a",
-    "EN.I.7.p27a"
+    "EN.I.7.p27b"
    ],
    "passageCount": 3
   },
@@ -1335,7 +1339,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a",
+    "EN.I.3.p6b",
     "EN.I.9.p35a",
     "EN.I.13.p49a"
    ],
@@ -2317,7 +2321,7 @@
    ],
    "passages": [
     "EN.I.7.p22b",
-    "EN.I.7.p27a"
+    "EN.I.7.p27b"
    ],
    "passageCount": 2
   },
@@ -2410,7 +2414,24 @@
    ],
    "passages": [
     "EN.I.7.p26a",
-    "EN.I.7.p27a"
+    "EN.I.7.p27b"
+   ],
+   "passageCount": 2
+  },
+  {
+   "stem": "σπουδαιου",
+   "canonical": "σπουδαίου",
+   "total": 2,
+   "formCount": 1,
+   "forms": [
+    {
+     "form": "σπουδαίου",
+     "n": 2
+    }
+   ],
+   "passages": [
+    "EN.I.7.p27a",
+    "EN.I.7.p27b"
    ],
    "passageCount": 2
   },
@@ -2426,7 +2447,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.13.p49a"
    ],
    "passageCount": 2
@@ -2443,7 +2464,7 @@
     }
    ],
    "passages": [
-    "EN.I.7.p27a",
+    "EN.I.7.p27b",
     "EN.I.8.p31a"
    ],
    "passageCount": 2
@@ -2861,22 +2882,6 @@
    "passageCount": 1
   },
   {
-   "stem": "σπουδαιου",
-   "canonical": "σπουδαίου",
-   "total": 2,
-   "formCount": 1,
-   "forms": [
-    {
-     "form": "σπουδαίου",
-     "n": 2
-    }
-   ],
-   "passages": [
-    "EN.I.7.p27a"
-   ],
-   "passageCount": 1
-  },
-  {
    "stem": "ηδεα",
    "canonical": "ἡδέα",
    "total": 2,
@@ -3252,7 +3257,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a"
+    "EN.I.3.p6b"
    ],
    "passageCount": 1
   },
@@ -3268,7 +3273,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a"
+    "EN.I.3.p6b"
    ],
    "passageCount": 1
   },
@@ -3284,7 +3289,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a"
+    "EN.I.3.p6b"
    ],
    "passageCount": 1
   },
@@ -3300,7 +3305,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a"
+    "EN.I.3.p6b"
    ],
    "passageCount": 1
   },
@@ -3316,7 +3321,7 @@
     }
    ],
    "passages": [
-    "EN.I.3.s1a"
+    "EN.I.3.p6b"
    ],
    "passageCount": 1
   },
