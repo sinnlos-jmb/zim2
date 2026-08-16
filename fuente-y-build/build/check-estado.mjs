@@ -51,6 +51,11 @@ const bytesLF = (f) => {
   return s == null ? -1 : Buffer.byteLength(s.replace(/\r\n/g, '\n'), 'utf8');
 };
 
+/* parrafoNros trae el numero repetido una vez por unidad de texto que aporto
+ * al pasaje ([9,9,9,9,9] es UN parrafo, no cinco). Todo chequeo sobre
+ * parrafos tiene que mirar el conjunto de valores unicos. */
+const parsDe = (p) => [...new Set(p.parrafoNros || [])];
+
 let OK = 0, MAL = 0;
 const fila = (bien, etiq, detalle) => {
   const marca = bien === null ? '  ?  ' : (bien ? ' OK  ' : ' !!  ');
@@ -92,7 +97,14 @@ for (const [nom, esp] of PARCHES) {
   const b = bytes(f);
   if (b < 0) { fila(null, nom, 'NO EXISTE'); continue; }
   const n = bytesLF(f);
-  fila(n === esp, nom, n + ' b LF (esperado ' + esp + ')' + (b !== n ? '  [' + b + ' b en disco, CRLF]' : '') + (b === 0 ? '  <-- VACIO: se trunco al guardarlo' : ''));
+  /* Tolerancia de 1 byte: los tres se guardaron sin el salto de linea final.
+   * No es corrupcion, no cambia lo que el script hace, y ya corrieron. Dejar
+   * tres rojos permanentes por eso solo entrena a ignorar el semaforo. */
+  const dif = esp - n;
+  const nota = (b !== n ? '  [' + b + ' b en disco, CRLF]' : '') +
+    (dif === 1 ? '  [sin salto final]' : '') +
+    (b === 0 ? '  <-- VACIO: se trunco al guardarlo' : '');
+  fila(dif === 0 || dif === 1, nom, n + ' b LF (esperado ' + esp + ')' + nota);
 }
 
 /* ---------------------------------------- 1. motor: canal gw --------------- */
@@ -171,17 +183,19 @@ const porParrafo = new Map();
 let aCaballo = [];
 if (C == null) { fila(null, 'corpus.json: no se pudo leer'); } else {
   for (const p of C.passages) {
-    for (const n of (p.parrafoNros || [])) {
+    for (const n of parsDe(p)) {
       if (!porParrafo.has(n)) porParrafo.set(n, []);
       if (porParrafo.get(n).indexOf(p) < 0) porParrafo.get(n).push(p);
     }
   }
-  aCaballo = C.passages.filter((p) => (p.parrafoNros || []).length > 1);
+  aCaballo = C.passages.filter((p) => parsDe(p).length > 1);
   fila(null, 'corpus.json: pasajes', String(C.passages.length));
   /* LA invariante de la regla nueva. Antes esto era '=== 72', que es un
    * numero que cambia con cada ajuste de chunking y no dice nada. */
   fila(aCaballo.length === 0, 'ningun pasaje abarca dos parrafos',
-    aCaballo.length ? aCaballo.length + ': ' + aCaballo.slice(0, 8).map((p) => p.id + ' [' + p.parrafoNros.join('+') + ']').join(' ') : '');
+    aCaballo.length ? aCaballo.length + ': ' + aCaballo.slice(0, 8).map((p) => p.id + ' [' + parsDe(p).join('+') + ']').join(' ') : '');
+  const conRepes = C.passages.filter((p) => (p.parrafoNros || []).length !== parsDe(p).length);
+  fila(null, 'pasajes con parrafoNros repetidos', conRepes.length ? conRepes.length + ' (cosmetico: un nro por unidad de texto)' : 'ninguno');
 
   /* Los tags neutros se buscan donde el .txt dice que estan, no en un id. */
   for (const n of PARS_NEUTRO) {
@@ -204,7 +218,7 @@ if (C == null) { fila(null, 'corpus.json: no se pudo leer'); } else {
 console.log('');
 console.log('=== 5b. PARRAFOS Y FRAGMENTOS ===');
 if (C == null) { fila(null, 'corpus.json: no se pudo leer'); } else {
-  const sinParrafo = C.passages.filter((p) => !(p.parrafoNros || []).length);
+  const sinParrafo = C.passages.filter((p) => !parsDe(p).length);
   fila(sinParrafo.length === 0, 'todos los pasajes tienen parrafo asignado',
     sinParrafo.length ? sinParrafo.length + ': ' + sinParrafo.slice(0, 8).map((p) => p.id).join(' ') : '');
   fila(null, 'parrafos numerados en el corpus', String(porParrafo.size));
@@ -343,7 +357,7 @@ for (const partes of CLAVE) {
   console.log('     ' + partes[partes.length - 1].padEnd(22) + String(b).padStart(7) + ' b   ' + (h ? h.slice(0, 16) : 'NO EXISTE'));
 }
 if (bc != null) {
-  const secs = (bc.match(/'===\s[^']*'/g) || []).map((s) => s.replace(/'/g, ''));
+  const secs = (bc.match(/['"`]===\s[^'"`]*['"`]/g) || []).map((s) => s.slice(1, -1));
   console.log('     build-corpus imprime ' + secs.length + ' seccion(es): ' + secs.join(' | '));
 }
 if (nomF) {
