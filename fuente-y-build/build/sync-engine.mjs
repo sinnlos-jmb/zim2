@@ -11,12 +11,16 @@ import { fileURLToPath } from 'node:url';
  * Copia byte a byte, sin normalizar fin de linea: si el original esta en
  * CRLF, la copia tambien queda en CRLF.
  *
+ * Los .html NO estan aca: viven solo en server/public y se editan ahi. Todo
+ * .js o .css nuevo, en cambio, tiene que nacer en src/ y sumarse a TARGETS,
+ * o queda fuera del mecanismo y vuelve la duplicacion a mano.
+ *
  * Uso:
  *   node fuente-y-build/build/sync-engine.mjs
  */
 export const TARGETS = [
-  { from: 'js', to: path.join('server', 'public', 'js'), files: ['lexicon.js', 'normalize.js', 'panels.js', 'shell.js', 'ui.js', 'vectorize.js'] },
-  { from: 'css', to: path.join('server', 'public', 'css'), files: ['app.css', 'shell.css'] },
+  { from: 'js', to: path.join('server', 'public', 'js'), files: ['lab.js', 'lexicon.js', 'normalize.js', 'panels.js', 'shell.js', 'ui.js', 'vectorize.js'] },
+  { from: 'css', to: path.join('server', 'public', 'css'), files: ['app.css', 'lab.css', 'shell.css'] },
 ];
 
 export function syncEngine(root) {
